@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">福耀全球 &gt; 网点列表</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>网点列表</h4>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form action="news_list.php?action=update&amp;kid=584" enctype="multipart/form-data"
+                              method="post">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">标题</label>
+                                    <div class="col-md-4">
+                                        <input type="text" name="ktitle" value="厦门湖里联发店" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">所属分类</label>
+                                    <div class="col-md-2">
+                                        <select name="listid" class="form-control" style="margin-top:0px;">
+                                            <option value="1" selected="selected">汽车琉璃</option>
+                                            <option value="1" selected="selected">浮法琉璃</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">省市</label>
+                                    <div class="col-md-6" style="width:130px;">
+                                        <select name="province" onchange="change_province(this.value)"
+                                                class="form-control" style="margin-top:0px;">
+                                            <option value="">选择国家</option>
+                                            <option selected="" value="110000">中国</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6" style="width:130px;">
+                                        <select name="province" onchange="change_province(this.value)"
+                                                class="form-control" style="margin-top:0px;">
+                                            <option value="">选择省份</option>
+                                            <option value="110000">北京市</option>
+                                            <option value="120000">天津市</option>
+                                            <option selected="selected" value="130000">河北省</option>
+                                            <option value="140000">山西省</option>
+                                            <option value="150000">内蒙古</option>
+                                            <option value="210000">辽宁省</option>
+                                            <option value="220000">吉林省</option>
+                                            <option value="230000">黑龙江省</option>
+                                            <option value="310000">上海市</option>
+                                            <option value="320000">江苏省</option>
+                                            <option value="330000">浙江省</option>
+                                            <option value="340000">安徽省</option>
+                                            <option value="350000">福建省</option>
+                                            <option value="360000">江西省</option>
+                                            <option value="370000">山东省</option>
+                                            <option value="410000">河南省</option>
+                                            <option value="420000">湖北省</option>
+                                            <option value="430000">湖南省</option>
+                                            <option value="440000">广东省</option>
+                                            <option value="450000">广西省</option>
+                                            <option value="460000">海南省</option>
+                                            <option value="500000">重庆市</option>
+                                            <option value="510000">四川省</option>
+                                            <option value="520000">贵州省</option>
+                                            <option value="530000">云南省</option>
+                                            <option value="540000">西藏</option>
+                                            <option value="610000">陕西省</option>
+                                            <option value="620000">甘肃省</option>
+                                            <option value="630000">青海省</option>
+                                            <option value="640000">宁夏</option>
+                                            <option value="650000">新疆</option>
+                                            <option value="710000">台湾省</option>
+                                            <option value="810000">香港</option>
+                                            <option value="820000">澳门</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6" style="width: 20%;">
+                                        <select id="city" name="city" onchange="change_city(this.value)"
+                                                style="color:#000;margin-top: 0px;">
+                                            <option value="">选择城市</option>
+                                            <option value="130100">石家庄市</option>
+                                            <option value="130200">唐山市</option>
+                                            <option value="130300">秦皇岛市</option>
+                                            <option selected="selected" value="130400">邯郸市</option>
+                                            <option value="130500">邢台市</option>
+                                            <option value="130600">保定市</option>
+                                            <option value="130700">张家口市</option>
+                                            <option value="130800">承德市</option>
+                                            <option value="130900">沧州市</option>
+                                            <option value="131000">廊坊市</option>
+                                            <option value="131100">衡水市</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">地址</label>
+                                    <div class="col-md-4">
+                                        <input type="text" name="ktitle" value="厦门湖里联发店" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">电话</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="ktitle" value="0592-2227766" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经纬度</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="ktitle" value="118.77777,24.88888"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="submit" value="确认"/>
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            form: {
+                nameText: '',
+                roleText: '',
+                text: '',
+                sort: ''
+            }
+        },
+        methods: {
+            click: function () {
+                // console.info(this.form);
+                this.$api.leader.add(this.form, function () {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    location.href = '/manage/leader'
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.leader.query({id: id}, function (res) {
+
+                    var leader = res.objs[0];
+                    var form = {};
+                    form['nameText'] = leader.nameText;
+                    form['roleText'] = leader.roleText;
+                    form['text'] = leader.text;
+                    //form['sort'] = leader.sort;
+                    // form['id'] = leader.id;
+                    this_vue.form = form;
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        }
+    });
+</script>
+</body>
+
+</html>

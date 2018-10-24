@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+    <section class="space-sm "
+             >
+
+        <div class="container relative">
+
+            <div class="row">
+
+                <div class="col-md-12" >
+                    <h2 class="heading-overlay t-l full" data-text="User Register"><em th:utext="#{user_register}"><span>账号</span>注册</em>
+                    </h2>
+                    <div class="app-general-form-container">
+                        <form id="loginForm" autocomplete="off">
+                            <!--为了解决360，Chrome表单自动补全-->
+                            <input type="text" id="loginName"  name="loginName" style="visibility:hidden;" />
+                            <input type="password" id="loginCode" name="loginPassword" style="visibility:hidden;"/>
+                            <input type="text" id="loginName1"  name="loginName" style="visibility:hidden;" />
+                            <input type="password" id="loginCode1" name="loginPassword" style="visibility:hidden;"/>
+                            <input name="type" type="hidden" value="PROVIDER"/>
+                            <!--END-->
+                            <div class="row">
+                                <div class="col-sm-4 t-l" th:utext="#{login_userid}">
+                                    用户账号 <span class="controls-im">*</span>
+                                </div>
+
+                                <div class="col-sm-8 t-l">
+                                    <div class="controls">
+                                        <input id="userid" type="text" class="float-label reqiured" autocomplete="off">
+                                        <label th:utext="#{login_useridlimit}">请输入至少四位字母数字组合</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                    <div class="row">
+                        <div class="col-sm-4 t-l" th:utext="#{login_name}">
+                            姓名 <span class="controls-im">*</span>
+                        </div>
+
+                        <div class="col-sm-8 t-l">
+                            <div class="controls">
+                                <input id="name" type="text"  class="float-label reqiured" autocomplete="off">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                            <div class="row">
+                                <div class="col-sm-4 t-l" th:utext="#{login_code}">
+                                    员工工号 <span class="controls-im">*</span>
+                                </div>
+
+                                <div class="col-sm-8 t-l">
+                                    <div class="controls">
+                                        <input id="code" type="text" class="float-label reqiured" autocomplete="off">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                    <div class="row">
+                        <div class="col-sm-4 t-l" th:utext="#{login_tel}">
+                            联系电话 <span class="controls-im">*</span>
+                        </div>
+
+                        <div class="col-sm-8 t-l">
+                            <div class="controls">
+                                <input id="tel" type="text"  class="float-label" autocomplete="off">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 t-l" th:utext="#{login_email}">
+                            电子邮箱
+                        </div>
+
+                        <div class="col-sm-8 t-l">
+                            <div class="controls">
+                                <input id="email" type="text"  class="float-label reqiured" autocomplete="off">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 t-l" th:utext="#{login_company}">
+                            公司名称 <span class="controls-im">*</span>
+                        </div>
+
+                        <div class="col-sm-8 t-l">
+                            <div class="controls">
+                                <input id="org" type="text"  class="float-label reqiured" autocomplete="off" >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                            <div class="row">
+                                <div class="col-sm-4 t-l" th:utext="#{login_apart}">
+                                    所属部门 <span class="controls-im">*</span>
+                                </div>
+
+                                <div class="col-sm-8 t-l">
+                                    <div class="controls">
+                                        <input id="apartment" type="text"  class="float-label reqiured" autocomplete="off">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 t-l" th:utext="#{login_password}">
+                                    设置密码 <span class="controls-im">*</span>
+
+                                </div>
+
+                                <div class="col-sm-8 t-l">
+                                    <div class="controls">
+                                        <input id="Fpassword" type="text"  class="float-label reqiured" password="">
+                                        <input id="password" type="password"  style="display: none">
+                                        <label th:utext="#{login_passwordlimit}">请输入至少六位字母数字组合</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 t-l" th:utext="#{login_repassword}">
+                                    重复密码 <span class="controls-im">*</span>
+                                </div>
+
+                                <div class="col-sm-8 t-l">
+                                    <div class="controls">
+
+                                        <input id="Frepassword" type="text" class="float-label reqiured" password="">
+                                        <input id="repassword" type="password" style="display: none">
+                                        <script>
+                                            $(function() {
+                                                $("#Fpassword").on("input propertychange", function () {
+                                                    //var _this = this;
+                                                    var newPassword = $(this).val();
+                                                    var oldPassword = $(this).attr("password");
+                                                    var deta = newPassword.length-oldPassword.length;
+                                                    var truePassword = "";
+                                                    var p =$(this).getCursorPosition();//光标结束时的位置
+                                                    console.log("p = "+p)
+                                                    for(var i=0; i<newPassword.length; i++){
+                                                        var c = newPassword.charAt(i);
+                                                        console.log("c = "+c)
+                                                        if(i<p && c!='●'){
+                                                            truePassword += c;
+                                                        }else if(i<p && c=='●'){
+                                                            truePassword +=  oldPassword.charAt(i);
+                                                        }else {
+                                                            truePassword += oldPassword.substr(oldPassword.length-newPassword.length+p,newPassword.length-p);
+                                                            break;
+                                                        }
+
+                                                    }
+                                                    newPassword = truePassword.replace(/\S/g, '●');
+
+                                                    $(this).attr('password', truePassword);
+                                                    $(this).val(newPassword);
+                                                   // console.log(truePassword);
+                                                })
+                                                $("#Frepassword").on("input propertychange", function () {
+                                                    //var _this = this;
+                                                    var newPassword = $(this).val();
+                                                    var oldPassword = $(this).attr("password");
+                                                    var deta = newPassword.length-oldPassword.length;
+                                                    var truePassword = "";
+                                                    var p =$(this).getCursorPosition();//光标结束时的位置
+                                                    console.log("p = "+p)
+                                                    for(var i=0; i<newPassword.length; i++){
+                                                        var c = newPassword.charAt(i);
+                                                        console.log("c = "+c)
+                                                        if(i<p && c!='●'){
+                                                            truePassword += c;
+                                                        }else if(i<p && c=='●'){
+                                                            truePassword +=  oldPassword.charAt(i);
+                                                        }else {
+                                                            truePassword += oldPassword.substr(oldPassword.length-newPassword.length+p,newPassword.length-p);
+                                                            break;
+                                                        }
+
+                                                    }
+                                                    newPassword = truePassword.replace(/\S/g, '●');
+
+                                                    $(this).attr('password', truePassword);
+                                                    $(this).val(newPassword);
+                                                    console.log(truePassword);
+                                                })
+                                                $.fn.getCursorPosition = function () {
+                                                    var el = $(this).get(0);
+                                                    var pos = 0;
+                                                    if ('selectionStart' in el) {
+                                                        pos = el.selectionStart;
+                                                    } else if ('selection' in document) {
+                                                        el.focus();
+                                                        var Sel = document.selection.createRange();
+                                                        var SelLength = document.selection.createRange().text.length;
+                                                        Sel.moveStart('character', -el.value.length);
+                                                        pos = Sel.text.length - SelLength;
+                                                    }
+                                                    return pos;
+                                                }
+                                            })
+                                        </script>
+                                        <!--script>
+                                            //解决谷歌内核无法隐藏password输入历史问题
+                                            $(function() {
+                                                var i = 0;
+                                                var value = "";
+                                                var i1 = 0;
+                                                var value1 = "";
+                                                $("#Fpassword").on("input propertychange", function () {
+                                                    console.log($(this).val())
+                                                    i = $(this).val().length - 1;
+                                                    var  m = $(this).val().substr(i,1)
+                                                    console.log("m = "+ m+"value = "+ $(this).val());
+                                                    if(m =="*"||m ==""){
+                                                        if($(this).val().length == 0){
+                                                            value = "";
+                                                        }else{
+                                                            var l = $(this).val().length
+                                                            value = value.substring(0,l);
+                                                        }
+
+                                                    }else{
+                                                        value = value+m;
+                                                    }
+
+                                                    $(this).val("");
+                                                    for (var j = 0; j < i + 1; j++) {
+                                                        $(this).val($(this).val() + "*")
+                                                    }
+                                                    $("#password").val(value);
+                                                    console.log(value)
+                                                })
+                                                $("#Frepassword").on("input propertychange",function(){
+                                                    console.log($(this).val())
+                                                    i1= $(this).val().length-1;
+                                                    var  m = $(this).val().substr(i1,1)
+                                                    console.log("m = "+ m);
+                                                    if(m =="*"||m ==""){
+                                                        if($(this).val().length == 0){
+                                                            value1 = "";
+                                                        }else{
+                                                            var l = $(this).val().length
+                                                            value1 = value1.substring(0,l);
+                                                        }
+                                                    }else{
+                                                        value1 = value1+m;
+                                                    }
+                                                    $(this).val("");
+                                                    for(var j=0;j<i1+1;j++){
+                                                        $(this).val($(this).val()+"*")
+                                                    }
+                                                    $("#repassword").val(value1);
+                                                    console.log(value1)
+                                                })
+                                            })
+
+                                        </script-->
+                                    </div>
+
+                                </div>
+
+                            </div>
+                    <div class="row">
+                        <div class="col-sm-4 t-l">
+
+                        </div>
+
+                        <div class="col-sm-8 t-l">
+                            <button id="app-form-submit"
+                                    class="button button-border-thin button-size-s button-bg-primary">
+                                <span th:text="#{fragment.button.submit.file}">提交资料</span>
+                            </button>
+
+                            <p class="response"></p>
+
+                        </div>
+                    </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+<div th:replace="front/fragment :: js"></div>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+    $(function(){
+        function strToBinary(str){
+            var result = [];
+            var list = str.split("");
+            for(var i=0;i<list.length;i++){
+                if(i != 0){
+                    result.push(" ");
+                }
+                var item = list[i];
+                var binaryStr = item.charCodeAt().toString(2);
+                result.push(binaryStr);
+            }
+            return result.join("");
+        }
+        $('#app-form-submit').on('click', function (e) {
+            e.preventDefault();
+            var _staffName = $("#name").val(),
+                _staffCode = $("#code").val(),
+                _userid = $("#userid").val(),
+                _staffTel = $("#tel").val(),
+                _staffEmail = $("#email").val(),
+                _staffOrg = $("#org").val(),
+                _apartment = $("#apartment").val(),
+                _password = md5($("#Fpassword").attr("password")),
+                _repassword = md5($("#Frepassword").attr("password"))
+            console.log(strToBinary($("#Fpassword").attr("password")))
+            //console.log($("#repassword").val())
+            if(_password!=_repassword){
+                alert("密码不一致")
+                return;
+            }
+            var $form = $("#loginForm"),
+                validationOK = true,
+                emailRe = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm,
+                numReg = /^\d+$/;
+            console.log($form)
+            $form.find('.reqiured').each(function () {
+
+
+                if ($(this).val() == '') {
+
+                    var info = $(this)
+                        .closest('.row')
+                        .find('.col-sm-4')
+                        .html()
+                        .replace(/(&nbsp;|<([^>]+)>|\*)/ig, '');
+
+                    $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> "' + info + '" 不能为空！</span>');
+
+                    $form.find('.response span').slideDown(300);
+
+                    validationOK = false;
+                    return false;
+
+                }
+
+
+            });
+            $form.find('.response span').delay(3000).slideUp(300);
+
+
+            if (!validationOK) {
+                return false;
+            }
+            if($("#userid").val().length<4){
+                console.log("->>>>>>>>>>"+$("#userid").val())
+                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 账户名需为大于四位的字母数字组合！</span>');
+                return false
+            }
+            var b = /^[0-9a-zA-Z]*$/g;
+            if(!b.test($("#userid").val())){
+                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 账户名需为字母数字组合！</span>');
+                return false
+            }
+            if($("#Fpassword").attr("password").length<6){
+                console.log("->>>>>>>>>>"+$("#userid").val())
+                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 密码需为大于六位的字母数字组合！</span>');
+                return false
+            }
+            var b = /^[0-9a-zA-Z]*$/g;
+            if(!b.test($("#Fpassword").attr("password"))){
+                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 密码需为字母数字组合！</span>');
+                return false
+            }
+            var myReg=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+            if(!myReg.test($("#email").val())){
+                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 邮箱格式不正确！</span>');
+                return false
+            }
+            $.post('/app/rest/login/checkuserid',{
+                userid:_userid
+            },function(data, textStatus){
+                if(data.status != 'success'){
+                    if($("body").attr("class").indexOf("zh_CN")==-1){
+                        alert(data.message_en)
+                    }else{
+                        alert(data.message);
+                    }
+                }else{
+                   $.post('/app/rest/login/checkStaff',{
+                       staffName: _staffName,
+                       staffCode: _staffCode,
+                       staffOrg: _staffOrg,
+                       apartment:_apartment
+                   },function(data, textStatus){
+                       if(data.status!='success'){
+                           if($("body").attr("class").indexOf("zh_CN")==-1){
+                               alert(data.message_en)
+                           }else{
+                               alert(data.message);
+                           }
+                       }else{
+                           $.post('/app/rest/login/ajax/loginForm', {
+                               staffName: _staffName,
+                               staffCode: _staffCode,
+                               userid:_userid,
+                               staffTel: _staffTel,
+                               staffEmail: _staffEmail,
+                               staffOrg: _staffOrg,
+                               password: _password,
+                               apartment:_apartment,
+                               status:0
+                           }, function (data, textStatus) {
+
+                               if (data.status != 'success') {
+
+                               } else {
+                                   if($("body").attr("class").indexOf("zh_CN")==-1){
+                                       alert(data.message_en)
+                                   }else{
+                                       alert(data.message);
+                                   }
+                                   window.location.href = "/dictionary";
+                               }
+                           });
+                       }
+                   })
+                }
+            })
+
+
+        }
+        )
+    })
+</script>
+</body>
+</html>
+
+    
+   

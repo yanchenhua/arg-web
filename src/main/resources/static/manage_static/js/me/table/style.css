@@ -1,0 +1,39 @@
+
+.list[data-v-1555b0ee] {
+    padding: 0 100px;
+    background: #FFF;
+
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft YaHei";
+}
+
+.list table[data-v-1555b0ee] {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th[data-v-794078f2] {
+    text-align: center;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
+}
+
+tr[data-v-794078f2] {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+tr[data-v-ea694ec8] {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+td[data-v-ea694ec8] {
+    text-align: center;
+    word-wrap: break-word;
+    height: 40px;
+}

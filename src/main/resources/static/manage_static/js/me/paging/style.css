@@ -1,0 +1,29 @@
+
+.pagination[data-v-2d6bad3c] {
+    text-align: right;
+    margin-right: 50px;
+    padding: 10px 0;
+    font-size: 12px;
+}
+
+.pagination li[data-v-2d6bad3c] {
+    display: inline-block;
+}
+
+.pagination li.active a[data-v-2d6bad3c] {
+    background: #27b5a4;
+    color: #FFF;
+}
+
+.pagination li a[data-v-2d6bad3c] {
+    display: block;
+    line-height: 24px;
+    border: 1px solid #e1e1e1;
+    padding: 0 10px;
+    color: #666;
+    margin-left: 5px;
+}
+
+a[data-v-2d6bad3c] {
+    text-decoration: none;
+}

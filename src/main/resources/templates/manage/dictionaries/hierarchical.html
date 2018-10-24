@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">ARG服务 > 词典层级管理</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>词典</h4>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+
+                        <form id="app">
+
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">父级</label>
+                                    <div class="col-md-2">
+                                        <select name="listid" v-model="form.parentDic.id" class="form-control"
+                                                style="margin-top:0px;width:100%;">
+                                            <option v-for="i in dictionarys" :value="i.id">{{i.title}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group" style="padding-top:15px;">
+                                    <label class="col-sm-2 control-label text-right">名称</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control" v-model="form.title">
+                                    </div>
+                                </div>
+
+                                <div style="clear: both;"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" @click="add" type="button" value="确认">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            dictionarys: [],
+            form: {
+                title: '',
+                parentDic: {
+                    id: 0
+                }
+            }
+        },
+        methods: {
+            add: function () {
+                // console.info(this.form);
+                this.$api.base.add('dictionary', this.form, function () {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    location.href = '/manage/leader'
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('dictionary', {id: id}, function (res) {
+
+                    var dictionary = res.objs[0];
+                    var title = this_vue.$tools.getTranslationsText(dictionary, 'title');
+                    var form = {};
+                    //  this_vue.form = dictionary;
+                    var parent = dictionary.parentDic;
+                    var p_id = "";
+                    if (parent) {
+                        p_id = parent.id;
+                    }
+                    this_vue.form.parentDic.id = p_id;
+                    this_vue.form.title = title;
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            var this_vue = this;
+            this.$api.base.all('dictionary', {}, function (res) {
+                var dictionarys = res.objs;
+                if (dictionarys.length > 0) {
+                    for (var i in dictionarys) {
+                        var parent = dictionarys[i].parentDic;
+                        var p_id = "";
+                        if (parent) {
+                            p_id = parent.id;
+                        }
+                        //console.info(dictionarys[i].id + "---" + p_id);
+                        var title = this_vue.$tools.getTranslationsText(dictionarys[i], 'title');
+                        this_vue.dictionarys.push(dictionarys[i]);
+                        this_vue.dictionarys[i].title = title;
+                    }
+
+                } else {
+                    //to-do something
+                }
+            })
+            this.get();
+        }
+    });
+</script>
+</body>
+
+</html>

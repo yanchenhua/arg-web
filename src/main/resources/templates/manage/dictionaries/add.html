@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+<script type="text/javascript" src="/manage_static/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/manage_static/ckfinder/ckfinder.js"></script>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">ARG服务 > 词典</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 padding-0">
+
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>词典</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+
+                        <form>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">图片</label>
+                                    <div class="col-md-6">
+                                        <a v-if="form.attachment.src" title="预览" class="iconimg"
+                                           :href="form.attachment.src" onclick="return hs.expand(this)">
+                                            <img style="max-width:20px;" :src="form.attachment.src"/>
+                                        </a>
+                                        <input type="file" class="file_select" @change="upload('attachment',$event)"/>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">父级</label>
+                                    <div class="col-md-6">
+                                        <select id="parentDic" name="listid" v-model="form.parentDic.id"
+                                                class="form-control" style="margin-top:0px;width:100%;">
+                                            <option v-for="i in dictionarys" :value="i.id"
+                                                    v-html="i.title_str"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group" style="padding-top:15px;">
+                                    <label class="col-sm-2 control-label text-right">名称</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control" v-model="title_str">
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group" style="padding-top:15px;">
+                                    <label class="col-sm-2 control-label text-right">排序</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control" v-model="form.seq">
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div style="clear: both;display: none"></div>
+                                <div class="form-group" style="padding-top:15px;display: none">
+                                    <label class="col-sm-2 control-label text-right">评论</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control" v-model="form.suggestions">
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group" style="padding-top:15px;">
+                                    <label class="col-sm-2 control-label text-right">描述</label>
+                                    <div class="col-md-6">
+                                        <textarea name="kcontent" class="form-control"
+                                                  v-model="desc_str"></textarea>
+                                    </div>
+                                </div>
+
+                                <div style="clear: both;"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" @click="add" type="button" value="确认">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            dictionarys: [],
+            title_str: '',
+            desc_str: '',
+            form: {
+                title: {},
+                parentDic: {
+                    id: 0
+                },
+                desc: {},
+                seq:'',
+                suggestions:{},
+                attachment: {
+                    src: ''
+                }
+            }
+        },
+        methods: {
+            upload: function (model, event) {
+                // console.info(model);
+                // console.info(event);
+                var file = event.target;
+                var this_vue = this;
+                var id = this.form[model].id || 0;
+                var param = {
+                    file: file.files[0],
+                    id: id,
+                    type: 'IMAGE'
+                }
+                this.$api.file.upload(param, function (res) {
+                    console.info(res);
+                    res.type = 'IMAGE';
+                    // res.id = null ;
+                    this_vue.form[model] = res;
+                    if (res.filePath) {
+                        var url = "/uploads/" + res.filePath;
+                        this_vue.form[model].src = url;
+                        this_vue.form.attachment = res;
+                    }
+                });
+            },
+            add: function (event) {
+                console.log(this.form)
+                this.$api.base.add('dictionary', this.form, function (res) {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                //var locale = this.$tools.requestParam("locale") || 'zh_cn';
+                document.getElementById('parentDic').setAttribute('disabled', '');
+                // var id = "6" ;
+                this.$api.base.query('dictionary', {id: id}, function (res) {
+
+                    var dictionary = res.objs[0];
+                    //console.log(dictionary)
+                    // NProgress.start();
+                    var title = this_vue.$tools.getTranslationsText(dictionary, 'title', locale);
+                    var desc = this_vue.$tools.getTranslationsText(dictionary, 'desc', locale);
+                    // NProgress.done();
+                    var form = {};
+                    //  this_vue.form = dictionary;
+                    var parent = dictionary.parentDic;
+                    var p_id = "";
+                    if (parent) {
+                        p_id = parent.id;
+                    }
+                    //console.info(p_id);
+                    if (dictionary.parentDic == null) {
+                        dictionary.parentDic = {};
+                        dictionary.parentDic.id = p_id;
+                    }
+                    //console.log(dictionary.suggestions)
+                    for(x in dictionary.suggestions){
+                        //console.log(dictionary.suggestions[x])
+                        dictionary.suggestions[x].dictionary = id;
+                    }
+                    // console.log(dictionary)
+                    this_vue.form = dictionary;
+                    //this_vue.form.id = dictionary.id;
+
+                    this_vue.title_str = title;
+                    this_vue.desc_str = desc || '';
+                    var attachment = dictionary.attachment;
+                    if (attachment == null) {
+                        dictionary.attachment = {}
+                    }
+                    if (attachment.filePath) {
+                        var url = "/uploads/" + attachment.filePath;
+                        this_vue.form.attachment.src = url;
+                    }
+                    //var data = CKEDITOR.instances.editor1.getData();
+                    // console.info(CKEDITOR.instances.kcontent);
+                    if (CKEDITOR.instances.kcontent) {
+                        CKEDITOR.instances.kcontent.setData(desc, {
+                            callback: function () {
+                                //增加回调，如果没有设置值，使用原始方案，在body中，填值。
+                                _input_value = CKEDITOR.instances.kcontent.getData();
+                                if (_input_value == "") {
+                                    this.document.$.body.innerHTML = this_vue.desc_str;
+                                }
+                            }
+                        });
+                    } else {
+                        init_editor();
+                        CKEDITOR.instances.kcontent.setData(desc);
+                    }
+
+                })
+            }
+        },
+        created: function () {
+            var this_vue = this;
+            this.$api.base.all('dictionary', {}, function (res) {
+                var dictionarys = res.objs;
+                if (dictionarys.length > 0) {
+                    var level = 1;
+                    var last_p_id = '';
+                    for (var i in dictionarys) {
+                        var parent = dictionarys[i].parentDic;
+                        var p_id = "";
+                        if (parent) {
+                            p_id = parent.id;
+                        }
+                        //var locale = this_vue.$tools.requestParam("locale") || 'zh_cn';
+                        var title = this_vue.$tools.getTranslationsText(dictionarys[i], 'title', locale);
+                        //如果没有p_id,那么它为第一级
+                        if (p_id == '') {
+                            level = 1;
+                        } else {
+                            //如果有p_id
+                            //p_id = last_id
+                            //遍历之前所有的集合
+                            for (var k = 0; k < i; k++) {
+                                var last_level = dictionarys[k].level;
+                                var last_id = dictionarys[k].id;
+                                var last_parent_dic = dictionarys[k].parentDic;
+                                var last_p_id = '';
+                                if (last_parent_dic) {
+                                    last_p_id = dictionarys[k].parentDic.id;
+                                }
+
+                                if (p_id == last_id) {
+                                    level = last_level + 1;
+                                    break;
+                                } else if (p_id == last_p_id) {
+                                    level = last_level;
+                                    break;
+                                }
+                            }
+
+
+                        }
+                        //console.info(dictionarys[i].id + "---" + p_id);
+                        var indent_str = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                        for (var j = 1; j < level; j++) {
+                            indent_str = indent_str + indent_str;
+                        }
+                        if (level > 1) {
+                            title = indent_str + '┣' + title;
+                        }
+                        var dictionary = dictionarys[i];
+                        dictionary.title_str = title;
+                        dictionary.level = level;
+                        this_vue.dictionarys.push(dictionary);
+                        // this_vue.dictionarys[i].title = title ;
+                        // this_vue.dictionarys[i].level = level;
+                    }
+
+                    //调整level对应的顺序
+                    var dictionaries = this_vue.dictionarys;
+                    var temp_dictionaries = [];
+                    var find_parent_index = function (p_id) {
+                        for (var i = 0; i < dictionaries.length; i++) {
+                            var dictionary = dictionaries[i];
+                            var id = dictionary.id;
+                            if (p_id == id) {
+                                // console.info(dictionary.title_str);
+                                return i;
+                            }
+                        }
+                    }
+                    for (var i = 0; i < dictionaries.length - 1; i++) {
+                        var d1 = dictionaries[i];
+                        var d2 = dictionaries[i + 1];
+                        var title = dictionaries[i + 1].title_str;
+                        // console.info(title);
+                        var l1 = d1.level;
+                        var l2 = d2.level;
+                        var d1_id_1 = d1.id;
+                        var d2_p = d2.parentDic;
+                        var d2_p_id_2 = (d2_p) ? d2.parentDic.id : d2.id;
+                        if (l2 > l1 && d2_p_id_2 != d1_id_1) {
+                            // console.error(d2.title_str);
+                            //获取父级的坐标
+                            var parent_index = find_parent_index(d2_p_id_2);
+                            //添加到坐标 + 1
+                            dictionaries.splice(parent_index + 1, 0, d2);
+                            //删除现在的内容
+                            //因为又新增了一笔，所以整体的长度+1
+                            dictionaries.splice(i + 2, 1);
+                        }
+                    }
+
+                } else {
+                    //to-do something
+                }
+            })
+            this.get();
+        },
+        watch:{
+            'title_str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'title', locale, n);
+            },
+            'desc_str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'desc', locale, n);
+            }
+        }
+    });
+</script>
+<script type="text/javascript">
+    function init_editor() {
+        var editor = CKEDITOR.replace('kcontent', {
+            width: '100%',
+            height: 300,
+            filebrowserImageUploadUrl: '/uploads/upload4'
+        });
+        CKFinder.setupCKEditor(editor, 'ckfinder/');
+        editor.on('change', function (event) {
+            var data = this.getData();//内容
+            //将文本域的内容，同步到 form.textStr中去
+            app.$set(app, "desc_str", data);
+        });
+        editor.on('fileUploadRequest', function (evt) {
+            console.info(evt);
+        });
+    }
+
+    init_editor();
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+</body>
+
+</html>

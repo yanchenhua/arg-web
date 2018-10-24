@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="manage/fragment :: head"></head>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">基本信息 > 管理员</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+                <div class="col-md-8">
+                    <div class="panel form-element-padding">
+                        <div class="panel-heading">
+                            <h4>管理员</h4>
+                        </div>
+                        <div class="panel-body" style="padding-bottom:30px;">
+                            <form id="app">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">姓名</label>
+                                        <div class="col-md-6">
+                                            <input type="text" v-model="form.displayName" value="" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div style="clear:both;"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">用户名</label>
+                                        <div class="col-md-6">
+                                            <input type="hidden" v-model="form.id">
+                                            <input type="text" v-model="form.userName" placeholder="" value=""
+                                                   class="form-control ">
+                                        </div>
+                                    </div>
+
+                                    <div style="clear:both;"></div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">密码</label>
+                                        <div class="col-md-6">
+                                            <input type="password" placeholder="留空不修改" v-model="form.password"
+                                                   class="form-control form-control ">
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <!-- <div class="form-group"><label class="col-sm-2 control-label text-right"></label>
+                                                <div class="col-md-6">不修改密码请放空</div>
+                                              </div> -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">邮箱</label>
+                                        <div class="col-md-6">
+                                            <input type="text" v-model="form.email" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">公司</label>
+                                        <div class="col-md-6">
+                                            <input type="text" v-model="form.company" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">部门</label>
+                                        <div class="col-md-6">
+                                            <input type="text" v-model="form.apartment" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">权限</label>
+                                        <input class="submit btn " type="button" data-toggle="modal" data-target="#myModal"
+                                               value="增加">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right"></label>
+                                        <div class="col-md-6">
+                                            <input class="submit btn btn-danger" type="button" @click="add"
+                                                   value="确认">
+                                            <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                                   onclick="history.go(-1)"
+                                                   value="返回">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                            <!-- 模态框（Modal） -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                权限配置
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                           <table width="100%">
+                                               <tr>
+                                                   <td>
+
+                                                           <input type="checkbox" value="Super">
+                                                           超级管理员
+                                                   </td>
+                                                   <td>
+
+                                                           <input type="checkbox" value="index">
+                                                            首页
+                                                   </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>
+
+                                                       <input type="checkbox" value="about">
+                                                       关于福耀
+                                                   </td>
+                                                   <td>
+
+                                                       <input type="checkbox" value="global">
+                                                       福耀全球
+                                                   </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>
+
+                                                       <input type="checkbox" value="product">
+                                                       产品参数
+                                                   </td>
+                                                   <td>
+
+                                                       <input type="checkbox" value="news">
+                                                       媒体资讯
+                                                   </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>
+
+                                                       <input type="checkbox" value="agrr">
+                                                       AGRR合作
+                                                   </td>
+                                                   <td>
+
+                                                       <input type="checkbox" value="dictionary">
+                                                       ARG服务
+                                                   </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>
+
+                                                       <input type="checkbox" value="login">
+                                                       用户管理
+                                                   </td>
+                                                   <td>
+
+                                                       <input type="checkbox" value="contact">
+                                                       联系我们
+                                                   </td>
+                                               </tr>
+                                           </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="button" class="btn btn-primary">
+                                                提交更改
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            form: {
+                userName: '',
+                password: '',
+                displayName: '',
+                email: '',
+                id: '',
+                authority:'0',
+                company:'',
+                apartment:''
+            }
+        },
+        methods: {
+            add: function () {
+                var id = this.form.id;
+                if (id == '') {
+                    this.form.id = 0;
+                }
+                this.setAuthority();
+                this.$api.base.add('user', this.form, function () {
+                    alert('操作成功！');
+                    location.href = '/manage/user'
+                });
+            },
+            query: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('user', {id: id}, function (res) {
+                    var user = res.objs[0];
+                    var form = {};
+                    form['userName'] = user.userName;
+                    form['password'] = user.password;
+                    form['displayName'] = user.displayName;
+                    form['email'] = user.email;
+                    form['id'] = user.id;
+                    form['authority'] = user.authority;
+                    form['company'] = user.company;
+                    form['apartment'] = user.apartment;
+                    this_vue.getAuthority(form['authority']);
+                    this_vue.form = form;
+                })
+            },
+            setAuthority: function(){
+                var this_vue = this;
+                this_vue.form['authority'] = 'Super';
+                var str = ''
+                $("input[type='checkbox']").each(function(){
+                    if($(this).is(":checked"))
+                    {
+                        str +=  $(this).val()+"," ;
+                    }
+                });
+                this_vue.form['authority'] = str;
+            },
+            getAuthority:function (authority) {
+                var arr = authority.split(',');
+                for(var i=0;i<arr.length;i++){
+                    var dom = $("input[type='checkbox'][value='"+arr[i]+"']").attr({checked:true});
+                }
+                console.info(dom)
+            }
+        },
+        created: function () {
+            this.query();
+        }
+    });
+</script>
+</body>
+</html>

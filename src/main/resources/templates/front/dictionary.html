@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+<!--link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
+
+<body th:class="|page ${session.lang_session}|">
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+				 <div id="loginMember" style="margin-left: 960px;margin-top:30px;display:none">
+                    <span> <span th:utext="#{dictionary.ltd.ontsol.web.soap.obj.staff.name}">当前员工：</span>:<span id="curName"></span></span> |
+
+                     <span id="Quit" style="cursor:pointer"  th:utext="#{dictionary.loginout}">退出</span>
+
+                        </div>
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Fuyao Dictionary"><em
+                                th:utext="#{dictionary.title}"><span>福耀</span>术语词典</em>
+                        </h2>
+
+                        <form id="login" method="post"
+                              th:action="|/dictionary/ajax/Staff|"
+                              class="app-user-msg-form" autocomplete="off" style="display: none">
+                            <input type="text"  name="loginName" style="display:none;" />
+                            <input type="password" name="loginCode" style="display:none;"/>
+                            <div style="padding-left:20px">
+                                <p>
+                                <div class="controls input-text" style="width:200px;float:left;margin-left:20px">
+                                    <input id="loginName" type="text" class="float-label" auto-complete="new-password"></input>
+                                    <label class="" th:utext="#{dictionary.ltd.ontsol.web.soap.obj.staff.name}"></label>
+                                </div>
+                                </p>
+
+                                <p>
+                                <div class="controls input-text" style="width:200px;float:left;margin-left:20px">
+                                    <input id="loginCode" type="text" class="float-label" password="">
+                                    <!--input id="loginCode" type="password" style="display: none"></input-->
+                                    <label class="" th:utext="#{dictionary.ltd.ontsol.web.soap.obj.staff.password}"></label>
+                                </div>
+                                </p>
+
+                                <p>
+                                    <button type="submit" th:utext="#{fragment.button.submit}"
+                                            class="button button-border-thin button-size-s button-bg-primary app-form-submit-ok" style="margin-left:20px">
+                                        确认提交
+                                    </button>
+                                    <span>
+                                        <a style="cursor: pointer;color: #0000FF" href="/e_login" th:utext="#{dictionary.register}">用户注册</a>
+                                    </span>
+
+                                </p>
+                                <div class="response"></div>
+                            </div>
+                        </form>
+                       
+                        <div class="app-page-content-show">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <div class="app-service-container" style="display:none">
+
+                                <div class="search">
+                                    <div class="controls">
+                                        <input type="text" class="float-label" name="dictionary-keyword"
+                                               id="dictionary-keyword">
+                                        <label th:utext="#{dictionary.search.words}"><i class="fa fa-search"
+                                                                                        aria-hidden="true"></i>
+                                            查询福耀术语</label>
+                                    </div>
+
+                                    <button class="button button-hover button-border-thin button-size-s button-bg-primary"
+                                            id="dic-search" type="button" th:utext="#{dictionary.search.btn}">搜索
+                                    </button>
+
+
+                                    <div class="uix-controls uix-controls__radio">
+                                        <label>
+                                            <input type="radio" name="search-type" value="1" checked
+                                                   th:utext="#{fragment.button.search.by.term}">
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="search-type" value="2"
+                                                   th:utext="#{fragment.button.search.by.desc}">
+                                        </label>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="seamless-grid-container">
+
+                                    <div class="seamless-grid no-gutter">
+                                        <div class="seamless-col-3">
+
+                                            <div class="app-div-hide-menu-container">
+                                                <div class="app-div-hide-menu-content">
+
+
+                                                    <ul th:replace="front/fragment :: dictionary(obj=${obj}, local=${session.lang_session})">
+
+                                                    </ul>
+
+                                                </div>
+                                                <!-- /.app-div-hide-menu-content -->
+                                            </div>
+                                            <!-- /.app-div-hide-menu-container -->
+
+
+                                        </div>
+                                        <div class="seamless-col-9">
+                                            <div class="content">
+
+                                                <div class="app-div-hide-container">
+                                                    <div class="app-div-hide-content">
+
+
+                                                        <!-- //////////////////   -->
+
+                                                        <div th:replace="front/fragment :: dictionaryDiv(obj=${obj}, local=${session.lang_session})">
+
+                                                        </div>
+                                                        <!-- /.app-div-hide entry-content list-normal table-normal -->
+
+
+                                                    </div>
+                                                    <!-- /.app-div-hide-content -->
+                                                </div>
+                                                <!-- /.app-div-hide-container -->
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- .seamless-grid no-gutter  end -->
+
+
+                                </div>
+                                <!-- /.seamless-grid-container -->
+                            </div>
+                            <!-- /.app-service-container -->
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+        </section>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            意见修改
+                        </h4>
+                    </div>
+                    <textarea style="width: 100%; height: 150px">
+
+                    </textarea>
+                    <input id="subId" type="text" value="" style="display: none"/>
+                    <input id="subTxt" type="text" value="" style="display: none"/>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <button id="subBtn" type="button" class="btn btn-primary">
+                            提交更改
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <!-- .Test -->
+        <!--script>
+            $(function(){
+                if(true){
+                    var selectors = document.getElementsByTagName("input");
+                    for(var i=0;i<selectors.length;i++){
+                        if((selectors[i].type !== "submit")&& (selectors[i].type !== "password")){
+                            var input = selectors[i];
+                            var inputName = selectors[i].name;
+                            var inputid = selectors[i].id;
+                            selectors[i].removeAttribute("name");
+                            selectors[i].removeAttribute("id");
+                            //console.log(inputid)
+                            setTimeout(function(){
+                                input.setAttribute("name",inputName);
+                                input.setAttribute("id",inputid);
+                            },1)
+                        }
+
+                    }
+
+                }
+                if(true){
+                    var inputers = document.getElementsByTagName("input");
+                    for(var i=0;i<inputers.length;i++){
+                        console.log(i)
+                        if((inputers[i].type !== "submit") && (inputers[i].type !== "password")){
+                            inputers[i].disabled= true;
+                        }
+                    }
+                    setTimeout(function(){
+                        for(var i=0;i<inputers.length;i++){
+                            if(inputers[i].type !== "submit"){
+                                inputers[i].disabled= false;
+                            }
+                        }
+                    },100)
+                }
+            })
+        </script-->
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+        <script type="text/javascript">
+
+            (function ($) {
+                /*function getComments(){
+                    $.get('/dictionary/test',function(data){
+                        for(i in data){
+                            if(data[i].suggestions.length>0){
+                                $("#"+data[i].id).html("");
+                                for(j in data[i].suggestions){
+                                    //alert(data[i].id);
+                                    var time= data[i].suggestions[j].createdDate;
+                                    var d = new Date(time);
+                                    var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                                    $("#"+data[i].id).append('<div></div><p style="margin-bottom: 0.421875rem;"></p><span>'+data[i].suggestions[j].staffName+'</span> | <span>'+times+'</span><p>'+data[i].suggestions[j].text+'</p><hr/>')
+                                }
+                            }
+                        }
+                    })
+                }
+                getComments();*/
+                "use strict";
+				$("#dicTitle").css({"display":"block"});
+                if(getCookie("loginName")!=null){
+									$(".app-service-container").css({"display":"block"});
+									$("#login").css({"display":"none"});
+									$("#curName").html(getCookie("loginName"));
+									//$("#curCode").html(getCookie("loginCode"));
+									$("#loginMember").css({"display":"block"});
+									}else{
+                                        $("#login").css({"display":"block"});
+                                }
+								$("#Quit").on('click',function(){
+								    console.log("----click")
+									delCookie("loginName");
+									delCookie("loginCode");
+									$("#loginMember").css({"display":"none"});
+									$("#login").css({"display":"block"});
+									$(".app-service-container").css({"display":"none"});
+									})	
+									
+                $(function () {
+                    var $verticalMenuLi = $('.custom-vertical-menu li');
+                    $("#loginCode").on("input propertychange", function () {
+                        //var _this = this;
+                        var newPassword = $(this).val();
+                        var oldPassword = $(this).attr("password");
+                        var deta = newPassword.length-oldPassword.length;
+                        var truePassword = "";
+                        var p =$(this).getCursorPosition();//光标结束时的位置
+                        console.log("p = "+p)
+                        for(var i=0; i<newPassword.length; i++){
+                            var c = newPassword.charAt(i);
+                            console.log("c = "+c)
+                            if(i<p && c!='●'){
+                                truePassword += c;
+                            }else if(i<p && c=='●'){
+                                truePassword +=  oldPassword.charAt(i);
+                            }else {
+                                truePassword += oldPassword.substr(oldPassword.length-newPassword.length+p,newPassword.length-p);
+                                break;
+                            }
+
+                        }
+                        newPassword = truePassword.replace(/\S/g, '●');
+
+                        $(this).attr('password', truePassword);
+                        $(this).val(newPassword);
+                        console.log(truePassword);
+                    })
+                    $.fn.getCursorPosition = function () {
+                        var el = $(this).get(0);
+                        var pos = 0;
+                        if ('selectionStart' in el) {
+                            pos = el.selectionStart;
+                        } else if ('selection' in document) {
+                            el.focus();
+                            var Sel = document.selection.createRange();
+                            var SelLength = document.selection.createRange().text.length;
+                            Sel.moveStart('character', -el.value.length);
+                            pos = Sel.text.length - SelLength;
+                        }
+                        return pos;
+                    }
+                    function verticalMenuInit() {
+                        //remove highlight
+                        $verticalMenuLi.each(function () {
+                            var newv = $(this).find('> a').html().replace(/<em>/g, '').replace(/<\/em>/g, '');
+
+                            $(this).find('> a').html(newv);
+
+                        });
+
+                        $verticalMenuLi.show();
+
+                        $verticalMenuLi.removeClass('active');
+                        $verticalMenuLi.find('ul').slideUp(200);
+
+                        if ($verticalMenuLi.find('> a span').length == 0) {
+                            $verticalMenuLi.find('> a').append('<span></span>');
+                        }
+
+                        $verticalMenuLi.each(function () {
+                            var len = $(this).find('ul').length;
+                            if (len == 0) {
+                                $(this).children('a').children('span').hide();
+                            }
+                        });
+                    }
+
+                    $('#dic-search').on('click', function () {
+                        var keywords = $('#dictionary-keyword').val(),
+                            searchType = $('input[name="search-type"]:checked').val();
+
+
+                        if (searchType == 1) {
+                            $verticalMenuLi.hide();
+
+                            //remove highlight
+                            $verticalMenuLi.each(function () {
+                                var newv = $(this).find('> a').html().replace(/<em>/g, '').replace(/<\/em>/g, '');
+
+                                $(this).find('> a').html(newv);
+
+                            });
+
+                            //highlight
+                            $verticalMenuLi.each(function () {
+                                if (keywords != '' && keywords != ' ') {
+                                    var newv = $(this).find('> a').html().replace(keywords, '<em>' + keywords + '</em>');
+
+                                    $(this).find('> a').html(newv);
+                                }
+
+
+                            });
+
+                        }
+
+                        if (searchType == 2) {
+                            //console.info("----->>>here")
+                            $verticalMenuLi.hide();
+                            $('.app-div-hide').removeClass('show').hide();
+                        }
+
+
+                        $verticalMenuLi.each(function () {
+
+
+                            //search with title
+                            if (searchType == 1) {
+
+
+                                if ($(this).find('> a').html().toLowerCase().indexOf(keywords.toLowerCase()) >= 0) {
+                                    $(this).show();
+                                    $(this).parents().show();
+
+
+                                    //arrow
+                                    var len = $(this).find('ul').length;
+
+                                    if (len == 0 || len == 1) {
+                                        $(this).children('a').children('span').hide();
+                                    }
+
+
+                                }
+                            }
+
+
+                            //search with content
+                            if (searchType == 2) {
+
+                               // verticalMenuInit();
+
+                                if (typeof $(this).data('all-text') != typeof undefined && $(this).data('all-text') != '') {
+                                    if ($(this).data('all-text').toLowerCase().indexOf(keywords.toLowerCase()) >= 0) {
+                                        var target = $(this).find('> a').data('show-div');
+                                        console.log(target);
+                                        $(target).show();
+                                    }
+                                }
+
+                            }
+
+
+                        });
+
+
+                        //Restore the content elements
+                        if (keywords == '') {
+
+                            if (searchType == 1 || searchType == 2) {
+
+                                verticalMenuInit();
+                            }
+
+
+                            if (searchType == 2) {
+
+                                //Initialize content
+                                $('.app-div-hide').removeClass('show').hide();
+                                $('.app-div-hide').first().addClass('show').show();
+
+                            }
+
+
+                        }else{
+                            if(searchType == 2){
+                                console.info("===========")
+                                verticalMenuInit();
+                            }
+                        }
+
+                    });
+                    //Form submit
+
+                    $('.app-user-msg-form').each(function () {
+
+                        var $curForm = $(this);
+                        $curForm.find('.app-form-submit').on('click', function (e) {
+
+                            e.preventDefault();
+                            var _loginName = getCookie("loginName"),
+                                _loginCode =getCookie("loginCode"),
+                                _text = $curForm.find('[name="text"]').val(),
+                                _dicId = $curForm.data('form-id');
+                            if(_text==""){
+                                alert("意见不能为空");
+                                return;
+                            }
+
+                            $.post('/app/rest/dictionary/ajax/suggestionForm', {
+                                staffName: _loginName,
+                                staffCode: _loginCode,
+                                text: _text,
+                                dicId: _dicId
+                            }, function (data, textStatus) {
+
+                                if (data.status != 'success') {
+                                    $curForm.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + data.message + '</span>');
+                                } else {
+                                    $curForm.find('.response').html('<span class="ok"><i class="fa fa-check" aria-hidden="true"></i> 提交成功</span>');
+                                    $("#loginCode").val("");
+                                    //var time= new Date();
+                                    //alert(data.suggId)
+                                    var d = new Date();
+                                    var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() ;
+                                    var html=$("#"+_dicId).html();
+                                    var add='<div id="'+data.suggId+'">\n' +
+                                        '\n' +
+                                        '                                <p style="margin-bottom: 0.421875rem;">\n' +
+                                        '                                    <span class="userName" id="user-'+data.suggId+'">'+_loginName+'</span> | <span>'+times+'</span>\n' +
+                                        '                                </p>\n' +
+                                        '\n' +
+                                        '                                <p style="margin-bottom: 0rem;" id="txt-'+data.suggId+'">'+_text+'\n' +
+                                        '</p>\n' +
+                                        ' <p class="btn">\n' +
+                                        '                                    <a class="delete" id="del-'+data.suggId+'" style="cursor: pointer" href="#">删除</a>\n' +
+                                        '                                    <a class="edit" id="edi-'+data.suggId+'" style="cursor: pointer" href="">编辑</a>\n' +
+                                        '                                </p>\n' +
+                                        '\n' +
+                                        '                                <hr>\n' +
+                                        '                            </div>'
+                                    $("#"+_dicId).html(add+html);
+                                    $curForm.find('[name="text"]').val("");
+                                    bindDelete();
+                                    bindEdit();
+                                    //window.location.reload();
+                                    /*var str = "<div><p>两层或多层玻璃、中间膜（PVB、SGP、EVA、PU等）</p><p><span>用户</span><span>今天</span></p> <hr/></div>"
+                                    console.log("----->>>>"+$(".app-client-comments-content").html());
+                                    $(".app-client-comments-content").html(str+$(".app-client-comments-content").html());*/
+                                }
+                                $curForm.find('.response span').slideDown(300);
+
+                                $curForm.find('.response span').delay(3000).slideUp(300);
+                            });
+
+
+                            return false;
+
+                        });
+                        $curForm.find('.app-form-submit-ok').on('click', function (e) {
+
+                            e.preventDefault();
+
+                            var _loginName = $curForm.find('[id="loginName"]').val(),
+                                _loginCode = md5($("#loginCode").attr("password"))
+                            //console.log($("#loginCode").attr("password")=="931221")
+                            function strToBinary(str){
+                                var result = [];
+                                var list = str.split("");
+                                for(var i=0;i<list.length;i++){
+                                    if(i != 0){
+                                        result.push(" ");
+                                    }
+                                    var item = list[i];
+                                    var binaryStr = item.charCodeAt().toString(2);
+                                    result.push(binaryStr);
+                                }
+                                return result.join("");
+                            }
+                            console.log("_loginCode = "+_loginCode)
+                            $.post('/app/rest/login/staff', {
+                                staffName: _loginName,
+                                staffCode: _loginCode
+                            }, function (data, textStatus) {
+
+                                if (data.status != 'success') {
+                                    $curForm.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + data.message + '</span>');
+                                } else {
+                                    $curForm.find('.response').html('<span class="ok"><i class="fa fa-check" aria-hidden="true"></i> 提交成功</span>');
+                                    setCookie("loginName",_loginName)
+                                    setCookie("loginCode",_loginCode)
+                                    //console.log("loginCode111 = "+ $("#loginCode").html())
+                                    $("#login").css({"display":"none"});
+                                    $("#curName").html(getCookie("loginName"));
+                                    //$("#curCode").html(getCookie("loginCode"));
+                                    $("#loginMember").css({"display":"block"});
+                                    checkDelete();
+                                    $(".app-service-container").css({"display":"block"});
+                                    //console.log("----->>>>"+$(".app-client-comments-content").find('div').html());
+
+                                    //restore form
+                                    /*setTimeout(function () {
+                                        $curForm.find('[name="staffName"]').val('').blur();
+                                        $curForm.find('[name="staffCode"]').val('').blur();
+                                        $curForm.find('[name="text"]').val('').blur();
+                                        $curForm.find('.app-form-submit').slideDown(200);
+                                        $curForm.find('.app-dictionary-form-popwin').slideUp(200);
+                                        $curForm.find('.controls.textarea').slideDown(200);
+
+                                    }, 3000);*/
+
+																		
+																		
+                                }
+
+                                $curForm.find('.response span').slideDown(300);
+
+                                $curForm.find('.response span').delay(3000).slideUp(300);
+
+
+                            });
+
+
+                            return false;
+
+                        });
+
+                    });
+
+
+
+                });
+								//写cookies，一个小时过期
+						    function setCookie(name, value) {
+						        var exp = new Date();
+						        exp.setTime(exp.getTime() + 60 * 60 * 1000);
+						        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+						    }
+						    //读取cookies
+						    function getCookie(name) {
+						        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+						 
+						        if (arr = document.cookie.match(reg))
+						 
+						            return unescape(arr[2]);
+						        else
+						            return null;
+						    }
+						    //删除cookies
+						    function delCookie(name) {
+						        var exp = new Date();
+						        exp.setTime(exp.getTime() - 60 * 60 * 1000);
+						        var cval = getCookie(name);
+						        if (cval != null)
+						            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";path=/";
+						    }
+						    //绑定删除事件
+						    function bindDelete(){
+                                $(".delete").each(function(){
+                                    $(this).on("click",function(e){
+                                        e.preventDefault();
+                                        var id = $(this).attr("id").split("-")[1];
+                                        $.get('/app/rest/suggestion/delete/'+id,{},function(){
+                                            //alert("success")
+                                            $("#"+id).css({"display":"none"});
+                                        })
+                                    })
+                                })
+                            }
+                            function bindEdit(){
+						        $(".edit").each(function(){
+                                    $(this).on("click",function(e){
+                                        e.preventDefault();
+                                        var sugId = $(this).attr("id").split("-")[1]
+                                        $("#myModal").modal("show");
+                                        var text = $("#txt-"+sugId).html();
+                                        //console.info(text)
+                                        $("#myModal").find("textarea").val(text)
+                                        $("#subId").val(sugId);
+                                       /* $.ajax({
+                                            url: "/app/rest/suggestion/saveOrUpdate",
+                                            type: 'post',
+                                            dataType: 'json',
+                                            headers: {
+                                                "Content-Type": "application/json;charset=utf-8"
+                                            },
+                                            contentType: 'application/json; charset=utf-8',
+                                            data: JSON.stringify({"id":sugId,"text":"hhhh","staffCode":getCookie("loginName"),"staffName":getCookie("loginCode"),"checkFlag":true}),
+                                            success: function () {
+                                            }
+                                        })*/
+                                    })
+                                })
+                            }
+                            function submit(){
+                                $.ajax({
+                                    url: "/app/rest/suggestion/saveOrUpdate",
+                                    type: 'post',
+                                    dataType: 'json',
+                                    headers: {
+                                        "Content-Type": "application/json;charset=utf-8"
+                                    },
+                                    contentType: 'application/json; charset=utf-8',
+                                    data: JSON.stringify({"id": $("#subId").val(),"text": $("#myModal").find("textarea").val(),"staffCode":getCookie("loginName"),"staffName":getCookie("loginCode"),"checkFlag":true}),
+                                    success: function () {
+                                        var subId = $("#subId").val();
+                                        $("#myModal").modal("hide");
+                                        $("#txt-"+subId).html($("#myModal").find("textarea").val())
+                                    }
+                                })
+                            }
+                            $("#subBtn").on("click",function(){
+                                submit();
+                            })
+                            //鉴定删除编辑权限
+                            function checkDelete(){
+                                $(".userName").each(function(){
+                                    var sugId = $(this).attr("id").split("-")[1];
+                                    //alert(getCookie("loginName"))
+                                    if($(this).html() != getCookie("loginName")){
+                                        //console.log($(this).attr("id").split("-")[1])
+                                        $("#"+sugId).find(".btn").css({"display":"none"})
+                                    }else{
+                                        $("#"+sugId).find(".btn").css({"display":"inline-block"})
+                                    }
+                                })
+                            }
+                            checkDelete();
+                            bindDelete();
+                            bindEdit();
+
+            })(jQuery);
+
+
+        </script>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+<style>
+    a {
+        color: #474747;
+    }
+    h2{
+        font-weight: 900;
+    }
+</style>
+</html>
+
+    
+   

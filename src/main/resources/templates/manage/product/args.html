@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">产品参数 > 参数</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 ">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>主视觉</h4>
+
+                        <a style="float: right;background-color: #2196f3 !important;" class="btn btn-success"
+                           href="onepage_en.php?action=update&kid=1">英文版</a>
+                        <a style="float: right;background-color: #225ad8 !important;" class="btn btn-success" href="">中文版</a>
+
+
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form action="onepage.php?action=update&amp;kid=1" enctype="multipart/form-data" method="post">
+                            <div class="col-md-12">
+
+
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">图片</label>
+                                    <div class="col-md-6">
+                                        <a class="iconimg" href="/upfiles/onepage/201806/1527819410404.jpg"
+                                           onclick="return hs.expand(this)"><img src="images/image.png"/></a>
+                                        <input type="hidden" name="kimg1"
+                                               value="/upfiles/onepage/201806/1527819410404.jpg" size="40"/>
+                                        <input type="file" class="file_select" name="kimg1"/>
+                                        <font></font>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="submit" value="确认"/>
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script type="text/javascript">
+    var editor1 = CKEDITOR.replace('kcontent', {width: '100%', height: 300});
+    CKFinder.setupCKEditor(editor1, 'ckfinder/');
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            form: {
+                // nameText: '',
+                // roleText: '',
+                text: '',
+                sort: ''
+            }
+        },
+        methods: {
+            click: function () {
+                // console.info(this.form);
+                this.$api.base.add('leader', this.form, function () {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    location.href = '/manage/leader'
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                // var id = "6" ;
+                this.$api.base.query('leader', {id: id}, function (res) {
+
+                    var leader = res.objs[0];
+                    var form = {};
+                    // form['nameText'] = leader.nameText;
+                    // form['roleText'] = leader.roleText;
+                    form['text'] = leader.text;
+                    //form['sort'] = leader.sort;
+                    // form['id'] = leader.id;
+                    this_vue.form = form;
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        }
+    });
+</script>
+</body>
+
+</html>

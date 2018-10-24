@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">联系我们 > 招商咨询</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12 padding-0">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="col-md-12 padding-0" style="padding-bottom:20px;">
+
+                            <form accept="get" style="float:right;">
+                                <input type="text" name="keywords" style="height: 25px;" placeholder="新闻标题" value="">
+                                <input type="submit" value="搜索">
+                            </form>
+                        </div>
+                        <div class="responsive-table">
+
+                            <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th class="c10">姓名</th>
+                                    <th class="c10">公司</th>
+                                    <th class="c10">地址</th>
+                                    <th class="c10">电话</th>
+                                    <th class="c10">传真</th>
+                                    <th class="c10">邮箱</th>
+                                    <th class="c10">主题</th>
+                                    <th class="c10">提交时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+                                <tr>
+                                    <td class="c10">李优势</td>
+                                    <td class="c10">uunn</td>
+                                    <td class="c10">湖里大道</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">l@uunn.cn</td>
+                                    <td class="c10">测试主题</td>
+                                    <td class="c10">2018-06-15</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c10">李优势</td>
+                                    <td class="c10">uunn</td>
+                                    <td class="c10">湖里大道</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">l@uunn.cn</td>
+                                    <td class="c10">测试主题</td>
+                                    <td class="c10">2018-06-15</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c10">李优势</td>
+                                    <td class="c10">uunn</td>
+                                    <td class="c10">湖里大道</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">l@uunn.cn</td>
+                                    <td class="c10">测试主题</td>
+                                    <td class="c10">2018-06-15</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c10">李优势</td>
+                                    <td class="c10">uunn</td>
+                                    <td class="c10">湖里大道</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">l@uunn.cn</td>
+                                    <td class="c10">测试主题</td>
+                                    <td class="c10">2018-06-15</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c10">李优势</td>
+                                    <td class="c10">uunn</td>
+                                    <td class="c10">湖里大道</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">l@uunn.cn</td>
+                                    <td class="c10">测试主题</td>
+                                    <td class="c10">2018-06-15</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c10">李优势</td>
+                                    <td class="c10">uunn</td>
+                                    <td class="c10">湖里大道</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">l@uunn.cn</td>
+                                    <td class="c10">测试主题</td>
+                                    <td class="c10">2018-06-15</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c10">李优势</td>
+                                    <td class="c10">uunn</td>
+                                    <td class="c10">湖里大道</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">0592-2227766</td>
+                                    <td class="c10">l@uunn.cn</td>
+                                    <td class="c10">测试主题</td>
+                                    <td class="c10">2018-06-15</td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6" style="padding-top:20px;">
+                            <span>共 132 条记录</span>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="pagination pull-right">
+                                <li class="active">
+                                    <a>1</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=2&keywords=">2</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=3&keywords=">3</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=4&keywords=">4</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=5&keywords=">5</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=6&keywords=">6</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=7&keywords=">7</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=8&keywords=">8</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=9&keywords=">9</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=10&keywords=">10</a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=11&keywords=">11</a>
+                                </li>
+                                <li>...</li>
+                                <li>
+                                    <a aria-label="Next" href="news.php?page=2&keywords=">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="news.php?page=14&keywords=">&gt;|</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/table/style.css"/>
+<script src="/manage_static/js/me/table/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/paging/style.css"/>
+<script src="/manage_static/js/me/paging/bundle.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            total: 0,
+            columns: [
+                {
+                    title: '姓名',
+                    key: 'nameText'
+                },
+                {
+                    title: '公司',
+                    key: 'roleText'
+                },
+                {
+                    title: '电话',
+                    key: 'photo'
+                },
+                {
+                    title: '传真',
+                    key: 'sort'
+                }, {
+                    title: '邮箱',
+                    key: 'sort'
+                }, {
+                    title: '主题',
+                    key: 'sort'
+                },
+                {
+                    title: '提交时间',
+                    key: 'id'
+                }
+            ],
+            data_source_config: {
+                api: 'leader.query',
+                param: {},
+                transform: function (rst, this_vue) {
+                    return rst.objs;
+                }
+            },
+            table_list: []
+
+        },
+        methods: {
+            switch_page: function (num) {
+                this.data_source_config.param.pageCount = num;
+                this.$tools.page.set(num);
+            },
+            done: function (new_rst, native) {
+                //  console.info("是不是又触发了？");
+                this.total = native.sumCount;
+                this.table_list = new_rst;
+            }
+        }
+    });
+</script>
+
+</html>

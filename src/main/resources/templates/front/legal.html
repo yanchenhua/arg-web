@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="app-page-content-show detail">
+
+
+                            <div class="row">
+
+                                <div class="col-md-10 col-md-offset-1 relative">
+
+                                    <h2 class="heading-overlay t-l full"><em th:utext="${obj.legalTitle.getTranslatedStr(session.lang_session)}">法律声明</em></h2>
+
+                                    <div class="clear"></div>
+
+
+                                    <!-- Entry Content
+                                    ========================= -->
+                                    <div class="entry-content detail list-normal table-normal">
+
+
+                                        <p th:utext="${obj.legalContent.getTranslatedStr(session.lang_session)}">内容....</p>
+
+                                    </div>
+                                    <!-- Entry Content  end -->
+
+
+                                </div>
+
+                            </div>
+                            <!-- .row end -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+

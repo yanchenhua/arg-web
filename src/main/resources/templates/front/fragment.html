@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:fragment="head">
+    <meta name="baidu-site-verification" content="u2aazES55r" />
+    <meta charset="utf-8"/>
+    <title th:text="${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
+
+    <!-- Mobile Settings
+    ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <!-- Mobile Settings end -->
+
+
+    <!-- Core library
+    ============================================= -->
+    <script src="/front_static/js/wp-jquery/jquery.min.js?ver=3.3.1"></script>
+    <script src="/front_static/js/wp-jquery/jquery.migrate.min.js?ver=1.4.1"></script>
+    <script src="/front_static/js/min/prefixfree.min.js?ver=1.0.7"></script>
+    <!-- Core library  end -->
+
+
+    <!-- Compatibility
+    ============================================= -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script src="/front_static/js/min/modernizr.min.js?ver=3.5.0"></script>
+
+    <!--[if lt IE 9]>
+    <script src='assets/js/min/respond.min.js?ver=1.4.2'></script>
+    <![endif]-->
+
+    <!-- Compatibility  end -->
+
+
+    <!-- Web Fonts
+    ============================================= -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet"> -->
+    <!-- Web Fonts  end -->
+
+    <!-- Core & Theme CSS
+    ============================================= -->
+
+    <!-- Basic  -->
+    <link rel="stylesheet" href="/front_static/css/bootstrap.min.css?ver=3.3.7" media="all"/>
+    <link rel="stylesheet" href="/front_static/css/video.min.css?ver=5.19" media="all"/>
+
+
+    <!-- Icons  -->
+    <link rel="stylesheet" href="/front_static/fonts/fontawesome/font-awesome.min.css?ver=4.7" media="all"/>
+    <link rel="stylesheet" href="/front_static/fonts/custom/iconfont.css?ver=custom" media="all"/>
+
+
+    <!-- Theme  -->
+    <link rel="stylesheet" href="/front_static/css/uix-kit.min.css?ver=MTUyOTA0NjMzOTQzMA"/>
+    <!-- Cover -->
+    <link rel="stylesheet" href="/front_static/css/new_index.css"/>
+    <!--[if lt IE 10]>
+    <link rel="stylesheet" href="/front_static/css/uix-kit.IE.css?ver=MTUyOTA0NjMzOTQzMA"/>
+    <![endif]-->
+
+
+    <!-- MAP  -->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=DT9C3BmOnGAxP4tQcRtb4kRYmb03giKZ"></script>
+
+
+    <!-- Core & Theme CSS  end -->
+
+
+    <!-- SEO
+    ============================================= -->
+    <meta name="description" th:content="${session.home.webDesc.getTranslatedStr(session.lang_session)}">
+    <meta name="generator" content="Uix Kit"/>
+    <meta name="author" content="福耀ARG">
+
+    <!-- SEO  end -->
+
+
+    <!-- Favicons
+    ============================================= -->
+    <link rel="icon" href="/front_static/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/front_static/images/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/front_static/images/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/front_static/images/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/front_static/images/favicon/apple-touch-icon-114x114.png">
+    <!-- Favicons  end -->
+
+
+</head>
+
+
+<body th:class="|home ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<div th:fragment="loader" class="loader">
+    <!--[if lt IE 10]>
+    <span>Loading...</span>
+    <![endif]-->
+    <svg class="spinner-container IE-hide" viewBox="0 0 52 52">
+        <path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"></path>
+    </svg>
+</div>
+<div class="loader-progress"><span>0%</span></div>
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header th:fragment="header" class="header-area transition">
+
+        <div class="header-container transition">
+            <div class="container">
+                <!--img src="../front_static/images/banner (1).jpg" width="100%"-->
+                <img th:src="#{banner.src}" width="100%">
+                <div class="app-top">
+
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <span>
+                        <!--a th:href="@{${session.home.fySystemLink}(language=${session.lang_session_1},device=pc)}" target="_blank"
+                           th:text="#{fragment.menu.cusentrance}"></a-->
+                        <a href="/customer"
+                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                           th:text="#{fragment.menu.cusentrance}">客户入口</a>
+                    </span>
+
+                    <span style="text-align: center;width: 20px;display: inline-block;"> | </span>
+
+                    <span>
+                         <!--a href="/dictionary" th:text="#{fragment.menu.service}">福耀词典</a-->
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                         <a href="/employee"
+                            data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                            th:text="#{fragment.menu.entrance}">员工入口</a>
+
+                    </span>
+                    <div class="custom-tooltip" style="padding-left: 20px">
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        <a href="javascript:" class="i" th:text="#{fragment.header.choose.lang}">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        <span class="tip-text tip-bottom">
+                            <a th:each="item : ${session.supportLocals}"
+                               th:href="@{${url}(lang=${item})}">
+                                <span th:text="${session.localeMap.langDesc(item)}"></span><br/>
+                            </a>
+                        </span>
+                    </div>
+                    <!--div style="   width: 980px;margin-top: -30px;">
+
+
+                            <span style="float: right;">
+                                <a th:href="@{${session.home.fySystemLink}(language=${session.lang_session_1},device=pc)}" target="_blank"
+                                   th:text="#{fragment.menu.fySystem}">产品条目</a>
+                            </span>
+                        <span style="float: right;">|</span>
+                        <span style="float: right;">
+                                 <a href="/dictionary" th:text="#{fragment.menu.service}">福耀词典</a>
+                            </span>
+
+                    </div-->
+
+                </div>
+
+                <div class="brand">
+                    <a href="/"
+                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'><img
+                            src="/front_static/images/logo.png" alt="福耀ARG"></a>
+                </div>
+                <!-- .logo end -->
+
+
+                <!-- Navigation Start-->
+
+                <nav class="menu-container transition">
+
+                    <div class="inner">
+
+                        <span class="mobile-brand"><img src="/front_static/images/logo.png" alt="福耀ARG"></span>
+                        <ul class="menu-main">
+                            <li th:class="${#strings.equals(session.menuLabel, '/')}? active">
+                                <span class="horline">&ensp;</span><a href="/"
+                                                                      data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                      th:text="#{fragment.menu.home}">首页</a>
+                            </li>
+                            <li th:class="${#strings.contains(session.menuLabel, '/about')}? active">
+                                <span class="horline">|</span><a href="/about"
+                                                                 data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                 th:text="#{fragment.menu.about}">关于福耀</a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="/about"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.intro}">集团介绍</a>
+                                    </li>
+                                    <li>
+                                        <a href="/about/team"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.leader}">管理团队</a>
+                                    <li>
+                                    <li th:class="${#strings.equals(session.menuLabel, '/about/arg')}? active">
+                                        <a href="/about/arg"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.about.arg}">关于ARG</a>
+                                    </li>
+
+                                </ul>
+                                <!-- .sub-menu  end -->
+                            </li>
+                            <li th:class="${#strings.contains(session.menuLabel, '/global')}? active">
+                                <span class="horline">|</span><a href="/global/CAR_GLASS"
+                                                                 data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                 th:text="#{fragment.menu.global}">福耀全球</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/global/CAR_GLASS"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{global.Network}">福耀机构</a>
+                                    </li>
+                                    <li id="serviceNode" th:class="${#strings.equals(session.lang_session, 'zh_CN')}?'block':'none'"><a href="/global/SERVICE_NODE"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{global.Location}">服务网点</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--script>
+                                $(function(){
+                                    console.log($("body").attr("class").indexOf("zh_CN"))
+                                    if($("body").attr("class").indexOf("zh_CN")==-1){
+                                        //alert($("body").attr("class"))
+                                        $("#serviceNode").css({"display":"none"});
+                                        $("#agrrService").css({"display":"none"});
+                                    }
+
+                                });
+                            </script-->
+                            <li th:class="${#strings.contains(session.menuLabel, '/tech')}? active">
+                                <span class="horline">|</span><a href="/tech"
+                                                                 data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                 th:text="#{fragment.menu.tech}">产品技术</a>
+                            </li>
+                            <li th:class="${#strings.contains(session.menuLabel, '/news')}? active">
+                                <span class="horline">|</span><a href="/news"
+                                                                 data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                 th:text="#{fragment.menu.media}">媒体资讯</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/news"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.news}">福耀新闻</a>
+                                    </li>
+                                    <li><a href="/news/industry"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.industry}">行业资讯</a>
+                                    </li>
+                                    <li><a href="/news/knowledge"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.knowledge}">科普知识</a>
+                                    </li>
+                                    <li><a href="/news/video-and-photo"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.video.photo}">视频画册</a>
+                                    </li>
+
+                                </ul>
+                                <!-- .sub-menu  end -->
+                            </li>
+                            <!--li>
+                                <span class="horline">|</span><a th:href="@{${session.home.fySystemLink}(language=${session.lang_session_1},device=pc)}" target="_blank"
+                                                                 th:text="#{fragment.menu.fySystem}">产品条目</a></li-->
+                            <!--div th:html="${#strings.contains(session.menuLabel, '/agrr/')}?
+                             active:'' + (${#strings.equals(session.lang_session, 'zh_CN')}?'block':'none')">测试</div-->
+                            <!--li-- id="agrrService" th:class="${#strings.contains(session.menuLabel, '/agrr/')}?active:'' + (${#strings.equals(session.lang_session, 'zh_CN')}?'inblock':'none')">
+                                <span class="horline">|</span><a href="/agrr/service"
+                                                                 data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                 th:text="#{fragment.menu.agrr.title}">AGRR合作</a>
+
+                                <ul class="sub-menu">
+                                    <li><a href="/agrr/service"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.agrr.service}">AGRR服务商</a>
+                                    </li>
+
+                                    <li><a href="/agrr/goodProvider"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.agrr.good.provider}">AGRR优秀示范商</a>
+                                    </li>
+
+                                </ul>
+
+                            </li-->
+                            <!--li id="agrrService" th:class="${#strings.contains(session.menuLabel, '/agrr/')}?active:''">
+                                <span class="horline">|</span><a href="/agrr/service"
+                                                                 data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                 th:text="#{fragment.menu.agrr.title}">AGRR合作</a>
+
+                                <ul class="sub-menu">
+                                    <li><a href="/agrr/service"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.agrr.service}">AGRR服务商</a>
+                                    </li>
+
+                                    <li><a href="/agrr/goodProvider"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.agrr.good.provider}">AGRR优秀示范商</a>
+                                    </li>
+
+                                </ul>
+
+                            </li-->
+                            <!--li th:class="${#strings.equals(session.menuLabel, '/dictionary')}? active">
+                                <span class="horline">|</span><a href="/dictionary" th:text="#{fragment.menu.service}">福耀词典</a>
+                            </li-->
+                            <li th:class="${#strings.contains(session.menuLabel, '/contact')}? active">
+                                <span class="horline">|</span><a href="/contact/HUB"
+                                                                 data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                 th:text="#{fragment.menu.contact.title}">联系我们</a>
+
+                                <ul class="sub-menu">
+                                    <li><a href="/contact/HUB"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.contact}">联系我们</a>
+                                    </li>
+                                    <li><a href="/business"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           th:text="#{fragment.menu.business}">招商咨询</a>
+                                    </li>
+
+                                </ul>
+                                <!-- .sub-menu  end -->
+
+                            </li>
+
+
+                        </ul>
+
+                    </div><!-- /.inner -->
+
+                </nav>
+                <!-- .menu-container end -->
+
+
+            </div>
+            <!-- .container end -->
+            <!--div style="width:100%">
+                <img src="../front_static/images/banner (1).jpg" width="100%">
+            </div-->
+
+            <div class="clear"></div>
+        </div>
+
+    </header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper" th:fragment="menu">
+
+        <!-- Key Visual
+         ====================================================== -->
+        <div class="custom-advanced-slider-outer custom-advanced-slider-sp eff-brightness"
+             data-auto="false"
+             data-loop="false"
+             data-timing="5000"
+             data-count-total="false"
+             data-count-now="false"
+             data-filter-texture="/front_static/images/dmaps/2048x2048/clouds.jpg"
+             data-controls-pagination=".my-a-slider-pagination-2"
+             data-controls-arrows=".my-a-slider-arrows-2">
+            <div class="inner">
+
+                <div class="item">
+                    <img src="/front_static/images/slider-1.jpg" alt="Title 1"/>
+                    <div class="txt">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h2 class="font-white">Fuyao Automotive Replacement Glass</h2>
+                                    <h1 class="font-white">福耀集团在全球汽车安全玻璃售后市场唯一的官方营销平台</h1>
+                                </div>
+
+
+                            </div>
+                            <!-- .row end -->
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+                    <img src="/front_static/images/slider-2.jpg" alt="Title 1"/>
+                    <div class="txt">
+
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h2 class="font-white">Fuyao Automotive Replacement Glass</h2>
+                                    <h1 class="font-white">福耀集团在全球汽车安全玻璃售后市场唯一的官方营销平台</h1>
+                                </div>
+
+
+                            </div>
+                            <!-- .row end -->
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /.inner -->
+
+            <div class="custom-advanced-slider-sp-pagination my-a-slider-pagination-2"></div>
+
+        </div>
+        <!-- /.custom-advanced-slider -->
+
+
+        <!-- Content
+          ====================================================== -->
+        <section class="space-sm">
+            <div class="container relative">
+
+                <div class="app-segment-text"><span>or</span></div>
+
+                <div class="row">
+                    <div class="col-md-6 "
+                         data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0,"infinite":false}'>
+
+                        <div class="el-row">
+                            <div class="el-col el-col-7">
+
+                                <h2 class="heading-hybrid"><em><i class="iconfont icon-map"></i></em>查询服务网点<span
+                                        class="font-uppercase">Search for Service Location</span></h2>
+                            </div>
+                            <div class="el-col el-col-5">
+
+                                <a href="#" class="button button-border-thin button-size-s button-bg-primary"
+                                   data-normal="1">点击进入</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6 "
+                         data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>
+
+                        <div class="el-row">
+                            <div class="el-col el-col-7">
+
+                                <h2 class="heading-hybrid"><em><i class="iconfont icon-cat"></i></em>查询汽车玻璃<span
+                                        class="font-uppercase">Search for Automotive Glass</span></h2>
+                            </div>
+                            <div class="el-col el-col-5">
+
+                                <a href="#" class="button button-border-thin button-size-s button-bg-primary"
+                                   data-normal="1">点击进入</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+
+            </div>
+            <!-- .container end -->
+
+        </section>
+
+
+        <!-- Content
+          ====================================================== -->
+        <section class="section-bg-gray">
+            <div class="container relative">
+
+
+                <div class="row">
+                    <div class="col-md-9 "
+                         data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0,"infinite":false}'>
+
+
+                        <div class="custom-theme-flexslider"
+                             data-draggable="false"
+                             data-my-nav-thumbs="false"
+                             data-my-prev-next-thumbs="false"
+                             data-my-nav-timeline="false"
+                             data-my-controls=".my-nav-1"
+                             data-my-multiple-items="false"
+                             data-my-count-total="false"
+                             data-my-count-now="false"
+                             data-my-parallax="false"
+                             data-my-sync="false"
+                             data-wheel="false"
+                             data-speed="600"
+                             data-timing="10000"
+                             data-loop="true"
+                             data-paging="false"
+                             data-arrows="true"
+                             data-animation="fade"
+                             data-auto="true"
+                             data-prev="<i class='fa fa-chevron-left'></i>"
+                             data-next="<i class='fa fa-chevron-right'></i>">
+
+
+                            <div class="custom-theme-slides">
+
+                                <div class="item">
+
+
+                                    <a href="#">
+                                        <div class="custom-card4 el-row">
+                                            <div class="custom-card4-image el-col el-col-8 el-col-stack"
+                                                 data-bg='{"src":"/front_static/images/news-bg-1.jpg","position":"top left","size":"cover","repeat":"no-repeat","fill":false}'></div>
+                                            <div class="custom-card4-content el-col el-col-4 el-col-stack">
+                                                <div class="custom-card4-title">
+                                                    <h3 class="custom-card4-headline">福耀集团荣获捷豹路虎“全球最佳供应商金奖”</h3>
+                                                    <p>
+                                                        在英国召开的捷豹路虎2018年供应商大会上，福耀集团从全球4000多个汽车零部件供应商中脱颖而出，荣获“2017年度全球最佳供应商金奖”。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+
+                                <div class="item">
+
+                                    <a href="#">
+                                        <div class="custom-card4 el-row">
+                                            <div class="custom-card4-image el-col el-col-8 el-col-stack"
+                                                 data-bg='{"src":"/front_static/images/news-bg-2.jpg","position":"top left","size":"cover","repeat":"no-repeat","fill":false}'></div>
+                                            <div class="custom-card4-content el-col el-col-4 el-col-stack">
+                                                <div class="custom-card4-title">
+                                                    <h3 class="custom-card4-headline">新闻标题2</h3>
+                                                    <p>新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+
+
+                                <div class="item">
+
+                                    <a href="#">
+                                        <div class="custom-card4 el-row">
+                                            <div class="custom-card4-image el-col el-col-8 el-col-stack"
+                                                 data-bg='{"src":"/front_static/images/news-bg-3.jpg","position":"top left","size":"cover","repeat":"no-repeat","fill":false}'></div>
+                                            <div class="custom-card4-content el-col el-col-4 el-col-stack">
+                                                <div class="custom-card4-title">
+                                                    <h3 class="custom-card4-headline">新闻标题3</h3>
+                                                    <p>新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+                            <!-- .custom-theme-slides end -->
+                        </div>
+                        <!-- .custom-theme-flexslider end -->
+
+
+                    </div>
+                    <div class="col-md-3 "
+                         data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>
+
+                        <h2 class="heading-overlay t-r" data-text="NEWS CENTER"><p><i class="iconfont icon-wen"></i></p>
+                            <em>最新<span>资讯</span></em></h2>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+
+                <div class="custom-navigation style-1 my-nav-1 "
+                     data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>
+                    <a href="#" class="custom-theme-flex-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                    <a href="#" class="custom-theme-flex-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+
+
+            </div>
+            <!-- .container end -->
+
+        </section>
+
+
+        <!-- Content
+          ====================================================== -->
+        <section>
+
+            <div class="container relative app-slider-wrapper">
+
+
+                <div class="row">
+
+                    <div class="col-md-3 "
+                         data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0,"infinite":false}'>
+
+                        <h2 class="heading-overlay t-l" data-text="OUR GLORY"><p><i class="iconfont icon-jiangbei"></i>
+                        </p><em th:utext="#{index.our.honor}">我们的<span>荣耀</span></em></h2>
+
+
+                    </div>
+
+
+                    <div class="col-md-9 "
+                         data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>
+
+
+                        <div class="custom-theme-flexslider custom-itemgrid custom-itemgrid-honor"
+                             data-draggable="false"
+                             data-my-nav-thumbs="false"
+                             data-my-prev-next-thumbs="false"
+                             data-my-nav-timeline="false"
+                             data-my-controls=".my-nav-2"
+                             data-my-multiple-items="6"
+                             data-my-count-total="false"
+                             data-my-count-now="false"
+                             data-my-parallax="false"
+                             data-my-sync="false"
+                             data-wheel="false"
+                             data-speed="600"
+                             data-timing="10000"
+                             data-loop="true"
+                             data-paging="false"
+                             data-arrows="true"
+                             data-animation="slide"
+                             data-auto="true"
+                             data-prev="<i class='fa fa-chevron-left'></i>"
+                             data-next="<i class='fa fa-chevron-right'></i>">
+
+                            <div class="custom-theme-slides">
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-1.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>捷豹路虎全球供应商金奖</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-2.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>伟巴斯特全球供应商奖</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-3.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>沃尔沃优秀供应商奖</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-4.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>克莱斯勒中国优秀供应商奖</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-5.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>通用优秀供应商质量奖</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-6.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>捷豹路虎全球供应商金奖</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-1.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>捷豹路虎全球供应商金奖</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <a href="javascript:"><img src="/front_static/images/honor/img-2.jpg" alt=""/></a>
+                                    <div class="info">
+                                        <a href="javascript:" class="dot-ripple-bg"></a>
+                                        <p>通用优秀供应商质量奖</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- .custom-theme-slides end -->
+
+                        </div>
+                        <!-- .custom-theme-flexslider end -->
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+
+                <div class="custom-navigation style-1 style-1_2 my-nav-2 "
+                     data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>
+                    <a href="#" class="custom-theme-flex-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                    <a href="#" class="custom-theme-flex-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+        <div class="app-slider-line"></div>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer th:fragment="footer" class="footer-main-container">
+        <div class="container t-c">
+            <div class="social">
+
+                <a class="social-btn small thin border-none white" href="https://www.facebook.com/Fuyao-Glass-America-250586225318115/" target="_blank">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+                <a class="social-btn small thin border-none white" href="https://twitter.com/fuyaousa" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <div class="custom-tooltip">
+                    <a class="social-btn small thin border-none white" href="javascript:">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+
+                    <span class="tip-text tip-top"><img src="/front_static/images/qr-code.png" alt="" width="150"
+                                                        height="150"/></span>
+                </div>
+
+                <a class="social-btn small thin border-none white" href="#" target="_blank">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </div>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/about" th:text="#{fragment.footer.about}">
+                                关于我们
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact/HUB" th:text="#{fragment.footer.contact}">
+                                联系我们
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/legal" th:text="#{fragment.footer.legal}">
+                                法律声明
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div th:text="${session.home.copyRight.getTranslatedStr(session.lang_session)}">
+                Copyright &copy; 2018. Fuyao Group. All Right Reserved.
+            </div>
+            <div th:text="${session.home.caseNum.getTranslatedStr(session.lang_session)}">
+                Copyright &copy; 2018. Fuyao Group. All Right Reserved.
+            </div>
+
+        </div><!-- .container  end -->
+    </footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:fragment="js">
+    <!-- Basic Script -->
+    <script src="/front_static/js/min/jquery.easing.min.js?ver=1.3"></script>
+    <script src="/front_static/js/min/jquery.waitforimages.min.js?ver=1.0"></script>
+    <script src="/front_static/js/min/video.min.js?ver=5.19"></script>
+    <script src="/front_static/js/min/jquery.waypoints.min.js?ver=4.0.1"></script>
+    <script src="/front_static/js/min/template7.min.js?ver=1.2.5"></script>
+    <script src="/front_static/js/min/TweenMax.min.js?ver=1.20.4"></script>
+    <script src="/front_static/js/min/pixi.min.js?ver=4.7.1"></script>
+    <script src="/front_static/js/min/three.min.js?ver=r92"></script>
+    <script src="/front_static/js/min/anime.min.js?ver=2.2.0"></script>
+
+    <!-- Masonry -->
+    <script src="/front_static/js/wp-jquery/masonry.min.js?ver=3.3.2"></script>
+    <script src="/front_static/js/wp-jquery/imagesloaded.min.js?ver=4.1.0"></script>
+
+    <!-- Filterable  -->
+    <script src="/front_static/js/min/jquery.shuffle.min.js?ver=3.1.1"></script>
+
+    <!-- 站点统计 -->
+    <script src="https://s19.cnzz.com/z_stat.php?id=1274177042&web_id=1274177042" language="JavaScript"></script>
+    <!-- Your Plugins & Theme Scripts
+    ============================================= -->
+
+    <script>
+        var REVISION = "0.0.1",
+            APP_ROOTPATH = {
+                "templateUrl": "", //If the file is in the root directory, you can leave it empty. If in another directory, you can write: "/blog"
+                "homeUrl": "",  //Eg. https://uiux.cc
+                "ajaxUrl": ""   //Eg. https://uiux.cc/wp-admin/admin-ajax.php
+            };
+    </script>
+    <script src="/front_static/js/uix-kit.min.js?ver=MTUyOTA0NjMzOTQzMA"></script>
+
+    <!-- Your Plugins & Theme Scripts  end -->
+</div>
+
+<ul th:fragment="dictionary(obj, local)"
+    th:unless="${#lists.size(obj) <= 0}"
+    th:class="${#lists.size(obj) > 0 && obj[0].parentDic == null} ? 'custom-vertical-menu'">
+
+    <li th:each="item, itemStat : ${obj}"
+        th:data-all-text="|${item.getDescWithOutHtmlTag(local)}${item.title.getTranslatedStr(local)}|">
+        <a th:text="${item.title.getTranslatedStr(local)}"
+           href="javascript:"
+           th:data-show-div="|#app-div-${item.id}|">玻璃特性</a>
+        <ul th:replace="front/fragment :: dictionary(obj=${item.childDics}, local=${local})">
+        </ul>
+    </li>
+
+</ul>
+
+<div th:fragment="dictionaryDiv(obj, local)">
+
+    <div th:each="item, itemStat : ${obj}">
+
+        <div th:unless="${#lists.size(item.childDics) > 0}"
+             th:replace="front/fragment :: dictionaryDiv(obj=${item.childDics}, local=${local})">
+
+        </div>
+
+        <div class="app-div-hide entry-content list-normal table-normal show"
+             th:id="|app-div-${item.id}|">
+
+            <div class="el-row">
+                <div class="el-col el-col-7 el-col-stack">
+                    <div>
+                        <!-- 默认加上on样式 -->
+                        <div th:class="${localItem == session.lang_session} ? 'tab-content on' : 'tab-content'"
+                             th:each="localItem, localItemStat : ${session.supportLocals}">
+
+                            <h3 th:text="${item.title.getTranslatedStr(localItem)}">夹层玻璃</h3>
+                            <p th:utext="${item.desc.getTranslatedStr(localItem)}">
+                                1.材料组成：两层或多层玻璃、中间膜（PVB、SGP、EVA、PU等）<br>
+                                2.特点：<br>
+                                a.光学性能好；<br>
+                                b.防紫外线；<br>
+                                c.隔音、隔热等；<br>
+                                d.安全，破碎后仍粘结在一起。<br>
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+                    <h4 th:utext="#{dictionary.other.lang}">其他语言</h4>
+                    <div class="tab-nav style-2" data-mouseevent="click">
+                        <div  th:each="localItem : ${session.supportLocals_1}"
+                             th:class="${localItem == session.lang_session} ? on"
+                             th:if="${item.title.hasText(localItem)}"
+                              >
+                            <span th:text="${session.localeMap.langDesc(localItem)}">中文</span> : <span
+                                th:text="${item.title.getTranslatedStr(localItem)}">夹层玻璃</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="el-col el-col-5 el-col-stack">
+                    <!--<img th:src="|/uploads/${item.attachment.filePath}|"-->
+                    <!--th:unless="${item.attachment == null}" alt=""/>-->
+                    <span th:data-img="|/uploads/${item.attachment.filePath}|"
+                          th:unless="${item.attachment == null || item.attachment.filePath == null}"></span>
+                </div>
+            </div>
+
+
+            <hr>
+
+
+            <div class="el-row">
+                <div class="el-col el-col-6 el-col-stack">
+                    <h3 th:utext="#{dictionary.user.suggestion}">用户意见</h3>
+
+                    <div class="app-client-comments-container">
+                        <div th:id="${item.id}" class="app-client-comments-content">
+                            <!--  用户y意见区域 begin -->
+
+                            <div th:id="${suggItem.id}" th:each="suggItem, suggItemStat : ${item.suggestions}"
+                                 th:if="${suggItem.checkFlag}">
+                                <p style="margin-bottom: 0.421875rem;">
+                                    <span th:id="user-+${suggItem.id}" class="userName" th:text="${suggItem.staffName}">用户</span> | <span
+                                        th:text="${#dates.format(suggItem.createdDate,'yyyy-MM-dd HH:mm')}">2018/ 06/ 12</span>
+                                </p>
+
+                                <p th:id="txt-+${suggItem.id}" th:text="${suggItem.text}" style="margin-bottom: 0rem;">
+                                    两层或多层玻璃、中间膜（PVB、SGP、EVA、PU等）
+                                </p>
+                                <p style="color: #cdcdcd;" th:if = "${#strings.toString(suggItem.reply)!=''&&#strings.toString(suggItem.reply)!=null}" th:text="管理员回复：+${suggItem.reply}">
+
+                                </p>
+                                <p class="btn">
+                                    <a class="delete" th:id="del-+${suggItem.id}" style="cursor: pointer" href="#">删除</a>
+                                    <a class="edit" th:id="edi-+${suggItem.id}" style="cursor: pointer" href="#">编辑</a>
+                                </p>
+                                <hr/>
+                            </div>
+
+                            <!--  用户y意见区域  end-->
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="el-col el-col-6 el-col-stack">
+                    <h3 th:utext="#{dictionary.suggestion}">修改建议</h3>
+
+
+                    <form th:data-form-id="${item.id}" method="post"
+                          th:action="|/dictionary/ajax/suggestionForm/${item.id}/|"
+                          class="app-user-msg-form">
+
+                        <p>
+                        <div class="controls textarea">
+                            <textarea name="text" class="float-label"></textarea>
+                            <label class=""
+                                   th:utext="#{dictionary.suggestion.textarea}">输入你觉得解释不清晰的词汇，我们将根据你的建议进行更改</label>
+                        </div>
+                        </p>
+
+                        <p>
+                            <button type="button" th:utext="#{dictionary.suggestion.btn}"
+                                    class="button button-border-thin button-size-s button-bg-primary app-form-submit">
+                                提交修改建议
+                            </button>
+
+                        </p>
+												<div class="response"></div>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+
+    
+   

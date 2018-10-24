@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="manage/fragment :: head"></head>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <!-- <h3 class="animated fadeInLeft"></h3> -->
+                    <p class="animated fadeInDown"> 后台首页 <span class="fa-angle-right fa"></span> 基本信息 </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 typography padding-0">
+            <div class="col-md-12">
+                <div class="col-md-5" style="padding-left:0px;">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <blockquote>
+                                <p>您好 <span th:text="${session.user.userName}"
+                                            th:unless="${session.user == null}"></span>，这是您第<span
+                                        th:text="${session.user.loginCount}" th:unless="${session.user == null}"></span>次登录本系统
+                                </p>
+                                <footer>
+                                    上次登录：<span
+                                        th:text="${#dates.format(session.user.lastLoginDate,'yyyy-MM-dd HH:mm:ss')}"
+                                        th:unless="${session.user == null}"></span>
+                                    <!--&nbsp;&nbsp;&nbsp;&nbsp;IP地址：<span th:text="${session.ipaddr}" ></span>-->
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+                <div class="col-md-8">
+                    <div class="panel form-element-padding">
+                        <div class="panel-heading">
+                            <h4>网站信息</h4>
+                        </div>
+                        <div class="panel-body" style="padding-bottom:30px;">
+                            <form action="setting.php?action=update" enctype="multipart/form-data" method="post"
+                                  onsubmit="return checkform('ktitle')">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">网站标题</label>
+                                        <div class="col-md-6" th:text="${session.home.webTitle.translations[0].text}"
+                                             th:unless="${session.home.webTitle == null}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">关键字</label>
+                                        <div class="col-sm-10" th:text="${session.home.keywords.translations[0].text}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">描述</label>
+                                        <div class="col-sm-10" th:text="${session.home.webDesc.translations[0].text}">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">版权信息</label>
+                                        <div class="col-md-6" th:text="${session.home.copyRight.translations[0].text}">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-right">备案号</label>
+                                        <div class="col-md-6" th:text="${session.home.caseNum.translations[0].text}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+</html>

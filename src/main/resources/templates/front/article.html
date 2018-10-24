@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="app-page-content-show detail">
+
+
+                            <div class="row">
+
+                                <div class="col-md-10 col-md-offset-1 relative">
+
+                                    <h2 class="heading-overlay t-l full"><em
+                                            th:text="${obj.title.getTranslatedStr(session.lang_session)}">内容详细页标题...</em>
+                                    </h2>
+
+                                    <div class="pull-left">
+
+                                        <p class="date font-sub-color"><i class="fa fa-calendar-o"
+                                                                          aria-hidden="true"></i>
+                                            <span th:text="${#dates.format(obj.createdDate,'yyyy-MM-dd')}">2018/ 04/ 28</span>
+                                        </p>
+
+                                    </div>
+                                    <div class="pull-right">
+                                        <div class="bdsharebuttonbox"><a style="display: none" href="#" class="bds_more"
+                                                                         data-cmd="more"></a><a href="#"
+                                                                                                class="bds_weixin"
+                                                                                                data-cmd="weixin"
+                                                                                                title="分享到微信"></a><a
+                                                href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a
+                                                href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a><a
+                                                href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                                        </div>
+                                        <!--<script th:inline="none">-->
+                                        <!--window._bd_share_config = {-->
+                                        <!--"common": {-->
+                                        <!--"bdSnsKey": {},-->
+                                        <!--"bdText": "",-->
+                                        <!--"bdMini": "2",-->
+                                        <!--"bdMiniList": false,-->
+                                        <!--"bdPic": "",-->
+                                        <!--"bdStyle": "1",-->
+                                        <!--"bdSize": "16"-->
+                                        <!--},-->
+                                        <!--"share": {},-->
+                                        <!--"image": {-->
+                                        <!--"viewList": ["weixin", "tsina", "twi", "fbook"],-->
+                                        <!--"viewText": "分享到：",-->
+                                        <!--"viewSize": "16"-->
+                                        <!--},-->
+                                        <!--"selectShare": {-->
+                                        <!--"bdContainerClass": null,-->
+                                        <!--"bdSelectMiniList": ["weixin", "tsina", "twi", "fbook"]-->
+                                        <!--}-->
+                                        <!--};-->
+                                        <!--with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];-->
+                                        <!--</script>-->
+
+                                    </div>
+
+                                    <div class="clear"></div>
+
+
+                                    <a href="index.html"
+                                       class="app-detail-back-btn button button-border-thin button-size-s button-bg-primary"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                       th:utext="#{news.back.list}">返回列表</a>
+
+
+                                    <!-- Entry Content
+                                    ========================= -->
+                                    <div class="entry-content detail list-normal table-normal"
+                                         th:utext="${obj.contentStr}" th:unless="${obj == null}">
+
+                                    </div>
+                                    <!-- Entry Content  end -->
+
+
+                                    <div class="clear"></div>
+                                    <br>
+                                    <div class="pull-left">
+                                        <a href="detail.html"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           class="button button-border-thin button-size-s button-bg-primary"
+                                           data-normal="1" th:utext="#{fragment.button.preview}">上一条</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="detail.html"
+                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                           class="button button-border-thin button-size-s button-bg-primary"
+                                           data-normal="1" th:utext="#{fragment.button.next}">下一条</a>
+                                    </div>
+                                    <div class="clear"></div>
+
+
+                                </div>
+
+                            </div>
+                            <!-- .row end -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+    
+   

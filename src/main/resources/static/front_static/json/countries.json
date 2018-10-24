@@ -1,0 +1,65 @@
+[
+  {
+    "name": "福建省",
+    "list": [
+      {
+        "name": "福州市",
+        "longitude": 0,
+        "latitude": 0,
+        "shops": [
+          {
+            "shopname": "福耀汽车玻璃-福州晋安店",
+            "shoptel": "4009886868",
+            "shopaddress": "福州市六一北路晋安花园一层店面",
+            "shoptype": "服务网点",
+            "shoplongitude": 0,
+            "shoplatitude": 0
+          },
+          {
+            "shopname": "福耀汽车玻璃-福州福清店",
+            "shoptel": "4009886868",
+            "shopaddress": "福清市福耀工业区一区",
+            "shoptype": "经销商网点",
+            "shoplongitude": 0,
+            "shoplatitude": 0
+          }
+        ]
+      },
+      {
+        "name": "厦门市",
+        "longitude": 0,
+        "latitude": 0,
+        "shops": [
+          {
+            "shopname": "福耀汽车玻璃-厦门湖里店",
+            "shoptel": "4009886868",
+            "shopaddress": "福建省厦门市湖里区悦华路141号",
+            "shoptype": "服务网点",
+            "shoplongitude": 0,
+            "shoplatitude": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "云南省",
+    "list": [
+      {
+        "name": "昆明市",
+        "longitude": 0,
+        "latitude": 0,
+        "shops": [
+          {
+            "shopname": "福耀汽车玻璃-昆明店",
+            "shoptel": "4009886868",
+            "shopaddress": "云南昆明xxx",
+            "shoptype": "服务网点",
+            "shoplongitude": 0,
+            "shoplatitude": 0
+          }
+        ]
+      }
+    ]
+  }
+]

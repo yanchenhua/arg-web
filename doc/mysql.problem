@@ -1,0 +1,35 @@
+Mysql 8 meet errors
+
+Authentication plugin 'caching_sha2_password' cannot be loaded: dlopen(/usr/local/mysql/lib/plugin/caching_sha2_password.so, 2): image not found
+
+-------
+
+ALTER USER 'username'@'ip_address' IDENTIFIED WITH mysql_native_password BY 'password';
+
+vim /etc/my.cnf
+skip-grant-tables
+
+systemctl restart mysqld
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'FyHUF@#w5w';
+
+create database argweb;
+
+
+-----------
+wget https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.11-1.el7.x86_64.rpm-bundle.tar
+
+rpm -ivh mysql-community-common-8.0.11-1.el7.x86_64.rpm --nosignature
+
+rpm -ivh mysql-community-libs-8.0.11-1.el7.x86_64.rpm
+
+rpm -ivh mysql-community-client-8.0.11-1.el7.x86_64.rpm --nosignature
+
+rpm -ivh mysql-community-server-8.0.11-1.el7.x86_64.rpm
+
+
+use mysql
+select host, user from user;
+update user set host = '%' where user = 'root';
+GRANT ALL ON db1.* TO 'root'@'%';
+

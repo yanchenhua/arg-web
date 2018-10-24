@@ -1,0 +1,65 @@
+server:
+    port: 8088
+    servlet:
+      path: /
+    tomcat:
+      uri-encoding: utf-8
+
+spring:
+    thymeleaf:
+        cache: false
+        mode: LEGACYHTML5
+
+    profiles: local
+    boot.admin.url: http://localhost:8088
+
+    datasource:
+        #dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        #driverClassName: com.mysql.cj.jdbc.Driver
+        #url: jdbc:mysql://127.0.0.1:3306/argweb?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+        #username: root
+        #password: lewei.me
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/argweb2?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+        username: root
+        password: Arg231
+        maxLifetime: 0
+        metrics: true
+
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: H2
+        openInView: false
+        show_sql: true
+        generate-ddl: false
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+            hibernate.current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+
+    http:
+        encoding:
+            force: true
+            charset: UTF-8
+            enabled: true
+
+argweb:
+    upload: E:\upload
+    defaultLocale: zh_CN
+    argSupportLocales:
+        - zh_CN
+        - en_US
+        #- RU
+        #- fr_FR
+        #- jp_JP
+        #- kr_KR
+        #- de_DE
+        #- es_ES
+        #- por_POR
+    defaultUser: lewei
+    defaultUserPswd: $2a$10$jBfsal7cnBBhnniDGv0MFesL0PWUfJyaAj0dUF6SZRcTT82ctlHwK
+    defaultAuthority: Super

@@ -1,0 +1,63 @@
+.brand img {
+    margin-top: -6rem;
+  }
+.brand{
+	overflow:visible;
+	}  
+.app-top {
+	border-bottom:none;
+	}
+.menu-container:not(.mobile) ul.menu-main {
+	margin-left: -1180px;
+}
+.menu-container:not(.mobile) ul.menu-main>li {
+	margin-left:1.8rem;
+}
+section{
+	padding:3.5rem 0;
+	}
+.horline{
+	float:left;
+	margin-right:10px;
+	}
+.menu-container:not(.mobile) ul.menu-main>li.active>a::after, .menu-container:not(.mobile) ul.menu-main>li.current-menu-item>a::after {
+	width: 50px;
+	}
+.menu-container:not(.mobile) ul.menu-main ul.sub-menu {
+	left: 28px;
+	}
+body.fr_FR,body.de_DE,body.es_ES,body.ru,body.por_POR{
+	font-family: Conv_Roboto-Condensed,"Microsoft YaHei",sans-serif;
+	}
+
+.ajax-kr_KR,
+.ajax-de_DE,
+.ajax-es_ES,
+.ajax-ru,
+.ajax-por_POR,
+.ajax-fr_FR,
+.ajax-jp_JP{
+    display: none;
+}
+.kr_KR .ajax-kr_KR {
+    display: block;
+}
+.de_DE .ajax-de_DE {
+    display: block;
+}
+.es_ES .ajax-es_ES {
+    display: block;
+}
+.ru .ajax-ru {
+    display: block;
+}
+.por_POR .ajax-por_POR {
+    display: block;
+}
+.fr_FR .ajax-fr_FR {
+    display: block;
+}
+.jp_JP .ajax-jp_JP {
+    display: block;
+}
+
