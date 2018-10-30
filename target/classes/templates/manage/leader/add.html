@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+<script type="text/javascript" src="/manage_static/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/manage_static/ckfinder/ckfinder.js"></script>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">关于福耀 > 管理团队</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 padding-0">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>管理团队</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form>
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">姓名</label>
+                                    <div class="col-md-2">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="nameStr" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-1" style="width:65px;">
+                                        职务
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" v-model="roleStr" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+
+                                <div style="clear:both;"></div>
+
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">照片</label>
+                                    <div class="col-md-6">
+                                        <a v-if="form.headerAttachment.src" title="预览" class="iconimg"
+                                           :href="form.headerAttachment.src" onclick="return hs.expand(this)">
+                                            <img style="max-width:20px;" :src="form.headerAttachment.src"/>
+                                        </a>
+                                        <input type="file" class="file_select"
+                                               @change="upload('headerAttachment',$event)"/>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">描述</label>
+                                    <div class="col-md-6">
+                                        <textarea name="kcontent" v-model="textStr" rows="6"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">排序</label>
+                                    <div class="col-md-1">
+                                        <input type="text" v-model="form.sort" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="button" @click="add"
+                                               value="确认"/>
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            nameStr: '',
+            roleStr: '',
+            textStr: '',
+            form: {
+                nameText: {},
+                roleText: {},
+                text: {},
+                sort: '',
+                headerAttachment: {
+                    type: 'IMAGE',
+                    displayName: '',
+                    filePath: ''
+                }
+            }
+        },
+        methods: {
+            upload: function (model, event) {
+                // console.info(model);
+                // console.info(event);
+                var file = event.target;
+                var this_vue = this;
+                var id = this.form[model].id || 0;
+                var param = {
+                    file: file.files[0],
+                    id: id,
+                    type: 'IMAGE'
+                }
+                this.$api.file.upload(param, function (res) {
+                    console.info(res);
+                    res.type = 'IMAGE';
+                    // res.id = null ;
+                    this_vue.form[model] = res;
+                    if (res.filePath) {
+                        var url = "/uploads/" + res.filePath;
+                        this_vue.form[model].src = url;
+                    }
+                });
+            },
+            add: function (event) {
+                // console.info(this.form);
+                this.$api.base.add('leader', this.form, function (res) {
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('leader', {id: id}, function (res) {
+                    var leader = res.objs[0];
+                    if (leader) {
+                        if (leader.headerAttachment == null) {
+                            leader.headerAttachment = {}
+                        }
+                        var attachment = leader.headerAttachment;
+                        if (attachment.filePath) {
+                            var url = "/uploads/" + attachment.filePath;
+                            attachment.src = url;
+                        }
+
+                        if (leader) {
+                            var name_str = this_vue.$tools.getTranslationsText(leader, 'nameText', locale);
+                            var role_str = this_vue.$tools.getTranslationsText(leader, 'roleText', locale);
+                            var text_str = this_vue.$tools.getTranslationsText(leader, 'text', locale);
+
+                            this_vue.form = leader;
+                            this_vue.nameStr = name_str;
+                            this_vue.roleStr = role_str;
+                            this_vue.textStr = text_str;//TOOD rich text
+                            this_vue.$tools.setDataToEditor('kcontent', text_str);
+                        }
+                    }
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            'nameStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'nameText', locale, n);
+            },
+            'roleStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'roleText', locale, n);
+            },
+            'textStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'text', locale, n);
+            }
+        }
+    });
+
+</script>
+
+<script type="text/javascript">
+    var editor = CKEDITOR.replace('kcontent', {
+        width: '100%',
+        height: 300,
+        filebrowserImageUploadUrl: '/uploads/upload4'
+    });
+    CKFinder.setupCKEditor(editor, 'ckfinder/');
+    editor.on('change', function (event) {
+        var data = this.getData();//内容
+        //将文本域的内容，同步到 form.textStr中去
+        app.$set(app, "textStr", data);
+    });
+    editor.on('fileUploadRequest', function (evt) {
+        console.info(evt);
+    });
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+
+</body>
+
+</html>

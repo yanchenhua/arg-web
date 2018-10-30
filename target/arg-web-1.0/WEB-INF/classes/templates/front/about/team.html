@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Management Team"><em th:utext="#{about.leader}"><span>管理</span>团队</em>
+                        </h2>
+
+                        <div class="app-page-content-show detail-sp-l">
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <div class="list-side-by-side-img" th:each="item, itemStat : ${obj}">
+
+                                <div class="item">
+                                    <div class="item-left">
+                                        <div class="item-left-imgbox t-c">
+                                            <img th:src="|/uploads/${item.headerAttachment.filePath}"
+                                                 th:unless="${item == null}" alt="">
+
+                                            <h3 th:text="${item.nameText.getTranslatedStr(session.lang_session)}">
+                                                曹德旺</h3>
+                                            <h4 th:text="${item.roleText.getTranslatedStr(session.lang_session)}">
+                                                创办人兼董事长</h4>
+
+                                        </div>
+                                    </div>
+                                    <div class="item-body">
+
+
+                                        <div class="pos-vertical-align">
+
+                                            <div th:utext="${item.text.getTranslatedStr(session.lang_session)}"
+                                                 class="item-desc">
+
+
+                                                <p>
+                                                    曹德旺先生，生于1946年，福耀玻璃工业集团股份有限公司董事长，担任中国政协第十二届全国委员会委员、中国侨商投资企业协会常务副会长、中国汽车玻璃协会会长、福建省慈善总会名誉会长等职。</p>
+                                                <p>
+                                                    八十年代初期，在国内的汽车维修市场，从日本进口汽车玻璃一块就要一、两千元人民币。这样一个商业现象深深刺痛了曹德旺的民族自尊心。他于1987年创建福耀集团，专业从事汽车安全玻璃和工业技术玻璃的生产和销售。三十几年时间，曹德旺以决心和恒心，使中国汽车玻璃行业从完全依赖进口到进口接近为零，实现了“为中国人做一片自己的玻璃”发展目标，也改变了世界对中国汽车玻璃市场的认识。在他领导下，福耀集团现在是世界最大的汽车玻璃制造商。</p>
+                                                <p>
+                                                    他的成就得到了各界的广泛认可。在2009年，他从全球43个国家和地区代表中脱颖而出，荣获“安永全球企业家2009大奖”，成为该奖自1986年设立以来首个华人得主。</p>
+                                                <p>
+                                                    秉着“发展自我，兼善天下”的理念，他在过去30年里的慈善捐赠已达110亿人民币。2011年5月，他捐赠个人及家族持有的3亿股福耀股票，市值达5.64亿美元设立河仁基金会，成为当时最大的慈善基金会，也开创了股票形式支持社会公益的先河。。</p>
+                                                <p>
+                                                    2016年10月，在曹先生领导下，福耀集团在美国俄亥尔州代顿市投资的汽车玻璃制造厂正式投产，它标志着一个遭受危机重创的汽车制造业重镇的新生。迄今福耀在美国的投资总额达10亿美元，多个项目横跨俄亥尔州，密西根州，伊利诺伊州以及其它州份，共创造近5000个就业职位，是来自中国私营企业的最大投资项目。 </p>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.item -->
+
+                            </div>
+                            <!-- /.list-side-by-side-img -->
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+</div>
+<!-- .wrapper end -->
+<div th:replace="front/fragment :: js"></div>
+</body>
+</html>
+
+    
+   

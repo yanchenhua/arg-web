@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head">
+
+</head>
+
+<body th:class="|home ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header th:replace="front/fragment :: header" class="header-area transition">
+    </header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <!-- Key Visual
+         ====================================================== -->
+        <!--div class="custom-advanced-slider-outer custom-advanced-slider eff-scale"
+             data-auto="false"
+             data-loop="false"
+             data-timing="5000"
+             data-count-total="false"
+             data-count-now="false"
+             data-filter-texture="/front_static/images/dmaps/2048x2048/clouds.jpg"
+             data-controls-pagination=".my-a-slider-pagination-2"
+             data-controls-arrows=".my-a-slider-arrows-2">
+            <div class="inner">
+
+
+                <div class="item" th:each="item, itemStat : ${obj.attachment}" th:unless="${obj == null}">
+                    <img th:src="|/uploads/${item.filePath}|" alt="Title 1"/>
+                    <div class="txt">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h2 class="font-white"
+                                        th:text="${item.desc.getTranslatedStr(session.lang_session)}">Fuyao Automotive
+                                        Replacement
+                                        Glass</h2>
+                                    <h1 class="font-white"
+                                        th:text="${item.desc2.getTranslatedStr(session.lang_session)}">
+                                        福耀集团在全球汽车安全玻璃售后市场唯一的官方营销平 台</h1>
+                                </div>
+                            </div-->
+        <!-- .row end -->
+        <!--/div>
+    </div>
+</div>
+
+
+</div-->
+        <!-- /.inner -->
+
+        <!--div class="custom-advanced-slider-sp-pagination my-a-slider-pagination-2"></div>
+
+    </div-->
+        <!-- /.custom-advanced-slider -->
+
+
+        <!-- Content
+          ====================================================== -->
+        <section>
+            <div class="container relative">
+
+
+                <div class="row">
+                    <div class="col-md-7">
+
+                        <!--h2 class="heading-overlay t-bottom" th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? 'NEWS CENTER'"><p><i
+                                class="iconfont icon-wen"></i></p><em th:utext="#{index.latest.news}">最新<span>资讯</span></em>
+                        </h2-->
+
+                        <div class="custom-theme-flexslider app-home-news-slider"
+                             data-draggable="false"
+                             data-my-nav-thumbs="false"
+                             data-my-prev-next-thumbs="false"
+                             data-my-nav-timeline="false"
+                             data-my-controls=".my-nav-1"
+                             data-my-multiple-items="false"
+                             data-my-count-total="false"
+                             data-my-count-now="false"
+                             data-my-parallax="false"
+                             data-my-sync="false"
+                             data-wheel="false"
+                             data-speed="600"
+                             data-timing="5000"
+                             data-loop="true"
+                             data-paging="false"
+                             data-arrows="true"
+                             data-animation="fade"
+                             data-auto="true"
+                             data-prev="<i class='fa fa-chevron-left'></i>"
+                             data-next="<i class='fa fa-chevron-right'></i>">
+
+
+                            <div class=" custom-theme-slides">
+
+                                <div th:each="item, itemStat : ${articles}" class="item">
+
+
+                                    <a th:href="|/news/detail/${item.id}|"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+                                        <div class="cover">
+                                            <img class="index-bigPic-slider" th:src="|/uploads/${item.attachment.filePath}|" alt="" width="650" height="340">
+                                            <div class="title">
+                                                <h3 class="custom-card4-headline"
+                                                    th:text="${item.title.getTranslatedStr(session.lang_session)}">
+                                                    福耀集团荣获捷豹路虎“全球最佳供应商金奖”</h3>
+
+                                                <p style="display: none;"
+                                                   th:text="${item.shortContent.getTranslatedStr(session.lang_session)}">
+                                                    在英国召开的捷豹路虎2018年供应商大会上，福耀集团从全球4000多个汽车零部件供应商中脱颖而出，荣获“2017年度全球最佳供应商金奖”。</p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+                            <!-- .custom-theme-slides end -->
+                        </div>
+                        <!-- .custom-theme-flexslider end -->
+
+
+                        <div class="custom-navigation style-1 style-1_home my-nav-1 ">
+                            <a href="#" class="custom-theme-flex-prev"><i class="fa fa-angle-left"
+                                                                          aria-hidden="true"></i></a>
+                            <a href="#" class="custom-theme-flex-next"><i class="fa fa-angle-right"
+                                                                          aria-hidden="true"></i></a>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-5">
+                        <div th:each="item, itemStat : ${titlesArticles}">
+                            <a th:href="|/news/detail/${item.id}|"
+                               data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+                               <span style="float: left">
+                                   <img width="15" height="15" src="../front_static/css/../images/point.png"/>
+                               </span>
+                                <p th:if="${item.topFlag == true}" style="color: #337aff;margin-left: 20px; font-size: 20px;line-height: 1.05"
+                                                                th:text="${item.title.getTranslatedStr(session.lang_session)}">
+                                福耀集团荣获捷豹路虎“全球最佳供应商金奖”</p>
+                                <p th:if="${item.topFlag == false||item.topFlag == null}" style="margin-left: 20px; font-size: 16px;line-height: 1.05"
+                                   th:text="${item.title.getTranslatedStr(session.lang_session)}">
+                                    福耀集团荣获捷豹路虎“全球最佳供应商金奖”</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--div class="col-sm-8 "
+                         data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>
+
+
+                        <p style="margin-left:60px;" class="heading-overlay t-bottom col-sm-4 index_btn"
+                            th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? ''">
+                            <i class="iconfont icon-map" style="color: #337aff;"></i>
+                            <a th:href="@{${obj.serviceLink}(language=${session.lang_session1},device=pc)}"
+                                                                         data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+                            <em th:text="#{index.arg.search.location}">查询服务网点<i
+                                    class="fa fa-angle-right" aria-hidden="true"></i></em></a></p>
+
+
+                        <p class="heading-overlay t-bottom col-sm-4 index_btn"
+                            th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? ''">
+                           <i class="iconfont icon-cat" style="color: #337aff;"></i>
+                           <a th:href="@{${obj.searchLink}(language=${session.lang_session_1},device=pc)}"
+                                                                         data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+                            <em th:text="#{index.arg.search.glass}">查询汽车玻璃<i
+                                    class="fa fa-angle-right" aria-hidden="true"></i></em></a></p>
+
+                    </div-->
+
+
+                </div>
+                <!-- .row end -->
+
+
+            </div>
+            <!-- .container end -->
+
+        </section>
+
+
+        <!-- Content
+          ====================================================== -->
+        <!--<section class="section-bg-gray2">-->
+
+            <!--<div class="container relative app-slider-wrapper">-->
+
+
+                <!--<div class="row">-->
+
+                    <!--<div class="col-md-2 "-->
+                         <!-->
+
+                        <!--<h2 class="heading-overlay t-l t-bottom"-->
+                            <!--th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? 'OUR HONOR'"><p><i-->
+                                <!--class="iconfont icon-jiangbei"></i></p><em-->
+                                <!--th:utext="#{index.our.honor}">我们的<span>荣耀</span></em></h2>-->
+
+
+                    <!--</div>-->
+
+
+                    <!--<div class="col-md-10 "-->
+                         <!--data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>-->
+
+
+                        <!--<div class="custom-theme-flexslider custom-itemgrid custom-itemgrid-honor"-->
+                             <!--data-draggable="false"-->
+                             <!--data-my-nav-thumbs="false"-->
+                             <!--data-my-prev-next-thumbs="false"-->
+                             <!--data-my-nav-timeline="false"-->
+                             <!--data-my-controls=".my-nav-2"-->
+                             <!--data-my-multiple-items="6"-->
+                             <!--data-my-count-total="false"-->
+                             <!--data-my-count-now="false"-->
+                             <!--data-my-parallax="false"-->
+                             <!--data-my-sync="false"-->
+                             <!--data-wheel="false"-->
+                             <!--data-speed="600"-->
+                             <!--data-timing="10000"-->
+                             <!--data-loop="true"-->
+                             <!--data-paging="false"-->
+                             <!--data-arrows="true"-->
+                             <!--data-animation="slide"-->
+                             <!--data-auto="true"-->
+                             <!--data-prev="<i class='fa fa-chevron-left'></i>"-->
+                             <!--data-next="<i class='fa fa-chevron-right'></i>">-->
+
+                            <!--<div class="custom-theme-slides">-->
+
+                                <!--<div class="item" th:each="item, itemStat : ${honors}">-->
+                                    <!--<a href="/about#app-honor"><img th:src="|/uploads/${item.attachment.filePath}|"-->
+                                                                    <!--th:unless="${item.attachment == null}" alt=""/></a>-->
+                                    <!--<div class="info">-->
+                                        <!--<a href="/about#app-honor" class="dot-ripple-bg"></a>-->
+                                        <!--<p th:text="${item.text.getTranslatedStr(session.lang_session)}">捷豹路虎全球供应商金奖</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                            <!--&lt;!&ndash; .custom-theme-slides end &ndash;&gt;-->
+
+                        <!--</div>-->
+                        <!--&lt;!&ndash; .custom-theme-flexslider end &ndash;&gt;-->
+
+
+                    <!--</div>-->
+
+
+                <!--</div>-->
+                <!--&lt;!&ndash; .row end &ndash;&gt;-->
+
+
+                <!--<div class="custom-navigation style-1 style-1_2 my-nav-2 "-->
+                     <!--data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>-->
+                    <!--<a href="#" class="custom-theme-flex-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>-->
+                    <!--<a href="#" class="custom-theme-flex-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>-->
+                <!--</div>-->
+
+
+            <!--</div>-->
+            <!--&lt;!&ndash; .container end &ndash;&gt;-->
+
+
+        <!--</section>-->
+
+
+        <div class="app-slider-line"></div>
+
+
+    </div>
+    <section>
+        <div class="container relative">
+
+            <div>
+                <img th:src="#{contact.src}" width="100%"/>
+            </div>
+
+        </div>
+    </section>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer th:replace="front/fragment :: footer" class="footer-main-container">
+
+    </footer>
+
+
+</div>
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+
+    
+   

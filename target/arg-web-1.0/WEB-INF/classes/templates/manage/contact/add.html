@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">联系我们 > 网点列表</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>网点</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+
+                        <form>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">公司名称</label>
+                                    <div class="col-md-6">
+                                        <input type="text" v-model="contactTitleStr" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">公司副标题</label>
+                                    <div class="col-md-6">
+                                        <input type="text" v-model="contactSubTitleStr" class="form-control">
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">类型</label>
+                                    <div class="col-md-6">
+                                        <select v-model="form.type" class="form-control" style="margin-top: 0px;">
+                                            <option value="HUB">总部</option>
+                                            <option value="NORTH_AMERICA">北美</option>
+                                            <option value="RUSSIA">俄罗斯</option>
+                                            <option value="OTHERS">其它</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">电子邮件</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.email" rows="3" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">电话</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.tel" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">传真</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.fax" rows="3" class="form-control"></input>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">地址</label>
+                                    <div class="col-md-6">
+                                        <input v-model="addressStr" rows="3" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">地址副标题</label>
+                                    <div class="col-md-6">
+                                        <input v-model="addressSubTitleStr" rows="3" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经纬</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.jw" class="form-control"/>
+                                        <a target="_blank"
+                                           href="http://api.map.baidu.com/lbsapi/getpoint/index.html">获取坐标(选择坐标后，点右上角的复制)</a>
+                                    </div>
+                                </div>
+
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经度</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.lng" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">纬度</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.lat" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">排序</label>
+                                    <div class="col-md-1">
+                                        <input type="text" name="ktitle" value="1" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="button" @click="add" value="确认">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#content',
+        data: {
+            contactTitleStr: '',
+            contactSubTitleStr: '',
+            addressStr: '',
+            addressSubTitleStr: '',
+            form: {
+                contactTitle: {},
+                contactSubTitle: {},
+                address: {},
+                addressSubTitle: {},
+                lag: '',
+                lng: '',
+                email: '',
+                fax: '',
+                tel: '',
+                jw: '',
+                shopBannerAttachment: {},
+                type: 'HUB'
+            }
+        },
+        methods: {
+            add: function (event) {
+                // console.info(this.form);
+                this.form.goodProvider = true;
+                this.$api.base.add('contactCard', this.form, function (res) {
+                    // delete this.form.id
+                    console.info(res);
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('contactCard', {id: id}, function (res) {
+
+                    var demo = res.objs[0];
+                    this_vue.form = demo;
+                    var contactTitle_str = this_vue.$tools.getTranslationsText(demo, 'contactTitle', locale);
+                    var contactSubTitle_str = this_vue.$tools.getTranslationsText(demo, 'contactSubTitle', locale);
+                    var address_str = this_vue.$tools.getTranslationsText(demo, 'address', locale);
+                    var addressSubTitle_str = this_vue.$tools.getTranslationsText(demo, 'addressSubTitle', locale);
+                    this_vue.contactTitleStr = contactTitle_str;
+                    this_vue.contactSubTitleStr = contactSubTitle_str;
+                    this_vue.addressStr = address_str;
+                    this_vue.addressSubTitleStr = addressSubTitle_str;
+
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            'form.jw': function (n, o) {
+                if (n) {
+
+                    var strs = n.split(',');
+                    this.form.lng = strs[0];
+                    this.form.lat = strs[1];
+                }
+            },
+            'contactTitleStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'contactTitle', locale, n);
+            },
+            'contactSubTitleStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'contactSubTitle', locale, n);
+            },
+            'addressStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'address', locale, n);
+            },
+            'addressSubTitleStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'addressSubTitle', locale, n);
+            }
+        }
+    });
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+
+</body>
+
+</html>

@@ -44,11 +44,12 @@ public class HomeDataFilter extends GenericFilterBean {
         ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(context);
         HomeService homeService = ctx.getBean(HomeService.class);
 
-        if (session.getAttribute("home") == null) {
-            HomeDTO dto = homeService.findOne();
-            session.setAttribute("home", dto == null ? new HomeDTO() : dto);
-        }
-
+//        if (session.getAttribute("home") == null) {
+//            HomeDTO dto = homeService.findOne();
+//            session.setAttribute("home", dto == null ? new HomeDTO() : dto);
+//        }
+        HomeDTO dto = homeService.findOne();
+        session.setAttribute("home", dto == null ? new HomeDTO() : dto);
         session.setAttribute("menuLabel", request.getServletPath());
 
         filterChain.doFilter(servletRequest, servletResponse);

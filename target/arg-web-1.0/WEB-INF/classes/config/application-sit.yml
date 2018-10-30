@@ -1,0 +1,57 @@
+server:
+    port: 80
+    servlet:
+      path: /
+    tomcat:
+      uri-encoding: utf-8
+
+spring:
+    thymeleaf:
+        cache: true
+        mode: LEGACYHTML5
+
+    profiles: sit
+    boot.admin.url: http://106.12.7.250:8088
+
+    datasource:
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://mysql57.rdsmmo4ht361ybb.rds.su.baidubce.com:3306/argweb2?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&useSSL=false&allowPublicKeyRetrieval=true
+        username: rdsroot
+        password: FyHUFw5w
+#        url: jdbc:mysql://103.27.5.76:3306/argweb?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&useSSL=false
+#        username: argweb
+#        password: xADE4eD7UnrbUEnC
+        maxLifetime: 0
+        metrics: true
+
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: H2
+        openInView: false
+        show_sql: false
+        generate-ddl: false
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+            hibernate.current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+
+    http:
+        encoding:
+            force: true
+            charset: UTF-8
+            enabled: true
+
+argweb:
+    upload: /root/uploadFiles
+    defaultLocale: zh_CN
+    argSupportLocales:
+        - zh_CN
+        - en_US
+        - RU
+    defaultUser: admin
+    defaultUserPswd: $2a$10$sYqf3UgoIpkQdBL8gU7SsuNB1/f36Tvy976XKmOThnny8ZsE43ZQa
+    defaultAuthority: Super

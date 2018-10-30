@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|" style="display: none">
+<script>
+    $(function(){
+        if($("body").attr("class").indexOf("zh_CN")==-1){
+            window.location.href="/";
+        }else{
+            $("body").css({"display":"block"});
+        }
+    })
+</script>
+<!-- Loader
+============================================= -->
+<div class="loader">
+    <!--[if lt IE 10]>
+    <span>Loading...</span>
+    <![endif]-->
+    <svg class="spinner-container IE-hide" viewBox="0 0 52 52">
+        <path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"></path>
+    </svg>
+</div>
+<div class="loader-progress"><span>0%</span></div>
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Providers"><em
+                                th:utext="#{agrr.provider.title}"><span>AGRR</span>合作商</em></h2>
+
+                        <div class="app-page-content-show">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+                            <div th:each="item, itemStat : ${obj}" class="custom-accordion" data-event="click"
+                                 data-first-show="true">
+
+                                <dl>
+                                    <dt><a href="javascript:"><em th:text="${itemStat.count}">1</em><span
+                                            th:text="${item.question.getTranslatedStr(session.lang_session)}">什么是AGRR？</span></a>
+                                    </dt>
+                                    <dd>
+                                        <div>
+                                            <p th:text="${item.answer.getTranslatedStr(session.lang_session)}">
+                                                AGRR全称是Automotive Glass Repair and Replacement，是指汽车玻璃专业修补与安装替换服务门店。
+                                            </p>
+                                        </div>
+
+                                    </dd>
+
+                                </dl>
+
+                            </div>
+                            <!-- .custom-accordion end -->
+
+                            <p>
+
+                                <a href="providerAppli"
+                                   data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                   class="button button-border-thin button-size-s button-bg-primary" data-normal="1"
+                                   th:utext="#{agrr.service.apply}">申请AGRR认证</a>
+                            </p>
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:replace="front/fragment :: js"></div>
+
+
+<!-- Your Plugins & Theme Scripts  end -->
+
+
+</body>
+</html>
+
+    
+   

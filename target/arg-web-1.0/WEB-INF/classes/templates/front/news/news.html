@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Fuyao News"><em th:utext="#{news.title}"><span>福耀</span>新闻</em>
+                        </h2>
+
+                        <div class="app-page-content-show">
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+                            <div class="app-news-container"
+                                 c data-ajax-list-json="/app/rest/news/pagination/front"
+                                 data-ajax-list-method="GET"
+                                 data-ajax-list-addition="true"
+                                 data-ajax-list-temp-id="list-topic-ajax-template-1"
+                                 data-ajax-list-page-now="1"
+                                 data-ajax-list-page-per="8"
+                                 data-ajax-list-page-total="-1"
+                                 data-ajax-list-trigger="#ajax-loadmore-btn-1"
+                                 data-ajax-list-trigger-active-class=".active"
+                                 data-ajax-list-push-container-class=".list-topic-items-ajax-container"
+                                 data-ajax-list-infinitescroll="false"
+                                 data-ajax-list-field-pageSize="8"
+                                 data-ajax-list-field-type="NEWS">
+
+
+                                <a th:each="item, itemStat : ${obj}" th:href="|/news/detail/${item.id}|"
+                                   data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+                                    <div class="custom-card4 el-row common-height">
+                                        <div class="custom-card4-image el-col el-col-3 el-col-stack"
+                                             th:style="|background: url(/uploads/${item.attachment.filePath});background-size: cover;|">
+                                            <img th:src="|/uploads/${item.attachment.filePath}|" alt=""></div>
+                                        <div class="custom-card4-content el-col el-col-9 el-col-stack">
+                                            <div class="custom-card4-title">
+                                                <span class="date font-sub-color" th:text="${item.dateStr}"></span>
+                                                <h3 class="custom-card4-headline"
+                                                    th:text="${item.title.getTranslatedStr(session.lang_session)}">IIHS
+                                                    research shows risk of
+                                                    uncalibrated front-facing cameras</h3>
+                                                <p th:text="${item.shortContent.getTranslatedStr(session.lang_session)}">
+                                                    Insurance Institute for Highway
+                                                    Safety
+                                                    testing of windshield-mounted
+                                                    advanced driver assistance systems last year found that a misaligned
+                                                    Honda Civic camera led......</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+
+                                <div class="list-topic-items-ajax-container"></div>
+                                <script id="list-topic-ajax-template-1" type="text/template7">
+
+                                    {{#each items}}
+
+                                    <a href="/news/detail/{{id}}"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+                                        <div class="custom-card4 el-row common-height">
+                                            <div class="custom-card4-image el-col el-col-3 el-col-stack"
+                                                 data-bg='{"src":"{{#attachment}}/uploads/{{filePath}}{{/attachment}}","position":"top left","size":"cover","repeat":"no-repeat","fill":false}'>
+                                                <img src="{{#attachment}}/uploads/{{filePath}}{{/attachment}}" alt="">
+                                            </div>
+                                            <div class="custom-card4-content el-col el-col-9 el-col-stack">
+                                                <div class="custom-card4-title">
+                                                    <span class="date font-sub-color">{{dateStr}}</span>
+                                                    <h3 class="custom-card4-headline">
+                                                        {{#title}}
+                                                        {{#each translations}}
+                                                        <span class="ajax-{{locale}}">{{text}}</span>
+                                                        {{/each}}
+                                                        {{/title}}
+
+                                                    </h3>
+                                                    <p>
+                                                        {{#shortContent}}
+                                                        {{#each translations}}
+                                                        <span class="ajax-{{locale}}">{{text}}</span>
+                                                        {{/each}}
+                                                        {{/shortContent}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </a>
+
+
+                                    {{/each}}
+
+                                </script>
+
+
+                            </div>
+                            <!-- /.app-news-container -->
+
+
+                            <p class="t-c">
+                                <a id="ajax-loadmore-btn-1" href="javascript:void(0)"
+                                   class="button button-border-thin button-size-s button-bg-primary"
+                                   th:utext="#{fragment.button.more}">查看更多</a>
+                            </p>
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+</html>
+
+    
+   

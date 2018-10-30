@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|" style="display: none">
+
+<script>
+    $(function(){
+        if($("body").attr("class").indexOf("zh_CN")==-1){
+            window.location.href="/";
+        }else{
+            $("body").css({"display":"block"});
+        }
+    })
+</script>
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm space-none-bottom "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Fuyao Global"><em
+                                th:utext="#{fragment.menu.global}"><span>福耀</span>全球</em></h2>
+
+                        <div class="app-page-content-show">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <ul class="app-cats">
+
+                                <li th:class="${type == 'SERVICE_NODE'} ? active"><a href="/global/SERVICE_NODE"
+                                                                                     data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                                                                     th:utext="#{global.service.node}">服务网点</a>
+                                </li>
+                            </ul>
+
+
+                            <!--
+                            如果后台使用select的change事件来异步更改自定义的select表单，则在回调时加上初始化样式的函数：
+                            $( document ).customSelectInit();
+
+                            如果无法运行，需要写成
+                            jQuery( document ).customSelectInit();
+
+
+                            后台传输的地图信息，请直接修改下面的 data-ajax-dynamic-dd-json 属性的json文件地址
+
+                            -->
+                            <div class="app-form-map">
+
+                                <div class="seamless-grid-container">
+
+
+                                    <div class="seamless-grid">
+                                        <!--<div class="seamless-col-2"-->
+                                        <!--th:if="${type == 'SERVICE_NODE' && #strings.toString(session.lang_session) == 'zh_CN'}">-->
+                                        <!--<div class="content">-->
+                                        <!--<div class="controls custom-select fullwidth">-->
+                                        <!--<label>-->
+                                        <!--<select id="dynamic-dd-country" name="dynamic-dd-country">-->
+
+                                        <!--<option value="中国" selected>中国</option>-->
+                                        <!--</select>-->
+
+                                        <!--</label>-->
+
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <div class="seamless-col-2"
+                                             th:if="${type == 'SERVICE_NODE'}">
+                                            <div class="content">
+                                                <div class="controls custom-select fullwidth">
+                                                    <label>
+                                                        <select
+                                                                id="dynamic-dd-province"
+                                                                name="dynamic-dd-province"
+                                                                th:placeholder="#{global.province}"
+                                                                th:data-ajax-dynamic-dd-json="|/app/rest/global/all/${type}|"
+                                                                data-ajax-dynamic-dd-method="GET"
+                                                                data-ajax-dynamic-dd-event="change"
+                                                                data-ajax-dynamic-dd-data=""
+                                                                data-ajax-dynamic-dd-associated="#dynamic-dd-city">
+
+                                                            <option value="" th:utext="#{global.province}">省份</option>
+
+                                                        </select>
+
+                                                    </label>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="seamless-col-2"
+                                             th:if="${type == 'SERVICE_NODE'}">
+                                            <div class="content">
+                                                <div class="controls custom-select fullwidth">
+                                                    <label>
+                                                        <select name="dynamic-dd-city" id="dynamic-dd-city"
+                                                                th:placeholder="#{global.city}">
+                                                            <option value="" th:utext="#{global.city}">城市</option>
+                                                        </select>
+
+                                                    </label>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div th:class="${type == 'SERVICE_NODE'} ? seamless-col-2 : seamless-col-4">
+                                            <div class="content">
+                                                <div class="controls fullwidth">
+                                                    <input type="text" class="float-label" name="map-keyword"
+                                                           id="map-keyword" autocomplete="off">
+                                                    <label th:utext="#{global.search.keyword}"><i class="fa fa-search"
+                                                                                                  aria-hidden="true"></i>
+                                                        输入关键词</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="seamless-col-2 btn">
+                                            <div class="content">
+                                                <button class="button button-hover button-border-thin button-size-s button-bg-primary"
+                                                        id="map-search" type="button"><span
+                                                        th:text="#{fragment.button.search}"></span>
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!-- .seamless-grid  end -->
+
+
+                                </div>
+                                <!-- /.seamless-grid-container -->
+
+
+                            </div>
+                            <!-- /.app-form-map -->
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+            <div class="app-location-wrapper">
+
+                <div class="app-location-selector">
+                    <div>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="app-maps">
+
+                <!--百度地图容器-->
+                <div id="dituContent"></div>
+
+            </div>
+
+
+        </section>
+
+
+        <style type="text/css">
+            .iw_poi_title {
+                color: #CC5522;
+                font-size: 14px;
+                font-weight: bold;
+                overflow: hidden;
+                padding-right: 13px;
+                white-space: nowrap
+            }
+
+            .iw_poi_content {
+                font: 12px arial, sans-serif;
+                overflow: visible;
+                padding-top: 4px;
+                white-space: -moz-pre-wrap;
+                word-wrap: break-word
+            }
+        </style>
+
+
+        <script type="text/javascript" th:inline="javascript">
+            var addrDesc = [[#{global.address}]];
+            var phoneDesc = [[#{global.phone}]];
+
+            // 百度地图API功能
+            var map = new BMap.Map("dituContent");
+            map.centerAndZoom(new BMap.Point(119.322804, 25.730405), 15);
+            map.enableScrollWheelZoom(true);
+
+
+            // 用名称设置地图中心点
+            function theLocationName(name) {
+
+                console.log(name);
+
+                if (typeof name != typeof undefined) {
+
+                    map.centerAndZoom(name, 19);
+
+
+                    // 创建地址解析器实例
+                    var myGeo = new BMap.Geocoder(),
+                        curPoint = '';
+                    // 将地址解析结果显示在地图上,并调整地图视野
+                    myGeo.getPoint(name, function (point) {
+
+                        var x = point.lng,
+                            y = point.lat;
+
+
+                        var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(35, 25), {
+                            offset: new BMap.Size(10, 25),
+                            imageOffset: new BMap.Size(16, 0 - 10 * 25)
+                        });
+
+
+                        var new_point = new BMap.Point(x, y);
+                        var marker = new BMap.Marker(new_point, {icon: myIcon});  // 创建标注
+                        map.addOverlay(marker);              // 将标注添加到地图中
+                    });
+
+
+                }
+
+
+            }
+
+            // 用经纬度设置地图中心点
+            function theLocation(x, y) {
+                map.clearOverlays();
+                var new_point = new BMap.Point(x, y);
+
+                var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(35, 25), {
+                    offset: new BMap.Size(10, 25),
+                    imageOffset: new BMap.Size(16, 0 - 10 * 25)
+                });
+
+                var marker = new BMap.Marker(new_point, {icon: myIcon});  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+
+                map.panTo(new_point);
+
+            }
+
+            function makePoint(point) {
+                var marker = new BMap.Marker(point);
+                map.addOverlay(marker);
+
+            }
+
+
+            (function ($) {
+                "use strict";
+
+                $(function () {
+
+
+
+                    //Show all shops
+                    if (
+                        window.location.href.indexOf('CAR_GLASS') >= 0 ||
+                        window.location.href.indexOf('FLOAT_GLASS') >= 0 ||
+                        window.location.href.indexOf('RESEARCH_HUB') >= 0 ||
+                        window.location.href.indexOf('SALES') >= 0
+                    ) {
+                        var shopsTxt_Frontend = '';
+
+                        var jsonFile = '/app/rest/global/all/SERVICE_NODE';
+
+                        if (window.location.href.indexOf('CAR_GLASS') >= 0) jsonFile = '/app/rest/global/all/CAR_GLASS';
+                        if (window.location.href.indexOf('FLOAT_GLASS') >= 0) jsonFile = '/app/rest/global/all/FLOAT_GLASS';
+                        if (window.location.href.indexOf('RESEARCH_HUB') >= 0) jsonFile = '/app/rest/global/all/RESEARCH_HUB';
+                        if (window.location.href.indexOf('SALES') >= 0) jsonFile = '/app/rest/global/all/SALES';
+
+
+                        $(document).searchJsonString({
+                            jsonFile: jsonFile,
+                            key: 'shops',
+                            callback: function (data) {
+
+
+                                //show the location list
+                                $('.app-location-wrapper').addClass('active');
+
+                                for (var g = 0; g < data.length; g++) {
+
+
+                                    var shops = data[g],
+                                        num = g + 1;
+
+                                    if (num < 10) num = '0' + num;
+
+                                    shopsTxt_Frontend += '		<li>';
+                                    shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
+                                    shopsTxt_Frontend += '				<span>' + num + '</span>';
+                                    shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
+                                    shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
+                                    shopsTxt_Frontend += '				<p>' + phoneDesc + '：' + shops.shoptel + '</p>';
+                                    shopsTxt_Frontend += '				<div class="icon"><strong>' + shops.shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
+                                    shopsTxt_Frontend += '			</a>';
+                                    shopsTxt_Frontend += '		</li>';
+
+                                }
+
+                                $('.app-location-selector > div > ul').html(shopsTxt_Frontend).promise().done(function () {
+
+                                    //fixed the number index
+                                    $('.app-location-selector > div > ul > li').each(function (index) {
+
+                                        var num = index + 1;
+                                        if (num < 10) num = '0' + num;
+                                        $(this).find('> a > span').text(num);
+                                    });
+
+                                });
+
+
+                            }
+                        });
+
+
+                        $(document).on('click', '#map-search', function (e) {
+
+
+                            e.preventDefault();
+
+                            var keywords = $('#map-keyword').val();
+
+
+                            if (keywords == '') {
+                                var shopsTxt_Frontend = '';
+
+                                $(document).searchJsonString({
+                                    jsonFile: jsonFile,
+                                    key: 'shops',
+                                    callback: function (data) {
+
+
+                                        //show the location list
+                                        $('.app-location-wrapper').addClass('active');
+
+                                        for (var g = 0; g < data.length; g++) {
+
+
+                                            var shops = data[g],
+                                                num = g + 1;
+
+                                            if (num < 10) num = '0' + num;
+
+                                            shopsTxt_Frontend += '		<li>';
+                                            shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
+                                            shopsTxt_Frontend += '				<span>' + num + '</span>';
+                                            shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
+                                            shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
+                                            shopsTxt_Frontend += '				<p>' + phoneDesc + '：' + shops.shoptel + '</p>';
+                                            shopsTxt_Frontend += '				<div class="icon"><strong>' + shops.shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
+                                            shopsTxt_Frontend += '			</a>';
+                                            shopsTxt_Frontend += '		</li>';
+
+                                        }
+
+                                        $('.app-location-selector > div > ul').html(shopsTxt_Frontend).promise().done(function () {
+
+                                            //fixed the number index
+                                            $('.app-location-selector > div > ul > li').each(function (index) {
+
+                                                var num = index + 1;
+                                                if (num < 10) num = '0' + num;
+                                                $(this).find('> a > span').text(num);
+                                            });
+
+                                        });
+
+
+                                    }
+                                });
+
+                            } else {
+
+                                var shopsTxt_Frontend = '';
+
+                                $(document).searchJsonString({
+                                    jsonFile: jsonFile,
+                                    key: 'shops',
+                                    callback: function (data) {
+
+
+                                        //show the location list
+                                        $('.app-location-wrapper').addClass('active');
+
+                                        for (var g = 0; g < data.length; g++) {
+
+
+                                            var shops = data[g],
+                                                num = g + 1;
+
+                                            if (num < 10) num = '0' + num;
+
+
+                                            if (shops.shopname.toLowerCase().indexOf(keywords.toLowerCase()) >= 0 || shops.shopaddress.toLowerCase().indexOf(keywords.toLowerCase()) >= 0) {
+                                                shopsTxt_Frontend += '		<li>';
+                                                shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
+                                                shopsTxt_Frontend += '				<span>' + num + '</span>';
+                                                shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
+                                                shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
+                                                shopsTxt_Frontend += '				<p>' + phoneDesc + '：' + shops.shoptel + '</p>';
+                                                shopsTxt_Frontend += '				<div class="icon"><strong>' + shops.shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
+                                                shopsTxt_Frontend += '			</a>';
+                                                shopsTxt_Frontend += '		</li>';
+                                            }
+
+                                        }
+
+                                        $('.app-location-selector > div > ul').html(shopsTxt_Frontend).promise().done(function () {
+
+                                            //fixed the number index
+                                            $('.app-location-selector > div > ul > li').each(function (index) {
+                                                var num = index + 1;
+                                                if (num < 10) num = '0' + num;
+                                                $(this).find('> a > span').text(num);
+                                            });
+
+                                        });
+
+
+                                    }
+                                });
+
+
+                            }
+
+
+                            return false;
+
+
+                        });
+
+
+                    } else {
+
+
+                        $(document).on('click', '#map-search', function (e) {
+
+
+                            e.preventDefault();
+
+
+                            var $this = $("#dynamic-dd-city option:selected"),
+                                curVal = $this.val(),
+                                curLongitude = $this.data('longitude'),
+                                curLatitude = $this.data('latitude'),
+                                curShops = $this.data('shops'),
+                                curCity = $this.data('name'),
+                                curCountry = $('#dynamic-dd-country option:selected').val(),
+                                keywords = $('#map-keyword').val();
+
+                            //theLocation( curLongitude, curLatitude );
+                            theLocationName(curCity);
+
+
+                            if (typeof curShops != typeof undefined) {
+
+                                //show the location list
+                                $('.app-location-wrapper').addClass('active');
+
+
+                                var shopsTxt = '';
+                                for (var k = 0; k < curShops.length; k++) {
+                                    //theLocation(curShops[k].shoplongitude, curShops[g].shoplatitude,curShops[k]);
+
+                                    var num = k + 1;
+                                    if (num < 10) num = '0' + num;
+
+                                    shopsTxt += '		<li>';
+                                    shopsTxt += '		    <a href="javascript:" class="map-go-locate" data-city="' + curCity + '" data-name="' + curShops[k].shopaddress + '" data-longitude="' + curShops[k].shoplongitude + '" data-latitude="' + curShops[k].shoplatitude + '" >';
+                                    shopsTxt += '				<span>' + num + '</span>';
+                                    shopsTxt += '				<h5>' + curShops[k].shopname + '</h5>';
+                                    shopsTxt += '				<p>' + addrDesc + '：' + curShops[k].shopaddress + '</p>';
+                                    shopsTxt += '				<p>' + phoneDesc + '：' + curShops[k].shoptel + '</p>';
+                                    shopsTxt += '				<div class="icon"><strong>' + curShops[k].shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
+                                    shopsTxt += '			</a>';
+                                    shopsTxt += '		</li>';
+
+                                }
+
+                                $('.app-location-selector > div > ul').html(shopsTxt).promise().done(function () {
+
+                                    //fixed the number index
+                                    $('.app-location-selector > div > ul > li').each(function (index) {
+
+                                        var num = index + 1;
+                                        if (num < 10) num = '0' + num;
+                                        $(this).find('> a > span').text(num);
+                                    });
+
+                                });
+
+                            } else {
+
+                                if (keywords == '') {
+                                    var text = [[#{global.search.alert}]];
+                                    alert(text);
+                                }
+
+                            }
+
+
+                            //Search keywords
+                            if (keywords != '') {
+
+                                var shopsTxt_Frontend = '';
+
+                                $(document).searchJsonString({
+                                    jsonFile: $('#dynamic-dd-province').data('ajax-dynamic-dd-json'),
+                                    key: 'shops',
+                                    callback: function (data) {
+
+
+                                        //show the location list
+                                        $('.app-location-wrapper').addClass('active');
+
+                                        for (var g = 0; g < data.length; g++) {
+
+
+                                            var shops = data[g],
+                                                num = g + 1;
+
+                                            if (num < 10) num = '0' + num;
+
+                                            if (shops.shopname.toLowerCase().indexOf(keywords.toLowerCase()) > 0 || shops.shopaddress.toLowerCase().indexOf(keywords.toLowerCase()) > 0) {
+                                                shopsTxt_Frontend += '		<li>';
+                                                shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="' + curCity + '" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
+                                                shopsTxt_Frontend += '				<span>' + num + '</span>';
+                                                shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
+                                                shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
+                                                shopsTxt_Frontend += '				<p>' + phoneDesc + '：' + shops.shoptel + '</p>';
+                                                shopsTxt_Frontend += '				<div class="icon"><strong>' + shops.shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
+                                                shopsTxt_Frontend += '			</a>';
+                                                shopsTxt_Frontend += '		</li>';
+                                            }
+
+                                        }
+
+                                        $('.app-location-selector > div > ul').html(shopsTxt_Frontend).promise().done(function () {
+
+                                            //fixed the number index
+                                            $('.app-location-selector > div > ul > li').each(function (index) {
+
+                                                var num = index + 1;
+                                                if (num < 10) num = '0' + num;
+                                                $(this).find('> a > span').text(num);
+                                            });
+
+                                        });
+
+                                    }
+                                });
+
+
+                            }
+
+
+                            return false;
+
+
+                        });
+
+
+                    }
+
+
+                    //The target select event
+                    $(document).on('change.cusSelectDynamicDD', '#dynamic-dd-city', function (e) {
+
+                        e.preventDefault();
+
+                        /*
+
+                        var $this        = $( this[ this.selectedIndex ] ),
+                            curVal       = $this.val(),
+                            curLongitude = $this.data( 'longitude' ),
+                            curLatitude  = $this.data( 'latitude' );
+
+                        theLocation( curLongitude, curLatitude );
+
+                        */
+
+                        return false;
+
+
+                    });
+
+
+                    $(document).on('click', '.map-go-locate', function (e) {
+
+
+                        e.preventDefault();
+
+                        var $this = $(this),
+                            curVal = $this.val(),
+                            curLongitude = $this.data('longitude'),
+                            curLatitude = $this.data('latitude'),
+                            curCity = $this.data('name');
+
+                        if (curLongitude == null || curLongitude == '' || curLongitude == 0) {
+                            theLocationName(curCity);
+                        } else {
+                            theLocation(curLongitude, curLatitude);
+                        }
+
+
+                        return false;
+
+
+                    });
+
+
+                });
+
+            })(jQuery);
+
+
+        </script>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+</html>
+
+    
+   

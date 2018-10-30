@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|" style="display: none">
+<script>
+    $(function(){
+        if($("body").attr("class").indexOf("zh_CN")==-1){
+            window.location.href="/";
+        }else{
+            $("body").css({"display":"block"});
+        }
+    })
+</script>
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header">
+
+
+    </header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text=""><em th:utext="#{agrr.provider.form.title}">注册申请AGRR认证合作商<span
+                                class="sub">&nbsp;&nbsp;*为必填项目</span></em></h2>
+
+                        <div class="app-page-content-show">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <!--
+                            如果后台使用select的change事件来异步更改自定义的select表单，则在回调时加上初始化样式的函数：
+                            $( document ).customSelectInit();
+
+                            如果无法运行，需要写成
+                            jQuery( document ).customSelectInit();
+
+
+                            后台传输的中国省份联动信息，请直接修改下面的 data-ajax-dynamic-dd-json 属性的json文件地址
+
+                            -->
+
+
+                            <div class="app-general-form-container">
+                                <form method="post" th:action="@{providerForm}" th:object="${obj}" enctype="multipart/form-data">
+                                    <input name="type" type="hidden" value="PROVIDER"/>
+
+                                    <!--<div class="row">-->
+                                    <!--<div class="col-sm-4 t-l" th:utext="#{agrr.provider.type}">-->
+                                    <!--认证服务商类型-->
+                                    <!--</div>-->
+
+                                    <!--<div class="col-sm-8 t-l">-->
+                                    <!--<div class="controls">-->
+                                    <!--<input type="text" class="float-label" name="verifyType">-->
+                                    <!--<label th:utext="#{agrr.provider.type.message}">汽车玻璃专业安装替换服务点</label>-->
+
+                                    <!--</div>-->
+
+                                    <!--</div>-->
+
+                                    <!--</div>-->
+                                    <!-- .row end -->
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.name}">
+                                            联系人姓名 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="name">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.phone}">
+                                            联系人电话 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="tel" class="float-label reqiured" name="tel">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.email}">
+                                            电子邮箱
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="email" class="float-label" name="email">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.company.name}">
+                                            公司名称 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="companyName">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l">
+
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls-file-container t-l">
+                                                <input type="file" id="my-file" name="file">
+                                                <label tabindex="0" for="my-file" class="controls-file-trigger"
+                                                       th:utext="#{agrr.provider.upload}"><i class="fa fa-cloud-upload"
+                                                                                             aria-hidden="true"></i>上传营业执照</label>
+                                            </div>
+                                            <p class="controls-file-return t-l"></p>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.company.code}">
+                                            统一社会信用代码 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="companyCode">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.shop.count}">
+                                            店铺数量 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="shopCount">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.address}">
+                                            经营地址 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l"
+                                             th:if="${#strings.toString(session.lang_session) != 'zh_CN'}">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="address">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-8 t-l"
+                                             th:if="${#strings.toString(session.lang_session) == 'zh_CN'}">
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select id="dynamic-dd-country" name="dynamic-dd-country">
+
+                                                        <option value="中国" selected>中国</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province"
+                                                            name="dynamic-dd-province"
+                                                            placeholder="省份"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city">
+
+                                                        <option value="">省份</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select name="dynamic-dd-city" id="dynamic-dd-city"
+                                                            placeholder="城市">
+                                                        <option value="">城市</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+                                            <br>
+
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="add">
+                                                <label>街道</label>
+
+                                                <a href="javascript:" class="app-add-more-add"><i
+                                                        class="fa fa-plus-circle"
+                                                        aria-hidden="true"></i></a>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row" style="display: none" id="more-add-form-1">
+                                        <div class="col-sm-4 t-l">
+                                            经营地址2
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select id="dynamic-dd-country2" name="dynamic-dd-country2">
+
+                                                        <option value="中国" selected>中国</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province2"
+                                                            name="dynamic-dd-province2"
+                                                            placeholder="省份"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city2">
+
+                                                        <option value="">省份</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select name="dynamic-dd-city2" id="dynamic-dd-city2"
+                                                            placeholder="城市">
+                                                        <option value="">城市</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+                                            <br>
+
+                                            <div class="controls">
+                                                <input type="text" class="float-label" name="add2">
+                                                <label>街道</label>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row" style="display: none" id="more-add-form-2">
+                                        <div class="col-sm-4 t-l">
+                                            经营地址3
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select id="dynamic-dd-country3" name="dynamic-dd-country3">
+
+                                                        <option value="中国" selected>中国</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province3"
+                                                            name="dynamic-dd-province3"
+                                                            placeholder="省份"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city3">
+
+                                                        <option value="">省份</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select name="dynamic-dd-city3" id="dynamic-dd-city3"
+                                                            placeholder="城市">
+                                                        <option value="">城市</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+                                            <br>
+
+                                            <div class="controls">
+                                                <input type="text" class="float-label" name="add3">
+                                                <label>街道</label>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row" style="display: none" id="more-add-form-3">
+                                        <div class="col-sm-4 t-l">
+                                            经营地址4
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select id="dynamic-dd-country4" name="dynamic-dd-country4">
+
+                                                        <option value="中国" selected>中国</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province4"
+                                                            name="dynamic-dd-province4"
+                                                            placeholder="省份"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city4">
+
+                                                        <option value="">省份</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select name="dynamic-dd-city4" id="dynamic-dd-city4"
+                                                            placeholder="城市">
+                                                        <option value="">城市</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+                                            <br>
+
+                                            <div class="controls">
+                                                <input type="text" class="float-label" name="add4">
+                                                <label>街道</label>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row" style="display: none" id="more-add-form-4">
+                                        <div class="col-sm-4 t-l">
+                                            经营地址5
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select id="dynamic-dd-country5" name="dynamic-dd-country5">
+
+                                                        <option value="中国" selected>中国</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province5"
+                                                            name="dynamic-dd-province5"
+                                                            placeholder="省份"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city5">
+
+                                                        <option value="">省份</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select name="dynamic-dd-city5" id="dynamic-dd-city5"
+                                                            placeholder="城市">
+                                                        <option value="">城市</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+                                            <br>
+
+                                            <div class="controls">
+                                                <input type="text" class="float-label" name="add5">
+                                                <label>街道</label>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.shop.size}">
+                                            主要门店面积（平方米） <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="shopSize">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.provider.service.type}">
+                                            目前主营业务 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="serviceType">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l">
+
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <button id="app-form-submit" type="submit"
+                                                    class="button button-border-thin button-size-s button-bg-primary">
+                                                <span th:text="#{fragment.button.submit.file}">提交资料</span>
+                                            </button>
+
+                                            <p class="response"></p>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                </form>
+                            </div>
+                            <!-- /.app-general-form-container -->
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+        <script type="text/javascript">
+
+            (function ($) {
+                "use strict";
+
+                $(function () {
+
+                    var addFormID = 1;
+                    $('.app-add-more-add').on('click', function (e) {
+                        e.preventDefault();
+
+                        if (addFormID == 5) {
+                            $(this).hide();
+                        }
+
+                        $('#more-add-form-' + addFormID).show();
+
+                        addFormID++;
+
+                    });
+
+
+                    // Input Validation
+                    $(document).on('submit', '.app-general-form-container form', function (e) {
+
+                        var $form = $(this),
+                            validationOK = true,
+                            emailRe = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm,
+                            numReg = /^\d+$/;
+
+
+                        //Email
+//						var emailVal = $form.find( '[name="email"]' ).val();
+//						if ( emailVal != '' && !emailRe.test( emailVal ) ) {
+//							$form.find( '.response' ).html( '<span class="no"><i class="fa fa-times" aria-hidden="true"></i> 电子邮箱格式不正确！</span>' );
+//
+//							validationOK = false;
+//						}
+
+
+                        $form.find('.reqiured').each(function () {
+
+
+                            if ($(this).val() == '') {
+
+                                var info = $(this)
+                                    .closest('.row')
+                                    .find('.col-sm-4')
+                                    .html()
+                                    .replace(/(&nbsp;|<([^>]+)>|\*)/ig, '');
+
+                                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> "' + info + '" 不能为空！</span>');
+
+                                $form.find('.response span').slideDown(300);
+
+                                validationOK = false;
+                                return false;
+
+                            }
+
+
+                        });
+
+                        $form.find('.response span').delay(3000).slideUp(300);
+
+
+                        if (validationOK) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+
+                    });
+
+
+                });
+
+            })(jQuery);
+
+
+        </script>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+</html>
+
+    

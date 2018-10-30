@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">联系我们 > 招商咨询</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>详情</h4>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+
+                        <form>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">公司名称</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.companyName" class="form-control"></input>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">名字</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.name" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">地址</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.address" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">营业执照</label>
+                                    <div id="shopcert" class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.shopCertAttachment.filePath" class="form-control"/>
+                                        <!--iframe id="saveImg" src="E:\upload\18082352617.png" style="display:none;"></iframe-->
+                                        <!--a id="download" href="" download="w3logo">下载</a-->
+                                    </div>
+
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">电话</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.phone" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">传真</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.fax" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">mail</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.mail" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">主题</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.subject" class="form-control"></input>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">提交时间</label>
+                                    <div class="col-md-6">
+                                        <input v-model="form.subDate" class="form-control"></input>
+                                    </div>
+                                </div>
+
+
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#content',
+        data: {
+            form: {
+                shopCertAttachment:{
+                    filePath:""
+                }
+            }
+        },
+        methods: {
+
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('business', {id: id}, function (res) {
+                    var demo = res.objs[0];
+
+                    this_vue.form = demo;
+                    $("#shopcert").append("<a href='/uploads/stream/"+this_vue.form.shopCertAttachment.filePath+"'download='banner'>下载</a>")
+
+
+                     console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        }
+    });
+</script>
+</body>
+
+</html>

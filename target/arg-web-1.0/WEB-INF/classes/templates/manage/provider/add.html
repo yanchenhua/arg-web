@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+<script type="text/javascript" src="/manage_static/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/manage_static/ckfinder/ckfinder.js"></script>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">AGRR合作 > AGRR合作商</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 padding-0">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>管理团队</h4>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form>
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">联系人姓名</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.name" class="form-control"/>
+                                    </div>
+
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">联系人电话</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.tel" class="form-control"/>
+                                    </div>
+
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">电子邮箱</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.email" class="form-control"/>
+                                    </div>
+
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">公司名称</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.companyName" class="form-control"/>
+                                    </div>
+
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">统一社会信用代码</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.companyCode" class="form-control"/>
+                                    </div>
+
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">店铺数量</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.shopCount" class="form-control"/>
+                                    </div>
+
+                                </div>
+
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经营地址</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.goodAddr" class="form-control"/>
+                                    </div>
+
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">主要门店面积（平方米）</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.shopSize" class="form-control"/>
+                                    </div>
+
+                                </div>
+
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">目前主营业务</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="form.serviceType" class="form-control"/>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            form: {}
+        },
+        methods: {
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                var this_vue = this;
+                this.$api.base.query('agrr', {id: id}, function (res) {
+                    var agrr = res.objs[0];
+                    this_vue.form = agrr;
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

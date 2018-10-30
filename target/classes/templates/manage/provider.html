@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="manage/fragment :: head"></head>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">AGRR合作 > AGRR合作商</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12 padding-0">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+
+                        <div class="responsive-table" id="app">
+                            <w-table :columns="columns" :table_list='table_list'
+                                     :data_source_config="data_source_config" @http_done='done'></w-table>
+                            <w-paging :total='total' :current='current' @switch_page='switch_page'></w-paging>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/table/style.css"/>
+<script src="/manage_static/js/me/table/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/paging/style.css"/>
+<script src="/manage_static/js/me/paging/bundle.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            total: 0,
+            current: 1,
+            columns: [
+                {
+                    title: '认证服务商类型',
+                    key: 'verifyType'
+                },
+                {
+                    title: '联系人姓名',
+                    key: 'name'
+                },
+                {
+                    title: '联系人电话',
+                    key: 'tel'
+                },
+                {
+                    title: '公司名称',
+                    key: 'companyName',
+                    render_cell: [{
+                        html: function (row, column, index) {
+                            var id = row['id'];
+                            var companyName = row['companyName'];
+                            return '<a href="provider/add.html?id='+id+'">' + companyName + '</a>';
+                        }
+                    }
+                    ]
+                }
+            ],
+            data_source_config: {
+                api: 'base.query',
+                module: 'agrr',
+                param: {
+                    pageCount: 1,
+                    type: 'PROVIDER'
+                },
+                transform: function (rst, this_vue) {
+                    return rst.objs;
+                }
+            },
+            table_list: []
+
+        },
+        methods: {
+            switch_page: function (num) {
+                this.data_source_config.param.pageCount = num;
+                this.$tools.page.set(num);
+            },
+            done: function (new_rst, native) {
+                //  console.info("是不是又触发了？");
+                this.total = native.sumCount;
+                this.table_list = new_rst;
+            }
+        },
+        created: function () {
+            var num = this.$tools.page.get();
+            if (num) {
+                this.current = num;
+                this.switch_page(num);
+            }
+        }
+    });
+</script>
+</html>

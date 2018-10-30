@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+<link rel="stylesheet" href="/front_static/css/style.css" media="all"/>
+<!--link rel="stylesheet" href="css/style.css"-->
+<style>
+.page { width:100%;background:#F0F0F0 url('img/dian2.png') repeat-x; }
+</style>
+<body th:class="|page ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header">
+    </header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm space-none-bottom "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Company Profile"><em
+                                th:utext="#{about.fuyao.intro}"><span>福耀</span>简介</em></h2>
+
+                        <div class="app-page-content-show">
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+                            <p><img th:src="|/uploads/${obj.bannerAttachment.filePath}|"
+                                    th:unless="${obj.bannerAttachment == null}" alt=""/></p>
+                            <br>
+                            <br>
+                            <p th:text="${obj.headDesc1.getTranslatedStr(session.lang_session)}">
+                                福耀集团全称福耀玻璃工业集团股份有限公司，1987年成立于中国福州，在中国16个省市以及美国、俄罗斯、德国、日本、韩国等9个国家和地区建立现代化生产基地，并在中美德设立6个研究设计中心，全球雇员约2.6万人，是全球规模最大的汽车玻璃专业供应商。股票分别在上海A股（代码600660）和香港H股（代码3606）上市。</p>
+
+                            <div class="equal-width-divs t-c">
+                                <ul>
+                                    <li><h1 class="font-primary-color">
+                                        <em th:text="${obj.count1.getTranslatedStr(session.lang_session)}">0</em>
+                                        <span th:text="${obj.unit1.getTranslatedStr(session.lang_session)}">/年</span>
+                                    </h1><span
+                                            th:text="${obj.param1.getTranslatedStr(session.lang_session)}">成立于中国福州</span>
+                                    </li>
+                                    <li><h1 class="font-primary-color">
+                                        <em th:text="${obj.count2.getTranslatedStr(session.lang_session)}">0</em>
+                                        <span th:text="${obj.unit2.getTranslatedStr(session.lang_session)}">/个</span>
+                                    </h1><span
+                                            th:text="${obj.param2.getTranslatedStr(session.lang_session)}">现代化生产基地</span>
+                                    </li>
+                                    <li><h1 class="font-primary-color">
+                                        <em th:text="${obj.count3.getTranslatedStr(session.lang_session)}">0</em><span
+                                            th:text="${obj.unit3.getTranslatedStr(session.lang_session)}">/个</span>
+                                    </h1><span
+                                            th:text="${obj.param3.getTranslatedStr(session.lang_session)}">研究设计中心</span>
+                                    </li>
+                                    <li><h1 class="font-primary-color">
+                                        <em th:text="${obj.count4.getTranslatedStr(session.lang_session)}">0</em><span
+                                            th:text="${obj.unit4.getTranslatedStr(session.lang_session)}">/万名</span>
+                                    </h1><span
+                                            th:text="${obj.param4.getTranslatedStr(session.lang_session)}">全球雇员</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- .custom-breadcrumbs  end -->
+
+
+                            <br>
+                            <p th:text="${obj.headDesc2.getTranslatedStr(session.lang_session)}">
+                                福耀产品得到全球顶级汽车制造企业及主要汽车厂商的认证和选用，包括宾利、奔驰、宝马、奥迪、通用、丰田、大众、福特、克莱斯勒等知名车企。为全球汽车制造商供应优质的产品（OEM）和与OEM同等质量的维修市场使用的汽车玻璃产品（ARG）。
+
+                            </p>
+
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+        <!-- ///////////////////////   Other Content  ////////////////////////// -->
+
+        <section class="spacing-sm space-none-bottom space-none-top section-bg-gray2 "
+                 >
+            <div class="container relative">
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div style="padding-top: 1.5rem;">
+                            <h2 class="heading-overlay t-l full" data-text="Development Process"><em
+                                    th:utext="#{about.fuyao.development}"><span>发展</span>历程</em></h2>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <!-- .row end -->
+
+
+            </div>
+            <!-- .container end -->
+		<div id="box" style="width:100%;height:400px;overflow:hidden;margin-top:70px">
+			<!--div style="margin-left:370px">
+		  		<img src="../front_static/css/../images/up.png"/ width="20" height="20">
+			  </div-->
+			<ul class="event_list">
+				<li th:each="item, itemStat : ${developments}">
+				<span th:text="${item.occurDateStr}">9月</span>
+				<p><span th:utext="${item.developText.getTranslatedStr(session.lang_session)}"></span></p>
+				</li>
+			
+		  </ul>
+
+		</div>
+		<div style="margin-left:640px">
+	  	<img src="../front_static/css/../images/down.png"/ width="20" height="20">
+	  </div>
+		<script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
+		<script>
+			$(function(){
+				var scroll_distance = 0
+				$(".event_list").bind('mousewheel', function(event,delta){
+					event.preventDefault();
+					console.log("delta = "+delta);
+					
+					scroll_distance -= delta>0?30:-30;
+					if(scroll_distance<0){
+						scroll_distance = 0;
+						}
+					var end = $(".event_list").outerHeight()-$("#box").outerHeight();
+					console.log(end)
+					if(scroll_distance>end){
+						scroll_distance = end;
+						}
+					$(".event_list").css("margin-top", -scroll_distance)
+					})
+				})
+		</script>
+
+        </section>
+
+
+        <!-- ///////////////////////   Other Content  ////////////////////////// -->
+
+
+        <section class="space-sm space-none-bottom "
+                 >
+
+            <div class="container relative app-slider-wrapper">
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Quality Certificate"><em
+                                th:utext="#{about.fuyao.cert}">质量<span>认证证书</span></em></h2>
+
+                        <div class="app-page-section-placeholder"></div>
+
+
+                        <div class="app-certificate-list">
+
+
+                            <div class="seamless-grid-container none-breaking">
+
+                                <div class="seamless-grid loop">
+
+                                    <div th:each="item, itemStat : ${certificates}" class="seamless-col-2">
+                                        <div class="content">
+                                            <a class="custom-lightbox" href="javascript:void(0);"
+                                               th:data-lb-src="|/uploads/${item.attachment.filePath}|"><img
+                                                    th:src="|/uploads/${item.attachment.filePath}|"
+                                                    th:unless="${item.attachment == null}" alt=""/></a>
+                                            <p th:text="${item.text.getTranslatedStr(session.lang_session)}"
+                                               class="t-c">质量管理体系认证证书</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- .seamless-grid  end -->
+
+
+                            </div>
+                            <!-- /.seamless-grid-container -->
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <!-- .row end -->
+
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+        <!-- ///////////////////////   Other Content  ////////////////////////// -->
+
+
+        <section class="space-sm section-bg-gray2 app-slider-wrapper" id="app-honor">
+
+            <div class="container relative  "
+                 >
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Our Honor"><em th:utext="#{about.fuyao.honor}">我们的<span>荣耀</span></em>
+                        </h2>
+
+                        <div class="app-page-section-placeholder"></div>
+
+
+                        <div class="custom-theme-flexslider custom-itemgrid custom-itemgrid-honor"
+                             data-draggable="false"
+                             data-my-nav-thumbs="false"
+                             data-my-prev-next-thumbs="false"
+                             data-my-nav-timeline="false"
+                             data-my-controls=".my-nav-2"
+                             data-my-multiple-items="6"
+                             data-my-count-total="false"
+                             data-my-count-now="false"
+                             data-my-parallax="false"
+                             data-my-sync="false"
+                             data-wheel="false"
+                             data-speed="600"
+                             data-timing="10000"
+                             data-loop="true"
+                             data-paging="false"
+                             data-arrows="true"
+                             data-animation="slide"
+                             data-auto="true"
+                             data-prev="<i class='fa fa-chevron-left'></i>"
+                             data-next="<i class='fa fa-chevron-right'></i>">
+
+                            <div class="custom-theme-slides">
+
+                                <div class="item" th:each="item, itemStat : ${honors}">
+
+                                    <a class="custom-lightbox" href="javascript:void(0);"
+                                       th:data-lb-src="|/uploads/${item.attachment.filePath}|"><img
+                                            th:src="|/uploads/${item.attachment.filePath}|"
+                                            th:unless="${item.attachment == null}" alt=""/></a>
+
+                                    <div class="info">
+                                        <a class="custom-lightbox dot-ripple-bg" href="javascript:void(0);"
+                                           th:data-lb-src="|/uploads/${item.attachment.filePath}|"></a>
+                                        <p th:text="${item.text.getTranslatedStr(session.lang_session)}">捷豹路虎全球供应商金奖</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- .custom-theme-slides end -->
+
+                        </div>
+                        <!-- .custom-theme-flexslider end -->
+
+
+                    </div>
+
+                </div>
+                <!-- .row end -->
+
+
+                <div class="custom-navigation style-1 style-1_2 style-1_3 my-nav-2">
+                    <a href="#" class="custom-theme-flex-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                    <a href="#" class="custom-theme-flex-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+        <!--			<div class="app-slider-line"></div>-->
+
+
+        <!-- ///////////////////////   Other Content  ////////////////////////// -->
+
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative app-slider-wrapper">
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Our Customers"><em
+                                th:utext="#{about.fuyao.cust}">我们的<span>客户</span></em></h2>
+
+                        <div class="app-page-section-placeholder"></div>
+
+                        <div class="app-page-content-show"
+                             th:utext="${obj.cusText.getTranslatedStr(session.lang_session)}">
+
+                        </div>
+                        <!-- .row end -->
+
+
+
+
+                        <!-- .row end -->
+
+
+                        <!--
+                                                <div class="tab-nav" data-mouseevent="click">
+                                                    <div class="on">全球战略客户</div>
+                                                    <div>中国市场客户</div>
+                                                </div>
+                                                <div>
+
+                                                    <div class="tab-content on">
+                                                        <div class="app-clients-list">
+                                                            <img class="el-zoom" data-uix-anim='{"from":{"scale":0},"to":{"scale":1},"ease":"Power2.easeOut","duration":0.8,"delay":0.1,"infinite":false}' src="assets/images/clients-global.png" alt="" />
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="tab-content">
+                                                        <div class="app-clients-list">
+                                                            <img class="el-zoom" data-uix-anim='{"from":{"scale":0},"to":{"scale":1},"ease":"Power2.easeOut","duration":0.8,"delay":0.1,"infinite":false}' src="assets/images/clients-cn.png" alt="" />
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                        -->
+
+
+                    </div>
+
+                </div>
+                <!-- .row end -->
+
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js">
+
+</div>
+
+
+</body>
+</html>
+
+    
+   

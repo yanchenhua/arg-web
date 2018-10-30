@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|" style="display: none">
+<script>
+    $(function(){
+        if($("body").attr("class").indexOf("zh_CN")==-1){
+            window.location.href="/";
+        }else{
+            $("body").css({"display":"block"});
+        }
+    })
+</script>
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header">
+
+
+    </header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm space-none-bottom "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Demonstration"><em
+                                th:utext="#{agrr.good.provider}"><span>AGRR</span>汽车玻璃安装替换商</em></h2>
+
+                        <div class="app-page-content-show detail2">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+
+                            <div class="tab-nav" data-mouseevent="click">
+                                <div class="on" th:utext="#{agrr.good.provider.global}">国内优秀示范商</div>
+                                <div th:utext="#{agrr.good.provider.oversea}">海外优秀示范商</div>
+                            </div>
+                            <div>
+                                <!--tab1-->
+                                <div class="tab-content on">
+
+
+                                    <div class="app-news-container"
+                                         data-ajax-list-json="/app/rest/agrr/pagination/front"
+                                         data-ajax-list-method="GET"
+                                         data-ajax-list-addition="true"
+                                         data-ajax-list-temp-id="list-topic-ajax-template-1"
+                                         data-ajax-list-page-now="1"
+                                         data-ajax-list-page-per="8"
+                                         data-ajax-list-page-total="-1"
+                                         data-ajax-list-trigger="#ajax-loadmore-btn-1"
+                                         data-ajax-list-trigger-active-class=".active"
+                                         data-ajax-list-push-container-class=".list-topic-items-ajax-container"
+                                         data-ajax-list-infinitescroll="false"
+                                         data-ajax-list-field-pageSize="8"
+                                         data-ajax-list-field-type="CHINA">
+
+
+                                        <div th:each="item, itemStat : ${china}"
+                                             class="custom-card4_2 el-row common-height">
+                                            <div class="custom-card4_2-image el-col el-col-4 el-col-stack"
+                                                 th:data-bg='|{"src":"/uploads/${item.shopBannerAttachment.filePath}","position":"top left","size":"cover","repeat":"no-repeat","fill":false}|'
+                                                 th:unless="${item.shopBannerAttachment == null}">
+                                                <img th:src="|/uploads/${item.shopBannerAttachment.filePath}|"
+                                                     th:unless="${item.shopBannerAttachment == null}" alt=""></div>
+                                            <div class="custom-card4_2-content el-col el-col-8 el-col-stack">
+                                                <div class="custom-card4_2-title">
+
+                                                    <h3 class="custom-card4_2-headline"
+                                                        th:text="${item.goodCompanyName.getTranslatedStr(session.lang_session)}">
+                                                        南京福耀汽车玻璃有限公司</h3>
+
+                                                    <p th:text="${item.goodText.getTranslatedStr(session.lang_session)}">
+                                                        主营进口、国产各品牌汽车玻璃。是ctc安装服务认证单位，专业提供汽车玻璃修补、更换、美容等服务。现有直营店7家、苏皖两地经销网点70多家。</p>
+                                                    <p class="font-sub-color">
+                                                        <i class="fa fa-user" aria-hidden="true"></i> <span
+                                                            th:text="${item.goodName.getTranslatedStr(session.lang_session)}"></span>
+                                                        <i class="fa fa-phone" aria-hidden="true"></i> <span
+                                                            th:text="${item.goodTel.getTranslatedStr(session.lang_session)}"></span>
+                                                        <i class="fa fa-map-marker" aria-hidden="true"></i> <span
+                                                            th:text="${item.goodAddr.getTranslatedStr(session.lang_session)}"></span>
+                                                    </p>
+                                                    <p>
+                                                        <a th:href="|http://map.baidu.com/?latlng=${item.lat},${item.lng}&title=${item.goodCompanyName.getTranslatedStr(session.lang_session)}|"
+                                                           target="_blank"
+                                                           class="button button-border-thin button-size-s button-bg-primary"
+                                                           th:utext="#{fragment.button.map}">查看地图</a>
+                                                    </p>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-topic-items-ajax-container"></div>
+                                        <script id="list-topic-ajax-template-1" type="text/template7">
+
+                                            {{#each items}}
+
+                                            <div class="custom-card4_2 el-row common-height">
+                                                <div class="custom-card4_2-image el-col el-col-4 el-col-stack"
+                                                     data-bg='{"src":"{{#attachment}}/uploads/{{filePath}}{{/attachment}}","position":"top left","size":"cover","repeat":"no-repeat","fill":false}'>
+                                                    <img src="{{#attachment}}/uploads/{{filePath}}{{/attachment}}"
+                                                         alt=""></div>
+                                                <div class="custom-card4_2-content el-col el-col-8 el-col-stack">
+                                                    <div class="custom-card4_2-title">
+
+                                                        <h3 class="custom-card4_2-headline">
+                                                            {{#title}}
+                                                            {{#each translations}}
+                                                            <span class="ajax-{{locale}}">{{text}}</span>
+                                                            {{/each}}
+                                                            {{/title}}
+
+                                                        </h3>
+
+                                                        <p>
+                                                            {{#content}}
+                                                            {{#each translations}}
+                                                            <span class="ajax-{{locale}}">{{text}}</span>
+                                                            {{/each}}
+                                                            {{/content}}
+                                                        </p>
+
+                                                        <p class="font-sub-color">
+                                                            <i class="fa fa-user" aria-hidden="true"></i> {{createdBy}}
+
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <i class="fa fa-phone" aria-hidden="true"></i> 400-688-3000
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                            {{address}}
+                                                        </p>
+                                                        <p>
+                                                            <a href="https://map.baidu.com/?lng={{lng}}&lat={{lat}}"
+                                                               target="_blank"
+                                                               class="button button-border-thin button-size-s button-bg-primary"
+                                                               th:utext="#{fragment.button.map}">查看地图</a>
+                                                        </p>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            {{/each}}
+
+                                        </script>
+
+
+                                    </div>
+                                    <!-- /.app-news-container -->
+
+
+                                    <p class="t-c">
+                                        <a id="ajax-loadmore-btn-1" href="javascript:void(0)"
+                                           class="button button-border-thin button-size-s button-bg-primary"
+                                           th:utext="#{fragment.button.more}">查看更多</a>
+                                    </p>
+
+
+                                </div>
+                                <!--tab2-->
+                                <div class="tab-content">
+
+
+                                    <div class="app-news-container"
+                                         data-ajax-list-json="/app/rest/agrr/pagination/front"
+                                         data-ajax-list-method="GET"
+                                         data-ajax-list-addition="true"
+                                         data-ajax-list-temp-id="list-topic-ajax-template-2"
+                                         data-ajax-list-page-now="1"
+                                         data-ajax-list-page-per="8"
+                                         data-ajax-list-page-total="-1"
+                                         data-ajax-list-trigger="#ajax-loadmore-btn-2"
+                                         data-ajax-list-trigger-active-class=".active"
+                                         data-ajax-list-push-container-class=".list-topic-items-ajax-container"
+                                         data-ajax-list-infinitescroll="false"
+                                         data-ajax-list-field-pageSize="8"
+                                         data-ajax-list-field-type="OVERSEA">
+
+
+                                        <div th:each="item, itemStat : ${oversea}"
+                                             class="custom-card4_2 el-row common-height">
+                                            <div class="custom-card4_2-image el-col el-col-4 el-col-stack"
+                                                 th:data-bg='|{"src":"/uploads/${item.shopBannerAttachment.filePath}","position":"top left","size":"cover","repeat":"no-repeat","fill":false}|'
+                                                 th:unless="${item.shopBannerAttachment == null}">
+                                                <img th:src="|/uploads/${item.shopBannerAttachment.filePath}|"
+                                                     th:unless="${item.shopBannerAttachment == null}" alt=""></div>
+                                            <div class="custom-card4_2-content el-col el-col-8 el-col-stack">
+                                                <div class="custom-card4_2-title">
+
+                                                    <h3 class="custom-card4_2-headline" th:text="${item.companyName}">
+                                                        南京福耀汽车玻璃有限公司</h3>
+
+                                                    <p th:text="${item.textStr}">
+                                                        主营进口、国产各品牌汽车玻璃。是ctc安装服务认证单位，专业提供汽车玻璃修补、更换、美容等服务。现有直营店7家、苏皖两地经销网点70多家。</p>
+                                                    <p class="font-sub-color">
+                                                        <i class="fa fa-user" aria-hidden="true"
+                                                           th:text="${item.name}"></i>
+                                                        <i class="fa fa-phone" aria-hidden="true"
+                                                           th:text="${item.tel}"></i>
+                                                        <i class="fa fa-map-marker" aria-hidden="true"
+                                                           th:text="${item.addrs[0].text}"
+                                                           th:if="${not #lists.isEmpty(item.addrs)}"></i>
+                                                    </p>
+                                                    <p>
+                                                        <a th:href="|https://map.baidu.com?lng=${item.addrs[0].lng}&lat=${item.addrs[0].lat}|"
+                                                           target="_blank"
+                                                           th:if="${not #lists.isEmpty(item.addrs)}"
+                                                           class="button button-border-thin button-size-s button-bg-primary"
+                                                           th:utext="#{fragment.button.map}">查看地图</a>
+                                                    </p>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="list-topic-items-ajax-container"></div>
+                                        <script id="list-topic-ajax-template-2" type="text/template7">
+
+                                            {{#each items}}
+
+
+                                            <div class="custom-card4_2 el-row common-height">
+                                                <div class="custom-card4_2-image el-col el-col-4 el-col-stack"
+                                                     data-bg='{"src":"{{#attachment}}/uploads/{{filePath}}{{/attachment}}","position":"top left","size":"cover","repeat":"no-repeat","fill":false}'>
+                                                    <img src="{{#attachment}}/uploads/{{filePath}}{{/attachment}}"
+                                                         alt=""></div>
+                                                <div class="custom-card4_2-content el-col el-col-8 el-col-stack">
+                                                    <div class="custom-card4_2-title">
+
+                                                        <h3 class="custom-card4_2-headline">
+                                                            {{#title}}
+                                                            {{#each translations}}
+                                                            <span class="ajax-{{locale}}">{{text}}</span>
+                                                            {{/each}}
+                                                            {{/title}}
+
+                                                        </h3>
+
+                                                        <p>
+                                                            {{#content}}
+                                                            {{#each translations}}
+                                                            <span class="ajax-{{locale}}">{{text}}</span>
+                                                            {{/each}}
+                                                            {{/content}}
+                                                        </p>
+
+                                                        <p class="font-sub-color">
+                                                            <i class="fa fa-user" aria-hidden="true"></i> {{createdBy}}
+
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <i class="fa fa-phone" aria-hidden="true"></i> 400-688-3000
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                            {{address}}
+                                                        </p>
+                                                        <p>
+                                                            <a href="https://map.baidu.com/?lng={{lng}}&lat={{lat}}"
+                                                               target="_blank"
+                                                               class="button button-border-thin button-size-s button-bg-primary"
+                                                               th:utext="#{fragment.button.map}">查看地图</a>
+                                                        </p>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            {{/each}}
+
+                                        </script>
+
+
+                                    </div>
+                                    <!-- /.app-news-container -->
+
+
+                                    <p class="t-c">
+                                        <a id="ajax-loadmore-btn-2" href="javascript:void(0)"
+                                           class="button button-border-thin button-size-s button-bg-primary"
+                                           th:utext="#{fragment.button.more}">查看更多</a>
+                                    </p>
+
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+</html>
+
+    
+   

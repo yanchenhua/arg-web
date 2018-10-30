@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+<style>
+    .product-diy_content {
+        width: 300px;
+        float: left;
+    }
+
+    .diy_img {
+        width: 300px;
+        float: left;
+    }
+
+    .img_placeholder {
+        height: 150px;
+        overflow: hidden;
+    }
+</style>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">关于福耀 > 发展历程</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 ">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>福耀简介-发展历程</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form>
+                            <div class="col-md-12">
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">发展历程</label>
+                                    <div class="col-md-6">
+                                        <input type="button" class="btn btn-success" id="addbtn" v-on:click="add_one"
+                                               value="添加一条"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6" style="width:90%" id="comlist"></div>
+                                </div>
+
+                                <div style="clear: both;"></div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+<template type="text/x-template" id="template">
+    <div v-if="show" class="row" style="display: flex;align-items: flex-start;width: 100%;">
+        <div class="col-sm-12 col-md-12 product-grid diy_content">
+            <div class="thumbnail">
+                <div class="caption">
+                    <!--<p>日期：-->
+                    <!--<div class="input-append date datetimepicker">-->
+                    <!--<span class="add-on">-->
+                    <!--<input type="text" v-model="occurDate">-->
+                    <!--<input type="hidden" v-model="timestamp">-->
+                    <!--</span>-->
+                    <!--</div>-->
+                    <!--</p>-->
+                    <p>日期：
+                        <input type="text" v-model="occurDateStr" class="form-control"/>
+                    </p>
+                    <p>内容：
+                        <textarea v-model="developTextStr" class="form-control"></textarea>
+                    </p>
+                    <p>排序
+                        <input type="text" v-model="sort" class="form-control"/>
+                    </p>
+                    <p>
+                        <a class="submit btn btn-danger" @click="add" role="button">确认</a>
+                        <a class="btn btn-primary delbtn" v-on:click="delete_item" role="button">删除</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<link type="text/css" href="/manage_static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"/>
+<script src="/manage_static/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/table/style.css"/>
+<script src="/manage_static/js/me/table/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/paging/style.css"/>
+<script src="/manage_static/js/me/paging/bundle.js"></script>
+<script>
+    Date.prototype.format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            add_one: function () {
+                this.create_html();
+            },
+            add: function (event) {
+                jump2next('', event);
+            },
+            query: function () {
+                var this_vue = this;
+                this.$api.base.all('development', {}, function (res) {
+                    // console.info(res);
+                    for (var i in res) {
+                        var timestamp = new Date(res[i].occurDate).getTime();
+                        var developTextStr = this_vue.$tools.getTranslationsText(res[i], 'developText', locale);
+                        res[i].developTextStr = developTextStr;
+                        res[i].timestamp = timestamp;
+
+                        this_vue.create_html(res[i]);
+                    }
+                });
+            },
+            create_html: function (param) {
+                if (!param) {
+                    param = {};
+                }
+                var tpl = Vue.extend({
+                    template: "#template",
+                    data: function () {
+                        return {
+                            show: true,
+                            occurDate: param.occurDate || '',
+                            timestamp: param.timestamp || 0,
+                            developTextStr: param.developTextStr || '',
+                            developText: param.developText || {},
+                            occurDateStr: param.occurDateStr || '',
+                            sort: param.sort || '',
+                            id: param.id || null,
+                        }
+                    },
+                    methods: {
+                        add: function () {
+                            // console.info(this.timestamp);
+                            var form = {
+                                timestamp: this.timestamp,
+                                developText: this.developText,
+                                occurDateStr: this.occurDateStr,
+                                sort: 0
+                            }
+                            if (this.id) {
+                                form['id'] = this.id;
+                            }
+                            this.$api.base.add('development', form, function (res) {
+                                console.info(res);
+                                alert('操作成功');
+                            });
+                        },
+                        show_clock: function () {
+                            // $('.datetimepicker').datetimepicker();
+                        },
+                        delete_item: function () {
+                            if (!this.id) {
+                                return;
+                            }
+                            var this_vue = this;
+                            this.$api.base.delete('development', this.id, function (res) {
+                                // console.info(res);
+                                this_vue.show = false;
+                            });
+                        }
+                    },
+                    watch: {
+                        developTextStr: function (n) {
+                            var obj = this.$tools.setTranslationsText(this, 'developText', locale, n);
+                            // console.info(obj);
+
+                            // this.$set(this.developText,'translations',obj)
+                        }
+                    }
+                })
+                //var this_vue = this;
+                var instance = new tpl().$mount();
+                document.getElementById('comlist').appendChild(instance.$el);
+                // document.getElementById('comlist').insertBefor(instance.$el);
+                $('.datetimepicker').datetimepicker({
+                    format: 'yyyy-MM-dd',
+                    language: 'en',
+                    pickDate: true,
+                    pickTime: true,
+                    hourStep: 1,
+                    minuteStep: 15,
+                    secondStep: 30,
+                    inputMask: true
+                }).on('changeDate', function (ev) {
+                    var d = ev.date.getDate();
+                    var m = ev.date.getMonth() + 1;
+                    if (m < 10) {
+                        m = '0' + m;
+                    }
+                    if (d < 10) {
+                        d = '0' + d;
+                    }
+                    var y = ev.date.getFullYear();
+                    instance.$set(instance, 'timestamp', ev.date.valueOf());
+                    instance.$set(instance, 'occurDate', y + '-' + m + '-' + d);
+                });
+            }
+        },
+        mounted: function () {
+            this.query();
+        }
+    });
+
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+
+
+</html>

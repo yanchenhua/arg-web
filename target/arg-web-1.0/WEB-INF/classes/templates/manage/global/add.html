@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">福耀全球 &gt; 网点列表</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 padding-0">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>网点列表</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">名称</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="shopnameStr" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">类型</label>
+                                    <div class="col-md-2">
+                                        <select v-model="form.type" class="form-control" style="margin-top:0px;">
+                                            <option value="CAR_GLASS" selected="selected">汽车琉璃</option>
+                                            <option value="FLOAT_GLASS">浮法琉璃</option>
+                                            <option value="RESEARCH_HUB">研发中心</option>
+                                            <option value="SALES">ARG销售机构</option>
+                                            <option value="SERVICE_NODE">服务网点</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">图片</label>
+                                    <div class="col-md-6">
+                                        <a v-if="form.globalBannerAttachment" title="预览" class="iconimg"
+                                           :href="form.globalBannerAttachment.src" onclick="return hs.expand(this)">
+                                            <img style="max-width:20px;" :src="form.globalBannerAttachment.src"/>
+                                        </a>
+                                        <input type="file" class="file_select" @change="upload($event)"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">省市</label>
+                                    <div class="col-md-6" style="width:130px;">
+                                        <input v-model="globalNameStr" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6" style="width: 20%;">
+                                        <input v-model="cityNameStr" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">地址</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="shopaddressStr" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">电话</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.shoptel" class="form-control"/>
+                                    </div>
+                                </div>
+                                <!--div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">联系人</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.shopcontact" class="form-control"/>
+                                    </div>
+                                </div-->
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">联系人</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="shopcontactStr" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经纬</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="jw" class="form-control"/>
+                                        <a target="_blank" href="http://api.map.baidu.com/lbsapi/getpoint/index.html">获取坐标(选择坐标后，点右上角的复制)</a>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经度</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.shoplongitude" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">纬度</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.shoplatitude" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" @click="add" type="button" value="确认"/>
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            shopnameStr: '',
+            shopaddressStr: '',
+            globalNameStr: '',
+            cityNameStr: '',
+            shopcontactStr:'',
+            jw: '',
+            form: {
+                shopname: {},
+                shoptel: '',
+                shopcontact:{},
+                shopaddress: {},
+                shoptype: '',
+                shoplongitude: '',
+                shoplatitude: '',
+                type: 'CAR_GLASS',
+                globalBannerAttachment: {},
+                //顶层name
+                //static\front_static\json\countries.json
+                globalName: {},
+                //次层name
+                //static\front_static\json\countries.json
+                cityName: {}
+            }
+        },
+        methods: {
+            upload: function (event) {
+                //console.info(model);
+                console.info(event)
+                console.info("-----target="+event.target);
+                var file = event.target;
+                var this_vue = this;
+                var attachment = this.form.globalBannerAttachment;
+                console.info(attachment)
+                if(!attachment){
+                    attachment={"file":""};
+                }
+                attachment.file = file.files[0],
+                    this.$api.file.upload(attachment, function (res) {
+                        console.info(res);
+                        res.type = 'IMAGE';
+                        // res.id = null ;
+                        this_vue.form.globalBannerAttachment = res;
+                        if (res.filePath) {
+                            var url = "/uploads/" + res.filePath;
+                            this_vue.form.globalBannerAttachment.src = url;
+                        }
+                    });
+            },
+            add: function (event) {
+                //console.info(this.form);
+                if (this.form.shoplongitude == '' || this.form.shoplatitude == '') {
+                    alert('请完善坐标');
+                    return;
+                }
+                this.$api.base.add('global', this.form, function (res) {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                }, function (res) {
+                    console.error(res);
+                    document.location.href = '/manage/global'
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null) {
+                    return;
+                }
+                console.info("getgetgetget")
+                this.$api.base.query('global', {id: id}, function (res) {
+                    var global = res.objs[0];
+
+                    if (global) {
+                        console.info("getgetgetget111111111")
+
+                        //attachment.src ="";
+
+                        this_vue.form = global;
+                        this_vue.shopnameStr = this_vue.$tools.getTranslationsText(global, 'shopname', locale);
+                        this_vue.shopcontactStr = this_vue.$tools.getTranslationsText(global, 'shopcontact', locale);
+                        this_vue.shopaddressStr = this_vue.$tools.getTranslationsText(global, 'shopaddress', locale);
+                        this_vue.globalNameStr = this_vue.$tools.getTranslationsText(global, 'globalName', locale);
+                        this_vue.cityNameStr = this_vue.$tools.getTranslationsText(global, 'cityName', locale);
+                        var attachment = global.globalBannerAttachment;
+                        attachment.src = "/uploads/" + attachment.filePath;
+                       /* if(attachment){
+                            console.info("!null")
+                            attachment.src = "/uploads/" + attachment.filePath;
+                        }else{
+                            console.info("nullnull")
+                            attachment.src ="/uploads/18071931905.jpg";
+                        }*/
+                    }
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            'jw': function (n, o) {
+                console.info(n);
+                var strs = n.split(',');
+                this.form.shoplongitude = strs[0];
+                this.form.shoplatitude = strs[1];
+            },
+            'shopnameStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'shopname', locale, n);
+            },
+            'shopaddressStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'shopaddress', locale, n);
+            },
+            'globalNameStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'globalName', locale, n);
+            },
+            'cityNameStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'cityName', locale, n);
+            },
+            'shopcontactStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'shopcontact', locale, n);
+            }
+        }
+    });
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+</body>
+</html>

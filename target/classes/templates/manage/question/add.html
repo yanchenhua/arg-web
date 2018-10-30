@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">AGRR合作 > Q&A</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>Q&A</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+
+                        <form>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">问题</label>
+                                    <div class="col-md-6">
+                                        <textarea v-model="questionStr" placeholder="输入问题" rows="4"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">回答</label>
+                                    <div class="col-md-6">
+                                        <textarea v-model="answerStr" placeholder="输入答案" rows="4"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">类型</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" style="margin-top:0px;" v-model="form.type">
+                                            <option selected="selected" value="SERVICE">服务商</option>
+                                            <option value="PROVIDER">合作商</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="button" @click="add" value="确认">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#content',
+        data: {
+            questionStr: '',
+            answerStr: '',
+            form: {
+                question: {},
+                answer: {},
+                type: 'SERVICE'
+            }
+        },
+        methods: {
+            add: function (event) {
+                // console.info(this.form);
+                this.$api.base.add('question', this.form, function (res) {
+                    // delete this.form.id
+                    console.info(res);
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('question', {id: id}, function (res) {
+                    var demo = res.objs[0];
+
+                    this_vue.form = demo;
+                    var questionStr = this_vue.$tools.getTranslationsText(demo, 'question', locale);
+                    var answerStr = this_vue.$tools.getTranslationsText(demo, 'answer', locale);
+                    this_vue.questionStr = questionStr;
+                    this_vue.answerStr = answerStr;
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            'questionStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'question', locale, n);
+            },
+            'answerStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'answer', locale, n);
+            }
+        }
+    });
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+</body>
+
+</html>

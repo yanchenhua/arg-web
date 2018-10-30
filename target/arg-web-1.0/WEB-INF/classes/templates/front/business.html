@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Inquiry"><em
+                                th:utext="#{business.title}"><span>招商</span>咨询</em></h2>
+
+                        <div class="app-page-content-show">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <!--
+                            如果后台使用select的change事件来异步更改自定义的select表单，则在回调时加上初始化样式的函数：
+                            $( document ).customSelectInit();
+
+                            如果无法运行，需要写成
+                            jQuery( document ).customSelectInit();
+
+
+                            后台传输的中国省份联动信息，请直接修改下面的 data-ajax-dynamic-dd-json 属性的json文件地址
+
+                            -->
+
+
+                            <div class="app-general-form-container">
+                                <form method="post" th:action="@{submitBusiness}" th:object="${obj}" enctype="multipart/form-data">
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l" th:utext="#{business.name}">
+                                            姓名<span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-9 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="name">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l" th:utext="#{business.company.name}">
+                                            公司名称<span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-9 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="companyName">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l" th:utext="#{business.contact.addr}">
+                                            联系地址<span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-9 t-l"
+                                             th:if="${#strings.toString(session.lang_session) != 'zh_CN'}">
+
+                                            <div class="controls custom-select" style="float: right">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province-en"
+                                                            name="country"
+                                                            placeholder="Country"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/world.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city">
+
+                                                        <option value="" class="reqiured">Country</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+                                            <div class="controls col-md-4" style="float: right">
+                                                <input type="text" class="float-label reqiured" name="city">
+                                                <label>City</label>
+
+                                            </div>
+                                            <div class="controls col-md-4" style="float: right">
+                                                <input type="text" class="float-label reqiured" name="province">
+                                                <label>State/Province</label>
+                                            </div>
+
+                                            <div class="controls ">
+                                                <input type="text" class="float-label reqiured" name="street">
+                                                <label>Address</label>
+                                            </div>
+                                            <!--div class="controls ">
+                                                <input type="text" class="float-label reqiured" name="address">
+
+                                            </div-->
+
+                                        </div>
+
+                                        <div class="col-sm-9 t-l"
+                                             th:if="${#strings.toString(session.lang_session) == 'zh_CN'}">
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select id="dynamic-dd-country" name="country">
+
+                                                        <option value="中国" selected class="reqiured">中国</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province"
+                                                            name="province"
+                                                            placeholder="省份"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city">
+
+                                                        <option value="" class="reqiured">省份</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select name="city" id="dynamic-dd-city"
+                                                            placeholder="城市">
+                                                        <option value="" class="reqiured">城市</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+                                            <br>
+
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="street"/>
+                                                <label>街道</label>
+
+                                            </div>
+
+                                            <input type="hidden" name="address"/>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l">
+
+                                        </div>
+
+                                        <div class="col-md-3 t-l">
+                                            <div class="controls-file-container t-l" style="width: 160px;text-align: center;">
+                                                <input type="file" id="my-file" name="file">
+                                                <label tabindex="0" for="my-file" class="controls-file-trigger"
+                                                       th:utext="#{business.upload}"><i class="fa fa-cloud-upload"
+                                                                                            aria-hidden="true"></i></label>
+                                            </div>
+                                            <p class="controls-file-return t-l"></p>
+
+
+                                        </div>
+                                        <label class="col-sm-6 t-l" th:utext="#{business.tip}" style="color: #999;">Company photos or the screenshot of Baidu/Google Map Positioning for identification</label>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l" th:utext="#{business.phone}">
+                                            电话<span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-9 t-l">
+                                            <div class="controls">
+                                                <input type="tel" class="float-label reqiured" name="phone">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l" th:utext="#{business.fax}">
+                                            传真
+                                        </div>
+
+                                        <div class="col-sm-9 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label" name="fax">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l" th:utext="#{business.email}">
+                                            邮箱<span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-9 t-l">
+                                            <div class="controls">
+                                                <input type="email" class="float-label reqiured" name="mail">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l" th:utext="#{business.subject}">
+                                            主题<span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-9 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="subject">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-sm-3 t-l">
+
+                                        </div>
+
+                                        <div class="col-sm-9 t-l">
+                                            <button id="app-form-submit" type="submit"
+                                                    th:utext="#{fragment.button.submit.file}"
+                                                    class="button button-border-thin button-size-s button-bg-primary">
+                                                提交信息
+                                            </button>
+                                            <p class="response"></p>
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                </form>
+                            </div>
+                            <!-- /.app-general-form-container -->
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+        <script type="text/javascript">
+
+            (function ($) {
+                "use strict";
+
+                $(function () {
+
+                    //The target select event
+                    $(document).on('change.cusSelectDynamicDD', '#dynamic-dd-city', function (e) {
+
+                        e.preventDefault();
+
+//							var $this        = $( this[ this.selectedIndex ] ),
+//								curVal       = $this.val(),
+//								curArea      = $this.data( 'area' );
+//
+//							
+//							console.log( curArea );
+
+                        return false;
+
+                    });
+                    // Input Validation
+                    $(document).on('submit', '.app-general-form-container form', function (e) {
+                        //alert("submit")
+                        var $form = $(this),
+                            validationOK = true,
+                            emailRe = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm,
+                            numReg = /^\d+$/;
+
+
+                        //Email
+//						var emailVal = $form.find( '[name="email"]' ).val();
+//						if ( emailVal != '' && !emailRe.test( emailVal ) ) {
+//							$form.find( '.response' ).html( '<span class="no"><i class="fa fa-times" aria-hidden="true"></i> 电子邮箱格式不正确！</span>' );
+//
+//							validationOK = false;
+//						}
+
+
+                        $form.find('.reqiured').each(function () {
+
+                            //alert("re")
+                            if ($(this).val() == '') {
+
+                                var info = $(this)
+                                    .closest('.row')
+                                    .find('.col-sm-3')
+                                    .html()
+                                    .replace(/(&nbsp;|<([^>]+)>|\*)/ig, '');
+                                var str = "<span>不能为空!</span>"
+                                if($("body").attr("class").indexOf("zh_CN")==-1){
+                                    str = "<span>can't be empty!</span>"
+                                }
+
+                                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> "' + info +str+ '" </span>');
+
+                                $form.find('.response span').slideDown(300);
+
+                                validationOK = false;
+                                return false;
+
+                            }
+
+
+                        });
+
+                        $form.find('.response span').delay(3000).slideUp(300);
+
+
+                        if (validationOK) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+
+                    });
+
+
+                });
+
+            })(jQuery);
+
+
+        </script>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+</html>
+
+    
+   

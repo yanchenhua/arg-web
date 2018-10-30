@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+<script type="text/javascript" src="/manage_static/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/manage_static/ckfinder/ckfinder.js"></script>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">首页 > 主视觉</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 padding-0">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>home</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form>
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">查询服务网点</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" placeholder="http://" v-model="form.serviceLink"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">查询汽车玻璃</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" placeholder="http://" v-model="form.searchLink"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">配件系统</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" placeholder="http://" v-model="form.fySystemLink"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">照片</label>
+                                    <div class="col-md-6">
+                                        <input type="button" class="btn btn-success" id="addbtn"
+                                               v-on:click="create_html()" value="添加一条"/>
+                                    </div>
+                                </div>
+                                <div id="filelist"></div>
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">法律标题</label>
+                                    <div class="col-md-6">
+                                        <input v-model="legalTitleStr" class="form-control"></input>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">法律正文</label>
+                                    <div class="col-md-6">
+                                        <textarea name="kcontent" v-model="legalContentStr"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="button" v-on:click="add" value="确认"/>
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<template type="text/x-template" id="template">
+    <div v-if="form.is_show" class="form-group" style="clear: both;">
+        <label class="col-sm-2 control-label text-right">照片</label>
+        <div class="col-md-6">
+            <a v-if="form.attachment.src" title="预览" class="iconimg" :href="form.attachment.src"
+               onclick="return hs.expand(this)">
+                <img style="max-width:20px;" :src="form.attachment.src"/>
+            </a>
+            <input type="file" class="file_select" @change="upload($event)"/>
+            <input type="text" @blur="save" placeholder="大标题" style="margin-top:30px;" v-model="descStr"
+                   class="form-control"/>
+            <input type="text" @blur="save" placeholder="小标题" style="margin-top:10px;" v-model="descStr2"
+                   class="form-control"/>
+        </div>
+        <div class="col-md-2">
+            <input style="margin-left:10px;" class="btn btn-info ml10" type="button" @click="delete_attr" value="删除"/>
+        </div>
+    </div>
+</template>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            legalContentStr: '',
+            legalTitleStr: '',
+            form: {
+                serviceLink: '',
+                searchLink: '',
+                fySystemLink: '',
+                webTitle: '',
+                keywords: '',
+                webDesc: '',
+                copyRight: '',
+                caseNum: '',
+                legalContent: {},
+                legalTitle: {}
+            }
+        },
+        methods: {
+            add: function (event) {
+                console.log(this.form);
+                this.$api.base.add('home', this.form, function (res) {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                this.$api.base.all('home', {}, function (res) {
+                    var home = res.objs[0];
+                    if (home) {
+                        this_vue.form = home;
+                        //判断是否有附件
+                        var attachments = home.attachment;
+                        if (attachments == null || JSON.stringify(attachments) == '[]') {
+                            this_vue.create_html();
+                        } else {
+                            for (var i in attachments) {
+                                var attachment = attachments[i];
+                                if (attachment.filePath) {
+                                    attachment.src = '/uploads/' + attachment.filePath;
+                                }
+                                var form = {};
+                                form.is_show = true;
+                                form.attachment = attachment;
+                                this_vue.create_html(form);
+                            }
+                        }
+                        var legalTitleStr = this_vue.$tools.getTranslationsText(home, 'legalTitle', locale);
+                        var legalContentStr = this_vue.$tools.getTranslationsText(home, 'legalContent', locale);
+                        this_vue.legalTitleStr = legalTitleStr;
+                        this_vue.legalContentStr = legalContentStr;
+                        this_vue.$tools.setDataToEditor('kcontent', legalContentStr);
+                    }
+                })
+            },
+            create_html: function (param) {
+                if (!param) {
+                    param = {};
+                }
+                var tpl = Vue.extend({
+                    template: "#template",
+                    data: function () {
+                        return {
+                            descStr: '',
+                            descStr2: '',
+                            form: {
+                                is_show: true,
+                                attachment: {
+                                    type: 'HOME',
+                                    displayName: '',
+                                    filePath: '',
+                                    src: '',
+                                    desc: {},
+                                    desc2: {}
+                                }
+                            }
+                        }
+                    },
+                    methods: {
+                        delete_attr: function () {
+                            var this_vue = this;
+                            this.$ajax.get('/uploads/delete/' + this.form.attachment.id).then(function (res) {
+                                this_vue.form.is_show = false;
+                            }).catch(function (res) {
+                                console.error(res);
+                            });
+                        },
+                        upload: function (event) {
+                            var files = event.target.files;
+                            var this_vue = this;
+                            var attachment = this.form.attachment;
+                            attachment.file = files[0];
+                            attachment.type = 'HOME';
+                            this.$api.file.upload(attachment, function (res) {
+                                // res.id = null ;
+                                this_vue.form.attachment = res;
+                                if (res.filePath) {
+                                    var url = "/uploads/" + res.filePath;
+                                    this_vue.form.attachment.src = url;
+                                }
+                            });
+                        },
+                        save: function () {
+                            var this_vue = this;
+                            this.$api.base.add('attachment', this.form.attachment, function (res) {
+                                // console.info(res);
+                                this_vue.form.attachment = res;
+                            });
+                        }
+                    },
+                    created: function () {
+                        if (JSON.stringify(param) != '{}') {
+                            this.form = param;
+                            var desc1 = this.$tools.getTranslationsText(param.attachment, 'desc', locale);
+                            var desc2 = this.$tools.getTranslationsText(param.attachment, 'desc2', locale);
+                            this.descStr = desc1;
+                            this.descStr2 = desc2;
+                        }
+                    },
+                    watch: {
+                        descStr: function (n, o) {
+                            this.$tools.setTranslationsText(this.form.attachment, 'desc', locale, n);
+                        },
+                        descStr2: function (n, o) {
+                            this.$tools.setTranslationsText(this.form.attachment, 'desc2', locale, n);
+                        }
+                    }
+                })
+                //var this_vue = this;
+                var instance = new tpl().$mount();
+                document.getElementById('filelist').appendChild(instance.$el);
+
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            legalContentStr: function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'legalContent', locale, n);
+            },
+            legalTitleStr: function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'legalTitle', locale, n);
+            },
+        }
+    });
+</script>
+<script type="text/javascript">
+    var editor = CKEDITOR.replace('kcontent', {
+        width: '100%',
+        height: 300,
+        filebrowserImageUploadUrl: '/uploads/upload4'
+    });
+    CKFinder.setupCKEditor(editor, 'ckfinder/');
+    editor.on('change', function (event) {
+        var data = this.getData();//内容
+        //将文本域的内容，同步到 form.textStr中去
+        app.$set(app, "legalContentStr", data);
+    });
+
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+</body>
+
+</html>

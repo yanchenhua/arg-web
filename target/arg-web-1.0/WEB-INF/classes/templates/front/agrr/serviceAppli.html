@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|" style="display: block">
+<!--script>
+    $(function(){
+        if($("body").attr("class").indexOf("zh_CN")==-1){
+            window.location.href="/";
+        }else{
+            $("body").css({"display":"block"});
+        }
+    })
+</script-->
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header">
+
+
+    </header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text=""><em th:utext="#{agrr.service.form.title}">注册申请AGRR认证服务商<span
+                                class="sub">&nbsp;&nbsp;*为必填项目</span></em></h2>
+
+                        <div class="app-page-content-show">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <!--
+                            如果后台使用select的change事件来异步更改自定义的select表单，则在回调时加上初始化样式的函数：
+                            $( document ).customSelectInit();
+
+                            如果无法运行，需要写成
+                            jQuery( document ).customSelectInit();
+
+
+                            后台传输的中国省份联动信息，请直接修改下面的 data-ajax-dynamic-dd-json 属性的json文件地址
+
+                            -->
+
+
+                            <div class="app-general-form-container">
+                                <form method="post" th:action="@{serviceForm}" th:object="${obj}" enctype="multipart/form-data">
+                                    <input name="type" type="hidden" value="SERVICE"/>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.type}">
+                                            认证服务商类型
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <!--div class="controls">
+                                                <input type="text" class="float-label" name="verifyType">
+                                                <label th:utext="#{agrr.service.type.message}">汽车玻璃专业安装替换服务点</label>
+
+                                            </div-->
+                                            <div style="margin-bottom: 1.09375rem;">
+                                                <select name="verifyType" class="form-control" style="margin-top:0px;">
+                                                    <option value="汽车玻璃安装替换店" selected="selected" th:utext="#{service_select0}">汽车玻璃安装替换店</option>
+                                                    <option value="独立汽车维修厂" th:utext="#{service_select1}">独立汽车维修厂</option>
+                                                    <option value="连锁快修店" th:utext="#{service_select2}">连锁快修店</option>
+                                                    <option value="4S店" th:utext="#{service_select3}">4S店</option>
+                                                    <option value="其他汽车维修服务商" th:utext="#{service_select4}">其他汽车维修服务商</option>
+                                                </select>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.name}">
+                                            联系人姓名 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="name">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.phone}">
+                                            联系人电话 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="tel" class="float-label reqiured" name="tel">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.email}">
+                                            电子邮箱
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="email" class="float-label" name="email">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.company.name}">
+                                            公司名称 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="companyName">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l">
+                                            营业执照
+                                        </div>
+
+                                        <div class="col-sm-4 t-l">
+                                            <div class="controls-file-container t-l">
+                                                <input type="file" id="my-file" name="file" class="reqiured">
+                                                <label tabindex="0" for="my-file" class="controls-file-trigger"
+                                                       th:utext="#{agrr.service.upload}"><i class="fa fa-cloud-upload"
+                                                                                            aria-hidden="true"></i>上传营业执照</label>
+                                            </div>
+                                            <p class="controls-file-return t-l"></p>
+
+                                        </div>
+                                        <div class="col-sm-4 t-l">
+                                            <div class="controls-file-container t-l">
+                                                <input type="file" id="otherfile" name="otherfile">
+                                                <label tabindex="0" for="otherfile" class="controls-file-trigger"
+                                                ><i class="fa fa-cloud-upload"
+                                                    aria-hidden="true"></i>上传店铺图片等其他资料</label>
+                                            </div>
+                                            <p class="controls-file-return t-l">可支持rar,zip等压缩文件格式</p>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.company.code}">
+                                            统一社会信用代码 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="companyCode">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.shop.count}">
+                                            店铺数量 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="shopCount">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.address}">
+                                            经营地址 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l"
+                                             th:if="${#strings.toString(session.lang_session) != 'zh_CN'}">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="address">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-8 t-l"
+                                             th:if="${#strings.toString(session.lang_session) == 'zh_CN'}">
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select id="dynamic-dd-country" name="country">
+
+                                                        <option value="中国" selected>中国</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select
+                                                            id="dynamic-dd-province"
+                                                            name="province"
+                                                            placeholder="省份"
+                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                            data-ajax-dynamic-dd-method="GET"
+                                                            data-ajax-dynamic-dd-event="change"
+                                                            data-ajax-dynamic-dd-data=""
+                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city">
+
+                                                        <option value="">省份</option>
+
+                                                    </select>
+
+                                                </label>
+                                            </div>
+
+
+                                            <div class="controls custom-select">
+                                                <label>
+                                                    <select name="city" id="dynamic-dd-city"
+                                                            placeholder="城市">
+                                                        <option value="">城市</option>
+                                                    </select>
+
+                                                </label>
+
+                                            </div>
+
+                                            <br>
+
+                                            <div class="controls">
+                                                <input type="text" class="float-label" name="street" placeholder="街道">
+
+                                                <a href="javascript:" class="app-add-more-add"><i
+                                                        class="fa fa-plus-circle"
+                                                        aria-hidden="true"></i></a>
+
+
+                                            </div>
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="postCode">
+                                                <label>邮编</label>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div id="app-add-more--forms"></div>
+
+
+                                    <!-- .row end -->
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.shop.size}">
+                                            主要门店面积（平方米） <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="shopSize">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.depot.size}">
+                                            主要门店仓库面积（平方米） <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="depotSize">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.service.type}">
+                                            目前主营业务 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" class="float-label reqiured" name="serviceType">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.slot.count}">
+                                            有几个安装工位 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="slotCount">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.tech.count}">
+                                            有几个专业汽车玻璃安装技术 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="techCount">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.tran.count}">
+                                            有几辆工具车 <span class="controls-im">*</span>
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <div class="controls">
+                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="tranCount">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-sm-4 t-l">
+
+                                        </div>
+
+                                        <div class="col-sm-8 t-l">
+                                            <button id="app-form-submit" type="submit"
+
+                                                    class="button button-border-thin button-size-s button-bg-primary">
+                                                <span th:text="#{fragment.button.submit.file}">提交资料</span>
+                                            </button>
+                                            <p class="response"></p>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- .row end -->
+
+
+                                </form>
+                            </div>
+                            <!-- /.app-general-form-container -->
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+        <style>
+            ::placeholder {
+                color: rgba(0,0,0,.4);
+                font-size: 1rem;
+                text-indent: 1rem;
+            }
+        </style>
+
+
+        <script type="text/javascript">
+
+            (function ($) {
+                "use strict";
+
+                $(function () {
+
+                    var addFormID = 1;
+                    $( '.app-add-more-add' ).on( 'click', function( e ) {
+                        e.preventDefault();
+
+
+
+                        var newform = '';
+
+                        newform += '<div class="row" id="more-add-form-'+addFormID+'">';
+                        newform += '	<div class="col-sm-4 t-l"> 经营地址'+addFormID+' </div>';
+                        newform += '	<div class="col-sm-8 t-l">';
+                        newform += '		<div class="controls custom-select">';
+                        newform += '			<label>';
+                        newform += '				<select id="country'+addFormID+'" name="country">';
+                        newform += '					<option value="中国" selected>中国</option>';
+                        newform += '				</select>';
+                        newform += '			</label>';
+                        newform += '		</div>';
+                        newform += '		<div class="controls custom-select">';
+                        newform += '			<label>';
+                        newform += '				<select id="province'+addFormID+'" name="province" placeholder="省份" data-ajax-dynamic-dd-json="/front_static/json/china.json" data-ajax-dynamic-dd-method="GET" data-ajax-dynamic-dd-event="change" data-ajax-dynamic-dd-data="" data-ajax-dynamic-dd-associated="#dynamic-dd-city'+addFormID+'">';
+                        newform += '					<option value="">省份</option>';
+                        newform += '				</select>';
+                        newform += '			</label>';
+                        newform += '		</div>';
+                        newform += '		<div class="controls custom-select">';
+                        newform += '			<label>';
+                        newform += '				<select name="city" id="dynamic-dd-city'+addFormID+'" placeholder="城市">';
+                        newform += '					<option value="">城市</option>';
+                        newform += '				</select>';
+                        newform += '			</label>';
+                        newform += '		</div>';
+                        newform += '		<div class="controls">';
+                        newform += '			<input type="text" class="float-label" name="street" placeholder="街道">';
+                        newform += '			';
+                        newform += '		</div>';
+                        newform += '		<div class="controls">';
+                        newform += '				<input type="text" class="float-label reqiured" name="postCode">'
+                        newform += '			<label>邮编</label>';
+                        newform += '		</div>';
+                        newform += '		<br>';
+                        newform += '	</div>';
+                        newform += '</div>';
+                        newform += '<!-- .row end -->';
+
+                        $( '#app-add-more--forms' ).after( newform );
+
+
+                        $( document ).customSelectInit();
+
+                        if ( App.dynamicDDList ) App.dynamicDDList.documentReady($);
+
+                        addFormID++;
+
+                    });
+
+
+                    // Input Validation
+                    $(document).on('submit', '.app-general-form-container form', function (e) {
+
+                        var $form = $(this),
+                            validationOK = true,
+                            emailRe = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm,
+                            numReg = /^\d+$/;
+
+
+                        //Email
+//						var emailVal = $form.find( '[name="email"]' ).val();
+//						if ( emailVal != '' && !emailRe.test( emailVal ) ) {
+//							$form.find( '.response' ).html( '<span class="no"><i class="fa fa-times" aria-hidden="true"></i> 电子邮箱格式不正确！</span>' );
+//
+//							validationOK = false;
+//						}
+
+
+                        $form.find('.reqiured').each(function () {
+
+
+                            if ($(this).val() == '') {
+
+                                var info = $(this)
+                                    .closest('.row')
+                                    .find('.col-sm-4')
+                                    .html()
+                                    .replace(/(&nbsp;|<([^>]+)>|\*)/ig, '');
+
+                                $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> "' + info + '" 不能为空！</span>');
+
+                                $form.find('.response span').slideDown(300);
+
+                                validationOK = false;
+                                return false;
+
+                            }
+
+
+                        });
+
+                        $form.find('.response span').delay(3000).slideUp(300);
+
+
+                        if (validationOK) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+
+                    });
+
+
+                });
+
+            })(jQuery);
+
+
+        </script>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+</html>
+
+    

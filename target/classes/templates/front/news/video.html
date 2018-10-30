@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm space-none-bottom "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Video"><em th:utext="#{news.video}">视频中心</em>
+                        </h2>
+
+                        <div class="app-page-content-show">
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+
+                            <div class="seamless-grid-container2">
+
+                                <div class="seamless-grid loop">
+
+
+                                    <div class="custom-gallery" data-show-type="" data-filter-id="">
+
+                                        <div class="custom-gallery-tiles"
+                                             data-ajax-list-json="/app/rest/media/pagination/front"
+                                             data-ajax-list-method="GET"
+                                             data-ajax-list-addition="true"
+                                             data-ajax-list-temp-id="list-topic-ajax-template-1"
+                                             data-ajax-list-page-now="1"
+                                             data-ajax-list-page-per="8"
+                                             data-ajax-list-page-total="-1"
+                                             data-ajax-list-trigger="#ajax-loadmore-btn-1"
+                                             data-ajax-list-trigger-active-class=".active"
+                                             data-ajax-list-push-container-class=".list-topic-items-ajax-container"
+                                             data-ajax-list-infinitescroll="false"
+                                             data-ajax-list-field-pageSize="8"
+                                             data-ajax-list-field-type="VIDEO">
+
+
+                                            <!-- Item -->
+                                            <div th:each="item, itemStat : ${videos}"
+                                                 class="seamless-col-3 custom-gallery-item html3D-bg" data-groups=''>
+
+                                                <div class="content">
+                                                    <a href="javascript:void(0)" data-video-win="true"
+                                                       th:data-video-poster="|/uploads/${item.picture.filePath}|"
+                                                       th:data-video-mp4="|/uploads/${item.attachment.filePath}|"
+                                                       data-video-webm="" data-video-ogv=""
+                                                       th:data-modal-id="|web-modal-${itemStat.index}|"
+                                                       th:data-video-id="|web-video-${itemStat.index}|"
+                                                       class="image"
+                                                       data-3d-animate='{"offset":10,"triggerEl":true,"reset":true}'>
+                                                        <div class="cover">
+                                                            <img th:src="|/uploads/${item.picture.filePath}|" alt=""/>
+                                                        </div>
+                                                    </a>
+                                                    <p>
+                                                        <a href="javascript:void(0)" data-video-win="true"
+                                                           th:data-video-poster="|/uploads/${item.picture.filePath}|"
+                                                           th:data-video-mp4="|/uploads/${item.attachment.filePath}|"
+                                                           data-video-webm="" data-video-ogv=""
+                                                           th:data-modal-id="|web-modal-${itemStat.index}|"
+                                                           th:data-video-id="|web-video-${itemStat.index}|"
+                                                           th:text="${item.title.getTranslatedStr(session.lang_session)}"
+                                                        >镀膜玻璃</a>
+
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+                                            <!--  .custom-gallery-item  end -->
+
+
+                                            <div class="list-topic-items-ajax-container"></div>
+                                            <script id="list-topic-ajax-template-1" type="text/template7">
+
+                                                {{#each items}}
+
+                                                <!-- Item -->
+                                                <div class="seamless-col-3 custom-gallery-item html3D-bg"
+                                                     data-groups=''>
+
+                                                    <div class="content">
+                                                        <a href="javascript:void(0)" data-video-win="true"
+                                                           data-video-poster="/front_static/videos/1920x1080/demo.jpg"
+                                                           data-video-mp4="/front_static/videos/1920x1080/demo.mp4"
+                                                           data-video-webm="" data-video-ogv=""
+                                                           data-modal-id="web-modal-1" data-video-id="web-video-1"
+                                                           class="image"
+                                                           data-3d-animate='{"offset":10,"triggerEl":true,"reset":true}'>
+                                                            <div class="cover">
+                                                                <img src="{{#attachment}}/uploads/{{filePath}}{{/attachment}}"
+                                                                     alt=""/>
+                                                            </div>
+                                                        </a>
+                                                        <p>
+                                                            <a href="javascript:void(0)" data-video-win="true"
+                                                               data-video-poster="/front_static/videos/1920x1080/demo.jpg"
+                                                               data-video-mp4="/front_static/videos/1920x1080/demo.mp4"
+                                                               data-video-webm="" data-video-ogv=""
+                                                               data-modal-id="web-modal-1" data-video-id="web-video-1">
+
+                                                                {{#title}}
+                                                                {{#each translations}}
+                                                                <span class="ajax-{{locale}}">{{text}}</span>
+                                                                {{/each}}
+                                                                {{/title}}
+
+                                                            </a>
+
+                                                        </p>
+
+                                                    </div>
+
+
+                                                </div>
+                                                <!--  .custom-gallery-item  end -->
+
+
+                                                {{/each}}
+
+                                            </script>
+
+
+                                        </div>
+                                        <!-- .custom-gallery-tiles end -->
+
+
+                                    </div>
+                                    <!-- .custom-gallery end -->
+
+
+                                </div>
+                                <!-- .seamless-grid  end -->
+                            </div>
+                            <!-- /.seamless-grid-container -->
+
+
+                            <p class="t-c">
+                                <a id="ajax-loadmore-btn-1" href="javascript:void(0)"
+                                   class="button button-border-thin button-size-s button-bg-primary"
+                                   th:utext="#{fragment.button.more}">查看更多</a>
+                            </p>
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+    
+   

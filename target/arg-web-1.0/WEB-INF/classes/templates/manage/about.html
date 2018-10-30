@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+<script type="text/javascript" src="/manage_static/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/manage_static/ckfinder/ckfinder.js"></script>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">关于福耀 > 福耀简介</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 ">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>福耀简介</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">图片</label>
+                                    <div class="col-md-6">
+                                        <input type="file" class="file_select"
+                                               v-on:change="upload('bannerAttachment',$event)"
+                                               accept="image/gif, image/jpeg, image/png"/>
+                                        <input type="hidden" v-model="form.bannerAttachment">
+                                        <img v-if="form.bannerAttachment.src" :src="form.bannerAttachment.src"
+                                             style="max-width: 40px;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">描述</label>
+                                    <div class="col-md-6">
+                                        <textarea v-model="headDesc1Str" rows="4" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">指标1</label>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="指标" v-model="param1Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="数字" v-model="count1Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="单位" v-model="unit1Str"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">指标2</label>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="指标" v-model="param2Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="数字" v-model="count2Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="单位" v-model="unit2Str"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">指标3</label>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="指标" v-model="param3Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="数字" v-model="count3Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="单位" v-model="unit3Str"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">指标4</label>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="指标" v-model="param4Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="数字" v-model="count4Str"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" placeholder="单位" v-model="unit4Str"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">描述</label>
+                                    <div class="col-md-6">
+                                        <textarea v-model="headDesc2Str" rows="4" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">全球战略客户</label>
+                                    <div class="col-md-6">
+                                        <a v-if="form.worldWildCustAttachment.src" title="预览" class="iconimg"
+                                           :href="form.worldWildCustAttachment.src" onclick="return hs.expand(this)">
+                                            <img style="max-width:20px;" :src="form.worldWildCustAttachment.src"/>
+                                        </a>
+                                        <input type="file" class="file_select"
+                                               v-on:change="upload('worldWildCustAttachment',$event)"
+                                               accept="image/gif, image/jpeg, image/png"/>
+                                        <input type="hidden" v-model="form.worldWildCustAttachment">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">中国市场客户</label>
+                                    <div class="col-md-6">
+                                        <a v-if="form.chineseCustAttachment.src" title="预览" class="iconimg"
+                                           :href="form.chineseCustAttachment.src" onclick="return hs.expand(this)">
+                                            <img style="max-width:20px;" :src="form.chineseCustAttachment.src"/>
+                                        </a>
+                                        <input type="file" class="file_select"
+                                               v-on:change="upload('chineseCustAttachment',$event)"
+                                               accept="image/gif, image/jpeg, image/png"/>
+                                        <input type="hidden" v-model="form.chineseCustAttachment">
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">关于ARG</label>
+                                    <div class="col-md-6">
+                                        <textarea rows="4" name="kcontent" class="form-control" v-model="aboutTextStr"></textarea>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">客户</label>
+                                    <div class="col-md-6">
+                                        <textarea rows="4" name="kcontent1" class="form-control" v-model="cusTextStr"></textarea>
+                                    </div>
+                                </div>
+
+                                <div style="clear: both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="button" v-on:click="add" value="确认"/>
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/table/style.css"/>
+<script src="/manage_static/js/me/table/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/paging/style.css"/>
+<script src="/manage_static/js/me/paging/bundle.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            headDesc1Str: '',
+            headDesc2Str: '',
+            param1Str: '',
+            unit1Str: '',
+            count1Str: '',
+            param2Str: '',
+            unit2Str: '',
+            count2Str: '',
+            param3Str: '',
+            unit3Str: '',
+            count3Str: '',
+            param4Str: '',
+            unit4Str: '',
+            count4Str: '',
+            aboutTextStr: '',
+            cusTextStr: '',
+            form: {
+                headDesc1: {},
+                headDesc2: {},
+                param1: {},
+                count1: {},
+                unit1: {},
+                param2: {},
+                count2: {},
+                unit2: {},
+                param3: {},
+                count3: {},
+                unit3: {},
+                param4: {},
+                count4: {},
+                unit4: {},
+                aboutText: {},
+                cusTextStr: {},
+                bannerAttachment: {
+                    src: '',
+                    type: 'IMAGE',
+                    displayName: '',
+                    filePath: ''
+                },
+                worldWildCustAttachment: {
+                    src: '',
+                    type: 'IMAGE',
+                    displayName: '',
+                    filePath: ''
+                },
+                chineseCustAttachment: {
+                    src: '',
+                    type: 'IMAGE',
+                    displayName: '',
+                    filePath: ''
+                },
+                language: 'zh_cn'
+
+            }
+        },
+        methods: {
+            upload: function (model, event) {
+                // console.info(model);
+                // console.info(event);
+                var file = event.target;
+                var this_vue = this;
+                var id = this.form[model].id || 0;
+                var param = {
+                    file: file.files[0],
+                    id: id,
+                    type: 'IMAGE'
+                }
+                this.$api.file.upload(param, function (res) {
+                    console.info(res);
+                    res.type = 'IMAGE';
+                    // res.id = null ;
+                    this_vue.form[model] = res;
+                    if (res.filePath) {
+                        var url = "/uploads/" + res.filePath;
+                        this_vue.form[model].src = url;
+                    }
+                });
+            },
+            query: function () {
+                var this_vue = this;
+                // var id = "6" ;
+                this.$api.base.all('about', {}, function (res) {
+                    var about = res.objs[0];
+                    if (null == about) {
+                        return;
+                    }
+                    for (var i in about) {
+                        if (i == 'bannerAttachment' || i == 'worldWildCustAttachment' || i == 'chineseCustAttachment') {
+                            var attachment = about[i];
+                            if (attachment.filePath) {
+                                var url = "/uploads/" + attachment.filePath;
+                                about[i].src = url;
+                            }
+                        }
+                    }
+                    var headDesc1_str = this_vue.$tools.getTranslationsText(about, 'headDesc1', locale);
+                    var headDesc2_str = this_vue.$tools.getTranslationsText(about, 'headDesc2', locale);
+
+                    var param1_str = this_vue.$tools.getTranslationsText(about, 'param1', locale);
+                    var param2_str = this_vue.$tools.getTranslationsText(about, 'param2', locale);
+                    var param3_str = this_vue.$tools.getTranslationsText(about, 'param3', locale);
+                    var param4_str = this_vue.$tools.getTranslationsText(about, 'param4', locale);
+                    var unit1_str = this_vue.$tools.getTranslationsText(about, 'unit1', locale);
+                    var unit2_str = this_vue.$tools.getTranslationsText(about, 'unit2', locale);
+                    var unit3_str = this_vue.$tools.getTranslationsText(about, 'unit3', locale);
+                    var unit4_str = this_vue.$tools.getTranslationsText(about, 'unit4', locale);
+                    var count1_str = this_vue.$tools.getTranslationsText(about, 'count1', locale);
+                    var count2_str = this_vue.$tools.getTranslationsText(about, 'count2', locale);
+                    var count3_str = this_vue.$tools.getTranslationsText(about, 'count3', locale);
+                    var count4_str = this_vue.$tools.getTranslationsText(about, 'count4', locale);
+                    var aboutText_str = this_vue.$tools.getTranslationsText(about, 'aboutText', locale);
+                    var cusText_str = this_vue.$tools.getTranslationsText(about, 'cusText', locale);
+
+                    this_vue.form = about;
+                    this_vue.headDesc1Str = headDesc1_str;
+                    this_vue.headDesc2Str = headDesc2_str;
+                    this_vue.param1Str = param1_str;
+                    this_vue.param2Str = param2_str;
+                    this_vue.param3Str = param3_str;
+                    this_vue.param4Str = param4_str;
+                    this_vue.unit1Str = unit1_str;
+                    this_vue.unit2Str = unit2_str;
+                    this_vue.unit3Str = unit3_str;
+                    this_vue.unit4Str = unit4_str;
+                    this_vue.count1Str = count1_str;
+                    this_vue.count2Str = count2_str;
+                    this_vue.count3Str = count3_str;
+                    this_vue.count4Str = count4_str;
+                    this_vue.aboutTextStr = aboutText_str;
+                    this_vue.$tools.setDataToEditor('kcontent', aboutText_str);
+                    this_vue.cusTextStr = cusText_str;
+                    this_vue.$tools.setDataToEditor('kcontent1', cusText_str);
+                })
+            },
+            add: function (event) {
+                //console.info(this.form);
+                this.$api.base.add('about', this.form, function (res) {
+                    console.info(res);
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            }
+        },
+        created: function () {
+            this.query();
+        },
+        watch: {
+            'headDesc1Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'headDesc1', locale, n);
+            },
+            'headDesc2Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'headDesc2', locale, n);
+            },
+            'param1Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'param1', locale, n);
+            },
+            'param2Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'param2', locale, n);
+            },
+            'param3Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'param3', locale, n);
+            },
+            'param4Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'param4', locale, n);
+            },
+            'unit1Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'unit1', locale, n);
+            },
+            'unit2Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'unit2', locale, n);
+            },
+            'unit3Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'unit3', locale, n);
+            },
+            'unit4Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'unit4', locale, n);
+            },
+            'count1Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'count1', locale, n);
+            },
+            'count2Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'count2', locale, n);
+            },
+            'count3Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'count3', locale, n);
+            },
+            'count4Str': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'count4', locale, n);
+            },
+            'aboutTextStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'aboutText', locale, n);
+            },
+            'cusTextStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'cusText', locale, n);
+            }
+        }
+    });
+</script>
+
+
+<script type="text/javascript">
+    var locale = app.$tools.requestParam("locale") || 'zh_CN';
+    var editor = CKEDITOR.replace('kcontent', {
+        width: '100%',
+        height: 300,
+        filebrowserImageUploadUrl: '/uploads/upload4'
+    });
+    var editor1 = CKEDITOR.replace('kcontent1', {
+        width: '100%',
+        height: 300,
+        filebrowserImageUploadUrl: '/uploads/upload4'
+    });
+    CKFinder.setupCKEditor(editor, 'ckfinder/');
+    CKFinder.setupCKEditor(editor1, 'ckfinder/');
+    editor.on('change', function (event) {
+        var data = this.getData();//内容
+        //将文本域的内容，同步到 form.textStr中去
+        app.$set(app, "aboutTextStr", data);
+    });
+    editor1.on('change', function (event) {
+        var data = this.getData();//内容
+        //将文本域的内容，同步到 form.textStr中去
+        app.$set(app, "cusTextStr", data);
+    });
+
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+</html>

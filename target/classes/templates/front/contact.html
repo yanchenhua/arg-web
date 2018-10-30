@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm space-none-bottom "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Contact Us"><em
+                                th:utext="#{contact.title}"><span>联系</span>我们</em></h2>
+
+                        <div class="app-page-content-show">
+
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <ul class="app-cats">
+                                <li th:class="${type == 'HUB'} ? active">
+                                    <a th:href="|/contact/HUB|"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                       th:utext="#{contact.hub}">集团总部</a>
+                                </li>
+                                <li th:class="${type == 'OTHERS'} ? active">
+                                    <a th:href="|/contact/OTHERS|"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                       th:utext="#{contact.others}">欧洲、亚洲、中东、大洋洲、非洲、中南美</a>
+                                </li>
+                                <li th:class="${type == 'NORTH_AMERICA'} ? active">
+                                    <a th:href="|/contact/NORTH_AMERICA|"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                       th:utext="#{contact.north.america}">北美</a>
+                                </li>
+                                <li th:class="${type == 'RUSSIA'} ? active">
+                                    <a th:href="|/contact/RUSSIA|"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                       th:utext="#{contact.russia}">俄罗斯</a>
+                                </li>
+                            </ul>
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+            <div class="app-location-wrapper info-pure active" style="margin-top: 20px">
+
+                <div class="app-location-selector">
+                    <div>
+
+                        <div th:each="item, itemStat : ${objs}">
+
+
+                            <h2 th:text="${item.contactTitle.getTranslatedStr(session.lang_session)}">福耀集团配件业务部</h2>
+                            <p th:text="${item.contactSubTitle.getTranslatedStr(session.lang_session)}">Fuyao Group ARG
+                                Dept.</p>
+
+                            <dl class="list-side-by-side">
+
+                                <dt><i class="fa fa-map-marker fa-b" aria-hidden="true"></i></dt>
+                                <dd>
+                                    <p th:text="${item.address.getTranslatedStr(session.lang_session)}">
+                                        中国福建省福清市福耀工业区Ⅱ</p>
+                                    <p th:text="${item.addressSubTitle.getTranslatedStr(session.lang_session)}">Fuyao
+                                        Industrial Area, Fuqing, Fujian, 350301, P.R. China</p>
+                                </dd>
+
+
+                            </dl>
+
+                            <dl class="list-side-by-side">
+
+                                <dt><i class="fa fa-envelope" aria-hidden="true"></i></dt>
+                                <dd>
+                                    <p th:text="${item.email}">fygi@fuyaogroup.com </p>
+                                </dd>
+
+                            </dl>
+
+                            <dl class="list-side-by-side">
+
+                                <dt><i class="fa fa-phone" aria-hidden="true"></i></dt>
+                                <dd>
+                                    <p th:text="${item.tel}">86(0591) 85363165</p>
+                                </dd>
+
+                            </dl>
+
+
+                            <dl class="list-side-by-side">
+
+                                <dt><i class="fa fa-fax" aria-hidden="true"></i></dt>
+                                <dd>
+                                    <p th:text="${item.fax}">(86-591) 8536-3983</p>
+                                </dd>
+
+                            </dl>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="app-maps" style="visibility: hidden">
+
+                <!--百度地图容器-->
+                <div id="dituContent"></div>
+
+            </div>
+
+
+        </section>
+
+
+        <style type="text/css">
+            .iw_poi_title {
+                color: #CC5522;
+                font-size: 14px;
+                font-weight: bold;
+                overflow: hidden;
+                padding-right: 13px;
+                white-space: nowrap
+            }
+
+            .iw_poi_content {
+                font: 12px arial, sans-serif;
+                overflow: visible;
+                padding-top: 4px;
+                white-space: -moz-pre-wrap;
+                word-wrap: break-word
+            }
+        </style>
+
+        <script type="text/javascript" th:inline="javascript">
+
+
+            // 百度地图API功能
+            var map = new BMap.Map("dituContent");
+            map.centerAndZoom(new BMap.Point(118.114086, 24.519873), 15);
+            map.enableScrollWheelZoom(true);
+
+
+            // 用名称设置地图中心点
+
+            function theLocationName(name) {
+                map.centerAndZoom(name, 15);
+
+
+                // 创建地址解析器实例
+                var myGeo = new BMap.Geocoder(),
+                    curPoint = '';
+                // 将地址解析结果显示在地图上,并调整地图视野
+                myGeo.getPoint(name, function (point) {
+
+                    var x = point.lng,
+                        y = point.lat;
+
+
+                    var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(35, 25), {
+                            offset: new BMap.Size(10, 25),
+                            imageOffset: new BMap.Size(16, 0 - 10 * 25)
+                        });
+
+                    var new_point = new BMap.Point(x, y);
+                    var marker = new BMap.Marker(new_point, {icon: myIcon});  // 创建标注
+                    map.addOverlay(marker);              // 将标注添加到地图中
+                });
+
+
+            }
+
+            // 用经纬度设置地图中心点
+            function theLocation(x, y) {
+                map.clearOverlays();
+
+                var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(35, 25), {
+                            offset: new BMap.Size(10, 25),
+                            imageOffset: new BMap.Size(16, 0 - 10 * 25)
+                        });
+                var new_point = new BMap.Point(x, y);
+                var marker = new BMap.Marker(new_point, {icon: myIcon});  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+                map.panTo(new_point);
+            }
+
+
+            //默认显示的坐标,修改一下即可.
+            theLocation([[${objs[0].lng}]], [[${objs[0].lat}]]);
+
+
+        </script>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+

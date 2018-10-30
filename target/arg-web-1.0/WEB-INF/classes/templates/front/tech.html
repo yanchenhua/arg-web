@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Product Technology"><em
+                                th:utext="#{tech.title}">产品<span>技术</span></em>
+                        </h2>
+
+                        <div class="app-page-content-show no-spacing">
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+                            <div class="html3D-bg">
+                                <div>
+                                    <div class="app-tech-container t-c">
+
+                                        <img src="/front_static/images/p-vr.png" alt=""/>
+
+                                        <!-- =========  -->
+                                        <div class="detail-show" id="app-tech-1">
+
+                                            <div class="app-line app-line-1"><a href="javascript:"
+                                                                                class="dot-ripple-bg anim"></a></div>
+
+                                            <div class="table-container">
+                                                <table class="custom-table noborder horizontal t-l">
+
+                                                    <tbody>
+
+
+                                                    <tr class="bottom-noborder">
+                                                        <td colspan="3"><h3 class="app-table-title"
+                                                                            th:utext="#{tech.table1.title}">
+                                                            后挡<span>Rear Window</span></h3>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder top-noborder">
+                                                        <td th:utext="#{tech.table1.title1}"><strong>技术</strong></td>
+                                                        <td th:utext="#{tech.table1.title2}"><strong>功能</strong></td>
+                                                        <td th:utext="#{tech.table1.title3}"><strong>类别</strong></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table1.tr1.td1}">夹层</td>
+                                                        <td th:utext="#{tech.table1.tr1.td2}">隔音</td>
+                                                        <td th:utext="#{tech.table1.tr1.td3}">舒适</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table1.tr2.td1}">超薄钢化</td>
+                                                        <td th:utext="#{tech.table1.tr2.td2}">减重</td>
+                                                        <td th:utext="#{tech.table1.tr2.td3}">低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table1.tr3.td1}">吸热</td>
+                                                        <td th:utext="#{tech.table1.tr3.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table1.tr3.td3}">舒适、低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table1.tr4.td1}">热反射</td>
+                                                        <td th:utext="#{tech.table1.tr4.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table1.tr4.td3}">舒适，低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table1.tr5.td1}">夹丝加热</td>
+                                                        <td th:utext="#{tech.table1.tr5.td2}">除霜除雾</td>
+                                                        <td th:utext="#{tech.table1.tr5.td3}">安全</td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder">
+                                                        <td th:utext="#{tech.table1.tr6.td1}">附件集成</td>
+                                                        <td th:utext="#{tech.table1.tr6.td2}">安装简捷</td>
+                                                        <td th:utext="#{tech.table1.tr6.td3}">舒适</td>
+                                                    </tr>
+
+
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <!-- ./detail-show -->
+                                        <!-- =========  -->
+
+
+                                        <!-- =========  -->
+                                        <div class="detail-show" id="app-tech-2">
+
+                                            <div class="app-line app-line-2"><a href="javascript:"
+                                                                                class="dot-ripple-bg anim"></a></div>
+
+                                            <div class="table-container">
+                                                <table class="custom-table noborder horizontal t-l">
+
+                                                    <tbody>
+
+
+                                                    <tr class="bottom-noborder">
+                                                        <td colspan="3"><h3 class="app-table-title"
+                                                                            th:utext="#{tech.table2.title}">
+                                                            后固定窗<span>Quarterlight Fixed Asm</span>
+                                                        </h3>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder top-noborder">
+                                                        <td th:utext="#{tech.table2.title1}"><strong>技术</strong></td>
+                                                        <td th:utext="#{tech.table2.title2}"><strong>功能</strong></td>
+                                                        <td th:utext="#{tech.table2.title3}"><strong>类别</strong></td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table2.tr1.td1}">超薄钢化</td>
+                                                        <td th:utext="#{tech.table2.tr1.td2}">减重</td>
+                                                        <td th:utext="#{tech.table2.tr1.td3}">舒适</td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder">
+                                                        <td th:utext="#{tech.table2.tr2.td1}">包边</td>
+                                                        <td th:utext="#{tech.table2.tr2.td2}">密封、降噪</td>
+                                                        <td th:utext="#{tech.table2.tr2.td3}">舒适</td>
+                                                    </tr>
+
+
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <!-- ./detail-show -->
+                                        <!-- =========  -->
+
+
+                                        <!-- =========  -->
+                                        <div class="detail-show" id="app-tech-3">
+
+                                            <div class="app-line line-w app-line-3"><a href="javascript:"
+                                                                                       class="dot-ripple-bg anim"></a>
+                                            </div>
+
+                                            <div class="table-container">
+                                                <table class="custom-table noborder horizontal t-l">
+
+                                                    <tbody>
+
+
+                                                    <tr class="bottom-noborder">
+                                                        <td colspan="3"><h3 class="app-table-title"
+                                                                            th:utext="#{tech.table3.title}">
+                                                            门玻璃<span>Door Glass</span></h3>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder top-noborder">
+                                                        <td th:utext="#{tech.table3.title1}"><strong>技术</strong></td>
+                                                        <td th:utext="#{tech.table3.title2}"><strong>功能</strong></td>
+                                                        <td th:utext="#{tech.table3.title3}"><strong>类别</strong></td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table3.tr1.td1}">憎水</td>
+                                                        <td th:utext="#{tech.table3.tr1.td2}">增加视野</td>
+                                                        <td th:utext="#{tech.table3.tr1.td3}">安全</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table3.tr2.td1}">夹层</td>
+                                                        <td th:utext="#{tech.table3.tr2.td2}">隔音</td>
+                                                        <td th:utext="#{tech.table3.tr2.td3}">舒适</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table3.tr3.td1}">隔音</td>
+                                                        <td th:utext="#{tech.table3.tr3.td2}">隔音</td>
+                                                        <td th:utext="#{tech.table3.tr3.td3}">舒适</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table3.tr4.td1}">超薄夹层</td>
+                                                        <td th:utext="#{tech.table3.tr4.td2}">减重</td>
+                                                        <td th:utext="#{tech.table3.tr4.td3}">低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table3.tr5.td1}">吸热</td>
+                                                        <td th:utext="#{tech.table3.tr5.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table3.tr5.td3}">舒适、低碳</td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder">
+                                                        <td th:utext="#{tech.table3.tr6.td1}">热反射</td>
+                                                        <td th:utext="#{tech.table3.tr6.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table3.tr6.td3}">舒适、低碳</td>
+                                                    </tr>
+
+
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <!-- ./detail-show -->
+                                        <!-- =========  -->
+
+
+                                        <!-- =========  -->
+                                        <div class="detail-show" id="app-tech-4">
+
+                                            <div class="app-line app-line-4"><a href="javascript:"
+                                                                                class="dot-ripple-bg anim"></a></div>
+
+                                            <div class="table-container">
+                                                <table class="custom-table noborder horizontal t-l">
+
+                                                    <tbody>
+
+
+                                                    <tr class="bottom-noborder">
+                                                        <td colspan="3"><h3 class="app-table-title"
+                                                                            th:utext="#{tech.table4.title}">天窗<span>Sunroof Encap</span>
+                                                        </h3>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder top-noborder">
+                                                        <td th:utext="#{tech.table5.title1}"><strong>技术</strong></td>
+                                                        <td th:utext="#{tech.table5.title2}"><strong>功能</strong></td>
+                                                        <td th:utext="#{tech.table5.title3}"><strong>类别</strong></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table4.tr1.td1}">全景</td>
+                                                        <td th:utext="#{tech.table4.tr1.td2}">增大视野</td>
+                                                        <td th:utext="#{tech.table4.tr1.td3}">舒适</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table4.tr2.td1}">吸热</td>
+                                                        <td th:utext="#{tech.table4.tr2.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table4.tr2.td3}">舒适、低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table4.tr3.td1}">热反射</td>
+                                                        <td th:utext="#{tech.table4.tr3.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table4.tr3.td3}">舒适、低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table4.tr4.td1}">太阳能</td>
+                                                        <td th:utext="#{tech.table4.tr4.td2}">利用太阳能</td>
+                                                        <td th:utext="#{tech.table4.tr4.td3}">舒适，低碳</td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder">
+                                                        <td th:utext="#{tech.table4.tr5.td1}">调光</td>
+                                                        <td th:utext="#{tech.table4.tr5.td2}">安装简捷</td>
+                                                        <td th:utext="#{tech.table4.tr5.td3}">舒适</td>
+                                                    </tr>
+
+
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <!-- ./detail-show -->
+                                        <!-- =========  -->
+
+
+                                        <!-- =========  -->
+                                        <div class="detail-show" id="app-tech-5">
+
+                                            <div class="app-line app-line-5"><a href="javascript:"
+                                                                                class="dot-ripple-bg anim"></a></div>
+
+                                            <div class="table-container">
+                                                <table class="custom-table noborder horizontal t-l">
+
+                                                    <tbody>
+
+
+                                                    <tr class="bottom-noborder">
+                                                        <td colspan="3"><h3 class="app-table-title"
+                                                                            th:utext="#{tech.table5.title}">
+                                                            前挡<span>Windshield</span></h3>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder top-noborder">
+                                                        <td th:utext="#{tech.table5.title1}"><strong>技术</strong></td>
+                                                        <td th:utext="#{tech.table5.title2}"><strong>功能</strong></td>
+                                                        <td th:utext="#{tech.table5.title3}"><strong>类别</strong></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table5.tr1.td1}">隔音</td>
+                                                        <td th:utext="#{tech.table5.tr1.td2}">隔音</td>
+                                                        <td th:utext="#{tech.table5.tr1.td3}">舒适</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table5.tr2.td1}">超薄夹层</td>
+                                                        <td th:utext="#{tech.table5.tr2.td2}">减重</td>
+                                                        <td th:utext="#{tech.table5.tr2.td3}">低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table5.tr3.td1}">吸热</td>
+                                                        <td th:utext="#{tech.table5.tr3.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table5.tr3.td3}">舒适、低碳</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table5.tr4.td1}">热反射</td>
+                                                        <td th:utext="#{tech.table5.tr4.td2}">隔热</td>
+                                                        <td th:utext="#{tech.table5.tr4.td3}">舒适，低碳</td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table5.tr5.td1}">夹丝加热</td>
+                                                        <td th:utext="#{tech.table5.tr5.td2}">除霜除雾</td>
+                                                        <td th:utext="#{tech.table5.tr5.td3}">安全性</td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td th:utext="#{tech.table5.tr6.td1}">雨感器</td>
+                                                        <td th:utext="#{tech.table5.tr6.td2}">雨点自动感应</td>
+                                                        <td th:utext="#{tech.table5.tr6.td3}">智能</td>
+                                                    </tr>
+
+                                                    <tr class="bottom-noborder">
+                                                        <td th:utext="#{tech.table5.tr7.td1}">Hud</td>
+                                                        <td th:utext="#{tech.table5.tr7.td2}">提高反应速度</td>
+                                                        <td th:utext="#{tech.table5.tr7.td3}">安全</td>
+                                                    </tr>
+
+
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <!-- ./detail-show -->
+                                        <!-- =========  -->
+
+
+                                    </div>
+                                    <!-- /.app-tech-container -->
+                                </div>
+                            </div>
+
+
+                            <div id="app-tech-content" class="app-posts-list"
+                                 data-uix-anim='{"from":{"opacity":0,"x":150},"to":{"opacity":1,"x":0},"ease":"Power2.easeOut","duration":0.8,"delay":0.2,"infinite":false}'>
+
+                                <div class="seamless-grid-container">
+
+                                    <div class="seamless-grid loop"
+                                         data-ajax-list-json="/app/rest/product/pagination/front"
+                                         data-ajax-list-method="GET"
+                                         data-ajax-list-addition="true"
+                                         data-ajax-list-temp-id="list-topic-ajax-template-1"
+                                         data-ajax-list-page-now="1"
+                                         data-ajax-list-page-per="8"
+                                         data-ajax-list-page-total="-1"
+                                         data-ajax-list-trigger="#ajax-loadmore-btn-1"
+                                         data-ajax-list-trigger-active-class=".active"
+                                         data-ajax-list-push-container-class=".list-topic-items-ajax-container"
+                                         data-ajax-list-infinitescroll="false"
+                                         data-ajax-list-field-pageSize="8">
+
+
+                                        <div class="seamless-col-6" th:each="item, itemStat : ${objs}">
+                                            <div class="content">
+                                                <a th:href="|/detail/${item.id}|"
+                                                   data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+                                                    <div class="custom-card5 el-row">
+                                                        <div class="custom-card5-image el-col el-col-6 el-col-stack"
+                                                             th:data-bg='|{"src":"/uploads/${item.attachment.filePath}","position":"top left","size":"cover","repeat":"no-repeat","fill":false}|'></div>
+                                                        <div class="custom-card5-content el-col el-col-6 el-col-stack">
+
+                                                            <div class="custom-card5-title">
+                                                                <h3 class="custom-card5-headline h4_2"
+                                                                    th:text="${item.title.getTranslatedStr(session.lang_session)}">
+                                                                    隔音玻璃</h3>
+                                                                <p th:text="${item.content.getTranslatedStr(session.lang_session)}">
+                                                                    车箱噪音是由汽车发动机，路面噪音，风噪和共..。</p>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="list-topic-items-ajax-container"></div>
+                                        <script id="list-topic-ajax-template-1" type="text/template7">
+
+                                            {{#each items}}
+
+                                            <div class="seamless-col-6">
+                                                <div class="content">
+
+
+                                                    <a href="/detail/{{id}}"
+                                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
+
+                                                        <div class="custom-card5 el-row">
+                                                            <div class="custom-card5-image el-col el-col-6 el-col-stack"
+                                                                 data-bg='{"src":"{{#attachment}}/uploads/{{filePath}}{{/attachment}}","position":"top left","size":"cover","repeat":"no-repeat","fill":false}'></div>
+                                                            <div class="custom-card5-content el-col el-col-6 el-col-stack">
+                                                                <div class="custom-card5-title">
+                                                                    <h3 class="custom-card5-headline h4_2">
+                                                                        {{#title}}
+                                                                        {{#each translations}}
+                                                                        <span class="ajax-{{locale}}">{{text}}</span>
+                                                                        {{/each}}
+                                                                        {{/title}}
+                                                                    </h3>
+                                                                    <p>
+                                                                        {{#content}}
+                                                                        {{#each translations}}
+                                                                        <span class="ajax-{{locale}}">{{text}}</span>
+                                                                        {{/each}}
+                                                                        {{/content}}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </a>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            {{/each}}
+
+                                        </script>
+
+
+                                    </div>
+                                    <!-- .seamless-grid  end -->
+
+
+                                </div>
+                                <!-- /.seamless-grid-container -->
+
+
+                                <hr>
+
+
+                                <p class="t-c" style="width: 100px !important; margin: 0 auto;">
+                                    <a id="ajax-loadmore-btn-1" href="javascript:void(0)"
+                                       class="button button-border-thin button-size-s button-bg-primary"
+                                       th:utext="#{fragment.button.more}">查看更多</a>
+                                </p>
+
+
+                            </div>
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- .row end -->
+
+            </div>
+            <!-- .container end -->
+
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+    
+   

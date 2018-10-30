@@ -1,0 +1,47 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "ltd.ontsol.core.config.ArgLocaleResolver",
+      "name": "argweb",
+      "type": "ltd.ontsol.core.config.ArgLocaleResolver"
+    },
+    {
+      "sourceType": "ltd.ontsol.core.config.LocaleResolver",
+      "name": "argweb",
+      "type": "ltd.ontsol.core.config.LocaleResolver"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "ltd.ontsol.core.config.ArgLocaleResolver",
+      "name": "argweb.arg-support-locales",
+      "type": "java.util.List<java.util.Locale>"
+    },
+    {
+      "sourceType": "ltd.ontsol.core.config.LocaleResolver",
+      "name": "argweb.arg-support-locales",
+      "type": "java.util.List<java.util.Locale>"
+    },
+    {
+      "sourceType": "ltd.ontsol.core.config.ArgLocaleResolver",
+      "name": "argweb.default-locale",
+      "type": "java.util.Locale"
+    },
+    {
+      "sourceType": "ltd.ontsol.core.config.LocaleResolver",
+      "name": "argweb.default-locale",
+      "type": "java.util.Locale"
+    },
+    {
+      "sourceType": "ltd.ontsol.core.config.ArgLocaleResolver",
+      "name": "argweb.supported-locales",
+      "type": "java.util.List<java.util.Locale>"
+    },
+    {
+      "sourceType": "ltd.ontsol.core.config.LocaleResolver",
+      "name": "argweb.supported-locales",
+      "type": "java.util.List<java.util.Locale>"
+    }
+  ]
+}

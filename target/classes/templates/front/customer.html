@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+<body th:class="|page ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header"></header>
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+    <section class="space-sm "
+             >
+
+        <div class="container relative">
+
+            <div class="row">
+
+                <div class="col-md-12" >
+                    <h2 class="heading-overlay t-l full" data-text="Employee Login"><em th:utext="#{entrance.customer}"><span>员工</span>入口</em>
+                    </h2>
+                    <div style="margin-top: 30px">
+
+                           <span style="float: left">
+                                   <img width="15" height="15" src="../front_static/css/../images/point.png"/>
+                               </span>
+                        <p th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? ''">
+                                <a th:href="@{${session.home.fySystemLink}(language=${session.lang_session_1},device=pc)}" target="_blank"
+                                   th:text="#{fragment.menu.fySystem}">产品条目</a>
+
+                            </p>
+
+
+
+
+                        <span style="float: left">
+                                   <img width="15" height="15" src="../front_static/css/../images/point.png"/>
+                               </span>
+                        <p th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? ''">
+
+                                <a href="http://chain.fygi.com:9001/web/Login.aspx" target="_blank"  th:text="#{fragment.menu.gnpjSystem}">国内配件系统</a>
+                            </p>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+    
+   

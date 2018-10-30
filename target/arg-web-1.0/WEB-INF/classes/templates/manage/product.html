@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">产品参数 > 产品</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 padding-0">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="col-md-12 padding-0" style="padding-bottom:20px;">
+                            <a class="btn btn-success" href="/manage/product/add">新增</a>
+                            <form accept="get" style="float:right;">
+                                <input type="text" name="keywords" style="height: 25px;" placeholder="标题" value=""/>
+                                <input type="submit" value="搜索"/>
+                            </form>
+                        </div>
+                        <div class="responsive-table" id="app">
+                            <w-table :columns="columns" :table_list='table_list'
+                                     :data_source_config="data_source_config" @http_done='done'></w-table>
+                            <w-paging :total='total' :current='current' @switch_page='switch_page'></w-paging>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/table/style.css"/>
+<script src="/manage_static/js/me/table/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/paging/style.css"/>
+<script src="/manage_static/js/me/paging/bundle.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            total: 0,
+            current: 1,
+            columns: [
+                {
+                    title: '标题',
+                    key: 'title',
+                    render_cell: [{
+                        html: function (row, column, index) {
+                            var str = this.app.$tools.getTranslationsText(row, 'title', 'zh_cn');
+                            return '<span>' + str + '</span>';
+                        }
+                    }
+                    ]
+                },
+                {
+                    title: '照片',
+                    key: 'attachment', render_cell: [
+                        {
+                            html: function (row, column, index) {
+                                var attachment = row[column.key];
+                                console.info(attachment);
+                                if (attachment.filePath) {
+                                    var url = "/uploads/" + attachment.filePath;
+                                    //<a  title="预览" class="iconimg" :href="form.headerAttachment.src" onclick="return hs.expand(this)">
+                                    return '<a href="' + url + '"  onclick="return hs.expand(this)" ><img style="max-width:40px;" src="' + url + '"></a>'
+                                }
+                                return '<span></span>';
+
+                            },
+                            events: {
+                                click: function () {
+                                    console.info("我是编辑");
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    title: '排序',
+                    key: 'sort'
+                },
+                {
+                    title: '操作',
+                    key: 'id',
+                    render_cell: [
+                        {
+                            html: function (row, column, index) {
+                                var id = row[column.key];
+                                return '<a style="font-size:12px;padding-right:5px;" href= "/manage/product/add?id=' + id + '">编辑</a>&nbsp;&nbsp;';
+                            },
+                            events: {
+                                click: function () {
+                                    console.info("我是编辑");
+                                }
+                            }
+                        },
+                        {
+                            html: function (row, column, index) {
+                                return '<a data-id="' + row[column.key] + '" style="font-size:12px;padding-right:5px;" href= "javascript:void(0)">删除</a>&nbsp;&nbsp;';
+                            },
+                            events: {
+                                click: function (event) {
+                                    //console.info("我是删除");
+                                    var r = confirm("确定删除?")
+                                    if (r) {
+                                        this.$api.base.delete('product', event.target.dataset.id, function () {
+                                            app.$tools.deleteSuccess();
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            data_source_config: {
+                api: 'base.query',
+                module: 'product',
+                param: {
+                    pageCount: 1
+                },
+                transform: function (rst, this_vue) {
+                    return rst.objs;
+                }
+            },
+            table_list: []
+
+        },
+        methods: {
+            switch_page: function (num) {
+                //console.info(num);
+                this.data_source_config.param.pageCount = num;
+                this.$tools.page.set(num);
+            },
+            done: function (new_rst, native) {
+                //  console.info("是不是又触发了？");
+                this.total = native.sumCount;
+                this.table_list = new_rst;
+            }
+        },
+        created: function () {
+            var num = this.$tools.page.get();
+            if (num) {
+                this.current = num;
+                this.switch_page(num);
+            }
+        }
+    });
+</script>
+
+</html>

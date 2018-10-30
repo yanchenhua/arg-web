@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">关于福耀 > 荣耀</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 ">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>福耀简介-荣耀</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label text-right">荣耀</label>
+                                <div class="col-md-6" style="width:90%" id="app_honor">
+                                    <input type="button" class="btn btn-success" id="addbtn" v-on:click="add_one"
+                                           value="添加一条"/>
+                                    <div class="layout-picBox">
+                                        <div class="Titem" id="cert_list">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label text-right"></label>
+                                <div class="col-md-6">
+                                    <input class="submit btn btn-danger" type="submit" value="确认"/>
+                                    <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                           onclick="history.go(-1)" value="返回"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+<template type="text/x-template" id="tpl_honor">
+    <ul v-if="form.show">
+        <li>
+            <img :src="form.src">
+        </li>
+        <li class="list-text">
+            <span>文件:</span>
+            <input type="file" title="选择文件" v-on:change="upload"/>
+            <input type="hidden" v-model="form.attachment.id">
+        </li>
+        <li class="list-text">
+            <span>标题:</span>
+            <input type="text" v-model="form.textStr"/>
+        </li>
+        <li class="list-btn">
+            <button class="submit btn btn-danger" v-on:click="add">确定</button>
+            <button class="btn btn-primary delbtn" v-on:click="drop">删除</button>
+            <!-- <a>修改</a> -->
+        </li>
+    </ul>
+</template>
+<script>
+    var app = new Vue({
+        el: '#app_honor',
+        methods: {
+            add_one: function () {
+                this.create_html();
+            },
+            add: function (event) {
+                jump2next('', event);
+            },
+            create_html: function (param) {
+                if (!param) {
+                    param = {};
+                }
+                var tpl = Vue.extend({
+                    template: "#tpl_honor",
+                    data: function () {
+                        return {
+                            form: {
+                                attachment: {
+                                    type: 'IMAGE',
+                                    displayName: '',
+                                    filePath: ''
+                                },
+                                show: true,
+                                textStr: '',
+                                text: {},
+                                sort: 0,
+                                src: ''
+                            }
+                        }
+                    },
+                    methods: {
+                        upload: function (event) {
+                            var file = event.target;
+                            var this_vue = this;
+                            var id = this.form.attachment.id || 0;
+                            var param = {
+                                file: file.files[0],
+                                id: id,
+                                type: 'IMAGE'
+                            }
+                            var this_vue = this;
+                            this.$api.file.upload(param, function (res) {
+                                res.type = 'IMAGE';
+                                // res.id = null ;
+                                this_vue.form.attachment = res;
+                                var url = "/uploads/" + res.filePath;
+                                console.info(url);
+                                this_vue.form.src = url;
+                            });
+                        },
+                        add: function () {
+                            var this_vue = this;
+                            this.$api.base.add('honor', this.form, function (res) {
+                                this_vue.form.id = res.id;
+                            });
+                        },
+                        drop: function () {
+                            if (!this.form.id) {
+                                this.form.show = false;
+                                return;
+                            }
+                            var this_vue = this;
+                            this.$api.base.delete('honor', this.form.id, function (res) {
+                                // console.info(res);
+                                this_vue.form.show = false;
+                            });
+                        }
+                    },
+                    created: function () {
+                        if (JSON.stringify(param) != "{}")
+                            this.form = param;
+                    },
+                    watch: {
+                        "form.textStr": function (n) {
+                            var obj = this.$tools.setTranslationsText(this.form, 'text', locale, n);
+                        }
+                    }
+                })
+                //var this_vue = this;
+                var instance = new tpl().$mount();
+                document.getElementById('cert_list').appendChild(instance.$el);
+
+            }
+        },
+        created: function () {
+            var this_vue = this;
+            this.$api.base.all('honor', {}, function (res) {
+                console.info(res);
+                for (var i in res) {
+                    //console.info(res[i]);
+                    var attachment = res[i].attachment;
+                    var url = "/uploads/" + attachment.filePath;
+                    res[i].src = url;
+                    res[i].show = true;
+                    var textStr = this_vue.$tools.getTranslationsText(res[i], 'text', locale);
+                    res[i].textStr = textStr;
+                    this_vue.create_html(res[i]);
+                }
+            });
+        }
+    });
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+</html>

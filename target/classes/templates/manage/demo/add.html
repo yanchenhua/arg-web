@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">AGRR合作 > AGRR优秀示范商</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element">
+            <div class="col-md-12 padding-0">
+
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>AGRR优秀示范商</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+
+                        <form enctype="multipart/form-data" method="post">
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">优秀示范商名称</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="goodCompanyName" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">图片</label>
+                                    <div class="col-md-6">
+                                        <a v-if="form.shopBannerAttachment.src" title="预览" class="iconimg"
+                                           :href="form.shopBannerAttachment.src" onclick="return hs.expand(this)">
+                                            <img style="max-width:20px;" :src="form.shopBannerAttachment.src"/>
+                                        </a>
+                                        <input type="file" class="file_select" @change="upload($event)"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group" style="height: 50px;">
+                                    <label class="col-sm-2 control-label text-right">描述</label>
+                                    <div class="col-md-6">
+                                        <textarea v-model="goodText" rows="3" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div id="category_top">
+                                    <div class="col-md-12" style="margin-top: 10px;height: 25px;">
+                                        <div class="form-animate-radio">
+
+                                            <label class="col-sm-2 control-label text-right">地区</label>
+
+                                            <div class="col-md-6">
+                                                <label class="radio">
+                                                    <input id="radio1" value="CHINA" type="radio" checked name="type"
+                                                           v-model="form.type">
+                                                    <span class="outer">
+                                                            <span class="inner"></span>
+                                                        </span> 国内示范商
+                                                </label>
+
+                                                <label class="radio">
+                                                    <input id="radio2" value="OVERSEA" type="radio" name="type"
+                                                           v-model="form.type">
+                                                    <span class="outer">
+                                                            <span class="inner"></span>
+                                                        </span> 国外示范商
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">联系人</label>
+                                    <div class="col-md-2">
+                                        <input type="text" v-model="goodName" class="form-control">
+                                    </div>
+                                    <div class="col-md-1" style="width:85px;">联系电话</div>
+                                    <div class="col-md-2">
+                                        <input type="text" v-model="goodTel" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">地址</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="goodAddr" class="form-control">
+                                    </div>
+
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经纬</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="jw" class="form-control"/>
+                                        <a target="_blank"
+                                           href="http://api.map.baidu.com/lbsapi/getpoint/index.html">获取坐标(选择坐标后，点右上角的复制)</a>
+                                    </div>
+                                </div>
+
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">经度</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.lng" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">纬度</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.lat" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">排序</label>
+                                    <div class="col-md-1">
+                                        <input type="text" name="ktitle" value="1" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="button" @click="add" value="确认">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#content',
+        data: {
+            goodCompanyName: '',
+            goodText: '',
+            goodName: '',
+            goodTel: '',
+            goodAddr: '',
+            jw: '',
+            form: {
+                lag: '',
+                lng: '',
+                goodCompanyName: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                goodText: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                goodName: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                goodTel: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                goodAddr: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                goodProvider: true,
+                addressText: '',
+                shopBannerAttachment: {},
+                type: ''
+            }
+        },
+        methods: {
+            upload: function (event) {
+                // console.info(model);
+                // console.info(event);
+                var file = event.target;
+                var this_vue = this;
+                var attachment = this.form.shopBannerAttachment;
+                console.info(attachment)
+                attachment.file = file.files[0],
+                    this.$api.file.upload(attachment, function (res) {
+                        console.info(res);
+                        res.type = 'IMAGE';
+                        // res.id = null ;
+                        this_vue.form.shopBannerAttachment = res;
+                        if (res.filePath) {
+                            var url = "/uploads/" + res.filePath;
+                            this_vue.form.shopBannerAttachment.src = url;
+                        }
+                    });
+            },
+            add: function (event) {
+                console.info(this.form);
+                this.form.goodProvider = true;
+                this.$api.base.add('agrr', this.form, function (res) {
+                    // delete this.form.id
+                    console.info(res);
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('agrr', {id: id}, function (res) {
+                    var demo = res.objs[0];
+                    if (demo) {
+                        var attachment = demo.shopBannerAttachment;
+                        attachment.src = "/uploads/" + attachment.filePath;
+                        var goodCompanyName_str = this_vue.$tools.getTranslationsText(demo, 'goodCompanyName', locale);
+                        var goodText_str = this_vue.$tools.getTranslationsText(demo, 'goodText', locale);
+                        var goodName_str = this_vue.$tools.getTranslationsText(demo, 'goodName', locale);
+                        var goodTel_str = this_vue.$tools.getTranslationsText(demo, 'goodTel', locale);
+                        var goodAddr_str = this_vue.$tools.getTranslationsText(demo, 'goodAddr', locale);
+                        var goodAddr_str = this_vue.$tools.getTranslationsText(demo, 'goodAddr', locale);
+
+                        this_vue.form = demo;
+                        this_vue.goodCompanyName = goodCompanyName_str;
+                        this_vue.goodText = goodText_str;
+                        this_vue.goodName = goodName_str;
+                        this_vue.goodTel = goodTel_str;
+                        this_vue.goodAddr = goodAddr_str;
+
+                    }
+
+                    // console.info(this_vue.form);
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            'goodCompanyName': function (n, o) {
+                var translations = this.form.goodCompanyName.translations;
+                var flag = false;
+                for (var i in translations) {
+                    var translation = translations[i];
+                    var _locale = translation.language;
+                    if (_locale == locale) {
+                        translation.text = n;
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    var obj = {};
+                    obj.language = locale;
+                    obj.text = n;
+                    this.form.goodCompanyName.translations.push(obj);
+                }
+
+            }, 'goodText': function (n, o) {
+                var translations = this.form.goodText.translations;
+                var flag = false;
+                for (var i in translations) {
+                    var translation = translations[i];
+                    var _locale = translation.language;
+                    if (_locale == locale) {
+                        translation.text = n;
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    var obj = {};
+                    obj.language = locale;
+                    obj.text = n;
+                    this.form.goodText.translations.push(obj);
+                }
+
+            }, 'goodName': function (n, o) {
+                var translations = this.form.goodName.translations;
+                var flag = false;
+                for (var i in translations) {
+                    var translation = translations[i];
+                    var _locale = translation.language;
+                    if (_locale == locale) {
+                        translation.text = n;
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    var obj = {};
+                    obj.language = locale;
+                    obj.text = n;
+                    this.form.goodName.translations.push(obj);
+                }
+
+            }, 'goodTel': function (n, o) {
+                var translations = this.form.goodTel.translations;
+                var flag = false;
+                for (var i in translations) {
+                    var translation = translations[i];
+                    var _locale = translation.language;
+                    if (_locale == locale) {
+                        translation.text = n;
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    var obj = {};
+                    obj.language = locale;
+                    obj.text = n;
+                    this.form.goodTel.translations.push(obj);
+                }
+
+            }, 'goodAddr': function (n, o) {
+                var translations = this.form.goodAddr.translations;
+                var flag = false;
+                for (var i in translations) {
+                    var translation = translations[i];
+                    var _locale = translation.language;
+                    if (_locale == locale) {
+                        translation.text = n;
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    var obj = {};
+                    obj.language = locale;
+                    obj.text = n;
+                    this.form.goodAddr.translations.push(obj);
+                }
+
+            }, 'jw': function (n, o) {
+                if (n) {
+                    var strs = n.split(',');
+                    this.form.lng = strs[0];
+                    this.form.lat = strs[1];
+                }
+            }
+        }
+    });
+</script>
+<script th:replace="manage/fragment :: multiple_language_js(path='add')"></script>
+
+</body>
+
+</html>

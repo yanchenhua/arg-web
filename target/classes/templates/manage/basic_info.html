@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">基本信息 > 网站信息</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 padding-0">
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>网站信息</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+                        <form>
+                            <div class="col-md-12">
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">网站标题</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+                                        <input type="hidden" v-model="form.id">
+                                        <input type="text" v-model="webTitleStr" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">关键字</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="keywordsStr" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">描述</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="webDescStr" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">版权信息</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="copyRightStr" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">备案号</label>
+                                    <div class="col-md-6">
+                                        <!-- 隐藏域 id  -->
+
+                                        <input type="text" v-model="caseNumStr" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" type="button" @click="add" value="确认"/>
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)" value="返回"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            webTitleStr: '',
+            keywordsStr: '',
+            webDescStr: '',
+            copyRightStr: '',
+            caseNumStr: '',
+            form: {
+                serviceLink: '',
+                searchLink: '',
+                fySystemLink: '',
+                webTitle: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                keywords: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                webDesc: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                copyRight: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+                caseNum: {
+                    translations: [
+                        {
+                            text: '',
+                            language: 'zh_CN'
+                        }
+                    ]
+                },
+            }
+        },
+        methods: {
+            add: function (event) {
+                // console.info(this.form);
+                this.$api.base.add('home', this.form, function (res) {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                this.$api.base.all('home', {}, function (res) {
+                    var home = res.objs[0];
+                    if (home) {
+                        var webTitle_str = this_vue.$tools.getTranslationsText(home, 'webTitle', locale);
+                        var keywords_str = this_vue.$tools.getTranslationsText(home, 'keywords', locale);
+                        var webDesc_str = this_vue.$tools.getTranslationsText(home, 'webDesc', locale);
+                        var copyRight_str = this_vue.$tools.getTranslationsText(home, 'copyRight', locale);
+                        var caseNum_str = this_vue.$tools.getTranslationsText(home, 'caseNum', locale);
+
+                        this_vue.form = home;
+
+                        this_vue.webTitleStr = webTitle_str;
+                        this_vue.keywordsStr = keywords_str;
+                        this_vue.webDescStr = webDesc_str;
+                        this_vue.copyRightStr = copyRight_str;
+                        this_vue.caseNumStr = caseNum_str;
+                    }
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            'webTitleStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'webTitle', locale, n);
+            },
+            'keywordsStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'keywords', locale, n);
+            },
+            'webDescStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'webDesc', locale, n);
+            },
+            'copyRightStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'copyRight', locale, n);
+            },
+            'caseNumStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'caseNum', locale, n);
+            }
+        }
+    });
+
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+
+</body>
+
+</html>

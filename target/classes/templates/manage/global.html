@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="manage/fragment :: head"></head>
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">福耀全球 > 网点列表</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 padding-0">
+            <div class="col-md-12">
+                <div class="panel" id="app">
+                    <div class="panel-body">
+                        <div class="col-md-12 padding-0" style="padding-bottom:20px;">
+                            <a class="btn btn-success" href="/manage/global/add">新增</a>
+                            <form accept="get" style="float:right;">
+                                <input type="text" v-model="shopname" style="height: 25px;" placeholder="名称" value=""/>
+                            </form>
+                        </div>
+                        <div class="responsive-table">
+                            <w-table :columns="columns" :table_list='table_list'
+                                     :data_source_config="data_source_config" @http_done='done'></w-table>
+                            <w-paging :total='total' :current='current' @switch_page='switch_page'></w-paging>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+</body>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/table/style.css"/>
+<script src="/manage_static/js/me/table/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="/manage_static/js/me/paging/style.css"/>
+<script src="/manage_static/js/me/paging/bundle.js"></script>
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            total: 0,
+            current: 1,
+            shopname: '',
+            columns: [
+                {
+                    title: '名称',
+                    key: 'shopname',
+                    render_cell: [
+                        {
+                            html: function (row, column, index) {
+                                var title_str = this.app.$tools.getTranslationsText(row, 'shopname', 'zh_cn');
+                                return '<span>' + title_str + '</span>';
+                            }
+                        }
+                    ]
+                },
+                {
+                    title: '所属分类',
+                    key: 'type',
+                    render_cell: [
+                        {
+                            html: function (row, column, index) {
+                                var type = row[column.key];
+                                //汽车玻璃
+                                // CAR_GLASS,
+                                //     // 浮法玻璃
+                                //     FLOAT_GLASS,
+                                //     // 研发中心
+                                //     RESEARCH_HUB,
+                                //     // ARG销售机构
+                                //     SALES,
+                                //     // 服务网点
+                                //     SERVICE_NODE;
+                                var type_str = '';
+                                switch (type) {
+                                    case  'CAR_GLASS' :
+                                        type_str = '汽车玻璃';
+                                        break;
+                                    case  'FLOAT_GLASS' :
+                                        type_str = '浮法玻璃';
+                                        break;
+                                    case  'RESEARCH_HUB' :
+                                        type_str = '研发中心';
+                                        break;
+                                    case  'SALES' :
+                                        type_str = 'ARG销售机构';
+                                        break;
+                                    case 'SERVICE_NODE':
+                                        type_str = '服务网点';
+                                        break;
+                                    default :
+                                        type_str = '服务网点';
+
+                                }
+                                return '<span >' + type_str + '</span>';
+                            }
+                        }
+                    ]
+                },
+                {
+                    title: '排序',
+                    key: 'sort'
+                },
+                {
+                    title: '操作',
+                    key: 'id',
+                    render_cell: [
+                        {
+                            html: function (row, column, index) {
+                                var id = row[column.key];
+                                return '<a style="font-size:12px;padding-right:5px;" href= "/manage/global/add?id=' + id + '">编辑</a>&nbsp;&nbsp;';
+                            },
+                            events: {
+                                click: function () {
+                                    console.info("我是编辑");
+                                }
+                            }
+                        },
+                        {
+                            html: function (row, column, index) {
+                                return '<a data-id="' + row[column.key] + '" style="font-size:12px;padding-right:5px;" href= "javascript:void(0)">删除</a>&nbsp;&nbsp;';
+                            },
+                            events: {
+                                click: function (event) {
+                                    //console.info("我是删除");
+                                    var r = confirm("确定删除?")
+                                    if (r) {
+                                        this.$api.base.delete('global', event.target.dataset.id, function () {
+                                            app.$tools.deleteSuccess();
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            data_source_config: {
+                api: 'base.query',
+                module: 'global',
+                param: {
+                    pageCount: 1
+                },
+                transform: function (rst, this_vue) {
+                    return rst.objs;
+                }
+            },
+            table_list: []
+
+        },
+        methods: {
+            switch_page: function (num) {
+                this.data_source_config.param.pageCount = num;
+                this.$tools.page.set(num);
+            },
+            done: function (new_rst, native) {
+                console.info(native);
+                this.total = native.sumCount;
+                this.table_list = new_rst;
+            }
+        },
+        created: function () {
+            var num = this.$tools.page.get();
+            if (num) {
+                this.current = num;
+                this.switch_page(num);
+            }
+        },
+        watch: {
+            'shopname': function (n) {
+                var title = {};
+                title.translations = [];
+                title.translations[0] = {'text': n};
+                if (n == '') {
+                    this.$set(this.data_source_config.param, "shopname", null);
+                    return;
+                }
+                this.$set(this.data_source_config.param, "shopname", title);
+            }
+        },
+    });
+</script>
+</html>
