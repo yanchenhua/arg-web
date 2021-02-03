@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh_CN" dir="ltr">
 <head th:fragment="head">
     <meta name="baidu-site-verification" content="u2aazES55r" />
     <meta charset="utf-8"/>
@@ -14,9 +14,25 @@
 
     <!-- Core library
     ============================================= -->
+    <script>
+        (function(){
+            console.log("---------->>>>>>>>>>>>>>")
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
     <script src="/front_static/js/wp-jquery/jquery.min.js?ver=3.3.1"></script>
     <script src="/front_static/js/wp-jquery/jquery.migrate.min.js?ver=1.4.1"></script>
     <script src="/front_static/js/min/prefixfree.min.js?ver=1.0.7"></script>
+    <script src="/front_static/js/html5media.min.js"></script>
     <!-- Core library  end -->
 
 
@@ -52,7 +68,7 @@
 
 
     <!-- Theme  -->
-    <link rel="stylesheet" href="/front_static/css/uix-kit.min.css?ver=MTUyOTA0NjMzOTQzMA"/>
+    <link rel="stylesheet" href="/front_static/css/uix-kit.css"/>
     <!-- Cover -->
     <link rel="stylesheet" href="/front_static/css/new_index.css"/>
     <!--[if lt IE 10]>
@@ -73,6 +89,7 @@
     <meta name="description" th:content="${session.home.webDesc.getTranslatedStr(session.lang_session)}">
     <meta name="generator" content="Uix Kit"/>
     <meta name="author" content="福耀ARG">
+
 
     <!-- SEO  end -->
 
@@ -127,6 +144,9 @@
         <div class="header-container transition">
             <div class="container">
                 <!--img src="../front_static/images/banner (1).jpg" width="100%"-->
+                <div style="height: 60px;width: 180px;position:  absolute;left: 120px;">
+                    <a href="/" style="display: block;height: 100%;width: 100%"></a>
+                </div>
                 <img th:src="#{banner.src}" width="100%">
                 <div class="app-top">
 
@@ -176,11 +196,11 @@
 
                 </div>
 
-                <div class="brand">
-                    <a href="/"
-                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'><img
-                            src="/front_static/images/logo.png" alt="福耀ARG"></a>
-                </div>
+                <!--<div class="brand">-->
+                    <!--<a href="/"-->
+                       <!--data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'><img-->
+                            <!--src="/front_static/images/logo.png" alt="福耀汽车玻璃售后"></a>-->
+                <!--</div>-->
                 <!-- .logo end -->
 
 
@@ -190,7 +210,7 @@
 
                     <div class="inner">
 
-                        <span class="mobile-brand"><img src="/front_static/images/logo.png" alt="福耀ARG"></span>
+                        <span class="mobile-brand"><img src="/front_static/images/logo.png" alt="福耀汽车玻璃售后"></span>
                         <ul class="menu-main">
                             <li th:class="${#strings.equals(session.menuLabel, '/')}? active">
                                 <span class="horline">&ensp;</span><a href="/"
@@ -221,21 +241,34 @@
                                 </ul>
                                 <!-- .sub-menu  end -->
                             </li>
-                            <li th:class="${#strings.contains(session.menuLabel, '/global')}? active">
+                            <li th:class="${#strings.contains(session.menuLabel, '/global/CAR_GLASS')}? active ">
                                 <span class="horline">|</span><a href="/global/CAR_GLASS"
                                                                  data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
                                                                  th:text="#{fragment.menu.global}">福耀全球</a>
-                                <ul class="sub-menu">
-                                    <li><a href="/global/CAR_GLASS"
-                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
-                                           th:text="#{global.Network}">福耀机构</a>
-                                    </li>
-                                    <li id="serviceNode" th:class="${#strings.equals(session.lang_session, 'zh_CN')}?'block':'none'"><a href="/global/SERVICE_NODE"
-                                           data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
-                                           th:text="#{global.Location}">服务网点</a>
-                                    </li>
-                                </ul>
+                                <!----ul class="sub-menu">-->
+                                <!--<li><a href="/global/CAR_GLASS"-->
+                                <!--data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'-->
+                                <!--th:text="#{global.Network}">福耀机构</a>-->
+                                <!--</li>-->
+                                <!--<li id="serviceNode" th:class="${#strings.equals(session.lang_session, 'zh_CN')}?'block':'none'"><a href="/global/SERVICE_NODE"-->
+                                <!--data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'-->
+                                <!--th:text="#{global.Location}">服务网点</a>-->
+                                <!--</li>-->
+                                <!--</ul-->
                             </li>
+
+                            <li th:class="${#strings.contains(session.menuLabel, '/global/SERVICE_NODE')}? active"   th:classappend="${#strings.equals(session.lang_session, 'zh_CN')}?'':'none'">
+
+                                <span class="horline">|</span><a href="/global/SERVICE_NODE"
+                              data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                              th:text="#{global.Location}">服务网点</a>
+
+
+
+
+                            </li>
+
+
                             <!--script>
                                 $(function(){
                                     console.log($("body").attr("class").indexOf("zh_CN"))
@@ -831,6 +864,7 @@
     </footer>
 
 
+
 </div>
 <!-- .wrapper end -->
 
@@ -858,7 +892,8 @@
     <script src="https://s19.cnzz.com/z_stat.php?id=1274177042&web_id=1274177042" language="JavaScript"></script>
     <!-- Your Plugins & Theme Scripts
     ============================================= -->
-
+    <script type="text/javascript" src="/front_static/js/script.js" ></script>
+    <link rel="stylesheet" href="/front_static/css/style_1.css">
     <script>
         var REVISION = "0.0.1",
             APP_ROOTPATH = {
@@ -867,7 +902,7 @@
                 "ajaxUrl": ""   //Eg. https://uiux.cc/wp-admin/admin-ajax.php
             };
     </script>
-    <script src="/front_static/js/uix-kit.min.js?ver=MTUyOTA0NjMzOTQzMA"></script>
+    <script src="/front_static/js/uix-kit.js?ver=MTUyOTA0NjMzOTQzMA"></script>
 
     <!-- Your Plugins & Theme Scripts  end -->
 </div>

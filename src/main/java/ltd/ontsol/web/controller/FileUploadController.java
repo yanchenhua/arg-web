@@ -177,10 +177,17 @@ public class FileUploadController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyMMDDmmss");
         String fileName = file.getOriginalFilename();
         String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
-        String tempFileName = sdf.format(new Date()) + "_" + suffix;
+        String tempFileName = sdf.format(new Date()) + "." + suffix;
         Path filePath = Paths.get(service.getUploadFolder(), tempFileName);
         log.info(String.format("[文件上传路径] - [{%s}]", filePath.toString()));
         Files.copy(file.getInputStream(), filePath);
+        System.out.println("mp4 ---->>>>>>"+suffix);
+//        if(suffix.equals("mp4")){
+//            System.out.println("mp4 ---->>>>>>");
+//            response.setContentType("video/mp4;charset=UTF-8");
+//        }else{
+//            response.setContentType("text/html;charset=UTF-8");
+//        }
         response.setContentType("text/html;charset=UTF-8");
         String callback = request.getParameter("CKEditorFuncNum");
         PrintWriter out = response.getWriter();

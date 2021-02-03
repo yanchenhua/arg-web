@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text = "#{fragment.menu.contact}+'- '+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 
 <body th:class="|page ${session.lang_session}|">
@@ -31,7 +32,7 @@
       ====================================================== -->
     <div class="app-page-banner-placeholder"></div>
 
-    <div id="app-page-content-wrapper">
+    <!--<div id="app-page-content-wrapper" class="app-maps">-->
 
         <section class="space-sm space-none-bottom "
                  >
@@ -43,7 +44,9 @@
                     <div class="col-md-12">
 
                         <h2 class="heading-overlay t-l full" data-text="Contact Us"><em
-                                th:utext="#{contact.title}"><span>联系</span>我们</em></h2>
+                                th:utext="#{contact.title}"><span>联系</span>我们</em>
+                            <span th:utext="#{contact.tip}" style="font-size: 16px;color: #000000;">请联系福耀总部或您所在区域的配件汽车玻璃商务机构</span>
+                        </h2>
 
                         <div class="app-page-content-show">
 
@@ -55,6 +58,11 @@
                                     <a th:href="|/contact/HUB|"
                                        data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
                                        th:utext="#{contact.hub}">集团总部</a>
+                                </li>
+                                <li th:class="${type == 'CHINA'} ? active">
+                                    <a th:href="|/contact/CHINA|"
+                                       data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
+                                       th:utext="#{contact.china}">中国</a>
                                 </li>
                                 <li th:class="${type == 'OTHERS'} ? active">
                                     <a th:href="|/contact/OTHERS|"
@@ -85,11 +93,12 @@
             </div>
             <!-- .container end -->
 
+<div class="container relative" style="padding: 20px;">
+            <!--<div class="app-location-wrapper info-pure active" style="margin-top: 20px">-->
+            <div class="row">
+                <!--<div class="app-location-selector">-->
 
-            <div class="app-location-wrapper info-pure active" style="margin-top: 20px">
-
-                <div class="app-location-selector">
-                    <div>
+                    <div class="col-md-5" style="box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);padding: 2.5em">
 
                         <div th:each="item, itemStat : ${objs}">
 
@@ -144,19 +153,33 @@
 
 
                     </div>
-
-
+                <div id="distributorTile" class="col-md-12" style="padding: 20px;font-size: 20px;font-weight: 700;visibility: hidden" >
+                    纯正福耀配件汽车玻璃制品一级经销商：
                 </div>
+                    <div class="col-md-12" style="padding: 20px;">
+                        <div th:each="item, itemStat : ${disobjs}" class="col-md-6" style="height: 170px;box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);padding: 10px" >
+                            <dl th:text="${item.area}" style="font-size: 12px;font-weight: 700;color:#E43927"></dl>
+                            <dl th:text="${item.companyName}" style="font-size: 14px;color: #337aff;font-weight: 700"></dl>
+                            <dl th:text="${item.address}" style="font-size: 12px;"></dl>
+                            <dl>
+
+                                <dd><p th:text="${item.tel}" style="line-height: 10px;font-size: 12px"></p></dd>
+                            </dl>
+
+                        </div>
+                    </div>
+
+                <!--</div>-->
 
             </div>
 
+</div>
+            <!--<div class="app-maps" style="visibility: hidden">-->
 
-            <div class="app-maps" style="visibility: hidden">
+                <!--<div></div>-->
 
-                <!--百度地图容器-->
-                <div id="dituContent"></div>
 
-            </div>
+            <!--</div>-->
 
 
         </section>
@@ -183,7 +206,11 @@
 
         <script type="text/javascript" th:inline="javascript">
 
-
+if(window.location.href.indexOf("CHINA")>-1){
+    $("#distributorTile").css({"visibility":'visible'});
+}else{
+    $("#distributorTile").css({"visibility":'hidden'});
+}
             // 百度地图API功能
             var map = new BMap.Map("dituContent");
             map.centerAndZoom(new BMap.Point(118.114086, 24.519873), 15);
@@ -241,7 +268,7 @@
         </script>
 
 
-    </div>
+    <!--</div>-->
     <!-- /#app-page-content-wrapper -->
 
 

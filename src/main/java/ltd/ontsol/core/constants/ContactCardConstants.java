@@ -8,6 +8,9 @@ public enum ContactCardConstants {
     //集团总部
     HUB,
 
+    //中国
+    CHINA,
+
     //欧洲、亚洲、中东、大洋洲、非洲、中南美
     OTHERS,
 

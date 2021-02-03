@@ -1,15 +1,11 @@
 package ltd.ontsol.core.dto;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import ltd.ontsol.core.AbstractPersistableEntity;
 import ltd.ontsol.core.constants.MediaConstants;
+
+import java.util.List;
 
 /**
  * Created by cn40580 at 2018-06-13 11:03 AM.
@@ -22,8 +18,30 @@ public class MediaDTO extends AbstractPersistableEntity<Long> {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private LongText title;
 
+    public LongText getFilePathlocale() {
+        return filePathlocale;
+    }
+
+    public void setFilePathlocale(LongText filePathlocale) {
+        this.filePathlocale = filePathlocale;
+    }
+
+    @JoinColumn(name = "FILE_TEXT_ID")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private LongText filePathlocale;
+
+//    public List<AttachmentDTO> getAttachment() {
+//        return attachment;
+//    }
+//
+//    public void setAttachment(List<AttachmentDTO> attachment) {
+//        this.attachment = attachment;
+//    }
+
     @JoinColumn(name = "ATT_ID")
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//@Transient
+//    private List<AttachmentDTO> attachment;
     private AttachmentDTO attachment;
 
     @JoinColumn(name = "PIC_ID")

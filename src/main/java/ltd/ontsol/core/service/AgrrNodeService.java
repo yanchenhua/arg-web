@@ -9,14 +9,20 @@ import ltd.ontsol.core.dto.AgrrNodeDTO;
  */
 public interface AgrrNodeService {
     List<AgrrNodeDTO> findAll();
+    List<AgrrNodeDTO> findByVerStatus(String keyword);
+    AgrrNodeDTO findById( Long id);
 
     List<AgrrNodeDTO> findAll(AgrrNodeDTO dto);
 
     List<AgrrNodeDTO> findAllGoodProvider();
-
+   // List<AgrrNodeDTO> findById();
+   List<AgrrNodeDTO> findByLoginInfo(String username,String password);
     AgrrNodeDTO save(AgrrNodeDTO dto);
-
+    //void upload(Long id,String url);
     void delete(Long id);
 
     AgrrNodeDTO saveOrUpdate(AgrrNodeDTO dto);
+
+    Integer countByLoginInfo(String username,String password);
+    Integer countByUsername(String username);
 }

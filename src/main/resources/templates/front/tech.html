@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text = "#{fragment.menu.tech}+'- '+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 
 <body th:class="|page ${session.lang_session}|">
@@ -416,13 +417,13 @@
                                          data-ajax-list-addition="true"
                                          data-ajax-list-temp-id="list-topic-ajax-template-1"
                                          data-ajax-list-page-now="1"
-                                         data-ajax-list-page-per="8"
+                                         data-ajax-list-page-per="12"
                                          data-ajax-list-page-total="-1"
                                          data-ajax-list-trigger="#ajax-loadmore-btn-1"
                                          data-ajax-list-trigger-active-class=".active"
                                          data-ajax-list-push-container-class=".list-topic-items-ajax-container"
                                          data-ajax-list-infinitescroll="false"
-                                         data-ajax-list-field-pageSize="8">
+                                         data-ajax-list-field-pageSize="12">
 
 
                                         <div class="seamless-col-6" th:each="item, itemStat : ${objs}">
@@ -510,11 +511,11 @@
                                 <hr>
 
 
-                                <p class="t-c" style="width: 100px !important; margin: 0 auto;">
-                                    <a id="ajax-loadmore-btn-1" href="javascript:void(0)"
-                                       class="button button-border-thin button-size-s button-bg-primary"
-                                       th:utext="#{fragment.button.more}">查看更多</a>
-                                </p>
+                                <!--<p class="t-c" style="width: 100px !important; margin: 0 auto;">-->
+                                    <!--<a id="ajax-loadmore-btn-1" href="javascript:void(0)"-->
+                                       <!--class="button button-border-thin button-size-s button-bg-primary"-->
+                                       <!--th:utext="#{fragment.button.more}">查看更多</a>-->
+                                <!--</p>-->
 
 
                             </div>

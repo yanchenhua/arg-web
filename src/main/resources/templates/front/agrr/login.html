@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|" style="display: block">
+
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header">
+
+
+    </header>
+    <div class="header-inner"></div>
+
+
+    <div id="app-page-content-wrapper">
+        <section class="space-sm ">
+            <div class="container relative">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <form id="from" method="post" th:action="|/agrr/userLogin|">
+                            <div class="mycenter" style="background-color: #BDE3F6;border-radius:10px;">
+                                <div class="mysign" style="padding-bottom: 20px;padding-top: 20px;">
+                                    <div class="row">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-6 text-center text-info">
+                                            <h2 style="color: #005EAD">
+                                                用户登录</h2>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-6">
+                                            <input type="text" class="form-control" name="username" placeholder="请输入账户名" required
+                                                   autofocus />
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-6">
+                                            <input type="password" class="form-control" name="password" placeholder="请输入密码" required
+                                                   autofocus />
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-6">
+                                            <button type="submit" id="btn" class="btn btn-success col-lg-12">
+                                                登录</button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-6">
+                                            <button id="btn" type="button" onclick="gotoRegister()" class="btn btn-primary col-lg-12">
+                                                新账号注册</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+<script>
+    delCookie("username");
+    delCookie("password");
+    //写cookies，一个小时过期
+    // function setCookie(name, value) {
+    //     var exp = new Date();
+    //     exp.setTime(exp.getTime() + 60 * 60 * 1000);
+    //     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+    // }
+    function gotoRegister(){
+
+        window.location.href="/agrr/serviceAppli";
+    }
+    function setCookie (name, value, day) {
+        if(day !== 0){     //当设置的时间等于0时，不设置expires属性，cookie在浏览器关闭后删除
+            var expires = day * 24 * 60 * 60 * 1000;
+            var date = new Date(+new Date()+expires);
+            document.cookie = name + "=" + escape(value) + ";expires=" + date.toUTCString();
+        }else{
+            document.cookie = name + "=" + escape(value);
+        }
+    };
+    //读取cookies
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+        if (arr = document.cookie.match(reg))
+
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    //删除cookies
+    // function delCookie(name) {
+    //     //alert(11111)
+    //     var exp = new Date();
+    //     exp.setTime(exp.getTime() - 60 * 60 * 1000);
+    //     var cval = getCookie(name);
+    //     alert(cval)
+    //     if (cval != null)
+    //         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";path=/";
+    // }
+    function delCookie (name) {
+              setCookie(name, ' ', -1);
+    };
+</script>
+</html>
+
+

@@ -24,6 +24,10 @@
                                 <input type="text" v-model="shopname" style="height: 25px;" placeholder="名称" value=""/>
                             </form>
                         </div>
+                        <div class="col-md-12 padding-0" style="padding-bottom:20px;">
+                            <input type="file" id="fileExport" @change='handleFileChange' ref="inputer">
+                            <a class="btn btn-success" @click="uploadExcel">上传</a>
+                        </div>
                         <div class="responsive-table">
                             <w-table :columns="columns" :table_list='table_list'
                                      :data_source_config="data_source_config" @http_done='done'></w-table>
@@ -43,11 +47,14 @@
 <script src="/manage_static/js/me/table/bundle.js"></script>
 <link rel="stylesheet" type="text/css" href="/manage_static/js/me/paging/style.css"/>
 <script src="/manage_static/js/me/paging/bundle.js"></script>
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+
 <script>
 
     var app = new Vue({
         el: '#app',
         data: {
+            formData:'',
             total: 0,
             current: 1,
             shopname: '',
@@ -167,7 +174,29 @@
                 console.info(native);
                 this.total = native.sumCount;
                 this.table_list = new_rst;
+            },
+            handleFileChange: function () {
+
+                var inputDOM = this.$refs.inputer;
+                this.file = inputDOM.files[0];//通过DOM取文件数据
+
+                var size = Math.floor(this.file.size / 1024);//计算文件的大小
+
+                this.formData = new FormData();//new一个formData事件
+
+                this.formData.append("file", this.file);//将file属性添加到formData里
+            },
+            uploadExcel: function () {
+                var config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                };
+               // axios.get('/upload',{},function (res) {
+               //
+               // })
             }
+
         },
         created: function () {
             var num = this.$tools.page.get();

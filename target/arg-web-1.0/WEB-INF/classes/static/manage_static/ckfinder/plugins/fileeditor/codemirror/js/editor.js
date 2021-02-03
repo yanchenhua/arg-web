@@ -68,6 +68,7 @@ var Editor = (function(){
   var newlineElements = {"P": true, "DIV": true, "LI": true};
 
   function asEditorLines(string) {
+    console.info("asEditorLiness"+string)
     var tab = makeWhiteSpace(indentUnit);
     return map(string.replace(/\t/g, tab).replace(/\u00a0/g, " ").replace(/\r\n?/g, "\n").split("\n"), fixSpaces);
   }

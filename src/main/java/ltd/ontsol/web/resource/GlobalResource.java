@@ -9,6 +9,17 @@ public class GlobalResource {
     private String name;
     private List<GlobalCityResource> list;
 
+
+    public List<GlobalCityAreaResource> getCity() {
+        return city;
+    }
+
+    public void setCity(List<GlobalCityAreaResource> city) {
+        this.city = city;
+    }
+
+    private List<GlobalCityAreaResource> city;
+
     public String getName() {
         return name;
     }

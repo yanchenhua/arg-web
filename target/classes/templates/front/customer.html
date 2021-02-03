@@ -50,8 +50,9 @@
                                    <img width="15" height="15" src="../front_static/css/../images/point.png"/>
                                </span>
                         <p th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? ''">
-                                <a th:href="@{${session.home.fySystemLink}(language=${session.lang_session_1},device=pc)}" target="_blank"
-                                   th:text="#{fragment.menu.fySystem}">产品条目</a>
+                                <!--<a th:href="@{${session.home.fySystemLink}(language=${session.lang_session_1},device=pc)}" target="_blank"-->
+                                   <!--th:text="#{fragment.menu.fySystem}">产品条目</a>-->
+                            <a th:href="#{arg.url}" target="_blank"  th:text="#{fragment.menu.fySystem}"></a>
 
                             </p>
 

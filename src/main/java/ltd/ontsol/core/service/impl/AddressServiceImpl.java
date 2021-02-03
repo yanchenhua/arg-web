@@ -44,4 +44,5 @@ public class AddressServiceImpl implements AddressService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+    public void deleteByAgrrId(Long id){repository.deleteByAgrrId(id); }
 }

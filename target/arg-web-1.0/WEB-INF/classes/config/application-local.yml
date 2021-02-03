@@ -49,10 +49,12 @@ spring:
 
 argweb:
     upload: E:\upload
-    defaultLocale: zh_CN
+
     argSupportLocales:
         - zh_CN
         - en_US
+        - jp_JP
+
         #- RU
         #- fr_FR
         #- jp_JP

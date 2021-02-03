@@ -60,7 +60,7 @@
 
                         <p th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? ''">
 
-                            <a href="http://argsystem.fygi.com/x5/UI2/v_/portal/pc3/index.w?device=pc" target="_blank"  th:text="#{fragment.menu.pjSystem}"></a>
+                            <a th:href="#{arg.url}" target="_blank"  th:text="#{fragment.menu.pjSystem}"></a>
                         </p>
 
 

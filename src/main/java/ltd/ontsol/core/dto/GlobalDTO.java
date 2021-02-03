@@ -26,6 +26,26 @@ public class GlobalDTO extends AbstractPersistableEntity<Long> {
     private LongText shopcontact;
     private String shoptel;
 
+    public String getVerNumber() {
+        return verNumber;
+    }
+
+    public void setVerNumber(String verNumber) {
+        this.verNumber = verNumber;
+    }
+
+    private String verNumber;
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    private String zipCode;
+
     //店铺图片多张
     @JoinColumn(name = "GLOBAL_BANNER_ATT_ID")
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -54,6 +74,18 @@ public class GlobalDTO extends AbstractPersistableEntity<Long> {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private LongText cityName;
 
+    public LongText getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(LongText areaName) {
+        this.areaName = areaName;
+    }
+
+    @JoinColumn(name = "AREA_NAME_ID")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private LongText areaName;
+
     public LongText getGlobalName() {
         return globalName;
     }
@@ -73,6 +105,7 @@ public class GlobalDTO extends AbstractPersistableEntity<Long> {
     public LongText getShopname() {
         return shopname;
     }
+
     public LongText getShopcontact() {
         return shopcontact;
     }
@@ -80,6 +113,7 @@ public class GlobalDTO extends AbstractPersistableEntity<Long> {
     public void setShopname(LongText shopname) {
         this.shopname = shopname;
     }
+
     public void setShopcontact(LongText shopcontact) {
         this.shopcontact = shopcontact;
     }

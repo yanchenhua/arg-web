@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text = "#{global.research.hub}+'- '+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 
 
@@ -260,7 +261,7 @@
         // 用名称设置地图中心点
         function theLocationName(name) {
 
-            console.log(name);
+           // console.log(name);
 
             if (typeof name != typeof undefined) {
 
@@ -301,7 +302,7 @@
         };
         // 用经纬度设置地图中心点
         function theLocation(x, y, data) {
-            console.log("theLocation"+x)
+            //console.log("theLocation"+x)
             //map.clearOverlays();
             var new_point = new BMap.Point(x, y);
 
@@ -383,7 +384,7 @@
 
                             for (var g = 0; g < data.length; g++) {
                                 theLocation(data[g].shoplongitude, data[g].shoplatitude,data[g]);
-                                console.log(data[g])
+                                //console.log(data[g])
 
                                 var shops = data[g],
                                     num = g + 1;

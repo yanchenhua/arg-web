@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text = "#{fragment.menu.news}+'- '+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 
 
@@ -89,10 +90,10 @@
                                                         <img th:src="|/uploads/${item.picture.filePath}|" alt=""/>
 
                                                         <div class="link">
-                                                            <a href="#" target="_blank" th:utext="#{news.photo.read}"><i
+                                                            <a th:href="|/uploads/pdf/${#strings.equals(session.lang_session, 'zh_CN')?#strings.arraySplit(item.attachment.filePath,':')[0]:#strings.arraySplit(item.attachment.filePath,':')[1]}|" target="_blank" th:utext="#{news.photo.read}"><i
                                                                     class="fa fa-file-text"
                                                                     aria-hidden="true"></i>在线阅读</a>
-                                                            <a href="#" target="_blank"
+                                                            <a th:href="|/uploads/stream/${#strings.equals(session.lang_session, 'zh_CN')?#strings.arraySplit(item.attachment.filePath,':')[0]:#strings.arraySplit(item.attachment.filePath,':')[1]}|" target="_blank"
                                                                th:utext="#{news.photo.download}"><i
                                                                     class="fa fa-cloud-download"
                                                                     aria-hidden="true"></i>下载画册</a>

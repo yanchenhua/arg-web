@@ -7331,7 +7331,8 @@ App = ( function ( App, $, window, document ) {
    
     var documentReady = function( $ ) {
 		
-		
+		var provinceVal;
+		var allData;
 		$( '[data-ajax-dynamic-dd-json]' ).each( function() {
 			var $this            = $( this ),
 			    jsonFile         = $this.data( 'ajax-dynamic-dd-json' ),
@@ -7368,6 +7369,7 @@ App = ( function ( App, $, window, document ) {
 			
 			
 			curID = $this.attr( 'id' );
+
 			
 			
 			//Parse the JSON data
@@ -7408,13 +7410,14 @@ App = ( function ( App, $, window, document ) {
 				$( document ).on( 'change', '#' + curID, function( e ) {
 
 					e.preventDefault();
-					
+					console.log("change here="+thisChange)
 				
 					if ( thisChange ) {
 						
 						thisChange = false;
 						
 						var curVal = $( '#' + curID + ' option:selected' ).val();
+                        provinceVal = curVal;
 						
 						if ( curVal != '' ) {
 							
@@ -7434,20 +7437,21 @@ App = ( function ( App, $, window, document ) {
 									if ( data == null ) {
 										//do something
 									}
-
-									
+									allData = data;
+									console.info(data)
 									for ( var m = 0; m < data.length; m++ ) {
-
+                                        console.log("for="+thisChange)
 										//Check if a key exists inside a json object
 										if ( data[m].name == curVal ) {
 
-
+											console.log(curVal)
 											var optionsHtml   = '',
 												cities        = data[m].city,
 												list          = data[m].list;
+												console.log(cities);
 
-
-											if ( typeof list === typeof undefined ) {
+											if ( typeof list === typeof undefined|| !list ) {
+												console.log("dynamic-dd-province--->>>>")
 												//Traversing json of chinese provinces and cities
 												//-------------------------------------	
 												for ( var i = 0; i < cities.length; i++ ) {
@@ -7499,7 +7503,7 @@ App = ( function ( App, $, window, document ) {
 												}
 
 											}
-
+											console.log("-------------------------------------------------------------------------------")
 											$( associated ).html( optionsHtml );
 
 
@@ -7509,10 +7513,12 @@ App = ( function ( App, $, window, document ) {
 
 											break;
 										}
+                                        console.log("for111="+thisChange)
 									}//end for
-									
+                                    console.log("for222="+thisChange)
 
 									//Avoid duplicate events running
+
 									thisChange = true;
 
 								 },
@@ -7563,7 +7569,127 @@ App = ( function ( App, $, window, document ) {
 				});				
 				
 				
-			}
+			}else{
+				console.log("city here= "+thisChange);
+                $( document ).on( 'change', '#' + curID, function( e ) {
+                    e.preventDefault();
+                    console.log(associated)
+                    var curVal = $( '#' + curID + ' option:selected' ).val();
+                    console.log("provinceVal = "+provinceVal)
+                    var data = allData;
+                    for(var m = 0; m < data.length; m++){
+                        if ( data[m].name == provinceVal ){
+								data = data[m].city;
+						}
+					}
+					console.log(data)
+                    if ( data == null ) {
+                       return;
+                    }
+                    for ( var m = 0; m < data.length; m++ ) {
+                        console.log("curVal = "+curVal)
+                        //Check if a key exists inside a json object
+                        if ( data[m].name == curVal ) {
+
+                            console.log(curVal)
+                            var optionsHtml   = '',
+                                cities        = data[m].city,
+                                list          = data[m].area;
+                            console.log("list="+list);
+
+                            if ( typeof list === typeof undefined|| !list ) {
+                                console.log("dynamic-dd-province--->>>>")
+                                //Traversing json of chinese provinces and cities
+                                //-------------------------------------
+                                for ( var i = 0; i < cities.length; i++ ) {
+
+                                    var name      = cities[ i ].name,
+                                        area      = cities[ i ].area;
+
+                                    var areaTxt = '';
+                                    for ( var k = 0; k < area.length; k++ ) {
+                                        areaTxt += JSON.stringify( area[k] ) + ',';
+                                    }
+
+                                    areaTxt = areaTxt.replace(/,\s*$/, '' );
+
+
+                                    optionsHtml += "<option data-name='"+name+"' data-area='["+areaTxt+"]'  value='"+name+"'>"+name+"</option>";
+
+                                }
+                            } else {
+                                //Traversing json with coordinates and details
+                                //-------------------------------------
+                                for ( var i = 0; i < list.length; i++ ) {
+
+                                    var name      = list[ i ].name,
+                                        longitude = list[ i ].longitude,
+                                        latitude  = list[ i ].latitude,
+                                        shops     = list[ i ].shops;
+
+                                    //暂时注释
+                                    if ( name.length > 0 ) {
+                                        name = name.replace(/\'/, '');
+                                    }
+
+
+
+                                    var shopsTxt = '';
+                                    for ( var k = 0; k < shops.length; k++ ) {
+                                        var _c = JSON.stringify( shops[k] );
+                                        _c = _c.replace(/'/g, '&apos;' );
+
+                                        shopsTxt += _c + ',';
+                                    }
+
+                                    shopsTxt = shopsTxt.replace(/,\s*$/, '' );
+
+
+                                    optionsHtml += "<option data-name='"+name+"' data-shops='["+shopsTxt+"]' data-longitude='"+longitude+"' data-latitude='"+latitude+"' value='"+name+"'>"+name+"</option>";
+
+                                }
+
+                            }
+
+                            $( associated ).html( optionsHtml );
+
+
+                            //Initialize the custom select
+                            $( document ).customSelectInit();
+                            $( associated ).attr( 'selected', 'selected' ).change();
+
+                            break;
+                        }
+                    }
+
+                    thisChange = true;
+				})
+                $( document ).on( 'change.cusSelectDynamicDD', associated, function( e ) {
+
+                    e.preventDefault();
+
+                    var $this        = $( this[ this.selectedIndex ] ),
+                        curVal       = $this.val(),
+                        curLongitude = $this.data( 'longitude' ),
+                        curLatitude  = $this.data( 'latitude' ),
+                        curShops     = $this.data( 'shops' ),
+                        curContents  = '';
+
+
+                    if ( Object.prototype.toString.call( curShops ) =='[object Array]' ) {
+                        for ( var k = 0; k < curShops.length; k++ ) {
+                            curContents += curShops[k].shopname + ': ' + curShops[k].shoplongitude + ', ' + curShops[k].shoplatitude;
+                        }
+                    }
+
+                    //console.log( curVal + ' Longitude: ' + curLongitude + ' | Latitude: ' + curLatitude + ' | Shops: ' + curContents );
+
+                    return false;
+
+
+
+                });
+            }
 			
 
 
@@ -7673,6 +7799,91 @@ App = ( function ( App, $, window, document ) {
 			
 		});
  
+    };
+    $.fn.searchJsonString2 = function( options ) {
+
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+            callback  : null,
+            jsonFile  : '',
+            key       : ''
+        }, options );
+
+        this.each( function() {
+
+            var obj = $( this );
+
+
+            //Returns JSON data
+            $.ajax({
+                url      : settings.jsonFile,
+                method   : 'GET',
+                dataType : 'json',
+                success  : function ( data ) {
+
+                    var newArr = [];
+
+                    //Convert JSON to an array
+                    var formatFromServer = function formatFromServer( data ) {
+                        var formatData = {};
+
+                        for ( var item in data ) {
+                            if ( $( document ).isJsonObject( { string:  data[item] } ) ) {
+                                formatFromServer( data[item], formatData );
+                            } else {
+                            	//console.log("----")
+                                formatData[item] = data[item];
+                            }
+                        }
+
+                        for ( var item2 in formatData ) {
+                            //console.log( formatData[ item2 ] );
+                            newArr.push( formatData[ item2 ] );
+                        }
+
+
+
+                        return formatData;
+                    };
+
+                    formatFromServer( data );
+                    console.log(newArr)
+
+
+                    //search JSON key that contains specific string
+                    for ( var p = 0; p < newArr.length; p++ ) {
+                        //console.log("1="+newArr[p])
+                        for ( var n = 0; n < newArr[p].city.length; n++ ) {
+                            //console.log(newArr[p].city[n])
+                        	for(var m=0;m<newArr[p].city[n].area.length;m++){
+                                if ( Object.prototype.toString.call( newArr[p].city[n].area[m][settings.key]) =='[object Array]' ) {
+									//console.log(newArr[p].city[n].area[m]["shops"])
+                                    // API: Callback
+                                    settings.callback( newArr[p].city[n].area[m][settings.key] );
+
+                                }
+							}
+
+
+
+
+                        }
+
+
+                    }
+
+
+
+                },
+                error  : function() {
+
+
+                }
+            });
+
+
+        });
+
     };
  
 }( jQuery ));

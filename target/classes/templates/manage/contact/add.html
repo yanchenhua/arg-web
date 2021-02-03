@@ -48,6 +48,7 @@
                                     <div class="col-md-6">
                                         <select v-model="form.type" class="form-control" style="margin-top: 0px;">
                                             <option value="HUB">总部</option>
+                                            <option value="CHINA">中国</option>
                                             <option value="NORTH_AMERICA">北美</option>
                                             <option value="RUSSIA">俄罗斯</option>
                                             <option value="OTHERS">其它</option>
@@ -180,7 +181,7 @@
             add: function (event) {
                 // console.info(this.form);
                 this.form.goodProvider = true;
-                this.$api.base.add('contactCard', this.form, function (res) {
+                this.$api.base.add('contactCard', JSON.stringify(this.form), function (res) {
                     // delete this.form.id
                     console.info(res);
                     alert('操作成功！');

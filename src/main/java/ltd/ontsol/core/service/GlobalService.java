@@ -27,4 +27,5 @@ public interface GlobalService {
     void delete(Long id);
 
     List<GlobalResource> findAllGlobalResourceByType(GlobalConstants type, Locale locale);
+    List<GlobalResource> findAllGlobalResourceByType2(GlobalConstants type, Locale locale);
 }

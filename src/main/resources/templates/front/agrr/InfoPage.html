@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|" style="display: block">
+
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header">
+
+
+    </header>
+    <div class="header-inner"></div>
+
+
+    <div id="app-page-content-wrapper">
+        <section class="space-sm ">
+            <div class="container relative">
+
+                <div class="row" style="font-size: 14px">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <h2 class="heading-overlay t-l full" data-text="Essential information"><em><span>基本</span>信息</em></h2>
+                            <div style="float: right;"><a href="/agrr/login" style="color: #337aff;">[退出登录]</a></div>
+                            <!--<div style="float: right;"><a href="/agrr/login" style="color: #337aff;">[退出登录]</a></div>-->
+                            <div id="loginUser" style="float: right; color: #0a86e9"></div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div id="status0" style="display: none;font-size: 22px;color: #999999" class="col-sm-6 t-l">
+                                审核中，请等待通知
+                            </div>
+                            <div id="status1" style="display: none;font-size: 22px;color: #999999" class="col-sm-6 t-l">
+                                审核通过，请下载附件<a id="downloadFile" href="" style="color: #337aff;">下载</a>
+                            </div>
+                            <div id="status2" style="display: none;font-size: 22px;color: #999999" class="col-sm-6 t-l">
+                                审核未通过，请重新编辑信息提交审核<a id="edit" href="" style="color: #337aff;">     前往编辑>></a>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 50px;">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-user" style="color: #337aff;" aria-hidden="true"></i><span>    姓名：</span>
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="name"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-phone" style="color: #337aff;" aria-hidden="true"></i><span>    电话：</span>
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="tel"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-envelope-o" style="color: #337aff;" aria-hidden="true"></i>    电子邮箱：
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="email"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-weixin" style="color: #337aff;" aria-hidden="true"></i>    微信：
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="wx"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-6 t-l">
+                                <div class="col-sm-3 t-l">
+                                    <i class="fa fa-flag" style="color: #337aff;" aria-hidden="true"></i>    服务商类型：
+                                </div>
+                                <div class="col-sm-9 t-l">
+                                    <div class="controls">
+                                        <span id="verifyType"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-6 t-l">
+                                <div class="col-sm-3 t-l">
+                                    <i class="fa fa-building" style="color: #337aff;" aria-hidden="true"></i>     公司名称：
+                                </div>
+                                <div class="col-sm-9 t-l">
+                                    <div class="controls">
+                                        <span id="companyname"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-6 t-l">
+                                <div class="col-sm-3 t-l">
+                                    <i class="fa fa-map-marker" style="color: #337aff;" aria-hidden="true"></i>    公司地址：
+                                </div>
+                                <div class="col-sm-9 t-l">
+                                    <div class="controls">
+                                        <span id="address"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>     法人代表：
+                                </div>
+                                <div class="col-sm-6 t-r">
+                                    <div class="controls">
+                                        <span id="representative"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    经营年限：
+                                </div>
+                                <div class="col-sm-6 t-c">
+                                    <div class="controls">
+                                        <span id="years"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    上级经销商：
+                                </div>
+                                <div class="col-sm-6 t-r">
+                                    <div class="controls">
+                                        <span id="distributor"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>      经销商编码：
+                                </div>
+                                <div class="col-sm-6 t-c">
+                                    <div class="controls">
+                                        <span id="distributorCode"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    主营业务：
+                                </div>
+                                <div class="col-sm-6 t-r">
+                                    <div class="controls">
+                                        <span id="serviceType"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    销售品牌：
+                                </div>
+                                <div class="col-sm-6 t-c">
+                                    <div class="controls">
+                                        <span id="salesbrand"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    辐射区域：
+                                </div>
+                                <div class="col-sm-6 t-r">
+                                    <div class="controls">
+                                        <span id="salesarea"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    门店性质：
+                                </div>
+                                <div class="col-sm-6 t-c">
+                                    <div class="controls">
+                                        <span id="storeproperty"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    销售金额：
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="sale"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    采购金额：
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="purchase"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    采购片数：
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="purchaseNumber"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    库存片数：
+                                </div>
+                                <div class="col-sm-6 t-l">
+                                    <div class="controls">
+                                        <span id="stock"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 t-l"></div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    库存占比：
+                                </div>
+                                <div class="col-sm-6 t-r">
+                                    <div class="controls">
+                                        <span id="stockRate"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l">
+                                <div class="col-sm-6 t-l">
+                                    <i class="fa fa-circle" style="color: #337aff;" aria-hidden="true"></i>    销售加价率：
+                                </div>
+                                <div class="col-sm-6 t-c">
+                                    <div class="controls">
+                                        <span id="markupRate"></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 t-l"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+
+</body>
+<script>
+    (function(){
+       var userName = getCookie("username");
+        var passWord = getCookie("password");
+        // $("#loginUser").html('<a href="/agrr/serviceAppli" style="color: #0a86e9">'+userName+'</a>');
+        $("#loginUser").html(userName);
+        $.post('/agrr/returnInfo',{
+            username: userName,
+            password: passWord
+        },function (data) {
+            $("#name").text(data.name) ;
+            $("#tel").text(data.tel) ;
+            $("#companyname").text(data.companyName) ;
+            $("#email").text(data.email) ;
+            $("#wx").text(data.wx) ;
+            $("#verifyType").text(data.verifyType) ;
+            $("#sale").text(data.sales) ;
+            $("#representative").text(data.representative) ;
+            $("#purchase").text(data.purchase);
+            $("#purchaseNumber").text(data.purchaseNumber);
+            $("#stock").text(data.stock);
+            $("#stockRate").text(data.stockRate);
+            $("#markupRate").text(data.markupRate);
+            $("#years").text(data.years+'年');
+            $("#distributor").text(data.distributor);
+            $("#distributorCode").text(data.distributorCode);
+            $("#salesbrand").text(data.salesbrand);
+            $("#salesarea").text(data.salesarea);
+            $("#storeproperty").text(data.storeproperty);
+            $("#serviceType").text(data.serviceType);
+            $("#address").text(data.addrs[0].text) ;
+            $("#status"+data.verstatus).css({"display":"block"});
+            $('#downloadFile').attr('href','/uploads/stream/'+data.shopContactAttachment.filePath);
+            $('#edit').attr('href','/agrr/serviceAppli');
+           // console.log(data.shopCertAttachment.filePath)
+        })
+    })(jQuery)
+    //写cookies，一个小时过期
+    function setCookie(name, value) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+    }
+    //读取cookies
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+        if (arr = document.cookie.match(reg))
+
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    //删除cookies
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 60 * 60 * 1000);
+        var cval = getCookie(name);
+        if (cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";path=/";
+    }
+</script>
+</html>
+
+

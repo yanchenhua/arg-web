@@ -43,13 +43,15 @@ spring:
             enabled: true
 
 argweb:
-    upload: E:\upload
-    defaultLocale: zh_CN
+    upload: F:\upload
+
     argSupportLocales:
         - zh_CN
         - en_US
-        #- RU
-        #- fr_FR
+        - jp_JP
+        - ru_RU
+        - fr_FR
+
     defaultUser: lewei
     defaultUserPswd: $2a$10$jBfsal7cnBBhnniDGv0MFesL0PWUfJyaAj0dUF6SZRcTT82ctlHwK
     #defaultUser:

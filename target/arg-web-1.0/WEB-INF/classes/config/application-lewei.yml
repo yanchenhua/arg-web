@@ -44,10 +44,12 @@ spring:
 
 argweb:
     upload: C:\\temp\\uploadFiles
-    defaultLocale: zh_CN
+
     argSupportLocales:
         - zh_CN
         - en_US
-        - RU
+        - ru_RU
+        - jp_JP
+
     defaultUser: lewei
     defaultUserPswd: $2a$10$jBfsal7cnBBhnniDGv0MFesL0PWUfJyaAj0dUF6SZRcTT82ctlHwK

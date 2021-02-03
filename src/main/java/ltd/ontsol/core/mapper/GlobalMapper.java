@@ -21,6 +21,7 @@ public interface GlobalMapper {
                     expression = "java(ltd.ontsol.core.util.TranslationUtils.convertToString(entity.getShopaddress(), locale))"),
             @Mapping(target = "shopcontact",
                     expression = "java(ltd.ontsol.core.util.TranslationUtils.convertToString(entity.getShopcontact(), locale))")
+
     })
     GlobalShop DTOtoResource(GlobalDTO entity, Locale locale);
 }

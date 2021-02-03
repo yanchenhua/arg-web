@@ -1,6 +1,7 @@
 package ltd.ontsol.web.rest;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,18 +11,14 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ltd.ontsol.core.dto.LongText;
 import ltd.ontsol.core.service.AddressService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.codahale.metrics.annotation.Timed;
 
@@ -57,7 +54,7 @@ public class AgrrWebService {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "pagination/{pageCount}/{pageSize}/",
+    @RequestMapping(value = "pagination1/{pageCount}/{pageSize}/",
             method = RequestMethod.POST,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
     @Timed
@@ -66,6 +63,7 @@ public class AgrrWebService {
                                                        @PathVariable("pageSize") Integer pageSize) {
         List<AgrrNodeDTO> uds = service.findAll(dto);
 
+
         uds.forEach(o -> {
             o.setAddrs(addressService.findAllByAgrrNode(o));
         });
@@ -73,6 +71,39 @@ public class AgrrWebService {
             return new ResponseEntity<>(new PaginationViewer(uds, pageCount, pageSize), HttpStatus.OK);
 
         PaginationViewer page = new PaginationViewer(uds, pageCount, pageSize);
+        return new ResponseEntity<>(page, HttpStatus.OK);
+    }
+//查询测试
+    @RequestMapping(value = "pagination/{pageCount}/{pageSize}/",
+            method = RequestMethod.POST,
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+    @Timed
+    public ResponseEntity<PaginationViewer> pagination1(@RequestBody AgrrNodeDTO dto,
+                                                       @PathVariable("pageCount") Integer pageCount,
+                                                       @PathVariable("pageSize") Integer pageSize
+                                                       ) {
+        List<AgrrNodeDTO> uds = service.findAll(dto);
+
+        String verstatus = dto.getVerstatus();
+        List<AgrrNodeDTO> udsList = new ArrayList<>();
+        if(verstatus  == null){
+            udsList = uds;
+        }else{
+            for (AgrrNodeDTO queryDTO : uds) {
+                String queryStatus = queryDTO.getVerstatus();
+                if (queryStatus.equals(verstatus)){
+                    udsList.add(queryDTO);
+                }
+            }
+        }
+
+        udsList.forEach(o -> {
+            o.setAddrs(addressService.findAllByAgrrNode(o));
+        });
+        if (udsList.size() == 0)
+            return new ResponseEntity<>(new PaginationViewer(udsList, pageCount, pageSize), HttpStatus.OK);
+
+        PaginationViewer page = new PaginationViewer(udsList, pageCount, pageSize);
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
@@ -125,5 +156,15 @@ public class AgrrWebService {
         toClient.flush();
         toClient.close();
         return (HttpServletResponse) response;
-    }
+    };
+//    @RequestMapping(value = "upload/{id}/{url}",
+//            method = RequestMethod.GET,
+//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+//    @Timed
+//    public ResponseEntity<String> upload(@PathVariable Long id,@PathVariable Long status) {
+//        service.upload(id,status);
+//        System.out.println(id+"---------------------->>>>>>");
+//        return new ResponseEntity<>("success", HttpStatus.OK);
+//    }
+
 }

@@ -4,9 +4,11 @@ ltd\ontsol\core\repo\ContactCardRepository.class
 ltd\ontsol\core\constants\AgrrConstants.class
 ltd\ontsol\web\rest\HonorWebService.class
 ltd\ontsol\core\repo\HonorRepository.class
+ltd\ontsol\core\service\impl\DistributorServiceImpl.class
 ltd\ontsol\core\service\LoginService.class
 ltd\ontsol\core\dto\BusinessDTO.class
 ltd\ontsol\core\handler\LoginSuccessHandler.class
+ltd\ontsol\web\resource\GlobalCityAreaResource.class
 ltd\ontsol\core\config\WebServiceServerConfig.class
 ltd\ontsol\web\rest\LoginWebService.class
 ltd\ontsol\core\constants\AuthoritiesConstants.class
@@ -50,6 +52,7 @@ ltd\ontsol\core\service\DicSuggestionService.class
 ltd\ontsol\web\controller\NewsController.class
 ltd\ontsol\core\dto\LeaderDTO.class
 ltd\ontsol\web\resource\GlobalCityResource.class
+ltd\ontsol\core\service\DistributorService.class
 ltd\ontsol\core\repo\AboutRepository.class
 ltd\ontsol\core\service\impl\ArticleServiceImpl.class
 ltd\ontsol\web\rest\QuestionWebService.class
@@ -84,6 +87,7 @@ ltd\ontsol\core\service\HonorService.class
 ltd\ontsol\core\mapper\StaffMapperImpl.class
 ltd\ontsol\web\controller\AboutController.class
 ltd\ontsol\core\service\LongTextService.class
+ltd\ontsol\core\dto\DistributorDTO.class
 ltd\ontsol\core\service\GlobalService.class
 ltd\ontsol\core\config\LocaleConfiguration.class
 ltd\ontsol\core\repo\ProductRepository.class
@@ -153,12 +157,15 @@ ltd\ontsol\core\constants\DicLevelConstants.class
 ltd\ontsol\core\repo\LongTextTranslationRepository.class
 ltd\ontsol\core\service\impl\QuestionServiceImpl.class
 ltd\ontsol\core\filter\CrossDomainHttpHeadersFilter.class
+ltd\ontsol\web\controller\ExcelController.class
 ltd\ontsol\core\Application.class
 ltd\ontsol\core\dto\ContactCardDTO.class
 ltd\ontsol\web\controller\ManageController.class
 ltd\ontsol\web\rest\LeaderWebService.class
+ltd\ontsol\web\resource\GlobalAreaResource.class
 ltd\ontsol\core\dto\MediaDTO.class
 ltd\ontsol\web\soap\staff\Staff.class
+ltd\ontsol\core\repo\DistributorRepository.class
 ltd\ontsol\web\soap\staff\PutStaffs.class
 ltd\ontsol\core\service\impl\LoginWebServiceImpl.class
 ltd\ontsol\core\config\GlobalExceptionHandler.class

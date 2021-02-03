@@ -13,6 +13,26 @@ public class GlobalShop {
     private String shoptype;
     private Double shoplongitude;
     private Double shoplatitude;
+    private String verNumber;
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    private String zipCode;
+    public String getVerNumber() {
+        return verNumber;
+    }
+
+    public void setVerNumber(String verNumber) {
+        this.verNumber = verNumber;
+    }
+
+
     private AttachmentDTO globalBannerAttachment;
     public String getShopname() {
         return shopname;

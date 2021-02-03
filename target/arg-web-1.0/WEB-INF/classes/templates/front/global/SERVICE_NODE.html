@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text = "#{global.service.node}+'- '+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 
 
-<body th:class="|page ${session.lang_session}|" style="display: none">
+<body th:class="|page ${session.lang_session}|" style="visibility: hidden">
 
-<script>
-    $(function(){
-        if($("body").attr("class").indexOf("zh_CN")==-1){
-            window.location.href="/";
-        }else{
-            $("body").css({"display":"block"});
-        }
-    })
-</script>
 <!-- Loader
 ============================================= -->
 <!--div class="loader" th:replace="front/fragment :: loader"></div>
@@ -47,6 +39,7 @@
 
     <div id="app-page-content-wrapper">
 
+
         <section class="space-sm space-none-bottom "
                  >
 
@@ -56,8 +49,8 @@
 
                     <div class="col-md-12">
 
-                        <h2 class="heading-overlay t-l full" data-text="Fuyao Global"><em
-                                th:utext="#{fragment.menu.global}"><span>福耀</span>全球</em></h2>
+                        <h2 class="heading-overlay t-l full" data-text="Replace Location"><em
+                                th:utext="#{global.Location}"><span>福耀</span>全球</em></h2>
 
                         <div class="app-page-content-show">
 
@@ -66,10 +59,10 @@
 
                             <ul class="app-cats">
 
-                                <li th:class="${type == 'SERVICE_NODE'} ? active"><a href="/global/SERVICE_NODE"
-                                                                                     data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'
-                                                                                     th:utext="#{global.service.node}">服务网点</a>
-                                </li>
+                                <!--<li th:class="${type == 'SERVICE_NODE'} ? active"><a href="/global/SERVICE_NODE"-->
+                                                                                     <!--data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'-->
+                                                                                     <!--th:utext="#{global.service.node}">服务网点</a>-->
+                                <!--</li>-->
                             </ul>
 
 
@@ -135,8 +128,27 @@
                                                 <div class="controls custom-select fullwidth">
                                                     <label>
                                                         <select name="dynamic-dd-city" id="dynamic-dd-city"
-                                                                th:placeholder="#{global.city}">
+                                                                th:placeholder="#{global.city}"
+                                                                data-ajax-dynamic-dd-json=""
+                                                                data-ajax-dynamic-dd-event="change"
+                                                                data-ajax-dynamic-dd-data=""
+                                                                data-ajax-dynamic-dd-associated="#dynamic-dd-area">
                                                             <option value="" th:utext="#{global.city}">城市</option>
+                                                        </select>
+
+                                                    </label>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="seamless-col-2"
+                                             th:if="${type == 'SERVICE_NODE'}">
+                                            <div class="content">
+                                                <div class="controls custom-select fullwidth">
+                                                    <label>
+                                                        <select name="dynamic-dd-area" id="dynamic-dd-area"
+                                                                th:placeholder="#{global.area}">
+                                                            <option value="" th:utext="#{global.area}">城市</option>
                                                         </select>
 
                                                     </label>
@@ -152,7 +164,7 @@
                                                            id="map-keyword" autocomplete="off">
                                                     <label th:utext="#{global.search.keyword}"><i class="fa fa-search"
                                                                                                   aria-hidden="true"></i>
-                                                        输入关键词</label>
+                                                        输入关键词或邮编</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -209,7 +221,33 @@
 
             </div>
 
-
+            <div id="modal-container">
+                <div class="modal-background">
+                    <div class="modal" style="">
+                        <h2 style="width: 80%;margin: auto;text-align: center">福耀集团关于“特约销售门店”的免责声明</h2>
+                        <p style="width: 90%;margin: auto;word-break: break-word;text-indent:2em;">
+                            本页面所提供的汽车玻璃服务网点是指福耀玻璃的特约销售门店网点，该门店是经过福耀集团委托的第三方机构认证合格后与福耀集团签订福耀产品特许销售协议的汽车玻璃门店，宗旨为客户提供便利服务。特约销售门店是独立商业机构，不属于福耀所有。福耀公司声明不会对其业务及行为承担除福耀产品的制造缺陷（缺陷确指不符合福耀产品出厂标准）外的直接或间接的法律责任。
+                            若消费者发现门店销售假冒福耀汽车玻璃产品，可向福耀进行投诉。所提供证据经福耀证实后，消费者可获300元奖励。目前市面上存在冒用、盗用福耀集团注册商标但不在本页能查询到的门店，其行为均为非法侵权，请消费者辨明。
+                            举报\投诉电话：400-855-6888。</p>
+                        <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                            <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="Modalcontent" style="display: none">
+                <h1>模态动画</h1>
+                <div class="buttons">
+                    <div id="one" class="button">Unfolding</div>
+                    <div id="two" class="button">Revealing</div>
+                    <div id="three" class="button">Uncovering</div>
+                    <div id="four" class="button">Blow Up</div>
+                    <br>
+                    <div id="five" class="button">Meep Meep</div>
+                    <div id="six" class="button">Sketch</div>
+                    <div id="seven" class="button">Bond</div>
+                </div>
+            </div>
             <div class="app-maps">
 
                 <!--百度地图容器-->
@@ -243,22 +281,38 @@
 
         <script type="text/javascript" th:inline="javascript">
             var addrDesc = [[#{global.address}]];
+            var zipCode = [[#{global.zipCode}]];
             var phoneDesc = [[#{global.phone}]];
-
+            var verNum = [[#{global.verNum}]];
+            var shopName = [[#{global.shopName}]];
             // 百度地图API功能
             var map = new BMap.Map("dituContent");
             map.centerAndZoom(new BMap.Point(119.322804, 25.730405), 15);
             map.enableScrollWheelZoom(true);
 
 
+
+            $(function(){
+                if($("body").attr("class").indexOf("zh_CN")==-1){
+                    window.location.href="/";
+                }else{
+                    $("body").css({"visibility":"visible"});
+                }
+            })
+            var opts = {
+                width : 300,     // 信息窗口宽度
+                //height: 'auto',     // 信息窗口高度
+                title : "" , // 信息窗口标题
+                enableMessage:true//设置允许信息窗发送短息
+            };
             // 用名称设置地图中心点
             function theLocationName(name) {
 
-                console.log(name);
+
 
                 if (typeof name != typeof undefined) {
 
-                    map.centerAndZoom(name, 19);
+                    map.centerAndZoom(name, 15);
 
 
                     // 创建地址解析器实例
@@ -279,7 +333,9 @@
 
                         var new_point = new BMap.Point(x, y);
                         var marker = new BMap.Marker(new_point, {icon: myIcon});  // 创建标注
+
                         map.addOverlay(marker);              // 将标注添加到地图中
+
                     });
 
 
@@ -289,7 +345,7 @@
             }
 
             // 用经纬度设置地图中心点
-            function theLocation(x, y) {
+            function theLocation(x, y ,data) {
                 map.clearOverlays();
                 var new_point = new BMap.Point(x, y);
 
@@ -298,13 +354,36 @@
                     imageOffset: new BMap.Size(16, 0 - 10 * 25)
                 });
 
+                var content = '<h3>'+data.shopname+'</h3>';
+
+                if(data.filepath){
+                    content+='<img width="300" height="200" src="/uploads/'+data.filepath+'"/>';
+                }
                 var marker = new BMap.Marker(new_point, {icon: myIcon});  // 创建标注
                 map.addOverlay(marker);              // 将标注添加到地图中
 
                 map.panTo(new_point);
+                addClickHandler(content,marker);
+            }
+            function addClickHandler(content,marker){
+                marker.addEventListener("click",function(e){
+                    openInfo(content,e)}
+
+                );
 
             }
+            function openInfo(content,e){
+                var p = e.target;
+                var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+                map.openInfoWindow(infoWindow,point); //开启信息窗口
+            }
+            function openInfo_1(content,lng,lat){
 
+                var point = new BMap.Point(lng,lat);
+                var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+                map.openInfoWindow(infoWindow,point); //开启信息窗口
+            }
             function makePoint(point) {
                 var marker = new BMap.Marker(point);
                 map.addOverlay(marker);
@@ -318,14 +397,17 @@
                 $(function () {
 
 
-
+                    // $("#dynamic-dd-city option:selected").val(decodeURI(getQueryVariable("city")))
+                    // $("#dynamic-dd-province option:selected").val(decodeURI(getQueryVariable("province")))
                     //Show all shops
                     if (
                         window.location.href.indexOf('CAR_GLASS') >= 0 ||
                         window.location.href.indexOf('FLOAT_GLASS') >= 0 ||
                         window.location.href.indexOf('RESEARCH_HUB') >= 0 ||
                         window.location.href.indexOf('SALES') >= 0
+                      //  || window.location.href.indexOf('SERVICE_NODE') >= 0
                     ) {
+
                         var shopsTxt_Frontend = '';
 
                         var jsonFile = '/app/rest/global/all/SERVICE_NODE';
@@ -337,12 +419,13 @@
 
 
                         $(document).searchJsonString({
+
                             jsonFile: jsonFile,
                             key: 'shops',
                             callback: function (data) {
-
-
-                                //show the location list
+                                //alert("11111111");
+                               // console.log("success")
+                                    //show the location list
                                 $('.app-location-wrapper').addClass('active');
 
                                 for (var g = 0; g < data.length; g++) {
@@ -354,7 +437,7 @@
                                     if (num < 10) num = '0' + num;
 
                                     shopsTxt_Frontend += '		<li>';
-                                    shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
+                                    shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude +  '" data-filepath="'+shops.globalBannerAttachment.filePath +'" data-shopname="'+shops.shopname +'" >';
                                     shopsTxt_Frontend += '				<span>' + num + '</span>';
                                     shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
                                     shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
@@ -362,7 +445,8 @@
                                     shopsTxt_Frontend += '				<div class="icon"><strong>' + shops.shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
                                     shopsTxt_Frontend += '			</a>';
                                     shopsTxt_Frontend += '		</li>';
-
+                                    //console.log(shops.shoplongitude)
+                                   // theLocation(shops.shoplongitude,shops.shoplatitude)
                                 }
 
                                 $('.app-location-selector > div > ul').html(shopsTxt_Frontend).promise().done(function () {
@@ -398,7 +482,7 @@
                                     key: 'shops',
                                     callback: function (data) {
 
-
+                                       //alert("22222222");
                                         //show the location list
                                         $('.app-location-wrapper').addClass('active');
 
@@ -411,7 +495,7 @@
                                             if (num < 10) num = '0' + num;
 
                                             shopsTxt_Frontend += '		<li>';
-                                            shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
+                                            shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude +  '" data-filepath="'+shops.globalBannerAttachment.filePath +'" data-shopname="'+shops.shopname +'" >';
                                             shopsTxt_Frontend += '				<span>' + num + '</span>';
                                             shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
                                             shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
@@ -446,7 +530,7 @@
                                     jsonFile: jsonFile,
                                     key: 'shops',
                                     callback: function (data) {
-
+                                       // alert("3333333333");
 
                                         //show the location list
                                         $('.app-location-wrapper').addClass('active');
@@ -462,8 +546,8 @@
 
                                             if (shops.shopname.toLowerCase().indexOf(keywords.toLowerCase()) >= 0 || shops.shopaddress.toLowerCase().indexOf(keywords.toLowerCase()) >= 0) {
                                                 shopsTxt_Frontend += '		<li>';
-                                                shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
-                                                shopsTxt_Frontend += '				<span>' + num + '</span>';
+                                                shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude +  '" data-filepath="'+shops.globalBannerAttachment.filePath +'" data-shopname="'+shops.shopname +'" >';
+                                                shopsTxt_Frontend += '				<span></span>';
                                                 shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
                                                 shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
                                                 shopsTxt_Frontend += '				<p>' + phoneDesc + '：' + shops.shoptel + '</p>';
@@ -471,6 +555,7 @@
                                                 shopsTxt_Frontend += '			</a>';
                                                 shopsTxt_Frontend += '		</li>';
                                             }
+
 
                                         }
 
@@ -500,23 +585,31 @@
 
 
                     } else {
+                        if(window.location.href.indexOf("name")>-1){
+                            $('#map-keyword').val(decodeURI(getQueryVariable("name")));
+                        }
 
+                        // $("#dynamic-dd-province").find("option[value='福建省']").attr("selected",true);
+                        // setTimeout(function(){
+                        //     $("#dynamic-dd-province").find("option[value='福建省']").attr("selected",true);
+                        // },3000)
 
                         $(document).on('click', '#map-search', function (e) {
 
 
                             e.preventDefault();
 
-
-                            var $this = $("#dynamic-dd-city option:selected"),
+                            var timer = -1;
+                            var $this = $("#dynamic-dd-area option:selected"),
                                 curVal = $this.val(),
+                                //decodeURI(getQueryVariable("city"))||
                                 curLongitude = $this.data('longitude'),
                                 curLatitude = $this.data('latitude'),
                                 curShops = $this.data('shops'),
                                 curCity = $this.data('name'),
                                 curCountry = $('#dynamic-dd-country option:selected').val(),
                                 keywords = $('#map-keyword').val();
-
+                            console.log(curVal)
                             //theLocation( curLongitude, curLatitude );
                             theLocationName(curCity);
 
@@ -535,11 +628,15 @@
                                     if (num < 10) num = '0' + num;
 
                                     shopsTxt += '		<li>';
-                                    shopsTxt += '		    <a href="javascript:" class="map-go-locate" data-city="' + curCity + '" data-name="' + curShops[k].shopaddress + '" data-longitude="' + curShops[k].shoplongitude + '" data-latitude="' + curShops[k].shoplatitude + '" >';
-                                    shopsTxt += '				<span>' + num + '</span>';
-                                    shopsTxt += '				<h5>' + curShops[k].shopname + '</h5>';
-                                    shopsTxt += '				<p>' + addrDesc + '：' + curShops[k].shopaddress + '</p>';
-                                    shopsTxt += '				<p>' + phoneDesc + '：' + curShops[k].shoptel + '</p>';
+                                    shopsTxt += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + curShops[k].shopaddress + '" data-longitude="' + curShops[k].shoplongitude + '" data-latitude="' + curShops[k].shoplatitude +  '" data-filepath="'+curShops[k].globalBannerAttachment.filePath +'" data-shopname="'+curShops[k].shopname +'" >';
+                                    shopsTxt += '				<span></span>';
+                                    shopsTxt += '				<h4 style="line-height: 50px">福耀授权特约销售门店</h4>';
+                                    shopsTxt += '				<h5 style="line-height: 30px">' + verNum + '：' + curShops[k].verNumber + '</h5>';
+                                    shopsTxt += '				<h5 style="line-height: 30px">' + shopName + '：' +curShops[k].shopname + '</h5>';
+
+                                    shopsTxt += '				<h5 style="line-height: 30px">' +addrDesc+ '：'  +curShops[k].shopaddress + '</h5>';
+                                    shopsTxt += '				<h5 style="line-height: 30px">' +zipCode+ '：'  +curShops[k].zipCode + '</h5>';
+                                    //shopsTxt += '				<p>' + phoneDesc + '：' + curShops[k].shoptel + '</p>';
                                     shopsTxt += '				<div class="icon"><strong>' + curShops[k].shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
                                     shopsTxt += '			</a>';
                                     shopsTxt += '		</li>';
@@ -553,7 +650,7 @@
 
                                         var num = index + 1;
                                         if (num < 10) num = '0' + num;
-                                        $(this).find('> a > span').text(num);
+                                        //$(this).find('> a > span').text(num);
                                     });
 
                                 });
@@ -567,18 +664,17 @@
 
                             }
 
-
                             //Search keywords
                             if (keywords != '') {
 
                                 var shopsTxt_Frontend = '';
 
-                                $(document).searchJsonString({
+                                $(document).searchJsonString2({
                                     jsonFile: $('#dynamic-dd-province').data('ajax-dynamic-dd-json'),
                                     key: 'shops',
                                     callback: function (data) {
-
-
+                                       // console.log(data)
+                                        //alert("44444444444");
                                         //show the location list
                                         $('.app-location-wrapper').addClass('active');
 
@@ -590,13 +686,17 @@
 
                                             if (num < 10) num = '0' + num;
 
-                                            if (shops.shopname.toLowerCase().indexOf(keywords.toLowerCase()) > 0 || shops.shopaddress.toLowerCase().indexOf(keywords.toLowerCase()) > 0) {
+                                            if (shops.shopname.toLowerCase().indexOf(keywords.toLowerCase()) > -1 || shops.shopaddress.toLowerCase().indexOf(keywords.toLowerCase()) > -1|| shops.zipCode.indexOf(keywords) > -1) {
                                                 shopsTxt_Frontend += '		<li>';
-                                                shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="' + curCity + '" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude + '" >';
-                                                shopsTxt_Frontend += '				<span>' + num + '</span>';
-                                                shopsTxt_Frontend += '				<h5>' + shops.shopname + '</h5>';
-                                                shopsTxt_Frontend += '				<p>' + addrDesc + '：' + shops.shopaddress + '</p>';
-                                                shopsTxt_Frontend += '				<p>' + phoneDesc + '：' + shops.shoptel + '</p>';
+                                                shopsTxt_Frontend += '		    <a href="javascript:" class="map-go-locate" data-city="" data-name="' + shops.shopaddress + '" data-longitude="' + shops.shoplongitude + '" data-latitude="' + shops.shoplatitude +  '" data-filepath="'+shops.globalBannerAttachment.filePath +'" data-shopname="'+shops.shopname +'" >';
+                                                shopsTxt_Frontend += '				<span></span>';
+                                                shopsTxt_Frontend += '				<h4 style="line-height: 50px">福耀授权特约销售门店</h4>';
+                                                shopsTxt_Frontend += '				<h5 style="line-height: 30px">' + verNum + '：' + shops.verNumber + '</h5>';
+                                                shopsTxt_Frontend += '				<h5 style="line-height: 30px">' + shopName + '：' + shops.shopname + '</h5>';
+
+                                                shopsTxt_Frontend += '				<h5 style="line-height: 30px">'  +addrDesc + '：' + shops.shopaddress + '</h5>';
+                                                shopsTxt_Frontend += '				<h5 style="line-height: 30px">'  +zipCode + '：' + shops.zipCode + '</h5>';
+                                                //shopsTxt_Frontend += '				<p>' + phoneDesc + '：' + shops.shoptel + '</p>';
                                                 shopsTxt_Frontend += '				<div class="icon"><strong>' + shops.shoptype + '</strong><i class="fa fa-map-marker" aria-hidden="true"></i></div>';
                                                 shopsTxt_Frontend += '			</a>';
                                                 shopsTxt_Frontend += '		</li>';
@@ -611,7 +711,7 @@
 
                                                 var num = index + 1;
                                                 if (num < 10) num = '0' + num;
-                                                $(this).find('> a > span').text(num);
+                                               // $(this).find('> a > span').text(num);
                                             });
 
                                         });
@@ -623,14 +723,40 @@
                             }
 
 
+                            timer = setInterval(function(){
+
+                                if($('.map-go-locate :first').length==1){
+                                    $('.map-go-locate :first').click();
+                                    clearTimeout(timer)
+                                }
+
+
+                            },100)
+
                             return false;
 
 
                         });
+                        if(window.location.href.indexOf("name")>-1){
+                            setTimeout(function(){
+                                $("#map-search").click();
+                            },50)
+                        }
+
+
 
 
                     }
-
+                    function getQueryVariable(variable)
+                    {
+                        var query = window.location.search.substring(1);
+                        var vars = query.split("&");
+                        for (var i=0;i<vars.length;i++) {
+                            var pair = vars[i].split("=");
+                            if(pair[0] == variable){return pair[1];}
+                        }
+                        return(false);
+                    }
 
                     //The target select event
                     $(document).on('change.cusSelectDynamicDD', '#dynamic-dd-city', function (e) {
@@ -664,11 +790,18 @@
                             curLongitude = $this.data('longitude'),
                             curLatitude = $this.data('latitude'),
                             curCity = $this.data('name');
-
+                        console.info($this.data('filepath'))
                         if (curLongitude == null || curLongitude == '' || curLongitude == 0) {
                             theLocationName(curCity);
                         } else {
-                            theLocation(curLongitude, curLatitude);
+                            var  data = {"filepath":$this.data('filepath'),"address":$this.data('name'),"shopname":$this.data('shopname')}
+                            theLocation(curLongitude, curLatitude,data);
+                            var content = '<h3>'+data.shopname+'</h3>';
+
+                            if(data.filepath){
+                                content+='<img width="300" height="200" src="/uploads/'+data.filepath+'"/>';
+                            }
+                            openInfo_1(content,curLongitude,curLatitude)
                         }
 
 
@@ -676,7 +809,6 @@
 
 
                     });
-
 
                 });
 
@@ -699,10 +831,20 @@
 <!-- .wrapper end -->
 
 
+<script>
+    $(function(){
+        $("#one").click();
+    })
+</script>
 <div th:replace="front/fragment :: js"></div>
 
 
 </body>
+<style>
+    .modal-container .modal-background .modal{
+        width: 80%;
+    }
+</style>
 </html>
 
     

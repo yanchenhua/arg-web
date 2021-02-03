@@ -47,11 +47,13 @@ spring:
 
 argweb:
     upload: /root/uploadFiles
-    defaultLocale: zh_CN
+
     argSupportLocales:
         - zh_CN
         - en_US
-        - RU
+        - ru_RU
+        - jp_JP
+
     defaultUser: admin
     defaultUserPswd: $2a$10$sYqf3UgoIpkQdBL8gU7SsuNB1/f36Tvy976XKmOThnny8ZsE43ZQa
     defaultAuthority: Super

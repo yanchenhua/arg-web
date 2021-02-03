@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text = "#{fragment.menu.video.photo}+'- '+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 
 
@@ -75,7 +76,7 @@
                                                 <div class="content">
                                                     <a href="javascript:void(0)" data-video-win="true"
                                                        th:data-video-poster="|/uploads/${item.picture.filePath}|"
-                                                       th:data-video-mp4="|/uploads/${item.attachment.filePath}|"
+                                                       th:data-video-mp4="${item.filePathlocale.getTranslatedStr(session.lang_session)}"
                                                        data-video-webm="" data-video-ogv=""
                                                        th:data-modal-id="|web-modal-${itemStat.index}|"
                                                        th:data-video-id="|web-video-${itemStat.index}|"
@@ -88,7 +89,7 @@
                                                     <p>
                                                         <a href="javascript:void(0)" data-video-win="true"
                                                            th:data-video-poster="|/uploads/${item.picture.filePath}|"
-                                                           th:data-video-mp4="|/uploads/${item.attachment.filePath}|"
+                                                           th:data-video-mp4="${item.filePathlocale.getTranslatedStr(session.lang_session)}"
                                                            data-video-webm="" data-video-ogv=""
                                                            th:data-modal-id="|web-modal-${itemStat.index}|"
                                                            th:data-video-id="|web-video-${itemStat.index}|"
@@ -143,11 +144,11 @@
                                                         <img th:src="|/uploads/${item.picture.filePath}|" alt=""/>
 
                                                         <div class="link">
-                                                            <a th:href="|/uploads/pdf/${item.attachment.filePath}|"
+                                                            <a th:href="${item.filePathlocale.getTranslatedStr(session.lang_session)}"
                                                                target="_blank" th:utext="#{news.photo.read}"><i
                                                                     class="fa fa-file-text"
                                                                     aria-hidden="true"></i>在线阅读</a>
-                                                            <a th:href="|/uploads/stream/${item.attachment.filePath}|"
+                                                            <a th:href="${item.filePathlocale.getTranslatedStr(session.lang_session)}"
                                                                target="_blank" th:utext="#{news.photo.download}"><i
                                                                     class="fa fa-cloud-download"
                                                                     aria-hidden="true"></i>下载画册</a>

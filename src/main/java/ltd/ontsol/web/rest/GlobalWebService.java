@@ -1,9 +1,8 @@
 package ltd.ontsol.web.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.*;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +48,7 @@ public class GlobalWebService {
     @Timed
     public ResponseEntity<GlobalDTO> saveOrUpdate(@RequestBody GlobalDTO dto) throws Exception {
         TranslationUtils.putTranslation(dto.getCityName());
+        TranslationUtils.putTranslation(dto.getAreaName());
         TranslationUtils.putTranslation(dto.getGlobalName());
         TranslationUtils.putTranslation(dto.getShopaddress());
         TranslationUtils.putTranslation(dto.getShopname());
@@ -86,7 +86,29 @@ public class GlobalWebService {
     @Timed
     public ResponseEntity<List<GlobalResource>> findAll(@PathVariable GlobalConstants type,
                                                         HttpServletRequest request) {
+        System.out.println(request.getSession().getAttribute("lang_session").getClass());
         Locale locale = (Locale) request.getSession().getAttribute("lang_session");
+        System.out.println(locale);
+
+        if(type.name()=="SERVICE_NODE"){
+            List<GlobalResource> globals = service.findAllGlobalResourceByType(type, locale == null ? Locale.getDefault() : locale);
+            return new ResponseEntity<>(globals, HttpStatus.OK);
+        }else{
+            List<GlobalResource> globals = service.findAllGlobalResourceByType2(type, locale == null ? Locale.getDefault() : locale);
+            return new ResponseEntity<>(globals, HttpStatus.OK);
+        }
+
+
+    }
+
+    @RequestMapping(value = "all1/{type}/{province}",
+            method = RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+    @Timed
+    public ResponseEntity<List<GlobalResource>> findAll1(@PathVariable GlobalConstants type,@PathVariable("province") String province,
+                                                        HttpServletRequest request) throws UnsupportedEncodingException {
+        Locale locale = (Locale) request.getSession().getAttribute("lang_session");
+        String province1 = URLDecoder.decode(province, "UTF-8");
         List<GlobalResource> globals = service.findAllGlobalResourceByType(type, locale == null ? Locale.getDefault() : locale);
         return new ResponseEntity<>(globals, HttpStatus.OK);
     }

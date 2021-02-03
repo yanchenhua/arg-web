@@ -11,6 +11,16 @@ public class GlobalCityResource {
     private Double latitude;
     private List<GlobalShop> shops;
 
+    public List<GlobalAreaResource> getList() {
+        return list;
+    }
+
+    public void setList(List<GlobalAreaResource> list) {
+        this.list = list;
+    }
+
+    private List<GlobalAreaResource> list;
+
     public String getName() {
         return name;
     }
@@ -42,4 +52,5 @@ public class GlobalCityResource {
     public void setShops(List<GlobalShop> shops) {
         this.shops = shops;
     }
+
 }

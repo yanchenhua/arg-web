@@ -38,7 +38,18 @@ public interface GlobalRepository extends JpaRepository<GlobalDTO, Long> {
                     "WHERE LTT.lang = :locale AND G.type = :type AND LTT2.text = :globalName " +
                     "GROUP BY LTT.text", nativeQuery = true)
     List<String> findAllCityNamesWithGlobalNameAndType(@Param("globalName") String globalName, @Param("type") String type, @Param("locale") String locale);
-
+    @Query(value =
+            "SELECT DISTINCT LTT3.text " +
+                    "FROM global G LEFT JOIN long_text LT ON G.city_name_id = LT.id " +
+                    "  LEFT JOIN long_text_trans LTT ON LT.id = LTT.long_text_id " +
+                    "  LEFT JOIN long_text LT2 ON G.global_name_id = LT2.id " +
+                    "  LEFT JOIN long_text_trans LTT2 ON LT2.id = LTT2.long_text_id " +
+                    "  LEFT JOIN long_text LT3 ON G.area_name_id = LT3.id " +
+                    "  LEFT JOIN long_text_trans LTT3 ON LT3.id = LTT3.long_text_id " +
+                    "WHERE LTT.lang = :locale AND G.type = :type AND LTT2.text = :globalName "+
+                    "AND LTT.text = :cityName " +
+                    "GROUP BY LTT3.text", nativeQuery = true)
+    List<String> findAllAreaNamesWithCityNameAndType(@Param("globalName") String globalName,@Param("cityName") String cityName, @Param("type") String type, @Param("locale") String locale);
     List<GlobalDTO> findAllByCityName(LongText cityName);
 
    /* @Query(value =
@@ -48,8 +59,11 @@ public interface GlobalRepository extends JpaRepository<GlobalDTO, Long> {
                     "  LEFT JOIN long_text LT2 ON LT2.id = G.global_name_id " +
                     "  LEFT JOIN long_text_trans LTT2 ON LT2.id = LTT2.long_text_id " +
                     "WHERE LTT.text = :cityName AND G.type = :type AND LTT2.text = :globalName", nativeQuery = true)*/
-    @Query(value ="SELECT DISTINCT G.id,G.shoplatitude,G.shoplongitude,G.shoptel,G.shoptype,G.type,G.city_name_id,G.global_name_id,G.shop_address_id,G.shop_name_id,G.shop_contact_id,G.global_banner_att_id FROM global G LEFT JOIN long_text LT ON G.city_name_id = LT.id LEFT JOIN long_text_trans LTT ON LT.id = LTT.long_text_id LEFT JOIN long_text LT2 ON LT2.id = G.global_name_id LEFT JOIN long_text_trans LTT2 ON LT2.id = LTT2.long_text_id LEFT JOIN attahment AT1 ON AT1.id = G.global_banner_att_id WHERE LTT.text = :cityName AND G.type = :type AND LTT2.text = :globalName", nativeQuery = true)
-    List<GlobalDTO> findAllByCityNameAndType(@Param("globalName") String globalName, @Param("cityName") String cityName, @Param("type") String type);
+    @Query(value ="SELECT DISTINCT G.id,G.shoplatitude,G.shoplongitude,G.shoptel,G.shoptype,G.ver_number,G.zip_code,G.type,G.city_name_id,G.area_name_id,G.global_name_id,G.shop_address_id,G.shop_name_id,G.shop_contact_id,G.global_banner_att_id FROM global G LEFT JOIN long_text LT ON G.city_name_id = LT.id LEFT JOIN long_text_trans LTT ON LT.id = LTT.long_text_id LEFT JOIN long_text LT2 ON LT2.id = G.global_name_id LEFT JOIN long_text_trans LTT2 ON LT2.id = LTT2.long_text_id LEFT JOIN long_text LT3 ON LT3.id = G.area_name_id LEFT JOIN long_text_trans LTT3 ON LT3.id = LTT3.long_text_id LEFT JOIN attahment AT1 ON AT1.id = G.global_banner_att_id WHERE LTT.text = :cityName AND G.type = :type AND LTT2.text = :globalName AND LTT3.text = :areaName order by right(G.ver_number,4)* 1 ASC", nativeQuery = true)
+    List<GlobalDTO> findAllByCityNameAndType(@Param("globalName") String globalName, @Param("cityName") String cityName, @Param("areaName") String areaName, @Param("type") String type);
+
+    @Query(value ="SELECT DISTINCT G.id,G.shoplatitude,G.shoplongitude,G.shoptel,G.shoptype,G.ver_number,G.zip_code,G.type,G.city_name_id,G.area_name_id,G.global_name_id,G.shop_address_id,G.shop_name_id,G.shop_contact_id,G.global_banner_att_id FROM global G LEFT JOIN long_text LT ON G.city_name_id = LT.id LEFT JOIN long_text_trans LTT ON LT.id = LTT.long_text_id LEFT JOIN long_text LT2 ON LT2.id = G.global_name_id LEFT JOIN long_text_trans LTT2 ON LT2.id = LTT2.long_text_id  LEFT JOIN attahment AT1 ON AT1.id = G.global_banner_att_id WHERE LTT.text = :cityName AND G.type = :type AND LTT2.text = :globalName order by right(G.ver_number,4)* 1 ASC", nativeQuery = true)
+    List<GlobalDTO> findAllByCityNameAndType2(@Param("globalName") String globalName, @Param("cityName") String cityName, @Param("type") String type);
 
     List<GlobalDTO> findAllByType(GlobalConstants type);
 }

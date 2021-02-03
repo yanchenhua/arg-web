@@ -46,15 +46,17 @@ spring:
             enabled: true
 
 argweb:
-    upload: /root/uploadFiles
-    defaultLocale: zh_CN
+    upload: /u01/uploadFiles
+
     argSupportLocales:
         - zh_CN
         - en_US
-       # - RU
-       # - fr_FR
+        - jp_JP
+        - ru_RU
+
+        #- fr_FR
        # - jp_JP
-       # - kr_KR
+        #- kr_KR
        # - de_DE
        # - es_ES
        # - por_POR

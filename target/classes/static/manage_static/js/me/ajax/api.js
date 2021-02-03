@@ -49,7 +49,7 @@ function setTranslationsText(data,key,locale,text){
         data[key].translations = [];
     }
     var translations =  data[key].translations ;
-
+    console.log(translations)
     if ( !translations ){
         data[key].translations = [];
         translations =  data[key].translations ;

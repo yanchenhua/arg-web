@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head th:replace="manage/fragment :: head"></head>
+
+<body id="mimin" class="dashboard">
+<nav th:replace="manage/fragment :: top"></nav>
+<div class="container-fluid mimin-wrapper">
+    <div th:replace="manage/fragment :: menu"></div>
+    <!-- 中间部分 -->
+    <div id="content">
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body cur_location_f">
+                <div class="col-md-12 cur_location">
+                    <p class="animated fadeInDown" id="location_title">媒体资讯 > 视频画册</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-element" id="app">
+            <div class="col-md-12 padding-0">
+
+                <div class="panel form-element-padding">
+                    <div class="panel-heading">
+                        <h4>视频画册</h4>
+                        <div th:replace="manage/fragment :: multiple_language"></div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:30px;">
+
+                        <form>
+
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">标题</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="titleStr" class="form-control">
+                                    </div>
+                                </div>
+
+
+
+                                <div style="clear:both;"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">图片</label>
+                                    <div class="col-md-6">
+                                        <a v-if="form.picture.src" title="预览" class="iconimg" :href="form.picture.src"
+                                           onclick="return hs.expand(this)">
+                                            <img style="max-width:20px;" :src="form.picture.src"/>
+                                        </a>
+                                        <input type="file" class="file_select" @change="upload('picture',$event)"/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">视频/画册</label>
+                                    <div class="col-md-6">
+                                        <input type="file" @change="upload('attachment',$event)">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">排序</label>
+                                    <div class="col-md-1">
+                                        <input type="text" name="ktitle" value="1" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div style="clear: both;"></div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right"></label>
+                                    <div class="col-md-6">
+                                        <input class="submit btn btn-danger" @click="add" type="button" value="确认">
+                                        <input style="margin-left:10px;" class="btn btn-info ml10" type="button"
+                                               onclick="history.go(-1)"
+                                               value="返回">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- 中间部分 结束-->
+</div>
+<div th:replace="manage/fragment :: js"></div>
+
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            titleStr: '',
+            form: {
+                title: {},
+                type: 'VIDEO',
+                attachment:{
+                    type: 'VIDEO',
+                    displayName: '',
+                    filePath: ''
+                },
+                // attachment:[{
+                //     type: 'VIDEO',
+                //     displayName: '',
+                //     filePath: ''
+                // },{
+                //     type: 'VIDEO',
+                //     displayName: '',
+                //     filePath: ''
+                // }],
+                picture: {
+                    type: 'IMAGE',
+                    displayName: '',
+                    filePath: ''
+                }
+            }
+        },
+        methods: {
+            upload: function (model, event) {
+                // console.info(model);
+                // console.info(event);
+                var file = event.target;
+                var this_vue = this;
+                //var id = window.location.href.indexOf("en_US")>-1?(this.form[model][1].id || 0):(this.form[model][0].id || 0);
+                var id = this.form[model].id || 0;
+                if(this.form[model].id!=null&&this.form[model].filePath.indexOf(":")>-1){
+                    this.form[model].filePath = "";
+                }
+                var param = {
+                    file: file.files[0],
+                    id: id,
+                    type: 'IMAGE'
+                }
+                if (model == 'attachment') {
+                    param.type = 'VIDEO';
+                    if (file.files[0].name.indexOf('pdf') > 0) {
+                        param.type = 'PDF';
+                    }
+                }
+                this.$api.file.upload(param, function (res) {
+                    console.info(res);
+                    res.type = param.type;
+                    // res.id = null ;
+                    //window.location.href.indexOf("en_US")>-1?this_vue.form[model][1]=res:this_vue.form[model][0]=res;
+                    var path = "";
+                    if(this_vue.form[model].filePath){
+                        path = this_vue.form[model].filePath;
+                    }
+                    this_vue.form[model] = res;
+
+                    if (res.filePath) {
+                        var url = "/uploads/" + res.filePath;
+                       // window.location.href.indexOf("en_US")>-1?this_vue.form[model][1].src=url:this_vue.form[model][0].src=url;
+                        this_vue.form[model].src = url+":/uploads/"+path;
+                        console.info(this_vue.form[model].filePath.indexOf(":"))
+                        if(path!=""){
+                            this_vue.form[model].filePath = path+":"+this_vue.form[model].filePath;
+                        }
+
+                    }
+                }, function (exception) {
+                    console.error(exception);
+                    alert('上传失败');
+                });
+            },
+            add: function (event) {
+                // console.info(this.form);
+                this.$api.base.add('media', this.form, function (res) {
+                    // delete this.form.id
+                    alert('操作成功！');
+                    jump2next(res.id, event);
+                });
+            },
+            get: function () {
+                var this_vue = this;
+                var id = this.$tools.requestParam("id");
+                if (id == null || typeof id == 'undefined') {
+                    return;
+                }
+                // var id = "6" ;
+                this.$api.base.query('media', {id: id}, function (res) {
+                    var album = res.objs[0];
+                    if (album) {
+                        if (album.picture == null) {
+                            album.picture = {}
+                        }
+                        var picture = album.picture;
+                        if (picture.filePath) {
+                            var url = "/uploads/" + picture.filePath;
+                            picture.src = url;
+                        }
+                        var title_str = this_vue.$tools.getTranslationsText(album, 'title', locale);
+                        this_vue.form = album;
+                        this_vue.titleStr = title_str;
+                    }
+                })
+            }
+        },
+        created: function () {
+            this.get();
+        },
+        watch: {
+            'titleStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'title', locale, n);
+            }
+        }
+    });
+</script>
+<script th:replace="manage/fragment :: multiple_language_js"></script>
+</body>
+
+</html>

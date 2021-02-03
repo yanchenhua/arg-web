@@ -192,7 +192,9 @@
     var editor = CKEDITOR.replace('kcontent', {
         width: '100%',
         height: 300,
-        filebrowserImageUploadUrl: '/uploads/upload4'
+        filebrowserImageUploadUrl: '/uploads/upload4',
+        filebrowserHtml5videoUploadUrl: '/uploads/upload4',
+        filebrowserHtml5audioUploadUrl: '/uploads/upload4'
     });
     CKFinder.setupCKEditor(editor, 'ckfinder/');
     editor.on('change', function (event) {

@@ -119,6 +119,11 @@
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-policy:3.2.5" />
           <element id="library" level="project" name="Maven: org.apache.neethi:neethi:3.1.1" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.17" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.17" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.6.0" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: com.github.virtuald:curvesapi:1.04" />
         </element>
       </element>
       <element id="directory" name="META-INF">

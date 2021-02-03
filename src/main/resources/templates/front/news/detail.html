@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text="${obj.title.getTranslatedStr(session.lang_session)}+'-'+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 
 
@@ -62,7 +63,7 @@
 
                                         <p class="date font-sub-color"><i class="fa fa-calendar-o"
                                                                           aria-hidden="true"></i>
-                                            <span th:text="${dateStr}">2018/ 04/ 28</span>
+                                            <span th:text="${obj.dateStr}">2018/ 04/ 28</span>
                                         </p>
 
                                     </div>
@@ -134,6 +135,9 @@
 
                                     </div>
                                     <!-- Entry Content  end -->
+                                    <!--<div class="row">-->
+                                        <!--<h2>用户评论</h2>-->
+                                    <!--</div>-->
 
                                     <div class="clear"></div>
                                     <br>
@@ -190,6 +194,16 @@
 <div th:replace="front/fragment :: js"></div>
 
 </body>
+<script>
+    // var video = document.getElementsByTagName("video")[0];
+    // video.muted = true;
+    // var src = video.src;
+    // video.src = src;
+    // video.load();
+    // video.play();
+
+
+</script>
 </html>
 
     

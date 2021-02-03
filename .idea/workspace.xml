@@ -3,11 +3,422 @@
   <component name="ChangeListManager">
     <list default="true" id="3adef172-e1f2-4c06-89e5-a964567ec9e3" name="Default" comment="">
       <change afterPath="$APPLICATION_CONFIG_DIR$/inspection/Default.xml" afterDir="false" />
+      <change afterPath="$APPLICATION_CONFIG_DIR$/options/mavenVersion.xml" afterDir="false" />
       <change afterPath="$APPLICATION_CONFIG_DIR$/options/security.xml" afterDir="false" />
       <change afterPath="$APPLICATION_CONFIG_DIR$/options/terminal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/filter/HomeDataFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/filter/HomeDataFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/DistributorDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/DistributorRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/DistributorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/DistributorServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ExcelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalAreaResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalCityAreaResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/front/agrr/InfoPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/front/agrr/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/front/global/FLOAT_GLASS_BACKUP.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/front/global/SERVICE_NODE_backup0724.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/video-and-photo_01.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/video-and-photo_02.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/album/add_02.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/arg_web_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/arg_web_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arg-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/arg-web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/LocaleResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/LocaleResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/constants/ContactCardConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/constants/ContactCardConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/constants/LocaleMapConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/constants/LocaleMapConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/AgrrNodeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/AgrrNodeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/GlobalDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/GlobalDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/MediaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/MediaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/mapper/GlobalMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/mapper/GlobalMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/AddressRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/AgrrNodeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/AgrrNodeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/GlobalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/GlobalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/AgrrNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/AgrrNodeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/GlobalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/GlobalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/AddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/AgrrNodeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/AgrrNodeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/AgrrServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/AgrrServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ContactController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/FileUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/NewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalCityResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalCityResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/AgrrWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/AgrrWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/MediaWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/MediaWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-lewei.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-lewei.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-local.yml.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-sit.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-sit.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_RU.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ru_RU.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en_US.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en_US.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_jp_JP.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_jp_JP.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_zh_CN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_zh_CN.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front_static/css/new_index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/front_static/css/new_index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front_static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/front_static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front_static/css/uix-kit.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/front_static/css/uix-kit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front_static/css/uix-kit.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/front_static/css/uix-kit.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front_static/images/contact(1).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/front_static/images/contact(1).jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front_static/js/uix-kit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/front_static/js/uix-kit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/manage_static/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/manage_static/ckeditor/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/manage_static/ckeditor/plugins/clipboard/dialogs/paste.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/manage_static/ckeditor/plugins/clipboard/dialogs/paste.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/manage_static/ckfinder/plugins/fileeditor/codemirror/js/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/manage_static/ckfinder/plugins/fileeditor/codemirror/js/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/axios.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/about/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/about/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/about/arg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/about/arg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/about/team.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/about/team.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/agrr/serviceAppli.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/agrr/serviceAppli.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/article.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/business.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/business.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/customer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/dictionary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/dictionary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/employee.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/fragment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/global/CAR_GLASS.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/global/CAR_GLASS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/global/FLOAT_GLASS.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/global/FLOAT_GLASS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/global/RESEARCH_HUB.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/global/RESEARCH_HUB.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/global/SALES.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/global/SALES.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/global/SERVICE_NODE.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/global/SERVICE_NODE.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/news/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/news/industry.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/industry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/news/knowledge.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/knowledge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/news/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/news/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/news/video-and-photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/video-and-photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/news/video.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/news/video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/front/tech.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/front/tech.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/album/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/album/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/contact/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/contact/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/fragment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/global.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/global.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/global/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/global/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/news/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/news/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/product/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/product/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/service.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/service.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manage/service/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manage/service/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ROOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ROOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-lewei.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-lewei.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-local.yml.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-prod.yml.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-sit.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application-sit.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/Application$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/config/LocaleResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/config/LocaleResolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/constants/ContactCardConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/constants/ContactCardConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/constants/LocaleMapConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/constants/LocaleMapConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/dto/AgrrNodeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/dto/AgrrNodeDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/dto/GlobalDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/dto/GlobalDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/dto/MediaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/dto/MediaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/mapper/GlobalMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/mapper/GlobalMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/repo/AddressRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/repo/AddressRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/repo/AgrrNodeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/repo/AgrrNodeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/repo/GlobalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/repo/GlobalRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/AddressService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/AddressService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/AgrrNodeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/AgrrNodeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/GlobalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/GlobalService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/impl/AddressServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/impl/AddressServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/impl/AgrrNodeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/impl/AgrrNodeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/impl/GlobalServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/core/service/impl/GlobalServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/AgrrServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/AgrrServiceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/ContactController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/ContactController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/FileUploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/FileUploadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/NewsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/NewsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/StandAloneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/controller/StandAloneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/resource/GlobalCityResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/resource/GlobalCityResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/resource/GlobalResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/resource/GlobalResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/resource/GlobalShop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/resource/GlobalShop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/rest/AgrrWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/rest/AgrrWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/rest/GlobalWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/rest/GlobalWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/rest/MediaWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/ltd/ontsol/web/rest/MediaWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/messages_RU.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/messages_en_US.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/messages_en_US.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/messages_jp_JP.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/messages_jp_JP.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/messages_zh_CN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/messages_zh_CN.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/new_index.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/new_index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/uix-kit.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/uix-kit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/uix-kit.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/css/uix-kit.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/images/contact(1).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/images/contact(1).jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/js/uix-kit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/front_static/js/uix-kit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/manage_static/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/manage_static/ckeditor/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/manage_static/ckeditor/plugins/clipboard/dialogs/paste.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/manage_static/ckeditor/plugins/clipboard/dialogs/paste.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/manage_static/ckfinder/plugins/fileeditor/codemirror/js/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/static/manage_static/ckfinder/plugins/fileeditor/codemirror/js/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/about/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/about/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/about/arg.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/about/arg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/about/team.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/about/team.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/agrr/serviceAppli.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/agrr/serviceAppli.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/article.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/business.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/business.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/customer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/dictionary.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/dictionary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/employee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/fragment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/CAR_GLASS.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/CAR_GLASS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/FLOAT_GLASS.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/FLOAT_GLASS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/RESEARCH_HUB.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/RESEARCH_HUB.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/SALES.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/SALES.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/SERVICE_NODE.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/global/SERVICE_NODE.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/industry.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/industry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/knowledge.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/knowledge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/video-and-photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/video-and-photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/video.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/news/video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/tech.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/front/tech.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/album/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/album/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/contact/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/contact/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/dictionaries/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/dictionaries/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/global/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/global/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/news/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/news/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/product/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/product/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/service.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/service.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/service/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/arg-web-1.0/WEB-INF/classes/templates/manage/service/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-lewei.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/application-lewei.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/application-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-local.yml.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-prod.yml.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-sit.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/application-sit.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AbstractAuditingEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AbstractAuditingEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AbstractFileAttachmentEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AbstractFileAttachmentEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AbstractPersistableEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AbstractPersistableEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/Application$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AttachmentAwareInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/AttachmentAwareInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/ITranslation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/ITranslation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/Translatable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/Translatable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/ArgLocaleResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/ArgLocaleResolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/ErrorPageRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/ErrorPageRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/LocaleResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/LocaleResolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/config/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/AgrrConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/AgrrConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/ArticleConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/ArticleConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/AttachmentConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/AttachmentConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/ContactCardConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/ContactCardConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/DicLevelConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/DicLevelConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/GlobalConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/GlobalConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/LocaleMapConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/LocaleMapConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/MediaConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/MediaConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/QuestionTypeConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/QuestionTypeConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/StaffConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/constants/StaffConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AboutDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AboutDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AddressDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AddressDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AgrrNodeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AgrrNodeDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/ArticleDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/ArticleDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AttachmentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/AttachmentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/BusinessDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/BusinessDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/CertificateDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/CertificateDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/ContactCardDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/ContactCardDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/DevelopmentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/DevelopmentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/DicSuggestionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/DicSuggestionDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/DictionaryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/DictionaryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/GlobalDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/GlobalDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/HomeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/HomeDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/HonorDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/HonorDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/InvestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/InvestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LeaderDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LeaderDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LegalDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LegalDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LoginDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LoginDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LongText.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LongText.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LongTextTranslation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/LongTextTranslation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/MediaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/MediaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/ProductDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/ProductDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/QuestionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/QuestionDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/RoleDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/RoleDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/StaffDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/StaffDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/Translation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/Translation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/exception/CustomException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/exception/CustomException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/filter/CrossDomainHttpHeadersFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/filter/CrossDomainHttpHeadersFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/filter/HomeDataFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/filter/HomeDataFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/handler/LoginSuccessHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/handler/LoginSuccessHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/mapper/GlobalMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/mapper/GlobalMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/mapper/GlobalMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/mapper/GlobalMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/mapper/StaffMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/mapper/StaffMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/AddressRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/AddressRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/AgrrNodeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/AgrrNodeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/ArticleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/ArticleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/AttachmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/AttachmentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/ContactCardRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/ContactCardRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/DictionaryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/DictionaryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/GlobalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/GlobalRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/LoginRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/LoginRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/MediaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/MediaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/QuestionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/QuestionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/StaffRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/StaffRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/repo/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AboutService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AboutService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AddressService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AddressService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AgrrNodeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AgrrNodeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/ArticleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AttachmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/AttachmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/BusinessService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/BusinessService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/CertificateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/CertificateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/ContactCardService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/ContactCardService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/DevelopmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/DevelopmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/DicSuggestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/DicSuggestionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/DictionaryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/DictionaryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/GlobalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/GlobalService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/HomeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/HomeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/HonorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/HonorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/LeaderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/LeaderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/LongTextService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/LongTextService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/MediaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/MediaService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/QuestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/QuestionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/StaffService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/StaffService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AboutServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AboutServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AddressServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AddressServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AgrrNodeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AgrrNodeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/ArticleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/ArticleServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AttachmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/AttachmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/BusinessServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/BusinessServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/CertificateServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/CertificateServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/ContactCardServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/ContactCardServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/DevelopmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/DevelopmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/DicSuggestionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/DicSuggestionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/DictionaryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/DictionaryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/GlobalServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/GlobalServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/HomeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/HomeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/HonorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/HonorServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/LeaderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/LeaderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/LoginWebServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/LoginWebServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/LongTextServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/LongTextServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/MediaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/MediaServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/ProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/QuestionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/QuestionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/StaffServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/StaffServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/UserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/UserDetailsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/DateUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/DateUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/HtmlTagUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/HtmlTagUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/IpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/IpUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/TranslationUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/util/TranslationUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/validator/UserValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/core/validator/UserValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/AboutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/AboutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/AgrrServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/AgrrServiceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/ContactController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/ContactController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/DictionaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/DictionaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/FileUploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/FileUploadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/FrontController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/FrontController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/GlobalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/GlobalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/ManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/ManageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/NewsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/NewsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/StandAloneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/controller/StandAloneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/ArticleResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/ArticleResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/GlobalCityResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/GlobalCityResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/GlobalResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/GlobalResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/GlobalShop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/resource/GlobalShop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/AboutWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/AboutWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/AgrrWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/AgrrWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/AttachmentWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/AttachmentWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/BusinessWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/BusinessWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/CertificateWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/CertificateWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/ContactCardWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/ContactCardWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/DevelopmentWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/DevelopmentWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/DictionaryWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/DictionaryWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/GlobalWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/GlobalWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/HomeWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/HomeWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/HonorWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/HonorWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/LeaderWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/LeaderWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/LoginWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/LoginWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/LongTextWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/LongTextWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/MediaWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/MediaWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/NewsWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/NewsWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/ProductWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/ProductWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/QuestionWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/QuestionWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/SuggestionWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/SuggestionWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/UserWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/rest/UserWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/soap/staff/PutStaffs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/soap/staff/PutStaffs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/soap/staff/Staff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/soap/staff/Staff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/soap/staff/StaffSoapWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/soap/staff/StaffSoapWebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/viewer/ErrorResponseViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/viewer/ErrorResponseViewer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/viewer/PaginationViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ltd/ontsol/web/viewer/PaginationViewer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages_RU.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages_en_US.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_en_US.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages_jp_JP.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_jp_JP.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages_zh_CN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_zh_CN.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/front_static/css/new_index.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/front_static/css/new_index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/front_static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/front_static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/front_static/css/uix-kit.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/front_static/css/uix-kit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/front_static/css/uix-kit.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/front_static/css/uix-kit.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/front_static/images/contact(1).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/front_static/images/contact(1).jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/front_static/js/uix-kit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/front_static/js/uix-kit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/manage_static/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/manage_static/ckeditor/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/manage_static/ckeditor/plugins/clipboard/dialogs/paste.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/manage_static/ckeditor/plugins/clipboard/dialogs/paste.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/manage_static/ckfinder/plugins/fileeditor/codemirror/js/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/manage_static/ckfinder/plugins/fileeditor/codemirror/js/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/manage_static/js/me/ajax/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/manage_static/js/me/ajax/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/about/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/about/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/about/arg.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/about/arg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/about/team.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/about/team.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/agrr/serviceAppli.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/agrr/serviceAppli.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/article.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/business.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/business.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/customer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/dictionary.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/dictionary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/employee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/fragment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/global/CAR_GLASS.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/global/CAR_GLASS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/global/FLOAT_GLASS.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/global/FLOAT_GLASS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/global/RESEARCH_HUB.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/global/RESEARCH_HUB.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/global/SALES.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/global/SALES.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/global/SERVICE_NODE.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/global/SERVICE_NODE.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/news/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/news/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/news/industry.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/news/industry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/news/knowledge.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/news/knowledge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/news/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/news/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/news/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/news/photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/news/video-and-photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/news/video-and-photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/news/video.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/news/video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/front/tech.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/front/tech.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/album/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/album/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/contact/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/contact/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/dictionaries/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/dictionaries/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/global.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/global.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/global/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/global/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/news/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/news/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/product/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/product/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/service.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/service.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manage/service/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manage/service/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/ltd/ontsol/core/mapper/GlobalMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/ltd/ontsol/core/mapper/GlobalMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/ltd/ontsol/core/mapper/StaffMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/ltd/ontsol/core/mapper/StaffMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,68 +432,115 @@
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/arg_web$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1540443527150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/arg_web$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1543197406413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/index.html">
+      <file leaf-file-name="Translation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/Translation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="58" column="95" selection-start-line="58" selection-start-column="87" selection-end-line="58" selection-end-column="95" />
+            <state relative-caret-position="95">
+              <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic_info.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/basic_info.html">
+      <file leaf-file-name="global.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/global.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3211">
-              <caret line="169" column="78" selection-start-line="169" selection-start-column="59" selection-end-line="169" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeWebService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/HomeWebService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TranslationUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/util/TranslationUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/HomeServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="28" column="55" lean-forward="true" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
+            <state relative-caret-position="238">
+              <caret line="194" column="21" selection-start-line="194" selection-start-column="21" selection-end-line="194" selection-end-column="21" />
               <folding>
-                <element signature="e#1424#1425#0" expanded="true" />
-                <element signature="e#1467#1468#0" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/fragment.html">
+      <file leaf-file-name="axios.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/axios.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-361">
-              <caret line="128" column="35" lean-forward="true" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
+            <state relative-caret-position="190">
+              <caret line="1" column="1415" selection-start-line="1" selection-start-column="1415" selection-end-line="1" selection-end-column="1415" />
               <folding>
-                <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#header#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#8249#8255#1" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/fragment.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-192">
+              <caret line="246" column="29" lean-forward="true" selection-start-line="246" selection-start-column="29" selection-end-line="246" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/global/add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2774">
+              <caret line="197" column="43" lean-forward="true" selection-start-line="197" selection-start-column="43" selection-end-line="197" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dictionaries.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="307" column="12" selection-start-line="307" selection-start-column="12" selection-end-line="307" selection-end-column="12" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#th#4;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StandAloneController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="806">
+              <caret line="245" column="34" selection-start-line="245" selection-start-column="34" selection-end-line="245" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#12257#12258#0" expanded="true" />
+                <element signature="e#12310#12311#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlobalDTO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/GlobalDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="160" column="18" selection-start-line="160" selection-start-column="18" selection-end-line="160" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlobalWebService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="54" column="62" selection-start-line="49" selection-start-column="8" selection-end-line="54" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -92,47 +550,51 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>local</find>
-      <find>(4)</find>
-      <find>session</find>
-      <find>request</find>
-      <find>loadUserByUsername</find>
-      <find>session.get</find>
-      <find>loginc</find>
-      <find>tree-toggle</find>
-      <find>main</find>
-      <find>.click</find>
-      <find>pageName</find>
-      <find>errinfo</find>
-      <find>/dictionary</find>
-      <find>defaultuser</find>
-      <find>robot</find>
-      <find>ROBOTS</find>
-      <find>.find</find>
-      <find>$(&quot;#myModal&quot;)</find>
-      <find>app/rest/dic</find>
-      <find>collector</find>
-      <find>ajax/suggestionForm</find>
-      <find>data-3d-animate='{&quot;offset&quot;:10,&quot;triggerEl&quot;:true,&quot;reset&quot;:true}'</find>
-      <find>webTitle</find>
-      <find>copyRight</find>
-      <find>heading-overlay</find>
-      <find>support</find>
-      <find>session.setAttribute</find>
-      <find>rest/home/</find>
-      <find>Description</find>
-      <find>keywords</find>
+      <find>/manage/index</find>
+      <find>/index</find>
+      <find>/manage/index.html</find>
+      <find>www.thymeleaf.org</find>
+      <find>api</find>
+      <find>/front</find>
+      <find>suffix</find>
+      <find>/global</find>
+      <find>setTranslationsText</find>
+      <find>() -&gt;</find>
+      <find>convertToObject</find>
+      <find>convertToString</find>
+      <find>addTranslation</find>
+      <find>LongTextTranslation</find>
+      <find>setTranslations</find>
+      <find>/glo</find>
+      <find>GlobalConstants</find>
+      <find>new Locale</find>
+      <find>switch_page</find>
+      <find>done</find>
+      <find>$.post</find>
+      <find>http_done</find>
+      <find>$get</find>
+      <find>function post</find>
+      <find>get</find>
+      <find>upload</find>
+      <find>post</find>
+      <find>axios</find>
+      <find>axios.min</find>
+      <find>config</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>\&lt;!--div class\=\&quot;loader\&quot; th\:replace\=\&quot;front\/fragment \:\: loader\&quot;\&gt;\&lt;\/div\&gt;\n\&lt;div class\=\&quot;loader\-progress\&quot;\&gt;\&lt;span\&gt;0\%\&lt;\/span\&gt;\&lt;\/div\&gt;</replace>
       <replace>\&lt;\!\-\-div class\=\&quot;loader\&quot; th\:replace\=\&quot;front\/fragment \:\: loader\&quot;\&gt;\&lt;\/div\&gt;\n\&lt;div class\=\&quot;loader\-progress\&quot;\&gt;\&lt;span\&gt;0\%\&lt;\/span\&gt;\&lt;\/div\-\-\&gt;</replace>
+      <replace>.content</replace>
+      <replace>.Modalcontent</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\github\my_01\arg_web_site\src\main\java\ltd\ontsol\core\constants</dir>
@@ -145,57 +607,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/global/RESEARCH_HUB.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/global/SALES.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/global/SERVICE_NODE.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/news/detail.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/news/industry.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/news/knowledge.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/news/news.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/news/photo.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/news/video.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/article.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/business.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/contact.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/customer.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/detail.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/e_login.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/employee.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/global.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/legal.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/tech.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_en_US.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/BusinessDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/business/add.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/DictionaryRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/DictionaryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/dictionary.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ManageController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/login.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/handler/LoginSuccessHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/manage_static/js/main.js" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/UserWebService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/fragment.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/application-local.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/manage_static/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/application-lewei.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/application-local.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/config/application-sit.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/UserDetailsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/UserDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/user.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/DistributorDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/DistributorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/DistributorRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/DistributorServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ContactController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/front/global.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/front_static/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/front/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/user/add.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/DicSuggestionDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/DictionaryWebService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries/add.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/front/news/video-and-photo.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/filter/HomeDataFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/front_static/css/uix-kit.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/front/tech.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/front/about/about.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/Application.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/front_static/css/new_index.css" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/mapper/GlobalMapper.java" />
+        <option value="$PROJECT_DIR$/target/generated-sources/ltd/ontsol/core/mapper/GlobalMapperImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/LocaleResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalShop.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/global/add.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalAreaResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalCityResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalCityAreaResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/resource/GlobalResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/GlobalService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/GlobalRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/front_static/js/uix-kit.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/front_static/css/style_1.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/front/contact.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/front/fragment.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_zh_CN.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_en_US.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_ru_RU.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_jp_JP.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/front/global/SERVICE_NODE.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ManageController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/api.js" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/GlobalDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/fragment.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/config.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/axios.min.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/manage/global.html" />
       </list>
     </option>
   </component>
@@ -216,18 +678,20 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="14" />
-    <option name="y" value="34" />
-    <option name="width" value="1346" />
-    <option name="height" value="688" />
+    <option name="x" value="-15" />
+    <option name="y" value="-19" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -251,7 +715,116 @@
               <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="repo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="resource" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ontsol" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
@@ -268,52 +841,62 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="front" type="462c0819:PsiDirectoryNode" />
+              <item name="manage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="manage" type="462c0819:PsiDirectoryNode" />
+              <item name="about" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="manage" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arg-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arg_web_site" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="robots&#9;PSI&#9;JAVA://com.sun.javafx.robot.impl.FXRobotHelper.FXRobotSceneAccessor&#10;getShoplatitude&#9;PSI&#9;JAVA://ltd.ontsol.core.dto.GlobalDTO#getShoplatitude&#10;new&#9;FILE&#9;file://E:/github/8_8/8_7fix/arg-web-master/src/main/java/ltd/ontsol/web/rest/NewsWebService.java&#10;article&#9;PSI&#9;JAVA://ltd.ontsol.web.resource.ArticleResource&#10;uplo&#9;FILE&#9;file://E:/github/8_8/8_7fix/arg-web-master/src/main/java/ltd/ontsol/web/controller/FileUploadController.java&#10;shopBannerAttachment&#9;null&#9;null&#10;city_name_id&#9;null&#9;null&#10;setShopname&#9;PSI&#9;JAVA://ltd.ontsol.web.resource.GlobalShop#setShopname&#10;itemStat&#9;PSI&#9;JAVA://java.awt.event.ItemListener#itemStateChanged&#10;app/rest/news/saveOrUpdate&#9;null&#9;null&#10;arti&#9;PSI&#9;JAVA://ltd.ontsol.core.service.impl.ArticleServiceImpl" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SearchEverywhereHistoryKey" value=".yml&#9;FILE&#9;file://E:/SVN/code/arg_web_site/src/main/resources/config/application.yml&#10;robots&#9;PSI&#9;JAVA://com.sun.javafx.robot.impl.FXRobotHelper.FXRobotSceneAccessor&#10;getShoplatitude&#9;PSI&#9;JAVA://ltd.ontsol.core.dto.GlobalDTO#getShoplatitude&#10;new&#9;FILE&#9;file://E:/github/8_8/8_7fix/arg-web-master/src/main/java/ltd/ontsol/web/rest/NewsWebService.java&#10;article&#9;PSI&#9;JAVA://ltd.ontsol.web.resource.ArticleResource&#10;uplo&#9;FILE&#9;file://E:/github/8_8/8_7fix/arg-web-master/src/main/java/ltd/ontsol/web/controller/FileUploadController.java&#10;shopBannerAttachment&#9;null&#9;null&#10;city_name_id&#9;null&#9;null&#10;setShopname&#9;PSI&#9;JAVA://ltd.ontsol.web.resource.GlobalShop#setShopname&#10;itemStat&#9;PSI&#9;JAVA://java.awt.event.ItemListener#itemStateChanged&#10;app/rest/news/saveOrUpdate&#9;null&#9;null&#10;arti&#9;PSI&#9;JAVA://ltd.ontsol.core.service.impl.ArticleServiceImpl" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/近期工作/hw/代码/salaryDataInquiriesv2.0" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../../7_23/arg-web-master/src/main/java/ltd/ontsol/core/repo/DictionaryRepository.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\SVN\code\arg_web_site\src\main\resources\templates\front\global" />
+      <recent name="E:\SVN\code\arg_web_site\src\main\resources\templates\front\news" />
+      <recent name="E:\SVN\code\arg_web_site\src\main\resources\templates\manage\album" />
       <recent name="E:\github\7_23\arg-web-master\src\main\resources\static\front_static\json" />
       <recent name="E:\github\7_23\arg-web-master\src\main\resources\templates\front\agrr" />
-      <recent name="E:\github\8_16\8_7aviluable\arg-web-master\src\main\resources\templates\front" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -554,11 +1137,227 @@
       <workItem from="1540425126621" duration="14078000" />
       <workItem from="1540449301839" duration="586000" />
       <workItem from="1540511539160" duration="9873000" />
+      <workItem from="1540867296930" duration="2318000" />
+      <workItem from="1540877100185" duration="595000" />
+      <workItem from="1540887168369" duration="1543000" />
+      <workItem from="1540942674104" duration="2055000" />
+      <workItem from="1540974877681" duration="1059000" />
+      <workItem from="1541031549386" duration="9323000" />
+      <workItem from="1543196757642" duration="5651000" />
+      <workItem from="1543213338273" duration="4487000" />
+      <workItem from="1543275641212" duration="3202000" />
+      <workItem from="1543281508823" duration="5242000" />
+      <workItem from="1543295582242" duration="2701000" />
+      <workItem from="1543300698291" duration="1832000" />
+      <workItem from="1543306532549" duration="1701000" />
+      <workItem from="1543361816748" duration="5607000" />
+      <workItem from="1543374911808" duration="2150000" />
+      <workItem from="1543468795058" duration="62000" />
+      <workItem from="1543471646295" duration="1238000" />
+      <workItem from="1543534992289" duration="5615000" />
+      <workItem from="1543563224409" duration="546000" />
+      <workItem from="1543793936553" duration="5720000" />
+      <workItem from="1544428087295" duration="346000" />
+      <workItem from="1544428505401" duration="5821000" />
+      <workItem from="1544485134915" duration="7763000" />
+      <workItem from="1544571957947" duration="22610000" />
+      <workItem from="1544658810202" duration="17220000" />
+      <workItem from="1545003442893" duration="19910000" />
+      <workItem from="1545090211971" duration="5126000" />
+      <workItem from="1545112281054" duration="1539000" />
+      <workItem from="1545200428745" duration="640000" />
+      <workItem from="1545285107529" duration="6287000" />
+      <workItem from="1545354018980" duration="670000" />
+      <workItem from="1545383050317" duration="553000" />
+      <workItem from="1545609533799" duration="8023000" />
+      <workItem from="1545716719793" duration="10381000" />
+      <workItem from="1545781687247" duration="9321000" />
+      <workItem from="1545869738772" duration="2181000" />
+      <workItem from="1546822988337" duration="12862000" />
+      <workItem from="1547776612925" duration="4875000" />
+      <workItem from="1548116596029" duration="1179000" />
+      <workItem from="1548809081327" duration="191000" />
+      <workItem from="1548810140023" duration="626000" />
+      <workItem from="1548812150528" duration="6826000" />
+      <workItem from="1549156859319" duration="2586000" />
+      <workItem from="1549176729554" duration="4603000" />
+      <workItem from="1549930180826" duration="2077000" />
+      <workItem from="1550017107661" duration="10640000" />
+      <workItem from="1550102625701" duration="9261000" />
+      <workItem from="1550188574536" duration="25348000" />
+      <workItem from="1550447933441" duration="26505000" />
+      <workItem from="1550533511879" duration="22200000" />
+      <workItem from="1550619984184" duration="26206000" />
+      <workItem from="1550706717071" duration="22388000" />
+      <workItem from="1550793129058" duration="11358000" />
+      <workItem from="1550812718104" duration="7555000" />
+      <workItem from="1550820606669" duration="3687000" />
+      <workItem from="1551052949117" duration="19703000" />
+      <workItem from="1551138947819" duration="3709000" />
+      <workItem from="1551224804421" duration="15818000" />
+      <workItem from="1551310748738" duration="17550000" />
+      <workItem from="1551342177115" duration="1944000" />
+      <workItem from="1551397946640" duration="11074000" />
+      <workItem from="1551657311689" duration="4534000" />
+      <workItem from="1551744529363" duration="4906000" />
+      <workItem from="1551841168215" duration="3944000" />
+      <workItem from="1552893517563" duration="56000" />
+      <workItem from="1552957753687" duration="401000" />
+      <workItem from="1552958422027" duration="3024000" />
+      <workItem from="1552975274866" duration="592000" />
+      <workItem from="1552976784018" duration="1849000" />
+      <workItem from="1552984045714" duration="972000" />
+      <workItem from="1553038976765" duration="2664000" />
+      <workItem from="1553135033401" duration="5079000" />
+      <workItem from="1553221584213" duration="33000" />
+      <workItem from="1553240517015" duration="2425000" />
+      <workItem from="1553243013730" duration="2198000" />
+      <workItem from="1553472670746" duration="8133000" />
+      <workItem from="1553557225062" duration="1846000" />
+      <workItem from="1553574194314" duration="595000" />
+      <workItem from="1553643505255" duration="5527000" />
+      <workItem from="1553730662117" duration="2501000" />
+      <workItem from="1553839001174" duration="585000" />
+      <workItem from="1554768144892" duration="1315000" />
+      <workItem from="1554779506832" duration="625000" />
+      <workItem from="1554780679398" duration="1190000" />
+      <workItem from="1554863348297" duration="493000" />
+      <workItem from="1554872606825" duration="5726000" />
+      <workItem from="1554950945379" duration="955000" />
+      <workItem from="1555401531924" duration="791000" />
+      <workItem from="1555550352248" duration="1607000" />
+      <workItem from="1555569224410" duration="96000" />
+      <workItem from="1555637176100" duration="866000" />
+      <workItem from="1555641827067" duration="964000" />
+      <workItem from="1555655234682" duration="563000" />
+      <workItem from="1555910033986" duration="1805000" />
+      <workItem from="1556150310679" duration="5255000" />
+      <workItem from="1556243375965" duration="6208000" />
+      <workItem from="1556412741812" duration="4187000" />
+      <workItem from="1556497633299" duration="300000" />
+      <workItem from="1557122299705" duration="69000" />
+      <workItem from="1557278648072" duration="17000" />
+      <workItem from="1559000807717" duration="2192000" />
+      <workItem from="1559529421360" duration="2406000" />
+      <workItem from="1560322855673" duration="304000" />
+      <workItem from="1562283924924" duration="1281000" />
+      <workItem from="1562543881929" duration="13514000" />
+      <workItem from="1562631233727" duration="51000" />
+      <workItem from="1562657787639" duration="2960000" />
+      <workItem from="1562716306830" duration="859000" />
+      <workItem from="1563523455243" duration="2188000" />
+      <workItem from="1563755585098" duration="21320000" />
+      <workItem from="1563839060250" duration="109000" />
+      <workItem from="1563844349918" duration="13019000" />
+      <workItem from="1563928139937" duration="167000" />
+      <workItem from="1563942402195" duration="10988000" />
+      <workItem from="1564012339798" duration="4000000" />
+      <workItem from="1564531100789" duration="2596000" />
+      <workItem from="1564998649581" duration="237000" />
+      <workItem from="1565598562503" duration="451000" />
+      <workItem from="1566378094642" duration="618000" />
+      <workItem from="1566378814432" duration="1144000" />
+      <workItem from="1566431801679" duration="1541000" />
+      <workItem from="1568245652966" duration="925000" />
+      <workItem from="1568256584625" duration="23000" />
+      <workItem from="1568256670937" duration="142000" />
+      <workItem from="1568267731425" duration="12000" />
+      <workItem from="1575426033622" duration="11851000" />
+      <workItem from="1575502813013" duration="14686000" />
+      <workItem from="1575589494997" duration="5724000" />
+      <workItem from="1575852447188" duration="11003000" />
+      <workItem from="1575873330508" duration="5918000" />
+      <workItem from="1575935458372" duration="8289000" />
+      <workItem from="1575944660027" duration="8593000" />
+      <workItem from="1575963413939" duration="5882000" />
+      <workItem from="1576021219554" duration="22328000" />
+      <workItem from="1576107358459" duration="17861000" />
+      <workItem from="1576193855364" duration="17433000" />
+      <workItem from="1576453202139" duration="23326000" />
+      <workItem from="1576539822934" duration="15186000" />
+      <workItem from="1576625907004" duration="6309000" />
+      <workItem from="1576712819530" duration="188000" />
+      <workItem from="1576798588948" duration="612000" />
+      <workItem from="1576807970795" duration="1984000" />
+      <workItem from="1577058855021" duration="1322000" />
+      <workItem from="1577317425646" duration="2376000" />
+      <workItem from="1577942362390" duration="6108000" />
+      <workItem from="1578008597275" duration="75000" />
+      <workItem from="1579496437399" duration="598000" />
+      <workItem from="1579497126140" duration="495000" />
+      <workItem from="1579498130503" duration="511000" />
+      <workItem from="1579499365613" duration="9110000" />
+      <workItem from="1581573454062" duration="1989000" />
+      <workItem from="1581639601402" duration="9891000" />
+      <workItem from="1581653880665" duration="1954000" />
+      <workItem from="1581906019689" duration="1548000" />
+      <workItem from="1581919579052" duration="1070000" />
+      <workItem from="1582684554060" duration="922000" />
+      <workItem from="1582685907447" duration="7204000" />
+      <workItem from="1582761633594" duration="4697000" />
+      <workItem from="1582786310121" duration="805000" />
+      <workItem from="1582848330209" duration="1199000" />
+      <workItem from="1584683387299" duration="1679000" />
+      <workItem from="1584920787651" duration="1464000" />
+      <workItem from="1584941103724" duration="12209000" />
+      <workItem from="1585007015180" duration="23086000" />
+      <workItem from="1585093806544" duration="3113000" />
+      <workItem from="1585100237371" duration="1470000" />
+      <workItem from="1585120128064" duration="3000" />
+      <workItem from="1588143129764" duration="28000" />
+      <workItem from="1590105974234" duration="714000" />
+      <workItem from="1590107157972" duration="4921000" />
+      <workItem from="1590369644932" duration="86000" />
+      <workItem from="1590557573504" duration="2163000" />
+      <workItem from="1591076335545" duration="949000" />
+      <workItem from="1591258412632" duration="797000" />
+      <workItem from="1591315482895" duration="398000" />
+      <workItem from="1591688425418" duration="173000" />
+      <workItem from="1591693853071" duration="4846000" />
+      <workItem from="1591746070402" duration="222000" />
+      <workItem from="1591747219011" duration="3589000" />
+      <workItem from="1591771396909" duration="195000" />
+      <workItem from="1591773515186" duration="1072000" />
+      <workItem from="1591782033549" duration="598000" />
+      <workItem from="1591833018532" duration="989000" />
+      <workItem from="1591835590347" duration="870000" />
+      <workItem from="1596534020591" duration="767000" />
+      <workItem from="1596585160890" duration="1526000" />
+      <workItem from="1597305013417" duration="2146000" />
+      <workItem from="1597361738608" duration="32000" />
+      <workItem from="1597392853061" duration="1143000" />
+      <workItem from="1597818349121" duration="802000" />
+      <workItem from="1598253342293" duration="5513000" />
+      <workItem from="1598316527871" duration="445000" />
+      <workItem from="1598426007606" duration="1068000" />
+      <workItem from="1599466848038" duration="2532000" />
+      <workItem from="1599531085892" duration="4000" />
+      <workItem from="1609123305076" duration="693000" />
+      <workItem from="1609296065901" duration="95000" />
+      <workItem from="1611047498584" duration="792000" />
+      <workItem from="1611103632662" duration="3966000" />
+      <workItem from="1611112873131" duration="1405000" />
+      <workItem from="1611536091955" duration="328000" />
+      <workItem from="1611537270651" duration="790000" />
+      <workItem from="1611726198521" duration="589000" />
+      <workItem from="1611792203899" duration="5679000" />
+      <workItem from="1611878169832" duration="7472000" />
+      <workItem from="1611906965939" duration="2621000" />
+      <workItem from="1612137430909" duration="3841000" />
+      <workItem from="1612141443861" duration="17938000" />
+      <workItem from="1612166864666" duration="945000" />
+      <workItem from="1612168811090" duration="1891000" />
+      <workItem from="1612224589921" duration="8000" />
+      <workItem from="1612225189828" duration="2652000" />
+      <workItem from="1612242571350" duration="2623000" />
+      <workItem from="1612253455752" duration="4290000" />
+      <workItem from="1612309378384" duration="12137000" />
+      <workItem from="1612329681496" duration="9365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="702505000" />
+    <option name="totallyTimeSpent" value="1713238000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -574,7 +1373,7 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5045386" side_tool="true" weight="0.45049506" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50378215" side_tool="true" weight="0.33168316" />
       <window_info anchor="right" id="Maven Projects" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
@@ -583,27 +1382,28 @@
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.40924093" />
-      <window_info anchor="bottom" id="TODO" order="12" weight="0.3294893" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32838285" />
+      <window_info anchor="bottom" id="Debug" order="10" visible="true" weight="0.33863276" />
+      <window_info anchor="bottom" id="TODO" order="13" weight="0.3294893" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32750398" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="1" />
       <window_info anchor="bottom" id="Java Enterprise" order="2" sideWeight="0.49924356" weight="0.32838285" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="4" sideWeight="0.49848714" weight="0.17161717" />
-      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.4977307" weight="0.24092409" />
+      <window_info anchor="bottom" id="Version Control" order="4" sideWeight="0.49848714" weight="0.3481717" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.49621785" weight="0.28616852" />
       <window_info anchor="bottom" id="Spring" order="0" sideWeight="0.49924356" weight="0.32838285" />
       <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49546143" weight="0.2920792" />
-      <window_info anchor="bottom" id="Problems" order="14" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2118003" />
+      <window_info anchor="bottom" id="Problems" order="15" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.22474378" />
       <window_info anchor="right" id="Bean Validation" order="5" />
       <window_info id="Web" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="6" weight="0.3294893" />
+      <window_info anchor="bottom" id="Find" order="6" weight="1.0" />
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="SVN Repositories" order="8" weight="0.32838285" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32980332" />
@@ -625,6 +1425,26 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="EXTERNAL E:/SVN/code/arg_web_site">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -672,20 +1492,122 @@
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/AgrrServiceController.java</url>
-          <line>159</line>
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/AgrrWebService.java</url>
+          <line>115</line>
           <properties />
-          <option name="timeStamp" value="86" />
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/ContactCardWebService.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="320" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/ContactCardWebService.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="321" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/ContactCardWebService.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="322" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="428" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java</url>
+          <line>61</line>
+          <properties />
+          <option name="timeStamp" value="429" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/LocaleResolver.java</url>
+          <line>96</line>
+          <properties />
+          <option name="timeStamp" value="436" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/LocaleResolver.java</url>
+          <line>94</line>
+          <properties />
+          <option name="timeStamp" value="437" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java</url>
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="447" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="450" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/DictionaryWebService.java</url>
+          <line>185</line>
+          <properties />
+          <option name="timeStamp" value="463" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/DictionaryWebService.java</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="464" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="496" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="504" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="505" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java</url>
+          <line>296</line>
+          <properties />
+          <option name="timeStamp" value="506" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java</url>
+          <line>293</line>
+          <properties />
+          <option name="timeStamp" value="507" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="169" />
+      <option name="time" value="509" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="dto.webDesc" />
+        <watch expression="supportLang" />
+        <watch expression="supportLang" language="JAVA" />
+        <watch expression="globals.get(0).list.get(0).shops.get(0).shoptel" />
+        <watch expression="globals.get(0).list.get(0)" />
+        <watch expression="dto.shopname" />
+        <watch expression="dto.shopname.translations" />
       </configuration>
     </watches-manager>
   </component>
@@ -699,351 +1621,384 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/news/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1368" />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/front_static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/handler/LoginSuccessHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/UserWebService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-local.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-sit.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/AgrrWebService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1083">
-          <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/UserDetailsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="43" column="79" selection-start-line="43" selection-start-column="79" selection-end-line="43" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/fragment.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/DictionaryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="183" column="60" lean-forward="true" selection-start-line="183" selection-start-column="60" selection-end-line="183" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1216">
-          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/UserDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/maven-archiver/pom.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2831">
-          <caret line="184" column="76" selection-start-line="184" selection-start-column="76" selection-end-line="184" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/user/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="245" column="53" selection-start-line="245" selection-start-column="53" selection-end-line="245" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="275" column="42" lean-forward="true" selection-start-line="275" selection-start-column="42" selection-end-line="275" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries/hierarchical.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2240" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/DictionaryRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/DictionaryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="143" column="34" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/DictionaryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="87" column="79" selection-start-line="87" selection-start-column="79" selection-end-line="87" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/DictionaryDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/DicSuggestionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/DicSuggestionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/DicSuggestionDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/DictionaryWebService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2109">
-          <caret line="147" column="5" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
+        <state relative-caret-position="2831">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/dictionary.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6593">
-          <caret line="347" column="21" selection-start-line="347" selection-start-column="21" selection-end-line="347" selection-end-column="21" />
+        <state relative-caret-position="9500">
+          <caret line="500" column="45" selection-start-line="497" selection-start-column="32" selection-end-line="500" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/news/video-and-photo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries/add.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/front_static/css/style_1.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
-          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+          <caret line="200" column="25" selection-start-line="200" selection-start-column="25" selection-end-line="200" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/front_static/css/new_index.css">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/global/CAR_GLASS.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="57" column="20" lean-forward="true" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+        <state relative-caret-position="6517">
+          <caret line="343" column="9" selection-start-line="343" selection-start-column="9" selection-end-line="343" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/WebServiceServerConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/AddressRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="133">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/GlobalExceptionHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/AgrrNodeRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-312">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="133">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/constants/AttachmentConstants.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/contact.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-749">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="893">
+          <caret line="47" column="57" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/HomeDTO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_zh_CN.properties">
+      <provider editor-type-id="ResourceBundle" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-521">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="3268">
+          <caret line="172" column="45" selection-start-line="172" selection-start-column="45" selection-end-line="172" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/filter/HomeDataFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en_US.properties">
+      <provider editor-type-id="ResourceBundle" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="3249">
+          <caret line="171" column="74" selection-start-line="171" selection-start-column="74" selection-end-line="171" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/LocaleResolver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_ru_RU.properties">
+      <provider editor-type-id="ResourceBundle" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="44" column="32" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="32" />
+        <state relative-caret-position="2755">
+          <caret line="145" column="85" selection-start-line="145" selection-start-column="85" selection-end-line="145" selection-end-column="85" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/HomeService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_jp_JP.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        <state relative-caret-position="3838">
+          <caret line="202" column="2" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/config/WebSecurityConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/global/SERVICE_NODE.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="23" column="87" lean-forward="true" selection-start-line="23" selection-start-column="87" selection-end-line="23" selection-end-column="87" />
+        <state relative-caret-position="4332">
+          <caret line="228" column="185" selection-start-line="228" selection-start-column="185" selection-end-line="228" selection-end-column="185" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/basic_info.html">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3211">
-          <caret line="169" column="78" selection-start-line="169" selection-start-column="59" selection-end-line="169" selection-end-column="78" />
+        <state relative-caret-position="361">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/HomeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/article.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/business.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/fragment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="28" column="55" lean-forward="true" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
-          <folding>
-            <element signature="e#1424#1425#0" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="703">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/AboutDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="13" selection-start-line="13" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/service/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4758">
+          <caret line="525" column="35" lean-forward="true" selection-start-line="525" selection-start-column="35" selection-end-line="525" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/AttachmentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/AttachmentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/repo/GlobalRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="58" column="95" selection-start-line="58" selection-start-column="87" selection-end-line="58" selection-end-column="95" />
+        <state relative-caret-position="38">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/thymeleaf/thymeleaf/3.0.9.RELEASE/thymeleaf-3.0.9.RELEASE.jar!/org/thymeleaf/engine/TemplateManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="321" selection-start-line="321" selection-end-line="321" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/AgrrServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3173">
+          <caret line="240" column="56" selection-start-line="240" selection-start-column="8" selection-end-line="240" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/ltd/ontsol/core/mapper/GlobalMapperImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="32" column="110" selection-start-line="32" selection-start-column="96" selection-end-line="32" selection-end-column="110" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/util/TranslationUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+        <state relative-caret-position="836">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/HomeWebService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/GlobalController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
+        <state relative-caret-position="262">
+          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/front/fragment.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/ManageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-361">
-          <caret line="128" column="35" lean-forward="true" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
+        <state relative-caret-position="400">
+          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
           <folding>
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#header#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#8249#8255#1" expanded="true" />
+            <element signature="e#1996#1997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/Translatable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/LongText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="28" column="67" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="67" />
+          <folding>
+            <element signature="e#1138#1139#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/constants/GlobalConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.7.RELEASE/spring-data-commons-2.0.7.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/GlobalService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/LongTextTranslation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/service/impl/GlobalServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2138">
+          <caret line="155" column="28" selection-start-line="155" selection-start-column="28" selection-end-line="155" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5633#5634#0" expanded="true" />
+            <element signature="e#5676#5677#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/GlobalDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="160" column="18" selection-start-line="160" selection-start-column="18" selection-end-line="160" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/rest/GlobalWebService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="54" column="62" selection-start-line="49" selection-start-column="8" selection-end-line="54" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/core/dto/Translation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/ckeditor/plugins/clipboard/plugin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="2359" column="8" selection-start-line="2359" selection-start-column="8" selection-end-line="2359" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/vue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="3146" column="13" lean-forward="true" selection-start-line="3146" selection-start-column="13" selection-end-line="3146" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3724">
+          <caret line="198" column="4" selection-start-line="198" selection-start-column="4" selection-end-line="198" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ltd/ontsol/web/controller/StandAloneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="245" column="34" selection-start-line="245" selection-start-column="34" selection-end-line="245" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12257#12258#0" expanded="true" />
+            <element signature="e#12310#12311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/dictionaries.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="307" column="12" selection-start-line="307" selection-start-column="12" selection-end-line="307" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#th#4;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/global/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2774">
+          <caret line="197" column="43" lean-forward="true" selection-start-line="197" selection-start-column="43" selection-end-line="197" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/fragment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-192">
+          <caret line="246" column="29" lean-forward="true" selection-start-line="246" selection-start-column="29" selection-end-line="246" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/ajax/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/manage_static/js/me/axios.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="1" column="1415" selection-start-line="1" selection-start-column="1415" selection-end-line="1" selection-end-column="1415" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manage/global.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="194" column="21" selection-start-line="194" selection-start-column="21" selection-end-line="194" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1079,6 +2034,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>bootstrap</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1125,7 +2081,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <last-edited>Maven: ch.qos.logback:logback-core:1.2.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

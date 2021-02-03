@@ -158,7 +158,7 @@
             },
             add: function (event) {
                 console.log(this.form)
-                this.$api.base.add('dictionary', this.form, function (res) {
+                this.$api.base.add('dictionary', JSON.stringify(this.form), function (res) {
                     // delete this.form.id
                     alert('操作成功！');
                     jump2next(res.id, event);

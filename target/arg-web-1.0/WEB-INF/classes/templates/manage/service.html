@@ -15,13 +15,24 @@
             </div>
         </div>
 
+        <div class="col-md-6">
+            <!--<input id="excel" style="margin-left:10px;" class="btn btn-info ml10"-->
+                   <!--onclick="" value="数据导出"/>-->
+            <a href="/agrr/export">数据导出</a>
 
+        </div>
         <div class="col-md-12 padding-0">
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-body">
-
                         <div class="responsive-table" id="app">
+                            <select v-model="verstatus">
+                                <option>全部</option>
+                                <option>通过审核</option>
+                                <option>未审核</option>
+                                <option>不通过审核</option>
+                            </select>
+                            <!--<input type="text" style="float: right;" v-model="verstatus" placeholder="输入字典">-->
                             <w-table :columns="columns" :table_list='table_list'
                                      :data_source_config="data_source_config" @http_done='done'></w-table>
                             <w-paging :total='total' :current='current' @switch_page='switch_page'></w-paging>
@@ -48,6 +59,7 @@
         data: {
             total: 0,
             current: 1,
+            verstatus:'全部',
             columns: [
                 {
                     title: '认证服务商类型',
@@ -74,18 +86,100 @@
                     ]
                 },
                 {
+                    title: '审核状态',
+                    key: 'verstatus',
+                    render_cell: [{
+                        html: function (row, column, index) {
+                            var id = row['id'];
+                            var verstatus = row['verstatus'];
+                            console.log(verstatus)
+                            var str = "";
+                            switch (verstatus){
+                                case "0":
+                                    str = "未审核"
+                                    break;
+                                case "1":
+                                    str = "通过审核"
+                                    break;
+                                case "2":
+                                    str = "未通过审核"
+                                    break;
+                                default:break;
+
+
+                            }
+                            return '<span >' + str + '</span>';
+                           // return '<a href="service/add.html?id='+id+'">' + companyName + '</a>';
+                        }
+                    }
+                    ]
+                },
+                {
                     title: '操作',
                     key: 'companyName',
                     render_cell: [{
                         html: function (row, column, index) {
+                            var str = '';
                             var id = row['id'];
-                            return '<a data-id="'+id+'" href= "">删除</a>';
+                            var verstatus  = row['verstatus'];
+                            //console.log(verstatus)
+                            switch (verstatus){
+                                case "0":
+                                    str =  '<a data-value="1" data-id="' + id + '" style="font-size:12px;padding-right:5px;" href= "">通过</a>&nbsp;&nbsp;';
+                                    break;
+                                case "1":
+                                    str =  '<a data-value="2" data-id="' + id + '" style="font-size:12px;padding-right:5px;" href= "">驳回</a>&nbsp;&nbsp;';
+                                    break;
+                                case "2":
+                                    str =  '<a data-value="1" data-id="' + id + '" style="font-size:12px;padding-right:5px;" href= "">通过</a>&nbsp;&nbsp;';
+                                    break;
+                                default:
+                                    str = "111111"
+                                    break;
+                            }
+                            console.log(str)
+                            return str;
+                            //return  '<a data-value="2" data-id="' + id + '" style="font-size:12px;padding-right:5px;" href= "">驳回</a>&nbsp;&nbsp;';
+                           // return '<a data-id="'+id+'" href= "">删除</a>';
                         },
                         events: {
                             click:function (event) {
-                                $.get('/app/rest/agrr/delete/'+event.target.dataset.id,{},function(){
-                                    alert('!');
-                                },'json');
+                                // $.get('/app/rest/agrr/delete/'+event.target.dataset.id,{},function(){
+                                //     alert('!');
+                                // },'json');
+                                $.post('/agrr/setVerStatus/',{'id':event.target.dataset.id,'verstatus':event.target.dataset.value},function(){
+
+                                })
+                            }
+                        }
+                    },{
+                        html: function (row, column, index) {
+                            var str = '';
+                            var id = row['id'];
+                            var verstatus  = row['verstatus'];
+                            //console.log(verstatus)
+                            switch (verstatus){
+                                case "0":
+                                    str =  '<a data-value="2" data-id="' + id + '" style="font-size:12px;padding-right:5px;" href= "">驳回</a>&nbsp;&nbsp;';
+                                    break;
+
+                                default:
+                                    str = ""
+                                    break;
+                            }
+                            console.log(str)
+                            return str;
+                            //return  '<a data-value="2" data-id="' + id + '" style="font-size:12px;padding-right:5px;" href= "">驳回</a>&nbsp;&nbsp;';
+                            // return '<a data-id="'+id+'" href= "">删除</a>';
+                        },
+                        events: {
+                            click:function (event) {
+                                // $.get('/app/rest/agrr/delete/'+event.target.dataset.id,{},function(){
+                                //     alert('!');
+                                // },'json');
+                                $.post('/agrr/setVerStatus/',{'id':event.target.dataset.id,'verstatus':event.target.dataset.value},function(){
+
+                                })
                             }
                         }
                     }
@@ -117,6 +211,24 @@
                 this.table_list = new_rst;
             }
         },
+        watch: {
+            'verstatus': function (n) {
+                var verstatus = n;
+                console.log(n)
+
+                if (n == '全部') {
+                    this.$set(this.data_source_config.param, "verstatus", null);
+                    return;
+                }else if(n == '通过审核'){
+                    this.$set(this.data_source_config.param, "verstatus", "1");
+                }else if(n == '不通过审核'){
+                    this.$set(this.data_source_config.param, "verstatus", "2");
+                }else{
+                    this.$set(this.data_source_config.param, "verstatus", "0");
+                }
+
+            }
+        },
         created: function () {
             var num = this.$tools.page.get();
             if (num) {
@@ -125,5 +237,22 @@
             }
         }
     });
+
+</script>
+<script>
+    $("#excel").on("click",function(){
+        $.ajax({
+            url      : '/agrr/export',
+            method   : 'GET',
+
+            success  : function( response ) {
+
+
+            },
+            error : function( XMLHttpRequest, textStatus, errorThrown ) {
+
+            }
+        });
+    })
 </script>
 </html>

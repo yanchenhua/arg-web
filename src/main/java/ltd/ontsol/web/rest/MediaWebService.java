@@ -49,6 +49,7 @@ public class MediaWebService {
     @Timed
     public ResponseEntity<MediaDTO> saveOrUpdate(@RequestBody MediaDTO dto) throws Exception {
         TranslationUtils.putTranslation(dto.getTitle());
+        TranslationUtils.putTranslation(dto.getFilePathlocale());
 
         service.saveOrUpdate(dto);
         return new ResponseEntity<>(dto, HttpStatus.OK);

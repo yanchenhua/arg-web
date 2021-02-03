@@ -9,6 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import ltd.ontsol.core.dto.AddressDTO;
@@ -30,6 +31,8 @@ public class AgrrNodeServiceImpl implements AgrrNodeService {
 
     @Autowired
     private AddressRepository addressRepository;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public List<AgrrNodeDTO> findAll() {
         return repository.findAll();
@@ -46,7 +49,25 @@ public class AgrrNodeServiceImpl implements AgrrNodeService {
     public AgrrNodeDTO findById(Long id) {
         return repository.findById(id).get();
     }
-
+    public Integer countByLoginInfo(String username,String password){
+        //return repository.findAllByGoodProvider(true);
+        return repository.countByLoginInfo(username,password);
+    }
+    public Integer countByUsername(String username){
+        return repository.countByUsername(username);
+    }
+   public List<AgrrNodeDTO> findByLoginInfo(String username,String password) {
+        return repository.findByLoginInfo(username,password);
+    }
+    public List<AgrrNodeDTO> findByVerStatus(String keyword){
+        return repository.findByVerStatus(keyword);
+    }
+//    @Override
+//    public void upload(Long id,String url){
+//        String sql = "update login_node set status = '"+url+"' where id = " + id + "";
+//        System.out.println("----------->>>"+id);
+//        jdbcTemplate.batchUpdate(sql);
+//    }
     public AgrrNodeDTO save(AgrrNodeDTO dto) {
         Set<AddressDTO> addressDTOSet = dto.getAddrs();
         if (addressDTOSet != null) {
@@ -57,6 +78,7 @@ public class AgrrNodeServiceImpl implements AgrrNodeService {
         }
         return repository.save(dto);
     }
+
 
     public void delete(Long id) {
         repository.deleteById(id);

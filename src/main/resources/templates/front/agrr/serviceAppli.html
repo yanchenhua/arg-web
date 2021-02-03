@@ -81,10 +81,9 @@
 
 
                             <div class="app-general-form-container">
-                                <form method="post" th:action="@{serviceForm}" th:object="${obj}" enctype="multipart/form-data">
+                                <form id="serviceForm" method="post" th:action="@{serviceForm}" th:object="${obj}" enctype="multipart/form-data">
                                     <input name="type" type="hidden" value="SERVICE"/>
-
-
+                                  <div id="register01">
                                     <div class="row">
                                         <div class="col-sm-4 t-l" th:utext="#{agrr.service.type}">
                                             认证服务商类型
@@ -112,7 +111,35 @@
 
                                     </div>
                                     <!-- .row end -->
+                                      <div class="row hideInput">
+                                          <div class="col-sm-4 t-l">
+                                              用户名 <span class="controls-im">*</span>
+                                          </div>
 
+                                          <div class="col-sm-8 t-l">
+                                              <div class="controls">
+                                                  <input id="username" type="text" class="float-label reqiured" name="username">
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+                                      <div class="fa fa-times" id="usernemTip" style="position: absolute; width: 100px;height: 35px;color:red;left: 770px;top:75px;display: none"> 用户名已存在</div>
+                                      <div class="row hideInput">
+                                          <div class="col-sm-4 t-l">
+                                              密码 <span class="controls-im">*</span>
+                                          </div>
+
+                                          <div class="col-sm-8 t-l">
+                                              <div class="controls">
+                                                  <input id="password" type="password" class="float-label reqiured" name="password">
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
                                     <div class="row">
                                         <div class="col-sm-4 t-l" th:utext="#{agrr.service.name}">
                                             联系人姓名 <span class="controls-im">*</span>
@@ -147,6 +174,7 @@
                                     <!-- .row end -->
 
 
+
                                     <div class="row">
                                         <div class="col-sm-4 t-l" th:utext="#{agrr.service.email}">
                                             电子邮箱
@@ -154,7 +182,7 @@
 
                                         <div class="col-sm-8 t-l">
                                             <div class="controls">
-                                                <input type="email" class="float-label" name="email">
+                                                <input id="email" type="email" class="float-label reqiured" name="email">
 
                                             </div>
 
@@ -162,6 +190,22 @@
 
                                     </div>
                                     <!-- .row end -->
+                                      <div class="row">
+                                          <div class="col-sm-4 t-l">
+                                              微信
+                                          </div>
+
+                                          <div class="col-sm-8 t-l">
+                                              <div class="controls">
+                                                  <input type="text" class="float-label" name="wx">
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+                                      <!-- .row end -->
+
 
 
                                     <div class="row">
@@ -179,6 +223,66 @@
 
                                     </div>
                                     <!-- .row end -->
+                                      <div class="row">
+                                          <div class="col-sm-4 t-l" >
+                                              法人代表 <span class="controls-im">*</span>
+                                          </div>
+
+                                          <div class="col-sm-8 t-l">
+                                              <div class="controls">
+                                                  <input type="text" class="float-label" name="representative">
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+                                      <!-- .row end -->
+                                      <div class="row">
+                                          <div class="col-sm-4 t-l">
+                                              上级经销商 <span class="controls-im">*</span>
+                                          </div>
+
+                                          <div class="col-sm-8 t-l">
+                                              <div class="controls">
+                                                  <input  class="float-label" name="distributor">
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+                                      <!-- .row end -->
+                                      <div class="row">
+                                          <div class="col-sm-4 t-l">
+                                              上级经销商系统编码 <span class="controls-im">*</span>
+                                          </div>
+
+                                          <div class="col-sm-8 t-l">
+                                              <div class="controls">
+                                                  <input  class="float-label" name="distributorCode">
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+                                      <!-- .row end -->
+                                      <div class="row">
+                                          <div class="col-sm-4 t-l" >
+                                              经营年限/年 <span class="controls-im">*</span>
+                                          </div>
+
+                                          <div class="col-sm-8 t-l">
+                                              <div class="controls">
+                                                  <input type="text" class="float-label" name="years">
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+                                      <!-- .row end -->
 
 
                                     <div class="row">
@@ -206,6 +310,17 @@
                                             <p class="controls-file-return t-l">可支持rar,zip等压缩文件格式</p>
 
                                         </div>
+                                        <div style="display: none">
+                                            <div class="controls-file-container t-l">
+                                                <input type="file" id="contactfile" name="contactfile">
+                                                <label tabindex="0" for="contactfile" class="controls-file-trigger"
+                                                ><i class="fa fa-cloud-upload"
+                                                    aria-hidden="true"></i>上传店铺图片等其他资料</label>
+                                            </div>
+                                            <p class="controls-file-return t-l">可支持rar,zip等压缩文件格式</p>
+
+                                        </div>
+
 
                                     </div>
                                     <!-- .row end -->
@@ -228,6 +343,7 @@
                                     <!-- .row end -->
 
 
+
                                     <div class="row">
                                         <div class="col-sm-4 t-l" th:utext="#{agrr.service.shop.count}">
                                             店铺数量 <span class="controls-im">*</span>
@@ -245,196 +361,418 @@
                                     <!-- .row end -->
 
 
-                                    <div class="row">
-                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.address}">
-                                            经营地址 <span class="controls-im">*</span>
-                                        </div>
 
-                                        <div class="col-sm-8 t-l"
-                                             th:if="${#strings.toString(session.lang_session) != 'zh_CN'}">
-                                            <div class="controls">
-                                                <input type="text" class="float-label reqiured" name="address">
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-sm-8 t-l"
-                                             th:if="${#strings.toString(session.lang_session) == 'zh_CN'}">
-
-
-                                            <div class="controls custom-select">
-                                                <label>
-                                                    <select id="dynamic-dd-country" name="country">
-
-                                                        <option value="中国" selected>中国</option>
-                                                    </select>
-
-                                                </label>
-
-                                            </div>
-
-
-                                            <div class="controls custom-select">
-                                                <label>
-                                                    <select
-                                                            id="dynamic-dd-province"
-                                                            name="province"
-                                                            placeholder="省份"
-                                                            data-ajax-dynamic-dd-json="/front_static/json/china.json"
-                                                            data-ajax-dynamic-dd-method="GET"
-                                                            data-ajax-dynamic-dd-event="change"
-                                                            data-ajax-dynamic-dd-data=""
-                                                            data-ajax-dynamic-dd-associated="#dynamic-dd-city">
-
-                                                        <option value="">省份</option>
-
-                                                    </select>
-
-                                                </label>
-                                            </div>
-
-
-                                            <div class="controls custom-select">
-                                                <label>
-                                                    <select name="city" id="dynamic-dd-city"
-                                                            placeholder="城市">
-                                                        <option value="">城市</option>
-                                                    </select>
-
-                                                </label>
-
-                                            </div>
-
-                                            <br>
-
-                                            <div class="controls">
-                                                <input type="text" class="float-label" name="street" placeholder="街道">
-
-                                                <a href="javascript:" class="app-add-more-add"><i
-                                                        class="fa fa-plus-circle"
-                                                        aria-hidden="true"></i></a>
-
-
-                                            </div>
-                                            <div class="controls">
-                                                <input type="text" class="float-label reqiured" name="postCode">
-                                                <label>邮编</label>
-
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                    <!-- .row end -->
 
 
                                     <div id="app-add-more--forms"></div>
 
 
-                                    <!-- .row end -->
-                                    <div class="row">
-                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.shop.size}">
-                                            主要门店面积（平方米） <span class="controls-im">*</span>
-                                        </div>
 
-                                        <div class="col-sm-8 t-l">
-                                            <div class="controls">
-                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="shopSize">
+                                      <div class="row">
+                                          <a href="javascript:void(0);" onclick="slideTable(1)" style="float: right;color: #0000FF">门店信息>></a>
+                                      </div>
+                                </div>
+                                    <!--<门店信息>-->
+                                    <div id="register02" style="display: none">
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" th:utext="#{agrr.service.address}">
+                                                经营地址 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l"
+                                                 th:if="${#strings.toString(session.lang_session) != 'zh_CN'}">
+                                                <div class="controls">
+                                                    <input type="text" class="float-label reqiured" name="address">
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-8 t-l"
+                                                 th:if="${#strings.toString(session.lang_session) == 'zh_CN'}">
+
+
+                                                <div class="controls custom-select">
+                                                    <label>
+                                                        <select id="dynamic-dd-country" name="country">
+
+                                                            <option value="中国" selected>中国</option>
+                                                        </select>
+
+                                                    </label>
+
+                                                </div>
+
+
+                                                <div class="controls custom-select">
+                                                    <label>
+                                                        <select
+                                                                id="dynamic-dd-province"
+                                                                name="province"
+                                                                placeholder="省份"
+                                                                data-ajax-dynamic-dd-json="/front_static/json/china.json"
+                                                                data-ajax-dynamic-dd-method="GET"
+                                                                data-ajax-dynamic-dd-event="change"
+                                                                data-ajax-dynamic-dd-data=""
+                                                                data-ajax-dynamic-dd-associated="#dynamic-dd-city">
+
+                                                            <option value="省份">省份</option>
+
+                                                        </select>
+
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="controls custom-select">
+                                                    <label>
+                                                        <select name="city" id="dynamic-dd-city"
+                                                                placeholder="城市">
+                                                            <option value="城市">城市</option>
+                                                        </select>
+
+                                                    </label>
+
+                                                </div>
+
+                                                <br>
+
+                                                <div class="controls">
+                                                    <input type="text" class="float-label" name="street" placeholder="街道">
+
+                                                    <a href="javascript:" class="app-add-more-add"><i
+                                                            class="fa fa-plus-circle"
+                                                            aria-hidden="true"></i></a>
+
+
+                                                </div>
+                                                <div class="controls">
+                                                    <input type="text" class="float-label reqiured" name="postCode">
+                                                    <label>邮编</label>
+
+                                                </div>
+
 
                                             </div>
 
                                         </div>
+                                        <!-- .row end -->
+                                        <!-- .row end -->
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                采购负责人 <span class="controls-im">*</span>
+                                            </div>
 
-                                    </div>
-                                    <!-- .row end -->
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input  class="float-label" name="purchaser">
 
-
-                                    <div class="row">
-                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.depot.size}">
-                                            主要门店仓库面积（平方米） <span class="controls-im">*</span>
-                                        </div>
-
-                                        <div class="col-sm-8 t-l">
-                                            <div class="controls">
-                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="depotSize">
+                                                </div>
 
                                             </div>
 
                                         </div>
+                                        <!-- .row end -->
 
-                                    </div>
-                                    <!-- .row end -->
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                采购负责人电话 <span class="controls-im">*</span>
+                                            </div>
 
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="tel"  class="float-label" name="purchaserNumber">
 
-                                    <div class="row">
-                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.service.type}">
-                                            目前主营业务 <span class="controls-im">*</span>
-                                        </div>
-
-                                        <div class="col-sm-8 t-l">
-                                            <div class="controls">
-                                                <input type="text" class="float-label reqiured" name="serviceType">
+                                                </div>
 
                                             </div>
 
                                         </div>
+                                        <!-- .row end -->
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" th:utext="#{agrr.service.shop.size}">
+                                                主要门店面积（平方米） <span class="controls-im">*</span>
+                                            </div>
 
-                                    </div>
-                                    <!-- .row end -->
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label " name="shopSize">
 
-
-                                    <div class="row">
-                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.slot.count}">
-                                            有几个安装工位 <span class="controls-im">*</span>
-                                        </div>
-
-                                        <div class="col-sm-8 t-l">
-                                            <div class="controls">
-                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="slotCount">
+                                                </div>
 
                                             </div>
 
                                         </div>
-
-                                    </div>
-                                    <!-- .row end -->
+                                        <!-- .row end -->
 
 
-                                    <div class="row">
-                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.tech.count}">
-                                            有几个专业汽车玻璃安装技术 <span class="controls-im">*</span>
-                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" th:utext="#{agrr.service.depot.size}">
+                                                主要门店仓库面积（平方米） <span class="controls-im">*</span>
+                                            </div>
 
-                                        <div class="col-sm-8 t-l">
-                                            <div class="controls">
-                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="techCount">
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label " name="depotSize">
+
+                                                </div>
 
                                             </div>
 
                                         </div>
+                                        <!-- .row end -->
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                门店性质(自有/租赁） <span class="controls-im">*</span>
+                                            </div>
 
-                                    </div>
-                                    <!-- .row end -->
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input  class="float-label" name="storeproperty">
 
-
-                                    <div class="row">
-                                        <div class="col-sm-4 t-l" th:utext="#{agrr.service.tran.count}">
-                                            有几辆工具车 <span class="controls-im">*</span>
-                                        </div>
-
-                                        <div class="col-sm-8 t-l">
-                                            <div class="controls">
-                                                <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label reqiured" name="tranCount">
+                                                </div>
 
                                             </div>
 
                                         </div>
+                                        <!-- .row end -->
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                房租/年/元 <span class="controls-im">*</span>
+                                            </div>
 
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input  class="float-label" name="rent">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- .row end -->
+
+
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" th:utext="#{agrr.service.service.type}">
+                                                目前主营业务 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" class="float-label" name="serviceType">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- .row end -->
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                销售品牌 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input  class="float-label" name="salesbrand">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- .row end -->
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                销售辐射区域 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input  class="float-label" name="salesarea">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- .row end -->
+
+
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" th:utext="#{agrr.service.slot.count}">
+                                                有几个安装工位 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="slotCount">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- .row end -->
+
+
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" th:utext="#{agrr.service.tech.count}">
+                                                有几个专业汽车玻璃安装技术 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="techCount">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- .row end -->
+
+
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" th:utext="#{agrr.service.tran.count}">
+                                                有几辆工具车 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="tranCount">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- .row end -->
+                                        <div class="row">
+                                            <a href="javascript:void(0);" onclick="slideTable(-1)" style="float: left;color: #0000FF"><<基本信息</a>
+                                            <a href="javascript:void(0);" onclick="slideTable(1)" style="float: right;color: #0000FF">经营信息>></a>
+                                        </div>
                                     </div>
-                                    <!-- .row end -->
+                                    <!--经营状况-->
+                                    <div id="register03" style="display: none">
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                采购金额/年 <span class="controls-im">*</span>
+                                            </div>
 
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="purchase">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                销售金额/年 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="sales">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                采购片数/年 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="purchaseNumber">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                主要采购渠道 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" class="float-label" name="channel">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                库存片数 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="stock">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l">
+                                                库存占比 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="stockRate">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 t-l" >
+                                                向终端车主销售加价率 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="float-label" name="markupRate">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row" style="display: none">
+                                            <div class="col-sm-4 t-l" >
+                                                审核状态 <span class="controls-im">*</span>
+                                            </div>
+
+                                            <div class="col-sm-8 t-l">
+                                                <div class="controls">
+                                                    <input type="text" class="float-label" value="0" name="verstatus">
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                           <a href="javascript:void(0);" onclick="slideTable(-1)" style="color: #0000FF"><<门店信息</a>
+                                        </div>
+                                    </div>
 
                                     <br>
 
@@ -490,6 +828,63 @@
 
 
         <script type="text/javascript">
+            var userName = getCookie("username");
+            var passWord = getCookie("password");
+            if(userName!=null){
+                getLoginInfo(userName,passWord);
+                // $("#username").attr({disabled:"disabled"});
+                // $("#password").attr({disabled:"disabled"});
+                $(".hideInput").css({display:"none"});
+            }
+
+            var currPage = 1;
+            function slideTable(_num){
+                $("#register01").css({"display":'none'});
+                $("#register02").css({"display":'none'});
+                $("#register03").css({"display":'none'});
+                console.log( $("#register0"+(currPage+_num)))
+                currPage = currPage+_num;
+                $("#register0"+currPage).css({"display":'block'});
+
+            }
+            function getLoginInfo(_userName,_passWord){
+                if(getCookie("username")!=null){
+
+                    $.post('/agrr/returnInfo',{
+                        username: _userName,
+                        password: _passWord
+                    },function (data) {
+                        console.log("success")
+                        setForm(data);
+
+                    })
+                }
+            }
+            function setForm(data){
+               var $this =  $("#serviceForm");
+               $.each(data,function(name,val){
+                  // var $oinput = $this.find("input:[name=" + name + "]");
+                   if(name=="country"){
+                       $this.find("[name="+name+"]").val(data.addrs[0].country)
+                   }else if(name=="province"){
+                       $this.find("[name="+name+"]").html('<option value=\"省份\">'+data.addrs[0].province+'</option>')
+                   }else if(name=="city"){
+
+                       $this.find("[name="+name+"]").html('<option value=\"城市\">'+data.addrs[0].city+'</option>')
+
+                       //$this.find("[name="+name+"]").attr({selected:"selected"});
+                   }else if(name=="postCode"){
+                       $this.find("[name="+name+"]").val(data.addrs[0].text.split("：")[1]);
+                       console.log(data.addrs[0].text.split("：")[1])
+                   }else if(name=="street"){
+                       $this.find("[name="+name+"]").val(data.addrs[0].street)
+                   }else{
+                      // console.log(name+"= "+val)
+                       $this.find("[name="+name+"]").val(val);
+                   }
+
+               })
+            }
 
             (function ($) {
                 "use strict";
@@ -593,8 +988,49 @@
 
 
                         });
+                        //alert($("#usernemTip").css("display"))
+                        if($("#usernemTip").css("display")=="block"){
+                            $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> 用户名已存在！</span>');
+                            $form.find('.response span').slideDown(300);
+                            validationOK = false;
+                            return false;
+                        }
+                        if($("#username").val().length<4){
+                            //console.log("->>>>>>>>>>"+$("#username").val())
+                            $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 账户名需为大于四位的字母数字组合！</span>');
+                            validationOK = false;
+                            return false
+                        }
+                        var b = /^[0-9a-zA-Z]*$/g;
+                       // alert(!b.test($("#username").val()))
+                        if(!b.test($("#username").val())){
+                            $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 账户名需为字母数字组合！</span>');
+                            validationOK = false;
+                            return false
+                        }
+                        //alert($("#password").val())
+                        if($("#password").val().length<6){
+                            console.log("->>>>>>>>>>"+$("#userid").val())
+                            $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 密码需为大于六位的字母数字组合！</span>');
+                            validationOK = false;
+                            return false
+                        }
+                        //alert($("#password").val())
+                        var b = /^[0-9a-zA-Z]*$/g;
+                        if(!b.test($("#password").val())){
+                            $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 密码需为字母数字组合！</span>');
+                            validationOK = false;
+                            return false
+                        }
+                        var myReg=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+                        if(!myReg.test($("#email").val())){
+                            $form.find('.response').html('<span class="no"><i class="fa fa-times" aria-hidden="true"></i> ' + ' 邮箱格式不正确！</span>');
+                            validationOK = false;
+                            return false
+                        }
 
                         $form.find('.response span').delay(3000).slideUp(300);
+
 
 
                         if (validationOK) {
@@ -607,9 +1043,61 @@
                     });
 
 
+
                 });
 
+
             })(jQuery);
+            $("#username").blur(function(){
+                var username = $(this).val();
+                //alert(username)
+                $.post('/agrr/checkStaff',{username:username},function(data){
+                    //alert(data.message)
+                    console.log(data.message)
+                    if(data.message!="success"){
+                        $("#usernemTip").css({display:"block"})
+                    }else{
+                        $("#usernemTip").css({display:"none"})
+                    }
+
+
+                })
+            })
+            if(userName!=null){
+                getLoginInfo(userName,passWord);
+            }
+            function setCookie (name, value, day) {
+                if(day !== 0){     //当设置的时间等于0时，不设置expires属性，cookie在浏览器关闭后删除
+                    var expires = day * 24 * 60 * 60 * 1000;
+                    var date = new Date(+new Date()+expires);
+                    document.cookie = name + "=" + escape(value) + ";expires=" + date.toUTCString();
+                }else{
+                    document.cookie = name + "=" + escape(value);
+                }
+            };
+            //读取cookies
+            function getCookie(name) {
+                var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+                if (arr = document.cookie.match(reg))
+
+                    return unescape(arr[2]);
+                else
+                    return null;
+            }
+            //删除cookies
+            // function delCookie(name) {
+            //     //alert(11111)
+            //     var exp = new Date();
+            //     exp.setTime(exp.getTime() - 60 * 60 * 1000);
+            //     var cval = getCookie(name);
+            //     alert(cval)
+            //     if (cval != null)
+            //         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";path=/";
+            // }
+            function delCookie (name) {
+                setCookie(name, ' ', -1);
+            };
 
 
         </script>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_172 (Oracle Corporation)"
+    comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_251 (Oracle Corporation)"
 )
 @Component
 public class GlobalMapperImpl implements GlobalMapper {
@@ -22,6 +22,8 @@ public class GlobalMapperImpl implements GlobalMapper {
         GlobalShop globalShop = new GlobalShop();
 
         if ( entity != null ) {
+            globalShop.setZipCode( entity.getZipCode() );
+            globalShop.setVerNumber( entity.getVerNumber() );
             globalShop.setShoptel( entity.getShoptel() );
             globalShop.setShoptype( entity.getShoptype() );
             globalShop.setShoplongitude( entity.getShoplongitude() );

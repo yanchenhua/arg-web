@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<title th:text = "#{fragment.menu.intro}+'- '+${session.home.webTitle.getTranslatedStr(session.lang_session)}"></title>
 <head th:replace="front/fragment :: head"></head>
 <link rel="stylesheet" href="/front_static/css/style.css" media="all"/>
 <!--link rel="stylesheet" href="css/style.css"-->
+
 <style>
 .page { width:100%;background:#F0F0F0 url('img/dian2.png') repeat-x; }
 </style>
-<body th:class="|page ${session.lang_session}|">
+<body th:class="|${session.lang_session}|">
 
 
 <!-- Loader
@@ -173,11 +175,32 @@
 		<script>
 			$(function(){
 				var scroll_distance = 0
-				$(".event_list").bind('mousewheel', function(event,delta){
+                var startX, startY, moveEndX, moveEndY, X, Y;
+
+                $(".event_list").bind('touchstart', function(e) {
+
+                    e.preventDefault();
+
+                    startX = e.touches[0].pageX;
+
+                    startY = e.touches[0].pageY;
+
+                });
+				$(".event_list").bind('touchmove', function(event,delta){
 					event.preventDefault();
+                    moveEndX = event.changedTouches[0].pageX;
+
+                    moveEndY = event.changedTouches[0].pageY;
+
+                    X = moveEndX - startX;
+
+                    Y = moveEndY - startY;
+                if ( Y > 0) {delta=1}
+
+                    else if ( Y < 0 ) {delta=-1}
 					console.log("delta = "+delta);
 					
-					scroll_distance -= delta>0?30:-30;
+					scroll_distance -= delta>0?10:-10;
 					if(scroll_distance<0){
 						scroll_distance = 0;
 						}
@@ -188,6 +211,21 @@
 						}
 					$(".event_list").css("margin-top", -scroll_distance)
 					})
+                $(".event_list").bind('mousewheel', function(event,delta){
+                    event.preventDefault();
+                    console.log("delta = "+delta);
+
+                    scroll_distance -= delta>0?30:-30;
+                    if(scroll_distance<0){
+                        scroll_distance = 0;
+                    }
+                    var end = $(".event_list").outerHeight()-$("#box").outerHeight();
+                    console.log(end)
+                    if(scroll_distance>end){
+                        scroll_distance = end;
+                    }
+                    $(".event_list").css("margin-top", -scroll_distance)
+                })
 				})
 		</script>
 

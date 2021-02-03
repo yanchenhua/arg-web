@@ -54,7 +54,7 @@ public class ManageController {
 
     @RequestMapping(value = {"/manage/"}, method = RequestMethod.GET)
     public String manageIndexPage() {
-        return "/manage/index";
+        return "/manage/index.html";
     }
 
     @RequestMapping(value = {"/manage_static/{pageName}"}, method = RequestMethod.GET)

@@ -63,6 +63,9 @@
                                     <div class="col-md-6" style="width: 20%;">
                                         <input v-model="cityNameStr" class="form-control"/>
                                     </div>
+                                    <div class="col-md-6" style="width: 20%;">
+                                        <input v-model="areaNameStr" class="form-control"/>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label text-right">地址</label>
@@ -76,12 +79,25 @@
                                         <input type="text" v-model="form.shoptel" class="form-control"/>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">邮编</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.zipCode" class="form-control"/>
+                                    </div>
+                                </div>
                                 <!--div class="form-group">
                                     <label class="col-sm-2 control-label text-right">联系人</label>
                                     <div class="col-md-4">
                                         <input type="text" v-model="form.shopcontact" class="form-control"/>
                                     </div>
                                 </div-->
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-right">门店认证号</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="form.verNumber" class="form-control"/>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label text-right">联系人</label>
                                     <div class="col-md-4">
@@ -137,6 +153,7 @@
             shopaddressStr: '',
             globalNameStr: '',
             cityNameStr: '',
+            areaNameStr: '',
             shopcontactStr:'',
             jw: '',
             form: {
@@ -145,6 +162,8 @@
                 shopcontact:{},
                 shopaddress: {},
                 shoptype: '',
+                verNumber:'',
+                zipCode:'',
                 shoplongitude: '',
                 shoplatitude: '',
                 type: 'CAR_GLASS',
@@ -154,7 +173,8 @@
                 globalName: {},
                 //次层name
                 //static\front_static\json\countries.json
-                cityName: {}
+                cityName: {},
+                areaName:{}
             }
         },
         methods: {
@@ -217,6 +237,7 @@
                         this_vue.shopaddressStr = this_vue.$tools.getTranslationsText(global, 'shopaddress', locale);
                         this_vue.globalNameStr = this_vue.$tools.getTranslationsText(global, 'globalName', locale);
                         this_vue.cityNameStr = this_vue.$tools.getTranslationsText(global, 'cityName', locale);
+                        this_vue.areaNameStr = this_vue.$tools.getTranslationsText(global, 'areaName', locale);
                         var attachment = global.globalBannerAttachment;
                         attachment.src = "/uploads/" + attachment.filePath;
                        /* if(attachment){
@@ -251,6 +272,9 @@
             },
             'cityNameStr': function (n, o) {
                 this.$tools.setTranslationsText(this.form, 'cityName', locale, n);
+            },
+            'areaNameStr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'areaName', locale, n);
             },
             'shopcontactStr': function (n, o) {
                 this.$tools.setTranslationsText(this.form, 'shopcontact', locale, n);

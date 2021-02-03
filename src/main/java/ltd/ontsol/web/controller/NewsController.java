@@ -93,8 +93,10 @@ public class NewsController {
     @GetMapping("/video")
     public String videoIndex(Model model) {
         Map<String, Object> objs = new HashMap<>();
+//        objs.put("videos", mediaservice.findAllByType(MediaConstants.VIDEO)
+//                .stream().limit(PageConstants.PAGE_SIZE).collect(Collectors.toList()));
         objs.put("videos", mediaservice.findAllByType(MediaConstants.VIDEO)
-                .stream().limit(PageConstants.PAGE_SIZE).collect(Collectors.toList()));
+               .stream().collect(Collectors.toList()));
         model.addAllAttributes(objs);
         return "/front/news/video";
     }

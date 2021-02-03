@@ -12,17 +12,22 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.codahale.metrics.annotation.Timed;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import ltd.ontsol.core.constants.AgrrConstants;
@@ -37,6 +42,8 @@ import ltd.ontsol.core.service.AgrrNodeService;
 import ltd.ontsol.core.service.AttachmentService;
 import ltd.ontsol.core.service.QuestionService;
 import ltd.ontsol.core.util.IpUtil;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.util.WebUtils;
 
 /**
  * Created by cn40580 at 2018-06-17 11:21 AM.
@@ -66,7 +73,20 @@ public class AgrrServiceController {
         model.addAllAttributes(objs);
         return "/front/agrr/service";
     }
-
+    @GetMapping("/login")
+    public String agrrLoginIndex(Model model) {
+        Map<String, Object> objs = new HashMap<>();
+        objs.put("obj", questionService.findAllByType(QuestionTypeConstants.PROVIDER));
+        model.addAllAttributes(objs);
+        return "/front/agrr/login";
+    }
+//    @GetMapping("/InfoPage")
+//    public String InfoPageIndex(Model model) {
+//        Map<String, Object> objs = new HashMap<>();
+//        objs.put("obj", questionService.findAllByType(QuestionTypeConstants.PROVIDER));
+//        model.addAllAttributes(objs);
+//        return "/front/agrr/InfoPage";
+//    }
     @GetMapping("/providerAppli")
     public String providerAppliIndex(Model model) {
         Map<String, Object> objs = new HashMap<>();
@@ -76,13 +96,29 @@ public class AgrrServiceController {
     }
 
     @GetMapping("/serviceAppli")
-    public String serviceAppliIndex(Model model) {
+    public String serviceAppliIndex(HttpServletRequest request,Model model) {
         Map<String, Object> objs = new HashMap<>();
         objs.put("obj", questionService.findAllByType(QuestionTypeConstants.PROVIDER));
         model.addAllAttributes(objs);
+        Cookie[] cookies =  request.getCookies();
+
+
         return "/front/agrr/serviceAppli";
     }
-
+    @GetMapping("/InfoPage")
+    public  String InfoPageIndex(HttpServletRequest request,Model model){
+        Map<String, Object> objs = new HashMap<>();
+        model.addAllAttributes(objs);
+        Cookie[] cookies =  request.getCookies();
+        if(cookies != null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("username")){
+                    return "/front/agrr/InfoPage";
+                }
+            }
+        }
+        return "redirect:/agrr/login";
+    }
     @GetMapping("/provider")
     public String providerIndex(Model model) {
         Map<String, Object> objs = new HashMap<>();
@@ -154,9 +190,84 @@ public class AgrrServiceController {
         agrrNodeService.save(obj);
         return "redirect:/agrr/provider";
     }
+    @PostMapping(value = "userLogin",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE}
+    )
+    public String userLogin(HttpServletRequest servletRequest,HttpServletResponse response) {
+        Map<String, Object> result = new HashMap<>();
+        String username = servletRequest.getParameter("username");
+        String password = servletRequest.getParameter("password");
 
+        Integer count = agrrNodeService.countByLoginInfo(username, password);
+        if (count > 0) {
+            result.put("message", "");
+            result.put("status", "success");
+            Cookie cookie0 = new Cookie("username",username);
+            Cookie cookie1 = new Cookie("password",password);
+            response.addCookie(cookie0);
+            response.addCookie(cookie1);
+
+        } else {
+            result.put("message", "用户验证不通过");
+            result.put("status", "failed");
+        }
+        return "redirect:/agrr/InfoPage";
+        //return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    @PostMapping(value = "validateUserid",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+    public ResponseEntity<Map> validateUserid(HttpServletRequest servletRequest) {
+        Map<String, Object> result = new HashMap<>();
+        String username = servletRequest.getParameter("username");
+        Integer count = agrrNodeService.countByUsername(username);
+        if (count > 0) {
+            result.put("message", "用户名已存在");
+            result.put("message_en", "The user name already exists");
+            result.put("status", "fail");
+        }else{
+            result.put("status", "success");
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    @PostMapping(value = "returnInfo",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE}
+    )
+    public ResponseEntity<AgrrNodeDTO> returnInfo(HttpServletRequest servletRequest,HttpServletResponse response) {
+        Map<String, Object> result = new HashMap<>();
+        String username = servletRequest.getParameter("username");
+        String password = servletRequest.getParameter("password");
+
+        AgrrNodeDTO dto = agrrNodeService.findByLoginInfo(username,password).get(0);
+        System.out.println(dto);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+        //return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+//    @PostMapping(value = "returnInfo",
+//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+//    public String returnInfo(HttpServletRequest servletRequest){
+//        String username = servletRequest.getParameter("username");
+//        String password = servletRequest.getParameter("password");
+//        AgrrNodeDTO dto = agrrNodeService.findByLoginInfo(username,password).get(0);
+//        return "";
+//    }
     @PostMapping("/serviceForm")
     public String serviceForm(@ModelAttribute(value = "obj") AgrrNodeDTO obj, HttpServletRequest request, BindingResult bindingResult) throws IOException {
+       String username = "";
+       String password = "";
+        Cookie[] cookies =  request.getCookies();
+        if(cookies != null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("username")){
+                    username = cookie.getValue();
+                }
+                if(cookie.getName().equals("password")){
+                    password = cookie.getValue();
+                }
+            }
+        }
+        if(username!=""){
+            AgrrNodeDTO obj1 = agrrNodeService.findByLoginInfo(username,password).get(0);
+            obj.setId(obj1.getId());
+        }
         String ipaddr = IpUtil.getIpAddr(request);
         LOG.info("some one submit form ---> ip address : " + ipaddr);
         MultipartFile file = obj.getFile();
@@ -193,6 +304,21 @@ public class AgrrServiceController {
         dto1.setType(AttachmentConstants.OTHER);
         obj.setShopBannerAttachment(dto1);
 
+        MultipartFile contactfile = obj.getContactfile();
+        SimpleDateFormat contactsdf = new SimpleDateFormat("yyMMDDmmss");
+        System.out.println("----->>" + contactfile.getOriginalFilename());
+        String contactfileName = contactfile.getOriginalFilename();
+        System.out.println("----->>>" + contactfileName);
+        String contactfilesuffix = contactfileName.substring(contactfileName.lastIndexOf(".") + 1);
+        String contactFileName = contactsdf.format(new Date()) + "_2." + contactfilesuffix;
+        Path contactfilePath = Paths.get(service.getUploadFolder(), contactFileName);
+        Files.copy(contactfile.getInputStream(), contactfilePath);
+        AttachmentDTO dto2 = new AttachmentDTO();
+        dto2.setDisplayName(contactfile.getOriginalFilename());
+        dto2.setFilePath(contactFileName);
+        dto2.setType(AttachmentConstants.OTHER);
+        obj.setShopContactAttachment(dto2);
+
         //address
         if (obj.getNodeAddress() != null && obj.getNodeAddress().size() == 0
                 && obj.getCountry() != null && obj.getCountry().size() > 0) {
@@ -205,16 +331,102 @@ public class AgrrServiceController {
                 obj.getNodeAddress().add(country + " " + province + " " + city + " " + street + "   邮编： " + postCode);
             }
         }
-        agrrNodeService.save(obj);
+        if(username==""){
+            agrrNodeService.save(obj);
+        }else{
+            agrrNodeService.saveOrUpdate(obj);
+            AgrrNodeDTO obj1 = agrrNodeService.findByLoginInfo(username,password).get(0);
+            Long id = obj1.getId();
+            addressService.deleteByAgrrId(id);
+        }
+        //agrrNodeService.save(obj);
 
         if (obj.getNodeAddress().size() > 0) {
             for (int i = 0; i < obj.getNodeAddress().size(); i++) {
                 AddressDTO add = new AddressDTO();
                 add.setText(obj.getNodeAddress().get(i));
+                String[] arry = obj.getNodeAddress().get(i).split(" ");
                 add.setAgrrNode(obj);
+                add.setCountry(arry[0]);
+                add.setProvince(arry[1]);
+                add.setCity(arry[2]);
+                add.setStreet(arry[3]);
                 addressService.saveOrUpdate(add);
             }
         }
-        return "redirect:/agrr/service";
+        return "redirect:/agrr/login";
+    }
+    @PostMapping(value = "/uploadContact",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+
+    public String uploadContact(HttpServletRequest servletRequest) throws IOException {
+
+         MultipartHttpServletRequest multipartRequest =
+                 WebUtils.getNativeRequest(servletRequest, MultipartHttpServletRequest.class);
+        Long id =  Long.parseLong(servletRequest.getParameter("contactid"));
+        System.out.println("---->>>>"+id);
+         MultipartFile contactFile = multipartRequest.getFile("contactfile01");
+//        MultipartFile contactFile = obj.getContactfile();
+         SimpleDateFormat contactsdf = new SimpleDateFormat("yyMMDDmmss");
+         String contactfileName = contactFile.getOriginalFilename();
+         String contactfilesuffix = contactfileName.substring(contactfileName.lastIndexOf(".") + 1);
+         String tempcontactFileName = contactsdf.format(new Date()) + "_1." + contactfilesuffix;
+         Path contactfilePath = Paths.get(service.getUploadFolder(), tempcontactFileName);
+         Files.copy(contactFile.getInputStream(), contactfilePath);
+         AttachmentDTO dto = service.findById(id);
+         dto.setDisplayName(contactFile.getOriginalFilename());
+         dto.setFilePath(tempcontactFileName);
+         dto.setType(AttachmentConstants.OTHER);
+         service.saveOrUpdate(dto);
+         //return new ResponseEntity<>("success", HttpStatus.OK);
+        return "redirect:/manage/service/add.html?id="+servletRequest.getParameter("serviceid");
+        //return "redirect:/manage/service";
+    }
+//    @PostMapping(value = "/setVerStatus",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+//    public String setVerStatus(HttpServletRequest servletRequest){
+//        Long id =  Long.parseLong(servletRequest.getParameter("id"));
+//        String status = servletRequest.getParameter("verstatus");
+//        AgrrNodeDTO dto = agrrNodeService.findById(id);
+//        dto.setVerstatus(status);
+//        agrrNodeService.saveOrUpdate(dto);
+//        return "";
+//    }
+//    @PostMapping(value = "page",
+//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE}
+//    )
+//    public String setVerStatus(HttpServletRequest servletRequest,HttpServletResponse response) {
+////        Long id =  Long.parseLong(servletRequest.getParameter("id"));
+////            String status = servletRequest.getParameter("verstatus");
+////        AgrrNodeDTO dto = agrrNodeService.findById(id);
+////        dto.setVerstatus(status);
+////        agrrNodeService.saveOrUpdate(dto);
+//        return "success";
+//    }
+    @PostMapping(value = "setVerStatus",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+public String setVerStatus(HttpServletRequest servletRequest) {
+        Long id =  Long.parseLong(servletRequest.getParameter("id"));
+        String status = servletRequest.getParameter("verstatus");
+        AgrrNodeDTO dto = agrrNodeService.findById(id);
+        dto.setVerstatus(status);
+        agrrNodeService.saveOrUpdate(dto);
+    return "/manage/agrr/service";
+}
+    @RequestMapping(value = "checkStaff",method = RequestMethod.POST,produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE})
+    @Timed
+    public ResponseEntity<Map> validateStaffLogin(HttpServletRequest servletRequest) {
+        Map<String, Object> result = new HashMap<>();
+        String username = servletRequest.getParameter("username");
+
+        Integer count = agrrNodeService.countByUsername(username);
+        if (count > 0) {
+            result.put("message", "用户名已存在");
+            result.put("message_en", "No duplicate registration");
+            result.put("status", "fail");
+        }
+        else{
+            result.put("status", "success");
+            result.put("message", "success");
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

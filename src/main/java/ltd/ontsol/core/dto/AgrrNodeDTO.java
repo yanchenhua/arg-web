@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 
 import ltd.ontsol.core.AbstractPersistableEntity;
@@ -31,6 +32,17 @@ public class AgrrNodeDTO extends AbstractPersistableEntity<Long> {
     MultipartFile file;
     @Transient
     MultipartFile otherfile;
+
+    public MultipartFile getContactfile() {
+        return contactfile;
+    }
+
+    public void setContactfile(MultipartFile contactfile) {
+        this.contactfile = contactfile;
+    }
+
+    @Transient
+    MultipartFile contactfile;
     @Transient
     List<String> country = new ArrayList<>();
     @Transient
@@ -47,6 +59,16 @@ public class AgrrNodeDTO extends AbstractPersistableEntity<Long> {
     private String verifyType;
     private String name;
     private String tel;
+
+    public String getWx() {
+        return wx;
+    }
+
+    public void setWx(String wx) {
+        this.wx = wx;
+    }
+
+    private String wx;
     private String email;
     private String companyName;
     private String companyCode;
@@ -55,6 +77,194 @@ public class AgrrNodeDTO extends AbstractPersistableEntity<Long> {
     private String business;
     private String lng;
     private String lat;
+
+
+    private String distributor;
+    private String distributorCode;
+    private String representative;
+    private String purchaser;
+    private String purchaserNumber;
+    private String years;
+    private String storeproperty;
+    private String rent;
+    private String salesbrand;
+
+    public String getDistributor() {
+        return distributor;
+    }
+
+    public void setDistributor(String distributor) {
+        this.distributor = distributor;
+    }
+
+    public String getDistributorCode() {
+        return distributorCode;
+    }
+
+    public void setDistributorCode(String distributorCode) {
+        this.distributorCode = distributorCode;
+    }
+
+    public String getRepresentative() {
+        return representative;
+    }
+
+    public void setRepresentative(String representative) {
+        this.representative = representative;
+    }
+
+    public String getPurchaser() {
+        return purchaser;
+    }
+
+    public void setPurchaser(String purchaser) {
+        this.purchaser = purchaser;
+    }
+
+    public String getPurchaserNumber() {
+        return purchaserNumber;
+    }
+
+    public void setPurchaserNumber(String purchaserNumber) {
+        this.purchaserNumber = purchaserNumber;
+    }
+
+    public String getYears() {
+        return years;
+    }
+
+    public void setYears(String years) {
+        this.years = years;
+    }
+
+    public String getStoreproperty() {
+        return storeproperty;
+    }
+
+    public void setStoreproperty(String storeproperty) {
+        this.storeproperty = storeproperty;
+    }
+
+    public String getRent() {
+        return rent;
+    }
+
+    public void setRent(String rent) {
+        this.rent = rent;
+    }
+
+    public String getSalesbrand() {
+        return salesbrand;
+    }
+
+    public void setSalesbrand(String salesbrand) {
+        this.salesbrand = salesbrand;
+    }
+
+    public String getSalesarea() {
+        return salesarea;
+    }
+
+    public void setSalesarea(String salesarea) {
+        this.salesarea = salesarea;
+    }
+
+    private String salesarea;
+
+    public String getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(String purchase) {
+        this.purchase = purchase;
+    }
+
+    public String getSales() {
+        return sales;
+    }
+
+    public void setSales(String sales) {
+        this.sales = sales;
+    }
+
+    public String getPurchaseNumber() {
+        return purchaseNumber;
+    }
+
+    public void setPurchaseNumber(String purchaseNumber) {
+        this.purchaseNumber = purchaseNumber;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+
+    public String getStockRate() {
+        return stockRate;
+    }
+
+    public void setStockRate(String stockRate) {
+        this.stockRate = stockRate;
+    }
+
+    public String getMarkupRate() {
+        return markupRate;
+    }
+
+    public void setMarkupRate(String markupRate) {
+        this.markupRate = markupRate;
+    }
+
+    private String purchase;
+    private String sales;
+    private String purchaseNumber;
+    private String channel;
+    private String stock;
+    private String stockRate;
+    private String markupRate;
+    private String username;
+
+    public String getVerstatus() {
+        return verstatus;
+    }
+
+    public void setVerstatus(String verstatus) {
+        this.verstatus = verstatus;
+    }
+    @Value("0")
+    private String verstatus;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password;
+
+
     @Enumerated(EnumType.STRING)
     private AgrrConstants type;
 
@@ -68,6 +278,18 @@ public class AgrrNodeDTO extends AbstractPersistableEntity<Long> {
     @JoinColumn(name = "SHOP_BANNER_ATT_ID")
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private AttachmentDTO shopBannerAttachment;
+
+    public AttachmentDTO getShopContactAttachment() {
+        return shopContactAttachment;
+    }
+
+    public void setShopContactAttachment(AttachmentDTO shopContactAttachment) {
+        this.shopContactAttachment = shopContactAttachment;
+    }
+
+    @JoinColumn(name = "SHOP_CONTACTACT_ID")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private AttachmentDTO shopContactAttachment;
 
     @OneToMany(mappedBy = "agrrNode", fetch = FetchType.EAGER)
     private Set<AddressDTO> addrs = new HashSet<>();
@@ -184,6 +406,7 @@ public class AgrrNodeDTO extends AbstractPersistableEntity<Long> {
     public void setShopCertAttachment(AttachmentDTO shopCertAttachment) {
         this.shopCertAttachment = shopCertAttachment;
     }
+
 
     public String getServiceType() {
         return serviceType;

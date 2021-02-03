@@ -4,8 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import ltd.ontsol.core.dto.DistributorDTO;
+import ltd.ontsol.core.service.DistributorService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,13 +31,23 @@ public class ContactController {
 
     @Inject
     ContactCardService service;
-
+    @Inject
+    DistributorService distributorService;
     @GetMapping("/{type}")
     public String globalIndex(Model model, @PathVariable ContactCardConstants type) {
         model.addAttribute("type", type.toString());
         List<ContactCardDTO> objs = service.findAllByType(type);
+        List<DistributorDTO> disList = distributorService.findAll();
+        if(type.toString() == "CHINA"){
+            model.addAttribute("disobjs", disList);
+        }
         model.addAttribute("objs", objs);
         return "/front/contact";
+    }
+    @GetMapping("/distributor")
+    public ResponseEntity<List<DistributorDTO>> getDistributor(){
+        List<DistributorDTO> disList = distributorService.findAll();
+        return new ResponseEntity<>(disList, HttpStatus.OK);
     }
 
 }

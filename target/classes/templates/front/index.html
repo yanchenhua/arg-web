@@ -97,6 +97,12 @@
                         <!--h2 class="heading-overlay t-bottom" th:data-text="${#strings.toString(session.lang_session) == 'zh_CN'} ? 'NEWS CENTER'"><p><i
                                 class="iconfont icon-wen"></i></p><em th:utext="#{index.latest.news}">最新<span>资讯</span></em>
                         </h2-->
+                        <div class="custom-navigation style-1 style-1_home my-nav-1 " style="z-index: 999">
+                            <a href="#" class="custom-theme-flex-prev"><i class="fa fa-angle-left"
+                                                                          aria-hidden="true"></i></a>
+                            <a href="#" class="custom-theme-flex-next"><i class="fa fa-angle-right"
+                                                                          aria-hidden="true"></i></a>
+                        </div>
 
                         <div class="custom-theme-flexslider app-home-news-slider"
                              data-draggable="false"
@@ -111,7 +117,7 @@
                              data-my-sync="false"
                              data-wheel="false"
                              data-speed="600"
-                             data-timing="5000"
+                             data-timing="2000"
                              data-loop="true"
                              data-paging="false"
                              data-arrows="true"
@@ -123,13 +129,13 @@
 
                             <div class=" custom-theme-slides">
 
-                                <div th:each="item, itemStat : ${articles}" class="item">
+                                <div th:each="item, itemStat : ${articles}" class="item" >
 
 
                                     <a th:href="|/news/detail/${item.id}|"
                                        data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
                                         <div class="cover">
-                                            <img class="index-bigPic-slider" th:src="|/uploads/${item.attachment.filePath}|" alt="" width="650" height="340">
+                                            <img class="index-bigPic-slider index_pic" th:src="|/uploads/${item.attachment.filePath}|" alt="" width="650" >
                                             <div class="title">
                                                 <h3 class="custom-card4-headline"
                                                     th:text="${item.title.getTranslatedStr(session.lang_session)}">
@@ -155,23 +161,18 @@
                         <!-- .custom-theme-flexslider end -->
 
 
-                        <div class="custom-navigation style-1 style-1_home my-nav-1 ">
-                            <a href="#" class="custom-theme-flex-prev"><i class="fa fa-angle-left"
-                                                                          aria-hidden="true"></i></a>
-                            <a href="#" class="custom-theme-flex-next"><i class="fa fa-angle-right"
-                                                                          aria-hidden="true"></i></a>
-                        </div>
 
 
                     </div>
-                    <div class="col-md-5">
+
+                    <div class="col-md-5 margin-top" >
                         <div th:each="item, itemStat : ${titlesArticles}">
                             <a th:href="|/news/detail/${item.id}|"
                                data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>
                                <span style="float: left">
                                    <img width="15" height="15" src="../front_static/css/../images/point.png"/>
                                </span>
-                                <p th:if="${item.topFlag == true}" style="color: #337aff;margin-left: 20px; font-size: 20px;line-height: 1.05"
+                                <p th:if="${item.topFlag == true}" class = "mainTile"
                                                                 th:text="${item.title.getTranslatedStr(session.lang_session)}">
                                 福耀集团荣获捷豹路虎“全球最佳供应商金奖”</p>
                                 <p th:if="${item.topFlag == false||item.topFlag == null}" style="margin-left: 20px; font-size: 16px;line-height: 1.05"
@@ -309,7 +310,7 @@
         <div class="container relative">
 
             <div>
-                <img th:src="#{contact.src}" width="100%"/>
+                <img th:src="#{contact.src}" width="100%" alt="福耀玻璃售后"/>
             </div>
 
         </div>
@@ -329,6 +330,7 @@
 <div th:replace="front/fragment :: js"></div>
 
 </body>
+
 </html>
 
 

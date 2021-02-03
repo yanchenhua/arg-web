@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="zh-CN" dir="ltr">
+<head th:replace="front/fragment :: head"></head>
+
+
+<body th:class="|page ${session.lang_session}|">
+
+
+<!-- Loader
+============================================= -->
+<!--div class="loader" th:replace="front/fragment :: loader"></div>
+<div class="loader-progress"><span>0%</span></div-->
+<!-- .loader end -->
+
+
+<!-- Mobile Menu Toggle Trigger
+============================================= -->
+<div class="menu-mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="menu-mobile-mask"></div>
+<!-- .menu-mobile-toggle end -->
+
+
+<div class="wrapper">
+
+    <!-- Header Area
+    ============================================= -->
+    <header class="header-area transition" th:replace="front/fragment :: header">
+    </header>
+
+    <div class="header-inner"></div>
+
+
+    <!-- Placeholder & Content Wrapper
+      ====================================================== -->
+    <div class="app-page-banner-placeholder"></div>
+
+
+    <div id="app-page-content-wrapper">
+
+        <section class="space-sm "
+                 >
+
+            <div class="container relative">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h2 class="heading-overlay t-l full" data-text="Video & Brochure"><em
+                                th:utext="#{news.video.photo}"><span>视频</span>画册</em></h2>
+
+                        <div class="app-page-content-show">
+
+                            <!-- ///////////////////////   Content  Begin ////////////////////////// -->
+
+
+                            <h3 th:utext="#{news.video}">视频中心</h3>
+                            <div class="seamless-grid-container2">
+
+                                <div class="seamless-grid loop">
+
+
+                                    <div class="custom-gallery" data-show-type="" data-filter-id="">
+
+                                        <div class="custom-gallery-tiles">
+
+                                            <!-- Item -->
+                                            <div th:each="item, itemStat : ${videos}"
+                                                 class="seamless-col-3 custom-gallery-item " data-groups=''>
+
+                                                <div class="content">
+                                                    <a href="javascript:void(0)" data-video-win="true"
+                                                       th:data-video-poster="|/uploads/${item.picture.filePath}|"
+                                                       th:data-video-mp4="|/uploads/${#strings.equals(session.lang_session, 'zh_CN')?#strings.arraySplit(item.attachment.filePath,':')[0]:#strings.arraySplit(item.attachment.filePath,':')[1]}|"
+                                                       data-video-webm="" data-video-ogv=""
+                                                       th:data-modal-id="|web-modal-${itemStat.index}|"
+                                                       th:data-video-id="|web-video-${itemStat.index}|"
+                                                       class="image"
+                                                      >
+                                                        <div class="cover">
+                                                            <img th:src="|/uploads/${item.picture.filePath}|" alt=""/>
+                                                        </div>
+                                                    </a>
+                                                    <p>
+                                                        <a href="javascript:void(0)" data-video-win="true"
+                                                           th:data-video-poster="|/uploads/${item.picture.filePath}|"
+                                                           th:data-video-mp4="|/uploads/${#strings.equals(session.lang_session, 'zh_CN')?#strings.arraySplit(item.attachment.filePath,':')[0]:#strings.arraySplit(item.attachment.filePath,':')[1]}|"
+                                                           data-video-webm="" data-video-ogv=""
+                                                           th:data-modal-id="|web-modal-${itemStat.index}|"
+                                                           th:data-video-id="|web-video-${itemStat.index}|"
+                                                           th:text="${item.title.getTranslatedStr(session.lang_session)}"
+                                                        >镀膜玻璃</a>
+
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+                                            <!--  .custom-gallery-item  end -->
+
+                                        </div>
+                                        <!-- .custom-gallery-tiles end -->
+
+
+                                    </div>
+                                    <!-- .custom-gallery end -->
+
+
+                                </div>
+                                <!-- .seamless-grid  end -->
+                            </div>
+                            <!-- /.seamless-grid-container -->
+
+
+                            <p class="t-c">
+                                <a class="button button-border-thin button-size-s button-bg-primary" href="/news/video"
+                                   th:utext="#{fragment.button.more}"
+                                   data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>查看更多</a>
+                            </p>
+
+
+                            <h3 th:utext="#{news.photo}">福耀画册</h3>
+                            <div class="seamless-grid-container2">
+
+                                <div class="seamless-grid loop">
+
+
+                                    <div class="custom-gallery" data-show-type="" data-filter-id="">
+
+                                        <div class="custom-gallery-tiles">
+
+                                            <!-- Item -->
+                                            <div th:each="item, itemStat : ${pdfs}"
+                                                 class="seamless-col-3 custom-gallery-item html3D-bg" data-groups=''>
+
+                                                <div class="content">
+                                                    <div class="cover no-h3"
+                                                         >
+                                                        <img th:src="|/uploads/${item.picture.filePath}|" alt=""/>
+
+                                                        <div class="link">
+                                                            <a th:href="|/uploads/pdf/${#strings.equals(session.lang_session, 'zh_CN')?#strings.arraySplit(item.attachment.filePath,':')[0]:#strings.arraySplit(item.attachment.filePath,':')[1]}|"
+                                                               target="_blank" th:utext="#{news.photo.read}"><i
+                                                                    class="fa fa-file-text"
+                                                                    aria-hidden="true"></i>在线阅读</a>
+                                                            <a th:href="|/uploads/stream/${#strings.equals(session.lang_session, 'zh_CN')?#strings.arraySplit(item.attachment.filePath,':')[0]:#strings.arraySplit(item.attachment.filePath,':')[1]}|"
+                                                               target="_blank" th:utext="#{news.photo.download}"><i
+                                                                    class="fa fa-cloud-download"
+                                                                    aria-hidden="true"></i>下载画册</a>
+                                                        </div>
+                                                    </div>
+                                                    <p th:text="${item.title.getTranslatedStr(session.lang_session)}"></p>
+
+                                                </div>
+
+
+                                            </div>
+                                            <!--  .custom-gallery-item  end -->
+
+                                        </div>
+                                        <!-- .custom-gallery-tiles end -->
+
+                                    </div>
+                                    <!-- .custom-gallery end -->
+
+                                </div>
+                                <!-- .seamless-grid  end -->
+                            </div>
+                            <!-- /.seamless-grid-container -->
+
+                            <p class="t-c">
+                                <a class="button button-border-thin button-size-s button-bg-primary" href="/news/photo"
+                                   th:utext="#{fragment.button.more}"
+                                   data-ajax-push-content='{"container":"#app-page-content-wrapper","target":"#app-page-content-wrapper","loading":"<div class=\"my-loader\"><span><i class=\"fa fa-spinner fa-spin\"></i> 内容加载中...</span></div>"}'>查看更多</a>
+                            </p>
+
+
+                            <!-- ///////////////////////   Content  End ////////////////////////// -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- .row end -->
+            </div>
+            <!-- .container end -->
+
+        </section>
+
+
+    </div>
+    <!-- /#app-page-content-wrapper -->
+
+
+    <!-- Footer
+============================================= -->
+    <footer class="footer-main-container" th:replace="front/fragment :: footer"></footer>
+
+
+</div>
+<!-- .wrapper end -->
+
+<div th:replace="front/fragment :: js"></div>
+
+</body>
+</html>
+
+    
+   

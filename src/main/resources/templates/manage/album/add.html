@@ -36,6 +36,12 @@
                                         <input type="text" v-model="titleStr" class="form-control">
                                     </div>
                                 </div>
+                                <div class="form-group" style="display: none">
+                                    <label class="col-sm-2 control-label text-right">标题</label>
+                                    <div class="col-md-4">
+                                        <input type="text" v-model="filestr" class="form-control">
+                                    </div>
+                                </div>
 
 
                                 <div style="clear:both;"></div>
@@ -103,14 +109,25 @@
         el: '#app',
         data: {
             titleStr: '',
+            filestr:'',
             form: {
                 title: {},
+                filePathlocale:{},
                 type: 'VIDEO',
-                attachment: {
+                attachment:{
                     type: 'VIDEO',
                     displayName: '',
                     filePath: ''
                 },
+                // attachment:[{
+                //     type: 'VIDEO',
+                //     displayName: '',
+                //     filePath: ''
+                // },{
+                //     type: 'VIDEO',
+                //     displayName: '',
+                //     filePath: ''
+                // }],
                 picture: {
                     type: 'IMAGE',
                     displayName: '',
@@ -124,7 +141,11 @@
                 // console.info(event);
                 var file = event.target;
                 var this_vue = this;
+                //var id = window.location.href.indexOf("en_US")>-1?(this.form[model][1].id || 0):(this.form[model][0].id || 0);
                 var id = this.form[model].id || 0;
+                // if(this.form[model].id!=null&&this.form[model].filePath.indexOf(":")>-1){
+                //     this.form[model].filePath = "";
+                // }
                 var param = {
                     file: file.files[0],
                     id: id,
@@ -137,13 +158,32 @@
                     }
                 }
                 this.$api.file.upload(param, function (res) {
-                    //  console.info(res);
+                    console.info(res);
                     res.type = param.type;
                     // res.id = null ;
+                    //window.location.href.indexOf("en_US")>-1?this_vue.form[model][1]=res:this_vue.form[model][0]=res;
+                    // var path = "";
+                    // if(this_vue.form[model].filePath){
+                    //     path = this_vue.form[model].filePath;
+                    // }
                     this_vue.form[model] = res;
+
                     if (res.filePath) {
-                        var url = "/uploads/" + res.filePath;
-                        this_vue.form[model].src = url;
+                        if(param.type == 'VIDEO'){
+                            var url = "/uploads/" + res.filePath;
+                            this_vue.filestr = url;
+                        }else{
+                            var url = "/uploads/pdf/" + res.filePath;
+                            this_vue.filestr = url;
+                        }
+
+                       // window.location.href.indexOf("en_US")>-1?this_vue.form[model][1].src=url:this_vue.form[model][0].src=url;
+                       //  this_vue.form[model].src = url+":/uploads/"+path;
+                       //  console.info(this_vue.form[model].filePath.indexOf(":"))
+                       //  if(path!=""){
+                       //      this_vue.form[model].filePath = this_vue.form[model].filePath+":"+path;
+                       //  }
+
                     }
                 }, function (exception) {
                     console.error(exception);
@@ -189,6 +229,9 @@
         watch: {
             'titleStr': function (n, o) {
                 this.$tools.setTranslationsText(this.form, 'title', locale, n);
+            },
+            'filestr': function (n, o) {
+                this.$tools.setTranslationsText(this.form, 'filePathlocale', locale, n);
             }
         }
     });
